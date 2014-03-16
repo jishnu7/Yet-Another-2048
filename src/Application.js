@@ -9,6 +9,7 @@ import src.Cell as Cell;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
+  var startCells = 2;
   this.initUI = function () {
     var rootView = new StackView({
       superview: this,
@@ -37,25 +38,32 @@ exports = Class(GC.Application, function () {
       superview: game
     });
 
-    //for(var x=0; x<4; x++) {
-      //for(var y=0; y<4; y++) {
-        var cell = new Cell({
-          superview: grid,
-        });
-      //}
-    //}
-
     game.on('Swipe', function(angle, direction) {
       console.log('angle', angle, 'direction', direction);
-      grid.moveCell(cell, direction);
+      grid.moveCells(direction);
     });
 
-    this.call = function(dir) {
-      grid.moveCell(cell, dir);
-    };
-
     rootView.push(game);
+    this.grid = grid;
+
+    for(var i=0; i< startCells; i++) {
+      this.addRandomCell();
+    }
   };
 
   this.launchUI = function () {};
+
+  this.addRandomCell = function() {
+    var grid = this.grid,
+      value = Math.random() < 0.9 ? 2 : 4;
+      pos = grid.randomAvailableCell();
+    if(grid.isCellsAvailable()) {
+      new Cell({
+        superview: this.grid,
+        col: pos.col,
+        row: pos.row,
+        value: value
+      });
+    }
+  };
 });

@@ -5,9 +5,7 @@ import ui.View as View;
 exports = Class(View, function(supr) {
   this.init = function(opts) {
     merge(opts, {
-      backgroundColor: 'black',
-      col: 0,
-      row: 0
+      backgroundColor: 'black'
     });
     supr(this, 'init', [opts]);
   };
