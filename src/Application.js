@@ -1,11 +1,11 @@
 /* jshint ignore:start */
-import device;
-import animate;
 import ui.View as View;
 import ui.StackView as StackView;
 import ui.TextView as TextView;
 import ui.GestureView as GestureView;
-import ui.widget.GridView as GridView;
+
+import src.Grid as Grid;
+import src.Cell as Cell;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -33,81 +33,25 @@ exports = Class(GC.Application, function () {
       height: 50,
     });
 
-    game.on('Swipe', function(angle, direction) {
-      console.log('angle', angle, 'direction', direction);
-      move(direction);
+    var grid = new Grid({
+      superview: game
     });
 
-    var grid = new GridView({
-      superview: game,
-      layout: 'box',
-      centerX: true,
-      backgroundColor: 'red',
-      width: device.width - 10,
-      height: device.width - 10,
-      rows: 4,
-      cols: 4,
-      horizontalMargin: 5,
-      verticalMargin: 5
-    });
     //for(var x=0; x<4; x++) {
       //for(var y=0; y<4; y++) {
-        var cell = new View({
+        var cell = new Cell({
           superview: grid,
-          backgroundColor: 'black',
-          col: 0,
-          row: 0
         });
       //}
     //}
 
-    var horz = new View({
-      superview: game,
-      layout: 'linear',
-      justifyContent: 'space-outside',
-      height: 25,
-      layoutWidth: '100%'
+    game.on('Swipe', function(angle, direction) {
+      console.log('angle', angle, 'direction', direction);
+      grid.moveCell(cell, direction);
     });
 
-    var move = function(direction) {
-      switch (direction) {
-        case 'left':
-        case 'right': x = 2; y = 0; break;
-        case 'up':
-        case 'down': x = 0; y = 1; break;
-        default: return;
-      }
-
-      var opts = cell._opts,
-        col = opts.col,
-        row = opts.row;
-
-      var dir = (direction === 'left' || direction === 'up' ? -1:1);
-
-      var anim = animate(cell);
-      var set = function(prop, val) {
-        opts[prop] = val;
-      };
-
-      col += x * dir;
-      col = col < grid.getCols() ? col : grid.getCols()-1;
-      col = col < 0 ? 0 : col;
-      if(col !== opts.col) {
-        anim.then({
-          x: grid._colInfo[col].pos
-        }, 100, animate.linear);
-        anim.then(bind(this, set, 'col', col));
-      }
-
-      row += y * dir;
-      row = row < grid.getRows() ? row : grid.getRows()-1;
-      row = row < 0 ? 0 : row;
-      if(row !== opts.row) {
-        anim.then({
-          y: grid._rowInfo[row].pos
-        }, 100, animate.linear);
-        anim.then(bind(this, set, 'row', row));
-      }
+    this.call = function(dir) {
+      grid.moveCell(cell, dir);
     };
 
     rootView.push(game);
