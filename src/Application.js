@@ -1,5 +1,6 @@
 /* jshint ignore:start */
 import device;
+import animate;
 import ui.View as View;
 import ui.StackView as StackView;
 import ui.TextView as TextView;
@@ -47,7 +48,7 @@ exports = Class(GC.Application, function () {
       rows: 4,
       cols: 4,
       horizontalMargin: 5,
-      verticalMargin: 5,
+      verticalMargin: 5
     });
     //for(var x=0; x<4; x++) {
       //for(var y=0; y<4; y++) {
@@ -55,7 +56,7 @@ exports = Class(GC.Application, function () {
           superview: grid,
           backgroundColor: 'black',
           col: 0,
-          row: 0,
+          row: 0
         });
       //}
     //}
@@ -70,9 +71,9 @@ exports = Class(GC.Application, function () {
 
     var move = function(direction) {
       switch (direction) {
-        case 'left': x = -1; y = 0; break;
-        case 'right': x = 1; y = 0; break;
-        case 'up': x = 0; y = -1; break;
+        case 'left':
+        case 'right': x = 2; y = 0; break;
+        case 'up':
         case 'down': x = 0; y = 1; break;
         default: return;
       }
@@ -81,21 +82,36 @@ exports = Class(GC.Application, function () {
         col = opts.col,
         row = opts.row;
 
-      col += x;
+      var dir = (direction === 'left' || direction === 'up' ? -1:1);
+
+      var anim = animate(cell);
+      var set = function(prop, val) {
+        opts[prop] = val;
+      };
+
+      col += x * dir;
       col = col < grid.getCols() ? col : grid.getCols()-1;
       col = col < 0 ? 0 : col;
+      if(col !== opts.col) {
+        anim.then({
+          x: grid._colInfo[col].pos
+        }, 100, animate.linear);
+        anim.then(bind(this, set, 'col', col));
+      }
 
-      row += y;
+      row += y * dir;
       row = row < grid.getRows() ? row : grid.getRows()-1;
       row = row < 0 ? 0 : row;
-
-      console.log('move', row, col);
-      opts.row = row;
-      opts.col = col;
+      if(row !== opts.row) {
+        anim.then({
+          y: grid._rowInfo[row].pos
+        }, 100, animate.linear);
+        anim.then(bind(this, set, 'row', row));
+      }
     };
 
     rootView.push(game);
   };
-  
+
   this.launchUI = function () {};
 });
