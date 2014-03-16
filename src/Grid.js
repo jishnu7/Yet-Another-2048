@@ -2,6 +2,8 @@
 import animate;
 import device;
 import ui.widget.GridView as GridView;
+
+import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(GridView, function(supr) {
@@ -20,110 +22,56 @@ exports = Class(GridView, function(supr) {
     supr(this, 'init', [opts]);
   };
 
-  this.moveCell = function(cell, direction) {
-    var x=0, y = 0;
-    switch (direction) {
-      case 'left':
-      case 'right': x = 1; y = 0; break;
-      case 'up':
-      case 'down': x = 0; y = 1; break;
-      default: return;
-    }
-
-    var opts = cell._opts,
-      col = opts.col,
-      row = opts.row,
-      anim = animate(cell),
-      dir = (direction === 'left' || direction === 'up' ? -1:1);
-
-    var setter = function(prop, value) {
-      cell.setProperty('col', col);
-    };
-
-    col += x * dir;
-    col = col < this.getCols() ? col : this.getCols()-1;
-    col = col < 0 ? 0 : col;
-    console.log('move: col', col, opts.col, opts.row);
-
-    if(col !== opts.col) {
-      anim.then({
-        x: this._colInfo[col].pos
-      }, 100, animate.linear);
-      anim.then(bind(this, setter, 'col', col));
-    }
-
-    row += y * dir;
-    row = row < this.getRows() ? row : this.getRows()-1;
-    row = row < 0 ? 0 : row;
-    console.log('move: row', row);
-    if(row !== opts.row) {
-      anim.then({
-        y: this._rowInfo[row].pos
-      }, 100, animate.linear);
-      anim.then(bind(cell, setter, 'row', row));
-    }
-  };
-
   // might be possible to re-wrte in a better way
   this.moveCells = function(direction) {
     var dir = (direction === 'left' || direction === 'up' ? -1:1),
       cols = this.getCols() - 1,
       rows = this.getRows() - 1;
 
-    var setter = function(cell, prop, value) {
-      cell.setProperty(prop, value);
-    };
+    var vector = Utils.getVector(direction);
+    var traversals = this.buildTraversals(vector);
+    traversals.col.forEach(bind(this, function (x) {
+      traversals.row.forEach(bind(this, function (y) {
+        var cell = this.getCell(y, x);
 
-    this.getSubviews().forEach(bind(this, function(cell) {
-      var opts = cell._opts,
-        col = opts.col,
-        row = opts.row,
-        anim = animate(cell, 'animationGroup'),
-        i;
+        if (cell) {
+          var pos = this.findFarthestPosition({ row: y, col: x }, vector),
+            next = pos.next ? this.getCell(pos.next.row, pos.next.col) : null;
 
-      if(direction === 'left' || direction === 'right') {
-        console.log('current row, col', row, col, 'dir', dir);
-        i = col;
-        while((dir > 0 && i<cols) || (dir < 0 && i>0)) {
-          i += dir;
-          console.log('iscell available', row, i, this.isCellAvailable(row, i));
-          if(!this.isCellAvailable(row, i)) {
-            console.log('breaking', i);
-            i -= dir;
-            break;
-          }
+            if (next && next.getValue() === cell.getValue()) {
+              this.moveCell(cell, pos.next);
+              var newVal = next.getValue() + cell.getValue();
+              cell.setText(newVal);
+              next.removeFromSuperview();
+              this.emit('updateScore', newVal);
+            } else {
+              this.moveCell(cell, pos.farthest);
+            }
         }
-
-        console.log('animating from', col, '=>', i);
-        col = i;
-        if(col !== opts.col) {
-          anim.then({
-            x: this._colInfo[col].pos
-          }, 100, animate.linear);
-          anim.then(bind(this, setter, cell, 'col', col));
-        }
-      } else {
-        console.log('current row, col', row, col, 'dir', dir);
-        i = row;
-        while((dir > 0 && i<rows) || (dir < 0 && i>0)) {
-          i += dir;
-          console.log('iscell available', row, i);
-          if(!this.isCellAvailable(i, col)) {
-            console.log('breaking', i);
-            i -= dir;
-            break;
-          }
-        }
-
-        console.log('animating from', row, '=>', i);
-        if(i !== opts.row) {
-          anim.then({
-            y: this._rowInfo[i].pos
-          }, 100, animate.linear);
-          anim.then(bind(this, setter, cell, 'row', i));
-        }
-      }
+      }));
     }));
+  };
+
+  this.moveCell = function(cell, farthest) {
+    var anim = animate(cell, 'animationGroup'),
+      opts = cell._opts,
+      col = farthest.col,
+      row = farthest.row,
+      prevCol = opts.col,
+      prevRow = opts.row;
+
+    if(col !== opts.col || row !== opts.row) {
+      cell.setProperty('col', col);
+      cell.setProperty('row', row);
+
+      anim.now({
+        x: this._colInfo[prevCol].pos,
+        y: this._rowInfo[prevRow].pos
+      }, 0).then({
+        x: this._colInfo[col].pos,
+        y: this._rowInfo[row].pos
+      }, 100, animate.linear);
+    }
   };
 
   this.getCells = function() {
@@ -186,4 +134,50 @@ exports = Class(GridView, function(supr) {
     return !this.getCell(row, col);
   };
 
+  this.withinBounds = function(row, col) {
+    return col >= 0 && col < this.getCols() &&
+      row >= 0 && row < this.getRows();
+  };
+
+  this.buildTraversals = function(vector) {
+    var trav = {
+        col: [],
+        row: []
+      },
+      pos = 0;
+
+    for (pos = 0; pos < this.getCols(); pos++) {
+      trav.col.push(pos);
+    }
+    for (pos = 0; pos < this.getCols(); pos++) {
+      trav.row.push(pos);
+    }
+
+    if (vector.col === 1) {
+      trav.col = trav.col.reverse();
+    }
+    if(vector.row === 1) {
+      trav.row = trav.row.reverse();
+    }
+
+    return trav;
+  };
+
+  this.findFarthestPosition = function (cell, vector) {
+    var previous, ret = {};
+
+    do {
+      previous = cell;
+      cell = {
+        col: previous.col + vector.col,
+        row: previous.row + vector.row
+      };
+    } while (this.withinBounds(cell.row, cell.col) &&
+             this.isCellAvailable(cell.row, cell.col));
+
+    return {
+      farthest: previous,
+      next: this.withinBounds(cell.row, cell.col) ? cell : null
+    };
+  };
 });

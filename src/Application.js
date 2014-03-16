@@ -29,13 +29,17 @@ exports = Class(GC.Application, function () {
       superview: game,
       layout: 'box',
       color: 'red',
-      text: '2048',
+      text: 0,
       size: 30,
       height: 50,
     });
 
     var grid = new Grid({
       superview: game
+    });
+
+    grid.on('updateScore', function(val) {
+      score.setText(score.getText()+val);
     });
 
     game.on('Swipe', function(angle, direction) {
