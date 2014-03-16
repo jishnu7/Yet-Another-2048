@@ -39,13 +39,14 @@ exports = Class(GC.Application, function () {
     });
 
     grid.on('updateScore', function(val) {
-      score.setText(score.getText()+val);
+      score.setText(parseInt(score.getText(),10) + val);
     });
 
-    game.on('Swipe', function(angle, direction) {
+    game.on('Swipe', bind(this, function(angle, direction) {
       console.log('angle', angle, 'direction', direction);
       grid.moveCells(direction);
-    });
+      this.addRandomCell();
+    }));
 
     rootView.push(game);
     this.grid = grid;
@@ -68,6 +69,7 @@ exports = Class(GC.Application, function () {
         row: pos.row,
         value: value
       });
+      grid.reflow();
     }
   };
 });
