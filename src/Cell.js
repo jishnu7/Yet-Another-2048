@@ -30,4 +30,12 @@ exports = Class(View, function(supr) {
   this.setProperty = function(prop, val) {
     this._opts[prop] = val;
   };
+
+  this.getRow = function() {
+    return this._opts.row;
+  };
+
+  this.getCol = function() {
+    return this._opts.col;
+  };
 });

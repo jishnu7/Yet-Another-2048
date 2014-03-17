@@ -1,6 +1,7 @@
 /* jshint ignore:start */
 import animate;
 import device;
+import ui.View as View;
 import ui.widget.GridView as GridView;
 
 import src.Cell as Cell;
@@ -28,6 +29,12 @@ exports = Class(GridView, function(supr) {
       var row = [];
       for (var y = 0; y < this.getCols(); y++) {
         row.push(null);
+        new View({
+          superview: this,
+          row: x,
+          col: y,
+          backgroundColor: 'green'
+        });
       }
       cells.push(row);
     }
@@ -106,7 +113,8 @@ exports = Class(GridView, function(supr) {
       anim.now({
         x: this._colInfo[prevCol].pos,
         y: this._rowInfo[prevRow].pos
-      }, 0).then({
+      }, 0)
+      .then({
         x: this._colInfo[col].pos,
         y: this._rowInfo[row].pos
       }, 100, animate.linear).then(function(){
