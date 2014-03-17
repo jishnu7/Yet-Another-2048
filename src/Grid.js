@@ -3,6 +3,7 @@ import animate;
 import device;
 import ui.widget.GridView as GridView;
 
+import src.Cell as Cell;
 import src.Utils as Utils;
 /* jshint ignore:end */
 
@@ -20,6 +21,46 @@ exports = Class(GridView, function(supr) {
       verticalMargin: 5
     });
     supr(this, 'init', [opts]);
+
+    // init cells with empty data
+    var cells = [];
+    for (var x = 0; x < this.getRows(); x++) {
+      var row = [];
+      for (var y = 0; y < this.getCols(); y++) {
+        row.push(null);
+      }
+      cells.push(row);
+    }
+    this.cells = cells;
+  };
+
+  this.addCell = function(row, col, val) {
+    var cell = new Cell({
+      superview: this,
+      row: row,
+      col: col,
+      value: val
+    });
+    this.cells[row][col] = cell;
+    this.reflow();
+    console.log('addcell', [row, col], val);
+  };
+
+  this.removeCell = function(cell) {
+    var row = cell._opts.row,
+      col = cell._opts.col;
+    if(this.cells[row][col] === cell) {
+      this.cells[row][col] = null;
+    }
+    console.log('removing', row, col);
+    cell.removeFromSuperview();
+  };
+
+  this.mergeCells = function(cell1, cell2) {
+    var newVal = cell1.getValue() + cell2.getValue();
+    cell1.setVal(newVal);
+    this.removeCell(cell2);
+    this.emit('updateScore', newVal);
   };
 
   // might be possible to re-wrte in a better way
@@ -39,11 +80,9 @@ exports = Class(GridView, function(supr) {
             next = pos.next ? this.getCell(pos.next.row, pos.next.col) : null;
 
             if (next && next.getValue() === cell.getValue()) {
+              console.log('merge cells', [y,x], cell.getValue(), pos.next, next.getValue());
               this.moveCell(cell, pos.next);
-              var newVal = next.getValue() + cell.getValue();
-              cell.setText(newVal);
-              next.removeFromSuperview();
-              this.emit('updateScore', newVal);
+              this.mergeCells(cell, next);
             } else {
               this.moveCell(cell, pos.farthest);
             }
@@ -60,46 +99,29 @@ exports = Class(GridView, function(supr) {
       prevCol = opts.col,
       prevRow = opts.row;
 
+    this.cells[prevRow][prevCol] = null;
+    this.cells[row][col] = cell;
+    console.log('moving', prevRow, prevCol, '=>', row, col);
     if(col !== opts.col || row !== opts.row) {
-      cell.setProperty('col', col);
-      cell.setProperty('row', row);
-
       anim.now({
         x: this._colInfo[prevCol].pos,
         y: this._rowInfo[prevRow].pos
       }, 0).then({
         x: this._colInfo[col].pos,
         y: this._rowInfo[row].pos
-      }, 100, animate.linear);
+      }, 100, animate.linear).then(function(){
+        cell.setProperty('col', col);
+        cell.setProperty('row', row);
+      }, 0);
     }
-  };
-
-  this.getCells = function() {
-    var cells = [];
-    // init with empty data
-    for (var x = 0; x < this.getRows(); x++) {
-      var row = [];
-      for (var y = 0; y < this.getCols(); y++) {
-        row.push(null);
-      }
-      cells.push(row);
-    }
-
-    // get existing cells
-    this.getSubviews().forEach(function(view) {
-      var opts = view._opts;
-      cells[opts.row][opts.col] = view;
-    });
-
-    return cells;
   };
 
   this.getCell = function (row, col) {
-    return this.getCells()[row][col];
+    return this.cells[row][col];
   };
 
   this.eachCell = function(callback) {
-    var cells = this.getCells();
+    var cells = this.cells;
     for (var row = 0; row < this.getCols(); row++) {
       for (var col = 0; col < this.getRows(); col++) {
         callback(row, col, cells[row][col]);

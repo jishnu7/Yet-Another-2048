@@ -5,7 +5,6 @@ import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 
 import src.Grid as Grid;
-import src.Cell as Cell;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -51,6 +50,11 @@ exports = Class(GC.Application, function () {
     rootView.push(game);
     this.grid = grid;
 
+    this.emulate = function(direction) {
+      grid.moveCells(direction);
+      this.addRandomCell();
+    };
+
     for(var i=0; i< startCells; i++) {
       this.addRandomCell();
     }
@@ -63,13 +67,7 @@ exports = Class(GC.Application, function () {
       value = Math.random() < 0.9 ? 2 : 4;
       pos = grid.randomAvailableCell();
     if(grid.isCellsAvailable()) {
-      new Cell({
-        superview: this.grid,
-        col: pos.col,
-        row: pos.row,
-        value: value
-      });
-      grid.reflow();
+      grid.addCell(pos.row, pos.col, value);
     }
   };
 });

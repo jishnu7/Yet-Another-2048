@@ -18,7 +18,8 @@ exports = Class(View, function(supr) {
     });
   };
 
-  this.setText = function(val) {
+  this.setVal = function(val) {
+    this._opts.value = val;
     this.text.setText(val);
   };
 
