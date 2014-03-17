@@ -14,6 +14,7 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'box',
       text: opts.value,
+      size: 30,
       color: 'white'
     });
   };

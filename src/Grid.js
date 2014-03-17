@@ -46,7 +46,8 @@ exports = Class(GridView, function(supr) {
       superview: this,
       row: row,
       col: col,
-      value: val
+      value: val,
+      centerAnchor: true,
     });
     this.cells[row][col] = cell;
     this.reflow();
@@ -105,22 +106,20 @@ exports = Class(GridView, function(supr) {
       row = farthest.row,
       prevCol = opts.col,
       prevRow = opts.row;
+      target = this.getCellPos(row, col);
 
     this.cells[prevRow][prevCol] = null;
     this.cells[row][col] = cell;
     console.log('moving', prevRow, prevCol, '=>', row, col);
     if(col !== opts.col || row !== opts.row) {
-      anim.now({
-        x: this._colInfo[prevCol].pos,
-        y: this._rowInfo[prevRow].pos
-      }, 0)
-      .then({
-        x: this._colInfo[col].pos,
-        y: this._rowInfo[row].pos
-      }, 100, animate.linear).then(function(){
-        cell.setProperty('col', col);
-        cell.setProperty('row', row);
-      }, 0);
+      anim.then({
+          x: target.x,
+          y: target.y
+        }, 100, animate.linear).
+        then(function(){
+          cell.setProperty('col', col);
+          cell.setProperty('row', row);
+        }, 0);
     }
   };
 
@@ -210,4 +209,23 @@ exports = Class(GridView, function(supr) {
       next: this.withinBounds(cell.row, cell.col) ? cell : null
     };
   };
+
+  this.getCellSize = function(row, col) {
+    return {
+        width: this._colInfo[col].size,
+        height: this._rowInfo[row].size
+      };
+  };
+
+  this.getCellPos = function(row, col) {
+    var opts = this._opts,
+      horizontalMargin = isArray(opts.horizontalMargin) ? opts.horizontalMargin[0] : opts.horizontalMargin,
+      verticalMargin = isArray(opts.verticalMargin) ? opts.verticalMargin[0] : opts.verticalMargin;
+
+    return {
+      x: this._colInfo[col].pos + horizontalMargin,
+      y: this._rowInfo[row].pos + verticalMargin
+    };
+  };
+
 });

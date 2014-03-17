@@ -54,13 +54,13 @@ exports = Class(GC.Application, function () {
       grid.moveCells(direction);
       this.addRandomCell();
     };
+  };
 
+  this.launchUI = function () {
     for(var i=0; i< startCells; i++) {
       this.addRandomCell();
     }
   };
-
-  this.launchUI = function () {};
 
   this.addRandomCell = function() {
     var grid = this.grid,
