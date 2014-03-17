@@ -9,17 +9,25 @@ import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(GridView, function(supr) {
+  var size = 4,
+    margin = 8,
+    baseSize = device.width - 10;
+    cellSize = Math.round(baseSize/4) - margin*1.5;
+  baseSize = (cellSize + margin*1.5) * 4;
+
   this.init = function(opts) {
+
     merge(opts, {
       layout: 'box',
       centerX: true,
       backgroundColor: 'red',
-      width: device.width - 10,
-      height: device.width - 10,
-      rows: 4,
-      cols: 4,
-      horizontalMargin: 5,
-      verticalMargin: 5
+      width: baseSize,
+      height: baseSize,
+      rows: size,
+      cols: size,
+      horizontalMargin: margin,
+      verticalMargin: margin,
+      autoCellSize: false
     });
     supr(this, 'init', [opts]);
 
@@ -33,7 +41,9 @@ exports = Class(GridView, function(supr) {
           superview: this,
           row: x,
           col: y,
-          backgroundColor: 'green'
+          width: cellSize,
+          height: cellSize,
+          backgroundColor: 'green',
         });
       }
       cells.push(row);
@@ -44,13 +54,24 @@ exports = Class(GridView, function(supr) {
   this.addCell = function(row, col, val) {
     var cell = new Cell({
       superview: this,
+      layout: 'box',
       row: row,
       col: col,
+      width: cellSize,
+      height: cellSize,
       value: val,
       centerAnchor: true,
+      scale: 0.1
     });
     this.cells[row][col] = cell;
     this.reflow();
+    var anim = animate(cell);
+    anim.now({
+      scale: 0.1
+    }, 0).
+    then({
+      scale: 1
+    }, 100);
     console.log('addcell', [row, col], val);
   };
 
@@ -61,7 +82,16 @@ exports = Class(GridView, function(supr) {
       this.cells[row][col] = null;
     }
     console.log('removing', row, col);
-    cell.removeFromSuperview();
+    var anim = animate(cell);
+    anim.now({
+      scale: 1
+    }, 0).
+    then({
+      scale: 0.1
+    }, 100)
+    .then(bind(cell, function() {
+      this.removeFromSuperview();
+    }));
   };
 
   this.mergeCells = function(cell1, cell2) {
@@ -219,13 +249,44 @@ exports = Class(GridView, function(supr) {
 
   this.getCellPos = function(row, col) {
     var opts = this._opts,
-      horizontalMargin = isArray(opts.horizontalMargin) ? opts.horizontalMargin[0] : opts.horizontalMargin,
-      verticalMargin = isArray(opts.verticalMargin) ? opts.verticalMargin[0] : opts.verticalMargin;
+      marginH = (row===0 ? opts.horizontalMargin : opts.horizontalMargin/2),
+      marginV = (col===0 ? opts.verticalMargin: opts.verticalMargin/2);
 
     return {
-      x: this._colInfo[col].pos + horizontalMargin,
-      y: this._rowInfo[row].pos + verticalMargin
+      x: this._colInfo[col].pos + marginH,
+      y: this._rowInfo[row].pos + marginV
     };
+  };
+
+  this._updateSubview = function (subview) {
+    var opts = this._opts,
+      subviewOpts = subview._opts,
+      row = subviewOpts.row,
+      col = subviewOpts.col,
+      style = subview.style,
+      horizontalMargin = opts.horizontalMargin,
+      verticalMargin = opts.verticalMargin;
+
+    // Check is the range is valid...
+    if ((row < 0) || (row >= this._rows) || (col < 0) || (col >= this._cols)) {
+      if (opts.hideOutOfRange) {
+        subview.style.visible = false;
+      }
+      return;
+    } else if (opts.showInRange) {
+      subview.style.visible = true;
+    }
+
+    if(col===0) {
+      style.x = this._colInfo[col].pos + horizontalMargin;
+    } else {
+      style.x = this._colInfo[col].pos + horizontalMargin/2;
+    }
+    if(row===0) {
+      style.y = this._rowInfo[row].pos + verticalMargin;
+    } else {
+      style.y = this._rowInfo[row].pos + verticalMargin/2;
+    }
   };
 
 });
