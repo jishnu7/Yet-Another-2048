@@ -20,7 +20,7 @@ exports = Class(GridView, function(supr) {
     merge(opts, {
       layout: 'box',
       centerX: true,
-      backgroundColor: 'red',
+      backgroundColor: Utils.colors.grid,
       width: baseSize,
       height: baseSize,
       rows: size,
@@ -43,7 +43,7 @@ exports = Class(GridView, function(supr) {
           col: y,
           width: cellSize,
           height: cellSize,
-          backgroundColor: 'green',
+          backgroundColor: Utils.colors.tile_blank
         });
       }
       cells.push(row);

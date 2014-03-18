@@ -1,13 +1,12 @@
 /* jshint ignore:start */
 import ui.View as View;
 import ui.TextView as TextView;
+
+import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(View, function(supr) {
   this.init = function(opts) {
-    merge(opts, {
-      backgroundColor: 'black'
-    });
     supr(this, 'init', [opts]);
 
     this.text = new TextView({
@@ -15,13 +14,15 @@ exports = Class(View, function(supr) {
       layout: 'box',
       text: opts.value,
       size: 30,
-      color: 'white'
+      color: Utils.colors.text
     });
+    this.setColor();
   };
 
   this.setVal = function(val) {
     this._opts.value = val;
     this.text.setText(val);
+    this.setColor();
   };
 
   this.getValue = function() {
@@ -38,5 +39,22 @@ exports = Class(View, function(supr) {
 
   this.getCol = function() {
     return this._opts.col;
+  };
+
+  this.setColor = function() {
+    var val = this.getValue(),
+      color_bg, color_text,
+      i, j;
+
+    for(i = val; typeof color_bg === 'undefined' && i!==1; i/=2) {
+      color_bg = Utils.colors.tile[i];
+      console.log(i, color_bg);
+    }
+    for(i = val; typeof color_text === 'undefined' && i!==1; i/=2) {
+      color_text = Utils.colors.tile_text[i];
+      console.log(i, color_text);
+    }
+    this.updateOpts({backgroundColor: color_bg});
+    this.text.updateOpts({color: color_text});
   };
 });

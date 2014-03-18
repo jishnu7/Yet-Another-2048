@@ -5,6 +5,7 @@ import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 
 import src.Grid as Grid;
+import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -22,12 +23,13 @@ exports = Class(GC.Application, function () {
       justifyContent: 'space-outside',
       layoutWidth: '100%',
       layoutHeight: '100%',
+      backgroundColor: Utils.colors.background
     });
 
     var score = new TextView({
       superview: game,
       layout: 'box',
-      color: 'red',
+      color: Utils.colors.text,
       text: 0,
       size: 30,
       height: 50,
