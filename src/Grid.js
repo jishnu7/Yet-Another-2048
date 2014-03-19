@@ -105,7 +105,8 @@ exports = Class(GridView, function(supr) {
   this.moveCells = function(direction) {
     var dir = (direction === 'left' || direction === 'up' ? -1:1),
       cols = this.getCols() - 1,
-      rows = this.getRows() - 1;
+      rows = this.getRows() - 1,
+      mergedCells = [];
 
     var vector = Utils.getVector(direction);
     var traversals = this.buildTraversals(vector);
@@ -117,9 +118,10 @@ exports = Class(GridView, function(supr) {
           var pos = this.findFarthestPosition({ row: y, col: x }, vector),
             next = pos.next ? this.getCell(pos.next.row, pos.next.col) : null;
 
-            if (next && next.getValue() === cell.getValue()) {
+            if (next && next.getValue() === cell.getValue() && mergedCells.indexOf(next) === -1) {
               console.log('merge cells', [y,x], cell.getValue(), pos.next, next.getValue());
               this.moveCell(cell, pos.next);
+              mergedCells.push(cell);
               this.mergeCells(cell, next);
             } else {
               this.moveCell(cell, pos.farthest);
