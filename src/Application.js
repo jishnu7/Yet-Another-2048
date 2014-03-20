@@ -5,6 +5,7 @@ import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 
 import src.Grid as Grid;
+import src.Score as Score;
 import src.Utils as Utils;
 /* jshint ignore:end */
 
@@ -26,13 +27,8 @@ exports = Class(GC.Application, function () {
       backgroundColor: Utils.colors.background
     });
 
-    var score = new TextView({
-      superview: game,
-      layout: 'box',
-      color: Utils.colors.text,
-      text: 0,
-      size: 30,
-      height: 50,
+    var score = new Score({
+      superview: game
     });
 
     var grid = new Grid({
@@ -40,7 +36,7 @@ exports = Class(GC.Application, function () {
     });
 
     grid.on('updateScore', function(val) {
-      score.setText(parseInt(score.getText(),10) + val);
+      score.update(val);
     });
 
     game.on('Swipe', bind(this, function(angle, direction) {
