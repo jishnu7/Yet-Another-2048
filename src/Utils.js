@@ -14,6 +14,7 @@ exports = function() {
     background: '#FAF8EF',
     text: '#776E65',
     //text_bright: '#f9f6f2',
+    text_score: '#EEE4DA',
     tile_blank: '#CCC0B3',
     tile: {
         2: '#EEE4DA',

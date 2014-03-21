@@ -10,28 +10,44 @@ exports = Class(View, function(supr) {
   this.init = function(opts) {
     merge(opts, {
       layout: 'linear',
-      height: 50
+      justifyContent: 'space-outside',
+      height: 100
     });
     supr(this, 'init', [opts]);
 
-    this.scoreView = new TextView({
-      superview: this,
-      text: 0,
-      size: 30,
-      width: device.width/2,
-      color: Utils.colors.text
-    });
+    this.scoreView = this.createView('Score', 0);
     this.score = 0;
 
-    var hs = parseInt(localStorage.getItem('highscore'), 10) || 0;
-    this.highScoreView = new TextView({
+    var hs = this.highScore = parseInt(localStorage.getItem('highscore'), 10) || 0;
+    this.highScoreView = this.createView('Best', hs);
+  };
+
+  this.createView = function(name, value) {
+    console.log(this, name, value);
+    var container = new View({
       superview: this,
-      text: hs,
-      size: 30,
-      width: device.width/2,
-      color: Utils.colors.text
+      layout: 'linear',
+      direction: 'vertical',
+      layoutWidth: '40%',
+      justifyContent: 'space-outside',
+      backgroundColor: Utils.colors.tile_blank,
     });
-    this.highScore = hs;
+    new TextView({
+      superview: container,
+      layout: 'box',
+      height: 30,
+      text: name,
+      size: 30,
+      color: Utils.colors.text_score
+    });
+    return new TextView({
+      superview: container,
+      layout: 'box',
+      height: 50,
+      text: value,
+      size: 30,
+      color: Utils.colors.background
+    });
   };
 
   this.update = function(val) {

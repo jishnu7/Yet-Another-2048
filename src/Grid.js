@@ -1,6 +1,5 @@
 /* jshint ignore:start */
 import animate;
-import device;
 import ui.View as View;
 import ui.widget.GridView as GridView;
 
@@ -9,13 +8,13 @@ import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(GridView, function(supr) {
-  var size = 4,
-    margin = 8,
-    baseSize = device.width - 10;
-    cellSize = Math.round(baseSize/4) - margin*1.5;
-  baseSize = (cellSize + margin*1.5) * 4;
 
   this.init = function(opts) {
+    var size = 4,
+      margin = 8,
+      baseSize = GC.app.baseWidth - 100,
+      cellSize = this.cellSize = Math.round(baseSize/4) - margin*1.5;
+    baseSize = (cellSize + margin*1.5) * size;
 
     merge(opts, {
       layout: 'box',
@@ -52,17 +51,19 @@ exports = Class(GridView, function(supr) {
   };
 
   this.addCell = function(row, col, val) {
-    var cell = new Cell({
-      superview: this,
-      layout: 'box',
-      row: row,
-      col: col,
-      width: cellSize,
-      height: cellSize,
-      value: val,
-      centerAnchor: true,
-      scale: 0.1
-    });
+    var cellSize = this.cellSize,
+      cell = new Cell({
+        superview: this,
+        layout: 'box',
+        row: row,
+        col: col,
+        width: cellSize,
+        height: cellSize,
+        value: val,
+        centerAnchor: true,
+        scale: 0.1
+      });
+
     this.cells[row][col] = cell;
     this.reflow();
     var anim = animate(cell);

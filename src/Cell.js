@@ -13,7 +13,7 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'box',
       text: opts.value,
-      size: 30,
+      size: 60,
       color: Utils.colors.text
     });
     this.setColor();
