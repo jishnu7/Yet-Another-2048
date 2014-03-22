@@ -48,6 +48,11 @@ exports = Class(GC.Application, function () {
       this.addRandomCell();
     }));
 
+    grid.on('Over', function() {
+      console.log('--------------game over!!--------------');
+      rootView.pop();
+    });
+
     rootView.push(game);
     this.grid = grid;
 

@@ -130,6 +130,10 @@ exports = Class(GridView, function(supr) {
         }
       }));
     }));
+
+    if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
+      this.emit('Over');
+    }
   };
 
   this.moveCell = function(cell, farthest) {
@@ -157,6 +161,12 @@ exports = Class(GridView, function(supr) {
   };
 
   this.getCell = function (row, col) {
+    var cellSize = this.cellSize,
+      rows = this.getRows(),
+      cols = this.getCols();
+    if(row >= rows || row < 0 || col < 0 || col >= cols) {
+      return false;
+    }
     return this.cells[row][col];
   };
 
@@ -292,4 +302,23 @@ exports = Class(GridView, function(supr) {
     }
   };
 
+  this.isMovesAvailable = function () {
+    var flag = false,
+      directions = ['left', 'right', 'up', 'down'];
+
+    this.eachCell(bind(this, function(row, col, cell) {
+      if(cell) {
+        directions.forEach(bind(this, function(direction) {
+          var vector = Utils.getVector(direction),
+            other = this.getCell(row + vector.row, col + vector.col);
+
+          if (other && other.getValue() === cell.getValue()) {
+            flag = true;
+          }
+        }));
+      }
+    }));
+    console.log('isMovesAvailable', flag);
+    return flag;
+  };
 });

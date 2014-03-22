@@ -48,11 +48,9 @@ exports = Class(View, function(supr) {
 
     for(i = val; typeof color_bg === 'undefined' && i!==1; i/=2) {
       color_bg = Utils.colors.tile[i];
-      console.log(i, color_bg);
     }
     for(i = val; typeof color_text === 'undefined' && i!==1; i/=2) {
       color_text = Utils.colors.tile_text[i];
-      console.log(i, color_text);
     }
     this.updateOpts({backgroundColor: color_bg});
     this.text.updateOpts({color: color_text});
