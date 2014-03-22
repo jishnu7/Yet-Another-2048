@@ -20,10 +20,9 @@ exports = Class(View, function(supr) {
       size: 60,
       color: Utils.colors.text
     });
-    this.setColor();
   };
 
-  this.setVal = function(val) {
+  this.setValue = function(val) {
     this._opts.value = val;
     this.text.setText(val);
     this.setColor();

@@ -23,7 +23,6 @@ exports = Class(View, function(supr) {
   };
 
   this.createView = function(name, value) {
-    console.log(this, name, value);
     var container = new View({
       superview: this,
       layout: 'linear',

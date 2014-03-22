@@ -1,5 +1,6 @@
 /* jshint ignore:start */
 import animate;
+import ui.ViewPool as ViewPool;
 import ui.View as View;
 import ui.widget.GridView as GridView;
 
@@ -13,7 +14,7 @@ exports = Class(GridView, function(supr) {
     var size = 4,
       margin = 8,
       baseSize = GC.app.baseWidth - 100,
-      cellSize = this.cellSize = Math.round(baseSize/4) - margin*1.5;
+      cellSize = Math.round(baseSize/4) - margin*1.5;
     baseSize = (cellSize + margin*1.5) * size;
 
     merge(opts, {
@@ -48,19 +49,27 @@ exports = Class(GridView, function(supr) {
       cells.push(row);
     }
     this.cells = cells;
+
+    this.cellPool = new ViewPool({
+      ctor: Cell,
+      initCount: size*size,
+      initOpts: {
+        width: cellSize,
+        height: cellSize
+      }
+    });
   };
 
   this.addCell = function(row, col, val) {
-    var cellSize = this.cellSize,
-      cell = new Cell({
+    var cell = this.cellPool.obtainView();
+      cell.updateOpts({
         superview: this,
         row: row,
         col: col,
-        width: cellSize,
-        height: cellSize,
-        value: val,
-        scale: 0.1
+        scale: 0.1,
+        visible: true
       });
+    cell.setValue(val);
 
     this.cells[row][col] = cell;
     this.reflow();
@@ -88,14 +97,14 @@ exports = Class(GridView, function(supr) {
     then({
       scale: 0.1
     }, 100)
-    .then(bind(cell, function() {
-      this.removeFromSuperview();
+    .then(bind(this, function() {
+      this.cellPool.releaseView(cell);
     }));
   };
 
   this.mergeCells = function(cell1, cell2) {
     var newVal = cell1.getValue() + cell2.getValue();
-    cell1.setVal(newVal);
+    cell1.setValue(newVal);
     this.removeCell(cell2);
     this.emit('updateScore', newVal);
   };
