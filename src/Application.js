@@ -26,7 +26,8 @@ exports = Class(GC.Application, function () {
       justifyContent: 'space-outside',
       layoutWidth: '100%',
       layoutHeight: '100%',
-      backgroundColor: Utils.colors.background
+      backgroundColor: Utils.colors.background,
+      swipeMagnitude: 50
     });
 
     var score = new Score({
