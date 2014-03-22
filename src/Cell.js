@@ -7,6 +7,10 @@ import src.Utils as Utils;
 
 exports = Class(View, function(supr) {
   this.init = function(opts) {
+    merge(opts, {
+      anchorX: opts.width/2,
+      anchorY: opts.height/2
+    });
     supr(this, 'init', [opts]);
 
     this.text = new TextView({

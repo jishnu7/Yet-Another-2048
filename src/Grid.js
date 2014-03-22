@@ -54,13 +54,11 @@ exports = Class(GridView, function(supr) {
     var cellSize = this.cellSize,
       cell = new Cell({
         superview: this,
-        layout: 'box',
         row: row,
         col: col,
         width: cellSize,
         height: cellSize,
         value: val,
-        centerAnchor: true,
         scale: 0.1
       });
 
