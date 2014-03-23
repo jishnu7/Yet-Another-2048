@@ -1,12 +1,12 @@
 /* jshint ignore:start */
 import device;
-import ui.View as View;
 import ui.StackView as StackView;
 import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 
 import src.Grid as Grid;
 import src.Score as Score;
+import src.Menu as Menu;
 import src.Utils as Utils;
 /* jshint ignore:end */
 
@@ -34,7 +34,7 @@ exports = Class(GC.Application, function () {
       superview: game
     });
 
-    var grid = new Grid({
+    var grid = this.grid = new Grid({
       superview: game
     });
 
@@ -48,23 +48,26 @@ exports = Class(GC.Application, function () {
       this.addRandomCell();
     }));
 
+    var menu = new Menu({
+      superview: game,
+      visible: false
+    });
+
+    menu.on('Restart', bind(this, function() {
+      grid.restart();
+      game.setHandleEvents(true);
+      menu.hide();
+      score.update(0);
+      this.launchUI();
+    }));
+
     grid.on('Over', function() {
-      var pos = grid.getBoundingShape();
-      merge(pos, {
-        superview: game,
-        inLayout: false,
-        layout: 'box',
-        backgroundColor: Utils.colors.grid,
-        zIndex: 10,
-        opacity: 0.5
-      });
       console.log('--------------game over!!--------------', game.isHandlingEvents());
-      game.setHandleEvents(false, true);
-      new View(pos);
+      game.setHandleEvents(false);
+      menu.show(grid.getBoundingShape());
     });
 
     rootView.push(game);
-    this.grid = grid;
 
     this.emulate = function(direction) {
       grid.moveCells(direction);

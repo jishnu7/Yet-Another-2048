@@ -332,4 +332,14 @@ exports = Class(GridView, function(supr) {
   this.gameOver = function() {
     this.emit('Over');
   };
+
+  this.restart = function() {
+    var cell = this.cells;
+    for (var x = 0; x < this.getRows(); x++) {
+      for (var y = 0; y < this.getCols(); y++) {
+        cell[x][y] = null;
+      }
+    }
+    this.cellPool.releaseAllViews();
+  };
 });
