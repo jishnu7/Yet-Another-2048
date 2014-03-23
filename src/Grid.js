@@ -139,7 +139,7 @@ exports = Class(GridView, function(supr) {
     }));
 
     if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
-      this.emit('Over');
+      this.gameOver();
     }
   };
 
@@ -327,5 +327,9 @@ exports = Class(GridView, function(supr) {
     }));
     console.log('isMovesAvailable', flag);
     return flag;
+  };
+
+  this.gameOver = function() {
+    this.emit('Over');
   };
 });

@@ -49,8 +49,18 @@ exports = Class(GC.Application, function () {
     }));
 
     grid.on('Over', function() {
-      console.log('--------------game over!!--------------');
-      rootView.pop();
+      var pos = grid.getBoundingShape();
+      merge(pos, {
+        superview: game,
+        inLayout: false,
+        layout: 'box',
+        backgroundColor: Utils.colors.grid,
+        zIndex: 10,
+        opacity: 0.5
+      });
+      console.log('--------------game over!!--------------', game.isHandlingEvents());
+      game.setHandleEvents(false, true);
+      new View(pos);
     });
 
     rootView.push(game);
