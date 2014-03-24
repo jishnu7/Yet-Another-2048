@@ -12,10 +12,11 @@ exports = Class(GridView, function(supr) {
 
   this.init = function(opts) {
     var size = 4,
-      margin = 8,
+      margin = 10,
       baseSize = GC.app.baseWidth - 100,
-      cellSize = Math.round(baseSize/4) - margin*1.5;
-    baseSize = (cellSize + margin*1.5) * size;
+      cellSize = Math.round((baseSize-margin*2)/size) - margin*2;
+    baseSize = (cellSize + margin*2) * size + margin*2;
+    console.log(cellSize, baseSize);
 
     merge(opts, {
       layout: 'box',
@@ -25,6 +26,7 @@ exports = Class(GridView, function(supr) {
       height: baseSize,
       rows: size,
       cols: size,
+      cellSize: cellSize,
       horizontalMargin: margin,
       verticalMargin: margin,
       autoCellSize: false
@@ -58,6 +60,35 @@ exports = Class(GridView, function(supr) {
         height: cellSize
       }
     });
+  };
+
+  // Hack to get equal border for cells
+  this._getInfo = function (list, count, totalSize, gutterSize) {
+    var globalScale = this.getPosition().scale,
+      opts = this._opts,
+      margin = opts.horizontalMargin,
+      cellSize = opts.cellSize,
+      size = opts.width,
+      item, i;
+
+    for (i = 0; i < count; i++) {
+      item = list[i];
+      if (!item) {
+        item = {};
+        list[i] = item;
+      }
+      item.size = cellSize + margin*2;
+    }
+
+    var pos = margin;
+    var start = 0;
+    for (i = 0; i < count; i++) {
+      item = list[i];
+      item.pos = pos;
+      pos += item.size;
+      start = gutterSize;
+      item.size -= start;
+    }
   };
 
   this.addCell = function(row, col, val) {
@@ -276,37 +307,6 @@ exports = Class(GridView, function(supr) {
       x: this._colInfo[col].pos + marginH,
       y: this._rowInfo[row].pos + marginV
     };
-  };
-
-  this._updateSubview = function (subview) {
-    var opts = this._opts,
-      subviewOpts = subview._opts,
-      row = subviewOpts.row,
-      col = subviewOpts.col,
-      style = subview.style,
-      horizontalMargin = opts.horizontalMargin,
-      verticalMargin = opts.verticalMargin;
-
-    // Check is the range is valid...
-    if ((row < 0) || (row >= this._rows) || (col < 0) || (col >= this._cols)) {
-      if (opts.hideOutOfRange) {
-        subview.style.visible = false;
-      }
-      return;
-    } else if (opts.showInRange) {
-      subview.style.visible = true;
-    }
-
-    if(col===0) {
-      style.x = this._colInfo[col].pos + horizontalMargin;
-    } else {
-      style.x = this._colInfo[col].pos + horizontalMargin/2;
-    }
-    if(row===0) {
-      style.y = this._rowInfo[row].pos + verticalMargin;
-    } else {
-      style.y = this._rowInfo[row].pos + verticalMargin/2;
-    }
   };
 
   this.isMovesAvailable = function () {
