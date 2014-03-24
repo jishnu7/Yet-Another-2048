@@ -20,6 +20,8 @@ exports = Class(View, function(supr) {
 
     var hs = this.highScore = parseInt(localStorage.getItem('highscore'), 10) || 0;
     this.highScoreView = this.createView('Best', hs);
+
+    var lb = this.createView('Leaderboard');
   };
 
   this.createView = function(name, value) {
@@ -27,7 +29,7 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'linear',
       direction: 'vertical',
-      layoutWidth: '40%',
+      layoutWidth: '30%',
       justifyContent: 'space-outside',
       backgroundColor: Utils.colors.tile_blank,
     });
@@ -39,14 +41,18 @@ exports = Class(View, function(supr) {
       size: 30,
       color: Utils.colors.text_score
     });
-    return new TextView({
-      superview: container,
-      layout: 'box',
-      height: 50,
-      text: value,
-      size: 30,
-      color: Utils.colors.background
-    });
+    if(typeof value !== 'undefined') {
+      return new TextView({
+        superview: container,
+        layout: 'box',
+        height: 50,
+        text: value,
+        size: 30,
+        color: Utils.colors.background
+      });
+    } else {
+      return container;
+    }
   };
 
   this.update = function(val) {
