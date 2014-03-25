@@ -14,7 +14,7 @@ exports = Class(GridView, function(supr) {
   this.init = function(opts) {
     var size = 4,
       margin = 10,
-      baseSize = GC.app.baseWidth - 100,
+      baseSize = opts.baseWidth - 100,
       cellSize = Math.round((baseSize-margin*2)/size) - margin*2;
     baseSize = (cellSize + margin*2) * size + margin*2;
     console.log(cellSize, baseSize);

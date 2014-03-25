@@ -13,11 +13,13 @@ import src.Utils as Utils;
 exports = Class(GC.Application, function () {
   var startCells = 2;
   this.initUI = function () {
-    this.scaleUI();
+    var size = this.scaleUI();
     var rootView = new StackView({
       superview: this,
       layout: "box",
-      backgroundColor: 'white'
+      width: size.width,
+      height: size.height,
+      backgroundColor: Utils.colors.background
     });
 
     var game = new GestureView({
@@ -26,7 +28,6 @@ exports = Class(GC.Application, function () {
       justifyContent: 'space-outside',
       layoutWidth: '100%',
       layoutHeight: '100%',
-      backgroundColor: Utils.colors.background,
       swipeMagnitude: 50
     });
 
@@ -35,18 +36,18 @@ exports = Class(GC.Application, function () {
     });
 
     var grid = this.grid = new Grid({
-      superview: game
+      superview: game,
+      baseWidth: size.width
     });
 
     grid.on('updateScore', function(val) {
       score.update(val);
     });
 
-    game.on('Swipe', bind(this, function(angle, direction) {
-      console.log('angle', angle, 'direction', direction);
-      grid.moveCells(direction);
-      this.addRandomCell();
-    }));
+    grid.on('Over', function() {
+      console.log('--------------game over!!--------------', game.isHandlingEvents());
+      game.setHandleEvents(false);
+    });
 
     grid.on('Restart', bind(this, function() {
       grid.restart();
@@ -56,17 +57,24 @@ exports = Class(GC.Application, function () {
       this.launchUI();
     }));
 
-    grid.on('Over', function() {
-      console.log('--------------game over!!--------------', game.isHandlingEvents());
-      game.setHandleEvents(false);
-    });
+    game.on('Swipe', bind(this, function(angle, direction) {
+      console.log('angle', angle, 'direction', direction);
+      grid.moveCells(direction);
+      this.addRandomCell();
+    }));
 
-    rootView.push(game);
+    var menu = new Menu({});
+
+    menu.on('Play', function() {
+      rootView.push(game);
+    });
 
     this.emulate = function(direction) {
       grid.moveCells(direction);
       this.addRandomCell();
     };
+
+    rootView.push(menu);
   };
 
   this.launchUI = function () {
@@ -84,11 +92,12 @@ exports = Class(GC.Application, function () {
       scale, scaleHeight;
 
     // Portrait mode
-    baseWidth = this.baseWidth = boundsWidth;
-    baseHeight = this.baseHeight = deviceHeight *
+    baseWidth = boundsWidth;
+    baseHeight = deviceHeight *
                       (boundsWidth / deviceWidth);
-    scale = this.scale = deviceWidth / baseWidth;
+    scale = deviceWidth / baseWidth;
     this.view.style.scale = scale;
+    return { width: baseWidth, height: baseHeight };
   };
 
   this.addRandomCell = function() {
