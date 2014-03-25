@@ -48,12 +48,7 @@ exports = Class(GC.Application, function () {
       this.addRandomCell();
     }));
 
-    var menu = new Menu({
-      superview: game,
-      visible: false
-    });
-
-    menu.on('Restart', bind(this, function() {
+    grid.on('Restart', bind(this, function() {
       grid.restart();
       game.setHandleEvents(true);
       menu.hide();
@@ -64,7 +59,6 @@ exports = Class(GC.Application, function () {
     grid.on('Over', function() {
       console.log('--------------game over!!--------------', game.isHandlingEvents());
       game.setHandleEvents(false);
-      menu.show(grid.getBoundingShape());
     });
 
     rootView.push(game);

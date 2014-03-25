@@ -2,6 +2,7 @@
 import animate;
 import ui.ViewPool as ViewPool;
 import ui.View as View;
+import ui.TextView as TextView;
 import ui.widget.GridView as GridView;
 
 import src.Cell as Cell;
@@ -32,6 +33,7 @@ exports = Class(GridView, function(supr) {
       autoCellSize: false
     });
     supr(this, 'init', [opts]);
+    this.overlay = this.initOverlay(baseSize);
 
     // init cells with empty data
     var cells = [];
@@ -170,7 +172,7 @@ exports = Class(GridView, function(supr) {
     }));
 
     if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
-      this.gameOver();
+      this.emit('Over');
     }
   };
 
@@ -329,10 +331,6 @@ exports = Class(GridView, function(supr) {
     return flag;
   };
 
-  this.gameOver = function() {
-    this.emit('Over');
-  };
-
   this.restart = function() {
     var cell = this.cells;
     for (var x = 0; x < this.getRows(); x++) {
@@ -341,5 +339,60 @@ exports = Class(GridView, function(supr) {
       }
     }
     this.cellPool.releaseAllViews();
+  };
+
+  this.initOverlay = function(size) {
+    var bg = new View({
+      superview: this,
+      inLayout: false,
+      layout: 'linear',
+      direction: 'vertical',
+      justifyContent: 'center',
+      visible: false,
+      backgroundColor: Utils.colors.grid,
+      zIndex: 2,
+      opacity: 0.8,
+      width: size,
+      height: size
+    });
+
+    var title = new TextView({
+      superview: bg,
+      layout: 'box',
+      centerX: true,
+      width: 400,
+      height: 50,
+      inLayout: false,
+      top: 50,
+      text: 'Game Over!',
+      color: Utils.colors.text_score
+    });
+
+    // TODO: replace this with replay icon
+    new TextView({
+      superview: bg,
+      centerX: true,
+      width: 400,
+      height: 75,
+      size: 50,
+      color: Utils.colors.text_score,
+      text: 'Play Again'
+    });
+
+    bg.on('InputOut', bind(this, function() {
+      this.emit('Restart');
+    }));
+
+    var toggle = function() {
+      bg.style.visible = !bg.style.visible;
+    };
+    this.on('Over', toggle);
+    this.on('Restart', toggle);
+
+    return {
+      setTitle: function(msg) {
+        title.setText(msg);
+      }
+    };
   };
 });
