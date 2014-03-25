@@ -57,7 +57,7 @@ exports = Class(GC.Application, function () {
       grid.restart();
       game.setHandleEvents(true);
       menu.hide();
-      score.update(0);
+      score.reset();
       this.launchUI();
     }));
 

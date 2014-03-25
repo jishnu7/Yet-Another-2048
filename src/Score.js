@@ -55,6 +55,11 @@ exports = Class(View, function(supr) {
     }
   };
 
+  this.reset = function() {
+    this.score = 0;
+    this.scoreView.setText(0);
+  };
+
   this.update = function(val) {
     this.score += val;
     this.scoreView.setText(this.score);
