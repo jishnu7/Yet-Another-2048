@@ -93,6 +93,14 @@ exports = Class(GridView, function(supr) {
     }
   };
 
+  this.addRandomCell = function() {
+    var value = Math.random() < 0.9 ? 2 : 4;
+      pos = this.randomAvailableCell();
+    if(this.isCellsAvailable()) {
+      this.addCell(pos.row, pos.col, value);
+    }
+  };
+
   this.addCell = function(row, col, val) {
     var cell = this.cellPool.obtainView();
       cell.updateOpts({

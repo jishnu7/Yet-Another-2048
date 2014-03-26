@@ -35,7 +35,7 @@ exports = Class(GC.Application, function () {
       superview: game
     });
 
-    var grid = this.grid = new Grid({
+    var grid = new Grid({
       superview: game,
       baseWidth: size.width
     });
@@ -60,27 +60,27 @@ exports = Class(GC.Application, function () {
     game.on('Swipe', bind(this, function(angle, direction) {
       console.log('angle', angle, 'direction', direction);
       grid.moveCells(direction);
-      this.addRandomCell();
+      grid.addRandomCell();
     }));
 
     var menu = new Menu({});
 
     menu.on('Play', function() {
       rootView.push(game);
+      for(var i=0; i< startCells; i++) {
+        grid.addRandomCell();
+      }
     });
 
     this.emulate = function(direction) {
       grid.moveCells(direction);
-      this.addRandomCell();
+      grid.addRandomCell();
     };
 
     rootView.push(menu);
   };
 
   this.launchUI = function () {
-    for(var i=0; i< startCells; i++) {
-      this.addRandomCell();
-    }
   };
 
   this.scaleUI = function() {
@@ -98,14 +98,5 @@ exports = Class(GC.Application, function () {
     scale = deviceWidth / baseWidth;
     this.view.style.scale = scale;
     return { width: baseWidth, height: baseHeight };
-  };
-
-  this.addRandomCell = function() {
-    var grid = this.grid,
-      value = Math.random() < 0.9 ? 2 : 4;
-      pos = grid.randomAvailableCell();
-    if(grid.isCellsAvailable()) {
-      grid.addCell(pos.row, pos.col, value);
-    }
   };
 });
