@@ -33,7 +33,7 @@ exports = Class(View, function(supr) {
       text: text
     });
     view.on('InputOut', bind(this, function() {
-      this.emit(text.replace(' ', '-'));
+      this.emit(text.replace(/ /g, '-'));
     }));
   };
 
