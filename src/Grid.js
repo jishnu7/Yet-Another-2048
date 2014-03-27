@@ -144,7 +144,7 @@ exports = Class(GridView, function(supr) {
       scale: 1
     }, 0).
     then({
-      scale: 0.1
+      scale: 1.2
     }, 100)
     .then(bind(this, function() {
       this.cellPool.releaseView(cell);
