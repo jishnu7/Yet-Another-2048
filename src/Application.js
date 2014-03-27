@@ -69,7 +69,6 @@ exports = Class(GC.Application, function () {
       game.setHandleEvents(true);
       menu.hide();
       score.reset();
-      this.launchUI();
     }));
 
     game.on('Swipe', bind(this, function(angle, direction) {
@@ -83,9 +82,7 @@ exports = Class(GC.Application, function () {
 
     menu.on('Play', function() {
       rootView.push(game);
-      for(var i=0; i< startCells; i++) {
-        grid.addRandomCell();
-      }
+      grid.initCells();
     });
 
     this.emulate = function(direction) {

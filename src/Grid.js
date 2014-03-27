@@ -3,6 +3,7 @@ import animate;
 import ui.ViewPool as ViewPool;
 import ui.View as View;
 import ui.TextView as TextView;
+import ui.ImageView as ImageView;
 import ui.widget.GridView as GridView;
 
 import src.Cell as Cell;
@@ -10,6 +11,7 @@ import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(GridView, function(supr) {
+  var startCells = 2;
 
   this.init = function(opts) {
     var size = 4,
@@ -90,6 +92,12 @@ exports = Class(GridView, function(supr) {
       pos += item.size;
       start = gutterSize;
       item.size -= start;
+    }
+  };
+
+  this.initCells = function() {
+    for(var i=0; i< startCells; i++) {
+      this.addRandomCell();
     }
   };
 
@@ -347,6 +355,7 @@ exports = Class(GridView, function(supr) {
       }
     }
     this.cellPool.releaseAllViews();
+    this.initCells();
   };
 
   this.initOverlay = function(size) {
@@ -364,27 +373,27 @@ exports = Class(GridView, function(supr) {
       height: size
     });
 
-    var title = new TextView({
+    var img = new ImageView({
       superview: bg,
-      layout: 'box',
-      centerX: true,
       width: 400,
-      height: 50,
-      inLayout: false,
-      top: 50,
-      text: 'Game Over!',
-      color: Utils.colors.text_score
+      height: 400,
+      image: 'resources/images/replay.png',
+      x: 0,
+      y: 0,
+      centerX: true
     });
 
-    // TODO: replace this with replay icon
-    new TextView({
-      superview: bg,
+    var title = new TextView({
+      superview: img,
+      layout: 'box',
       centerX: true,
-      width: 400,
-      height: 75,
-      size: 50,
+      centerY: true,
+      width: 200,
+      height: 50,
+      offsetY: -10,
+      inLayout: false,
+      text: 'Game Over!',
       color: Utils.colors.text_score,
-      text: 'Play Again'
     });
 
     bg.on('InputOut', bind(this, function() {
