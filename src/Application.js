@@ -3,6 +3,7 @@ import device;
 import ui.StackView as StackView;
 import ui.TextView as TextView;
 import ui.GestureView as GestureView;
+import AudioManager;
 
 import src.Grid as Grid;
 import src.Score as Score;
@@ -14,12 +15,25 @@ exports = Class(GC.Application, function () {
   var startCells = 2;
   this.initUI = function () {
     var size = this.scaleUI();
+
     var rootView = new StackView({
       superview: this,
       layout: "box",
       width: size.width,
       height: size.height,
       backgroundColor: Utils.colors.background
+    });
+
+    var audio = new AudioManager({
+      path: "resources/audio/",
+      files: {
+        merge: {
+          volume: 1
+        },
+        swype: {
+          volume: 1
+        }
+      }
     });
 
     var game = new GestureView({
@@ -41,6 +55,7 @@ exports = Class(GC.Application, function () {
     });
 
     grid.on('updateScore', function(val) {
+      audio.play('merge');
       score.update(val);
     });
 
@@ -59,6 +74,7 @@ exports = Class(GC.Application, function () {
 
     game.on('Swipe', bind(this, function(angle, direction) {
       console.log('angle', angle, 'direction', direction);
+      audio.play('swype');
       grid.moveCells(direction);
       grid.addRandomCell();
     }));
