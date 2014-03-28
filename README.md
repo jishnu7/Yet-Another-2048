@@ -5,5 +5,8 @@ This is a clone of popular game [2048](http://gabrielecirulli.github.io/2048/), 
 
 Resources
 ----
-Sounds: RPG sounds by [Kenney Vleugels](http://kenney.nl), CC0
-Images: [Reload](http://thenounproject.com/term/reload/30351/) by Grant Fisher from The Noun Project, CC
+Sounds:
+- RPG sounds by [Kenney Vleugels](http://kenney.nl), CC0
+
+Images:
+- [Reload](http://thenounproject.com/term/reload/30351/) by Grant Fisher from The Noun Project, CC
