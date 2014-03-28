@@ -1,11 +1,10 @@
 {
 	"appID": "2a2a13abfe6a469189951d0031514f4b",
-	"shortName": "2048",
+	"shortName": "twozerofoureight",
 	"title": "2048",
 	"studio": {
-		"name": "Example Studio Name",
-		"domain": "studio.example.com",
-		"stagingDomain": "staging.example.com"
+		"name": "androidtweak.in",
+		"domain": "androidtweak.in"
 	},
 	"supportedOrientations": [
 		"portrait"
@@ -22,7 +21,8 @@
 			"48": "resources/icons/android48.png",
 			"72": "resources/icons/android72.png",
 			"96": "resources/icons/android96.png"
-		}
+		},
+		"packageName": "in.androidtweak.2048"
 	},
 	"ios": {
 		"bundleID": "",
