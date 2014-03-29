@@ -20,8 +20,6 @@ exports = Class(View, function(supr) {
 
     var hs = this.highScore = parseInt(localStorage.getItem('highscore'), 10) || 0;
     this.highScoreView = this.createView('Best', hs);
-
-    var lb = this.createView('Leaderboard');
   };
 
   this.createView = function(name, value) {
