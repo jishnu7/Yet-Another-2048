@@ -4,6 +4,7 @@ import ui.StackView as StackView;
 import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 import AudioManager;
+import event.Callback as Callback;
 
 import src.Grid as Grid;
 import src.Score as Score;
@@ -71,11 +72,19 @@ exports = Class(GC.Application, function () {
       score.reset();
     }));
 
+    var busy = false;
     game.on('Swipe', bind(this, function(angle, direction) {
-      console.log('angle', angle, 'direction', direction);
-      audio.play('swype');
-      grid.moveCells(direction);
-      grid.addRandomCell();
+      console.log('angle', angle, 'direction', direction, busy);
+      if(!busy) {
+        busy = true;
+        audio.play('swype');
+        var callback = new Callback();
+        callback.run(function() {
+          busy = false;
+          grid.addRandomCell();
+        });
+        grid.moveCells(direction, callback);
+      }
     }));
 
     var menu = new Menu({});
@@ -86,8 +95,7 @@ exports = Class(GC.Application, function () {
     });
 
     this.emulate = function(direction) {
-      grid.moveCells(direction);
-      grid.addRandomCell();
+      game.emit('Swipe', 1, direction);
     };
 
     rootView.push(menu);

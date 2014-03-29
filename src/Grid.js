@@ -5,6 +5,7 @@ import ui.View as View;
 import ui.TextView as TextView;
 import ui.ImageView as ImageView;
 import ui.widget.GridView as GridView;
+import event.Callback as Callback;
 
 import src.Cell as Cell;
 import src.Utils as Utils;
@@ -159,17 +160,23 @@ exports = Class(GridView, function(supr) {
   };
 
   // might be possible to re-wrte in a better way
-  this.moveCells = function(direction) {
-    var dir = (direction === 'left' || direction === 'up' ? -1:1),
-      cols = this.getCols() - 1,
-      rows = this.getRows() - 1,
-      mergedCells = [];
+  this.moveCells = function(direction, cb) {
+    var mergedCells = [],
+      vector = Utils.getVector(direction),
+      traversals = this.buildTraversals(vector);
+      finish = Utils.finish(traversals.row.length * traversals.col.length, bind(this, function() {
+        if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
+          this.emit('Over');
+        }
+        cb.fire();
+      }));
 
-    var vector = Utils.getVector(direction);
-    var traversals = this.buildTraversals(vector);
     traversals.col.forEach(bind(this, function (x) {
       traversals.row.forEach(bind(this, function (y) {
         var cell = this.getCell(y, x);
+
+        var callback = new Callback();
+        callback.run(finish);
 
         if (cell) {
           var pos = this.findFarthestPosition({ row: y, col: x }, vector),
@@ -177,22 +184,22 @@ exports = Class(GridView, function(supr) {
 
             if (next && next.getValue() === cell.getValue() && mergedCells.indexOf(next) === -1) {
               console.log('merge cells', [y,x], cell.getValue(), pos.next, next.getValue());
-              this.moveCell(cell, pos.next);
+              this.moveCell(cell, pos.next, callback);
               mergedCells.push(cell);
               this.mergeCells(cell, next);
             } else {
-              this.moveCell(cell, pos.farthest);
+              this.moveCell(cell, pos.farthest, callback);
             }
+        } else {
+          callback.fire();
         }
       }));
     }));
 
-    if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
-      this.emit('Over');
-    }
+
   };
 
-  this.moveCell = function(cell, farthest) {
+  this.moveCell = function(cell, farthest, cb) {
     var anim = animate(cell, 'animationGroup'),
       opts = cell._opts,
       col = farthest.col,
@@ -212,7 +219,10 @@ exports = Class(GridView, function(supr) {
         then(function(){
           cell.setProperty('col', col);
           cell.setProperty('row', row);
+          cb && cb.fire();
         }, 0);
+    } else {
+      cb && cb.fire();
     }
   };
 

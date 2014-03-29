@@ -5,7 +5,7 @@
 - [x] View Pool
 - [x] Fix memory leak
 - [x] menu screen
-- [ ] Bug: multi touch
+- [x] Bug: multi touch
 - [ ] Back button
 - [ ] Play games integration
 - [ ] Better animations ?

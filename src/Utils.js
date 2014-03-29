@@ -31,5 +31,16 @@ exports = function() {
       },
     grid: '#BBADA0'
   };
+
+  obj.finish = function(count, cb) {
+    return function() {
+      count --;
+      if(count === 0) {
+        cb();
+      }
+    };
+  };
+
+
   return obj;
 }();
