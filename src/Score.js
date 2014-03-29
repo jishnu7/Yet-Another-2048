@@ -37,7 +37,8 @@ exports = Class(View, function(supr) {
       height: 30,
       text: name,
       size: 30,
-      color: Utils.colors.text_score
+      color: Utils.colors.text_score,
+      fontFamily: Utils.fonts.text
     });
     if(typeof value !== 'undefined') {
       return new TextView({
@@ -46,7 +47,8 @@ exports = Class(View, function(supr) {
         height: 50,
         text: value,
         size: 30,
-        color: Utils.colors.background
+        color: Utils.colors.background,
+        fontFamily: Utils.fonts.number
       });
     } else {
       return container;

@@ -18,7 +18,8 @@ exports = Class(View, function(supr) {
       layout: 'box',
       text: opts.value,
       size: 60,
-      color: Utils.colors.text
+      color: Utils.colors.text,
+      fontFamily: Utils.fonts.number
     });
   };
 

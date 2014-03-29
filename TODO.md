@@ -17,4 +17,4 @@
 - [ ] Undo as a powerup
 - [ ] New name
 - [ ] Condition for 2048 ?
-- [ ] New font
+- [x] New font

@@ -30,6 +30,7 @@ exports = Class(View, function(supr) {
       height: 100,
       size: 50,
       color: Utils.colors.text,
+      fontFamily: Utils.fonts.text,
       text: text
     });
     view.on('InputOut', bind(this, function() {

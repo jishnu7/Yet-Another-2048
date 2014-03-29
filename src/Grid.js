@@ -404,6 +404,7 @@ exports = Class(GridView, function(supr) {
       inLayout: false,
       text: 'Game Over!',
       color: Utils.colors.text_score,
+      fontFamily: Utils.fonts.text
     });
 
     bg.on('InputOut', bind(this, function() {
