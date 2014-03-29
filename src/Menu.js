@@ -11,20 +11,39 @@ exports = Class(View, function(supr) {
     merge(opts, {
       layout: 'linear',
       direction: 'vertical',
-      justifyContent: 'center',
+      justifyContent: 'space-outside',
       layoutWidth: '100%',
       layoutHeight: '100%'
     });
     supr(this, 'init', [opts]);
 
-    this.addMenuEntry('Play');
-    this.addMenuEntry('Sign In');
-    this.addMenuEntry('How to Play');
+    // App logo
+    new TextView({
+      superview: this,
+      centerX: true,
+      width: 500,
+      height: 300,
+      size: 300,
+      color: Utils.colors.text,
+      fontFamily: Utils.fonts.text,
+      text: '2048'
+    });
+
+    var container = new View({
+      superview: this,
+      layout: 'linear',
+      direction: 'vertical',
+      justifyContent: 'center',
+      height: 400
+    });
+    this.addMenuEntry(container, 'Play');
+    this.addMenuEntry(container, 'Sign In');
+    this.addMenuEntry(container, 'How to Play');
   };
 
-  this.addMenuEntry = function(text) {
+  this.addMenuEntry = function(superview, text) {
     var view = new TextView({
-      superview: this,
+      superview: superview,
       centerX: true,
       width: 300,
       height: 100,
