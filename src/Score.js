@@ -11,7 +11,8 @@ exports = Class(View, function(supr) {
     merge(opts, {
       layout: 'linear',
       justifyContent: 'space-outside',
-      height: 100
+      height: 100,
+      offsetY: -50
     });
     supr(this, 'init', [opts]);
 
@@ -27,9 +28,8 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'linear',
       direction: 'vertical',
-      layoutWidth: '30%',
-      justifyContent: 'space-outside',
-      backgroundColor: Utils.colors.tile_blank,
+      layoutWidth: '50%',
+      justifyContent: 'center',
     });
     new TextView({
       superview: container,
@@ -37,7 +37,8 @@ exports = Class(View, function(supr) {
       height: 30,
       text: name,
       size: 30,
-      color: Utils.colors.text_score,
+      //color: Utils.colors.text_score,
+      color: Utils.colors.tile_blank,
       fontFamily: Utils.fonts.text
     });
     if(typeof value !== 'undefined') {
@@ -46,8 +47,8 @@ exports = Class(View, function(supr) {
         layout: 'box',
         height: 50,
         text: value,
-        size: 30,
-        color: Utils.colors.background,
+        size: 60,
+        color: Utils.colors.tile_blank,
         fontFamily: Utils.fonts.number
       });
     } else {

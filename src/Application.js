@@ -40,7 +40,7 @@ exports = Class(GC.Application, function () {
     var game = new GestureView({
       layout: 'linear',
       direction: 'vertical',
-      justifyContent: 'space-outside',
+      justifyContent: 'center',
       layoutWidth: '100%',
       layoutHeight: '100%',
       swipeMagnitude: 50
