@@ -10,10 +10,10 @@ import src.Grid as Grid;
 import src.Score as Score;
 import src.Menu as Menu;
 import src.Utils as Utils;
+import src.History as History;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
-  var startCells = 2;
   this.initUI = function () {
     var size = this.scaleUI();
 
@@ -92,6 +92,9 @@ exports = Class(GC.Application, function () {
     menu.on('Play', function() {
       rootView.push(game);
       grid.initCells();
+      History.add(function() {
+        rootView.pop();
+      });
     });
 
     this.emulate = function(direction) {
@@ -102,6 +105,7 @@ exports = Class(GC.Application, function () {
   };
 
   this.launchUI = function () {
+    device.setBackButtonHandler(History.release);
   };
 
   this.scaleUI = function() {

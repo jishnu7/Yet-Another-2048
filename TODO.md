@@ -6,7 +6,7 @@
 - [x] Fix memory leak
 - [x] menu screen
 - [x] Bug: multi touch
-- [ ] Back button
+- [x] Back button
 - [ ] Play games integration
 - [ ] Better animations ?
 - [ ] How to play
