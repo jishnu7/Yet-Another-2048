@@ -2,6 +2,7 @@
 	"appID": "2a2a13abfe6a469189951d0031514f4b",
 	"shortName": "twozerofoureight",
 	"title": "2048",
+	"version": "0.2",
 	"studio": {
 		"name": "androidtweak.in",
 		"domain": "androidtweak.in"
@@ -26,14 +27,12 @@
 		"resources/fonts/Signika-Regular.ttf"
 	],
 	"android": {
-		"versionCode": 1,
 		"icons": {
 			"36": "resources/icons/android36.png",
 			"48": "resources/icons/android48.png",
 			"72": "resources/icons/android72.png",
 			"96": "resources/icons/android96.png"
-		},
-		"packageName": "in.androidtweak.2048"
+		}
 	},
 	"ios": {
 		"bundleID": "",
