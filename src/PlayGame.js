@@ -1,5 +1,5 @@
 /* jshint ignore:start */
-import plugins.gameplay.gameplay as PlayGames;
+import plugins.gameplay.gameplay as PlayGame;
 
 import src.Utils as Utils;
 /* jshint ignore:end */
@@ -54,9 +54,9 @@ exports = function() {
       localStorage.setItem("record_" + type, value);
     };
 
-  obj.login = PlayGames.login;
-  obj.showLeaderBoard = PlayGames.showLeaderBoard;
-  obj.showAchievements = PlayGames.showAchievements;
+  obj.login = PlayGame.login;
+  obj.showLeaderBoard = PlayGame.showLeaderBoard;
+  obj.showAchievements = PlayGame.showAchievements;
 
   obj.run = function(data) {
     data = data || getQueue();

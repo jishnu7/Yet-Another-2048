@@ -11,7 +11,7 @@ import src.Score as Score;
 import src.Menu as Menu;
 import src.Utils as Utils;
 import src.History as History;
-import src.PlayGames as PlayGames;
+import src.PlayGame as PlayGame;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -62,8 +62,8 @@ exports = Class(GC.Application, function () {
     });
 
     grid.on('Over', function() {
-      PlayGames.leaderboard('score', score.score);
-      PlayGames.leaderboard('tile', score.highestTile);
+      PlayGame.leaderboard('score', score.score);
+      PlayGame.leaderboard('tile', score.highestTile);
       game.setHandleEvents(false);
     });
 
@@ -100,14 +100,14 @@ exports = Class(GC.Application, function () {
     });
 
     menu.on('Sign-In', function() {
-      PlayGames.login(function(evt){});
+      PlayGame.login(function(evt){});
     });
 
     menu.on('Leaderboard', function() {
-      PlayGames.showLeaderBoard();
+      PlayGame.showLeaderBoard();
     });
     menu.on('Achievements', function() {
-      PlayGames.showAchievements();
+      PlayGame.showAchievements();
     });
 
     rootView.push(menu);
