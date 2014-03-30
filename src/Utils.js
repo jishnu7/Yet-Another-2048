@@ -11,7 +11,7 @@ exports = function() {
   };
 
   obj.colors = {
-    background: '#E9E9E9',
+    background: '#F6F6F6',
     text: '#657277',
     text_bright: '#FFFFFF',
     grid: '#BCBCBC',
