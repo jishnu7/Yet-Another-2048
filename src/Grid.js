@@ -65,6 +65,7 @@ exports = Class(GridView, function(supr) {
         height: cellSize
       }
     });
+    this.isGameStarted = false;
   };
 
   // Hack to get equal border for cells
@@ -97,8 +98,11 @@ exports = Class(GridView, function(supr) {
   };
 
   this.initCells = function() {
-    for(var i=0; i< startCells; i++) {
-      this.addRandomCell();
+    if(!this.isGameStarted) {
+      this.isGameStarted = true;
+      for(var i=0; i< startCells; i++) {
+        this.addRandomCell();
+      }
     }
   };
 
@@ -368,6 +372,7 @@ exports = Class(GridView, function(supr) {
       }
     }
     this.cellPool.releaseAllViews();
+    this.isGameStarted = false;
     this.initCells();
   };
 
