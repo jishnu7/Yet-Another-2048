@@ -107,10 +107,6 @@ exports = Class(GC.Application, function () {
       PlayGames.showLeaderBoard();
     });
 
-    this.emulate = function(direction) {
-      game.emit('Swipe', 1, direction);
-    };
-
     rootView.push(menu);
   };
 
