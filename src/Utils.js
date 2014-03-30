@@ -11,8 +11,8 @@ exports = function() {
   };
 
   obj.colors = {
-    background: '#FAF8EF',
-    text: '#776E65',
+    background: '#E9E9E9',
+    text: '#657277',
     text_bright: '#FFFFFF',
     grid: '#BCBCBC',
     tile_blank: '#C9C9C9',
@@ -30,7 +30,7 @@ exports = function() {
         2048: '#ab526b',
       },
     tile_text: {
-        2: '#424242',
+        2: '#657277',
         8: '#F9F6F2'
       }
   };

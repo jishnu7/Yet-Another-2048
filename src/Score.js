@@ -38,8 +38,7 @@ exports = Class(View, function(supr) {
       height: 30,
       text: name,
       size: 30,
-      //color: Utils.colors.text_score,
-      color: Utils.colors.tile_blank,
+      color: Utils.colors.text,
       fontFamily: Utils.fonts.text
     });
     if(typeof value !== 'undefined') {
@@ -49,7 +48,7 @@ exports = Class(View, function(supr) {
         height: 50,
         text: value,
         size: 60,
-        color: Utils.colors.tile_blank,
+        color: Utils.colors.text,
         fontFamily: Utils.fonts.number
       });
     } else {
