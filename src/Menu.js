@@ -37,8 +37,10 @@ exports = Class(View, function(supr) {
       height: 400
     });
     this.addMenuEntry(container, 'Play');
-    this.addMenuEntry(container, 'Sign In');
-    this.addMenuEntry(container, 'How to Play');
+    //this.addMenuEntry(container, 'Sign In');
+    //this.addMenuEntry(container, 'Achievements');
+    //this.addMenuEntry(container, 'Leaderboard');
+    //this.addMenuEntry(container, 'How to Play');
   };
 
   this.addMenuEntry = function(superview, text) {

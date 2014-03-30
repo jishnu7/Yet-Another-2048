@@ -106,6 +106,9 @@ exports = Class(GC.Application, function () {
     menu.on('Leaderboard', function() {
       PlayGames.showLeaderBoard();
     });
+    menu.on('Achievements', function() {
+      PlayGames.showAchievements();
+    });
 
     rootView.push(menu);
   };

@@ -56,6 +56,7 @@ exports = function() {
 
   obj.login = PlayGames.login;
   obj.showLeaderBoard = PlayGames.showLeaderBoard;
+  obj.showAchievements = PlayGames.showAchievements;
 
   obj.run = function(data) {
     data = data || getQueue();
@@ -69,7 +70,7 @@ exports = function() {
 
       while(data.length > 0) {
         var req = data.shift();
-        PlayGames[req.type].apply(this, req.data);
+        PlayGame[req.type].apply(this, req.data);
         finish();
       }
     }
