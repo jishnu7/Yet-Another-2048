@@ -11,6 +11,7 @@ import src.Score as Score;
 import src.Menu as Menu;
 import src.Utils as Utils;
 import src.History as History;
+import src.PlayGames as PlayGames;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -61,7 +62,8 @@ exports = Class(GC.Application, function () {
     });
 
     grid.on('Over', function() {
-      console.log('--------------game over!!--------------', game.isHandlingEvents());
+      PlayGames.leaderboard('score', score.score);
+      PlayGames.leaderboard('tile', score.highestTile);
       game.setHandleEvents(false);
     });
 
@@ -95,6 +97,14 @@ exports = Class(GC.Application, function () {
       History.add(function() {
         rootView.pop();
       });
+    });
+
+    menu.on('Sign-In', function() {
+      PlayGames.login(function(evt){});
+    });
+
+    menu.on('Leaderboard', function() {
+      PlayGames.showLeaderBoard();
     });
 
     this.emulate = function(direction) {

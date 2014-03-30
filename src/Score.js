@@ -20,6 +20,7 @@ exports = Class(View, function(supr) {
     this.score = 0;
 
     var hs = this.highScore = parseInt(localStorage.getItem('highscore'), 10) || 0;
+    this.highestTile = parseInt(localStorage.getItem('highestTile'), 10) || 0;
     this.highScoreView = this.createView('Best', hs);
   };
 
@@ -63,6 +64,7 @@ exports = Class(View, function(supr) {
 
   this.update = function(val) {
     this.score += val;
+    this.highestTile = val > this.highestTile ? val : this.highestTile;
     this.scoreView.setText(this.score);
     this.setHighScore();
   };

@@ -32,7 +32,8 @@
 			"48": "resources/icons/android48.png",
 			"72": "resources/icons/android72.png",
 			"96": "resources/icons/android96.png"
-		}
+		},
+		"gameplayID": "1234567890"
 	},
 	"ios": {
 		"bundleID": "",
@@ -46,5 +47,8 @@
 			"renderGloss": true
 		}
 	},
+	"addons": [
+		"gameplay"
+	],
 	"sdkVersion": "release-0.1.45"
 }

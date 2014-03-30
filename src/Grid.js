@@ -9,6 +9,7 @@ import event.Callback as Callback;
 
 import src.Cell as Cell;
 import src.Utils as Utils;
+import src.PlayGames as PlayGames;
 /* jshint ignore:end */
 
 exports = Class(GridView, function(supr) {
@@ -159,6 +160,7 @@ exports = Class(GridView, function(supr) {
   this.mergeCells = function(cell1, cell2) {
     var newVal = cell1.getValue() + cell2.getValue();
     cell1.setValue(newVal);
+    PlayGames.achievement(newVal);
     this.removeCell(cell2);
     this.emit('updateScore', newVal);
   };
