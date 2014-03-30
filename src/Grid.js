@@ -413,7 +413,7 @@ exports = Class(GridView, function(supr) {
       offsetY: -10,
       inLayout: false,
       text: 'Game Over!',
-      color: Utils.colors.text_score,
+      color: Utils.colors.text_bright,
       fontFamily: Utils.fonts.text
     });
 
