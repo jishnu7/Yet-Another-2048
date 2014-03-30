@@ -79,9 +79,9 @@ exports = Class(GC.Application, function () {
         busy = true;
         audio.play('swype');
         var callback = new Callback();
-        callback.run(function() {
+        callback.run(function(newCell) {
           busy = false;
-          grid.addRandomCell();
+          newCell && grid.addRandomCell();
         });
         grid.moveCells(direction, callback);
       }

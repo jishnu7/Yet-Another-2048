@@ -163,33 +163,34 @@ exports = Class(GridView, function(supr) {
   this.moveCells = function(direction, cb) {
     var mergedCells = [],
       vector = Utils.getVector(direction),
-      traversals = this.buildTraversals(vector);
+      traversals = this.buildTraversals(vector),
+      moveMade = false,
       finish = Utils.finish(traversals.row.length * traversals.col.length, bind(this, function() {
         if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
           this.emit('Over');
         }
-        cb.fire();
+        cb.fire(moveMade);
       }));
 
     traversals.col.forEach(bind(this, function (x) {
       traversals.row.forEach(bind(this, function (y) {
-        var cell = this.getCell(y, x);
-
-        var callback = new Callback();
+        var cell = this.getCell(y, x),
+          callback = new Callback();
         callback.run(finish);
 
         if (cell) {
           var pos = this.findFarthestPosition({ row: y, col: x }, vector),
             next = pos.next ? this.getCell(pos.next.row, pos.next.col) : null;
 
-            if (next && next.getValue() === cell.getValue() && mergedCells.indexOf(next) === -1) {
-              console.log('merge cells', [y,x], cell.getValue(), pos.next, next.getValue());
-              this.moveCell(cell, pos.next, callback);
-              mergedCells.push(cell);
-              this.mergeCells(cell, next);
-            } else {
-              this.moveCell(cell, pos.farthest, callback);
-            }
+          if (next && next.getValue() === cell.getValue() && mergedCells.indexOf(next) === -1) {
+            console.log('merge cells', [y,x], cell.getValue(), pos.next, next.getValue());
+            moveMade = true;
+            this.moveCell(cell, pos.next, callback);
+            mergedCells.push(cell);
+            this.mergeCells(cell, next);
+          } else if(this.moveCell(cell, pos.farthest, callback)) {
+            moveMade = true;
+          }
         } else {
           callback.fire();
         }
@@ -221,8 +222,10 @@ exports = Class(GridView, function(supr) {
           cell.setProperty('row', row);
           cb && cb.fire();
         }, 0);
+        return true;
     } else {
       cb && cb.fire();
+      return false;
     }
   };
 
