@@ -151,8 +151,11 @@ exports = Class(GridView, function(supr) {
     }, 0).
     then({
       scale: 1.2
-    }, 100)
-    .then(bind(this, function() {
+    }, 100, animate.linear).
+    then({
+      scale: 1
+    }, 100, animate.linear).
+    then(bind(this, function() {
       this.cellPool.releaseView(cell);
     }));
   };
@@ -160,6 +163,7 @@ exports = Class(GridView, function(supr) {
   this.mergeCells = function(cell1, cell2) {
     var newVal = cell1.getValue() + cell2.getValue();
     cell1.setValue(newVal);
+    cell2.setValue(newVal);
     PlayGame.achievement(newVal);
     this.removeCell(cell2);
     this.emit('updateScore', newVal);
