@@ -96,6 +96,7 @@ exports = Class(GC.Application, function () {
       grid.initCells();
       History.add(function() {
         rootView.pop();
+        grid.saveGame();
       });
     });
 

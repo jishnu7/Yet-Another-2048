@@ -66,7 +66,12 @@ exports = Class(GridView, function(supr) {
         height: cellSize
       }
     });
-    this.isGameStarted = false;
+
+    GC.app.onPause = bind(this, this.saveGame);
+
+    this.on('ViewDidDisappear', function() {
+      this.cellPool.releaseAllViews();
+    });
   };
 
   // Hack to get equal border for cells
@@ -98,12 +103,54 @@ exports = Class(GridView, function(supr) {
     }
   };
 
+  this.getGameState = function() {
+    return localStorage.getItem('game_state') || false;
+  };
+
+  this.setGameState = function(value) {
+    localStorage.setItem('game_state', value);
+  };
+
+  this.saveGame = function() {
+    var state = this.getGameState();
+    if(!state) {
+      return;
+    }
+
+    var cells = [];
+    this.eachCell(function(row, col, cell) {
+      if(cell) {
+        cells.push({row: row, col: col, value: cell.getValue()});
+      }
+    });
+    localStorage.setItem('cells', JSON.stringify(cells));
+  };
+
+  this.loadGame = function() {
+    var cells = localStorage.getItem('cells');
+    cells  = cells ? JSON.parse(cells) : [];
+    var length = cells.length;
+    if(length > 0) {
+      for(var i=0; i<length; i++) {
+        var cell = cells[i];
+        this.addCell(cell.row, cell.col, cell.value);
+      }
+      this.setGameState('ongoing');
+    } else {
+      // incorrect data from local storage
+      this.emit('Restart');
+    }
+  };
+
   this.initCells = function() {
-    if(!this.isGameStarted) {
-      this.isGameStarted = true;
+    var state = this.getGameState();
+    if(!state || state !== 'ongoing') {
+      this.setGameState('ongoing');
       for(var i=0; i< startCells; i++) {
         this.addRandomCell();
       }
+    } else {
+      this.loadGame();
     }
   };
 
@@ -378,7 +425,7 @@ exports = Class(GridView, function(supr) {
       }
     }
     this.cellPool.releaseAllViews();
-    this.isGameStarted = false;
+    this.setGameState(false);
     this.initCells();
   };
 
