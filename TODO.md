@@ -19,4 +19,4 @@
 - [ ] Condition for 2048 ?
 - [x] New font
 - [x] New color theme
-- [ ] Save game on close
+- [x] Save game on close
