@@ -7,7 +7,7 @@
 - [x] menu screen
 - [x] Bug: multi touch
 - [x] Back button
-- [ ] Play games integration
+- [x] Play games integration
 - [ ] Better animations ?
 - [ ] How to play
 - [ ] Border radius for cells ?
@@ -16,7 +16,7 @@
 - [ ] Time mode
 - [ ] Undo as a powerup
 - [ ] New name
-- [ ] Condition for 2048 ?
+- [-] Condition for 2048 ?
 - [x] New font
 - [x] New color theme
 - [x] Save game on close
