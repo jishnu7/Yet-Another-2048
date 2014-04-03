@@ -88,14 +88,16 @@ exports = Class(GC.Application, function () {
     var menu = new Menu({});
 
     menu.on('Play', function() {
-      game.setHandleEvents(true);
-      rootView.push(game);
       grid.initCells();
+      game.setHandleEvents(true);
+
       History.add(function() {
         rootView.pop();
         grid.overlay.hide();
         grid.saveGame();
       });
+
+      rootView.push(game);
     });
 
     menu.on('Sign-In', bind(this, this.playGameLogin));
