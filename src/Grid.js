@@ -104,7 +104,7 @@ exports = Class(GridView, function(supr) {
   };
 
   this.getGameState = function() {
-    return localStorage.getItem('game_state') || false;
+    return localStorage.getItem('game_state');
   };
 
   this.setGameState = function(value) {
@@ -112,8 +112,7 @@ exports = Class(GridView, function(supr) {
   };
 
   this.saveGame = function() {
-    var state = this.getGameState();
-    if(!state) {
+    if(this.getGameState() !== 'ongoing') {
       return;
     }
 
@@ -143,14 +142,13 @@ exports = Class(GridView, function(supr) {
   };
 
   this.initCells = function() {
-    var state = this.getGameState();
-    if(!state || state !== 'ongoing') {
+    if(this.getGameState() === 'ongoing') {
+      this.loadGame();
+    } else {
       this.setGameState('ongoing');
       for(var i=0; i< startCells; i++) {
         this.addRandomCell();
       }
-    } else {
-      this.loadGame();
     }
   };
 
@@ -425,7 +423,6 @@ exports = Class(GridView, function(supr) {
       }
     }
     this.cellPool.releaseAllViews();
-    this.setGameState(false);
     this.initCells();
   };
 

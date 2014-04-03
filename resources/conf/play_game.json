@@ -1,0 +1,18 @@
+{
+  "achievements": {
+    "16":   "abc",
+    "32":   "abc",
+    "64":   "abc",
+    "128":  "abc",
+    "256":  "abc",
+    "512":  "abc",
+    "1024": "abc",
+    "2048": "abc",
+    "4096": "abc",
+    "8192": "abc"
+  },
+  "leaderboards": {
+    "score":  "abcabc",
+    "tile":   "abcabc"
+  }
+}

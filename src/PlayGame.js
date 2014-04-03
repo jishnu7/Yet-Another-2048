@@ -7,22 +7,9 @@ import src.Utils as Utils;
 exports = function() {
   var obj = {},
     busy = false,
-    achievements = {
-      16:   'abc',
-      32:   'abc',
-      64:   'abc',
-      128:  'abc',
-      256:  'abc',
-      512:  'abc',
-      1024: 'abc',
-      2048: 'abc',
-      4096: 'abc',
-      8192: 'abc'
-    },
-    leaderboards = {
-      score:'abcabc',
-      tile: 'abcabc'
-    },
+    json = JSON.parse(CACHE['resources/conf/play_game.json']),
+    achievements = json.achievements,
+    leaderboards = json.leaderboards,
     getQueue = function() {
       var ls = localStorage.getItem("pending");
       return ls ? JSON.parse(ls): [];
@@ -52,9 +39,27 @@ exports = function() {
     },
     setRecord = function(type, value) {
       localStorage.setItem("record_" + type, value);
+    },
+    isLoggedIn = function() {
+      return localStorage.getItem('playgame');
+    },
+    setLoggedIn = function(value) {
+      localStorage.setItem('playgame', value);
     };
 
-  obj.login = PlayGame.login;
+  obj.login = function(cb) {
+    var ls = isLoggedIn(),
+      callback = function(evnt) {
+        setLoggedIn(evnt);
+        cb(evnt);
+        busy = false;
+      };
+    if((ls === null || ls === 'true') && !busy) {
+      busy = true;
+      PlayGame.login(callback);
+    }
+  };
+
   obj.showLeaderBoard = PlayGame.showLeaderBoard;
   obj.showAchievements = PlayGame.showAchievements;
 
@@ -77,6 +82,9 @@ exports = function() {
   };
 
   obj.achievement = function(val) {
+    if(isLoggedIn() !== 'true') {
+      return;
+    }
     if(achievements.hasOwnProperty(val) && !isAchieved(val)) {
       var data = getQueue();
       data.push({
@@ -90,6 +98,9 @@ exports = function() {
   };
 
   obj.leaderboard = function(type, val) {
+    if(isLoggedIn() !== 'true') {
+      return;
+    }
     var data = getQueue();
 
     if(val > getCurrentRecord(type)) {

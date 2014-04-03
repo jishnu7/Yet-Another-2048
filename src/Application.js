@@ -64,6 +64,7 @@ exports = Class(GC.Application, function () {
     grid.on('Over', function() {
       PlayGame.leaderboard('score', score.score);
       PlayGame.leaderboard('tile', score.highestTile);
+      grid.setGameState('over');
       game.setHandleEvents(false);
     });
 
@@ -100,9 +101,7 @@ exports = Class(GC.Application, function () {
       });
     });
 
-    menu.on('Sign-In', function() {
-      PlayGame.login(function(evt){});
-    });
+    menu.on('Sign-In', bind(this, this.playGameLogin));
 
     menu.on('Leaderboard', function() {
       PlayGame.showLeaderBoard();
@@ -133,5 +132,9 @@ exports = Class(GC.Application, function () {
     scale = deviceWidth / baseWidth;
     this.view.style.scale = scale;
     return { width: baseWidth, height: baseHeight };
+  };
+
+  this.onResume = this.playGameLogin = function() {
+    PlayGame.login(function(evt){});
   };
 });
