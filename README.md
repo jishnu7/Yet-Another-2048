@@ -1,7 +1,12 @@
-2048
+Yet Another 2048
 ====
 
 This is a clone of popular game [2048](http://gabrielecirulli.github.io/2048/), re-written for mobile using [Game Closure](http://gameclosure.com/)
+
+Screenshot
+----
+
+![Screenshot](http://androidtweak.in/downloads/twozerofoureight.png)
 
 Resources
 ----

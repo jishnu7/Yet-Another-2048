@@ -15,7 +15,7 @@
 - [ ] Color mode
 - [ ] Time mode
 - [ ] Undo as a powerup
-- [ ] New name
+- [x] New name
 - [-] Condition for 2048 ?
 - [x] New font
 - [x] New color theme
