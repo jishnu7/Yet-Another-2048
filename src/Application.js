@@ -53,26 +53,21 @@ exports = Class(GC.Application, function () {
 
     var grid = new Grid({
       superview: game,
-      baseWidth: size.width
+      baseWidth: size.width,
+      score: score
     });
 
-    grid.on('updateScore', function(val) {
+    grid.on('updateScore', function() {
       audio.play('merge');
-      score.update(val);
     });
 
     grid.on('Over', function() {
-      PlayGame.leaderboard('score', score.score);
-      PlayGame.leaderboard('tile', score.highestTile);
-      grid.setGameState('over');
       game.setHandleEvents(false);
     });
 
     grid.on('Restart', bind(this, function() {
-      grid.restart();
+      grid.initCells();
       game.setHandleEvents(true);
-      menu.hide();
-      score.reset();
     }));
 
     var busy = false;
@@ -93,10 +88,12 @@ exports = Class(GC.Application, function () {
     var menu = new Menu({});
 
     menu.on('Play', function() {
+      game.setHandleEvents(true);
       rootView.push(game);
       grid.initCells();
       History.add(function() {
         rootView.pop();
+        grid.overlay.hide();
         grid.saveGame();
       });
     });

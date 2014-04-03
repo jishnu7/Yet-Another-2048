@@ -72,6 +72,8 @@ exports = Class(GridView, function(supr) {
     this.on('ViewDidDisappear', function() {
       this.cellPool.releaseAllViews();
     });
+
+    this.score = opts.score;
   };
 
   // Hack to get equal border for cells
@@ -123,6 +125,7 @@ exports = Class(GridView, function(supr) {
       }
     });
     localStorage.setItem('cells', JSON.stringify(cells));
+    this.score.save();
   };
 
   this.loadGame = function() {
@@ -135,20 +138,33 @@ exports = Class(GridView, function(supr) {
         this.addCell(cell.row, cell.col, cell.value);
       }
       this.setGameState('ongoing');
+      this.score.load();
     } else {
       // incorrect data from local storage
-      this.emit('Restart');
+      this.setGameState('over');
+      this.initCells();
     }
   };
 
+  this.gameOver = function() {
+    var score = this.score;
+    this.emit('Over');
+    this.setGameState('over');
+    this.overlay.show();
+    PlayGame.leaderboard('score', score.score);
+    PlayGame.leaderboard('tile', score.highestTile);
+  };
+
   this.initCells = function() {
+    console.log('----game state is:', this.getGameState());
     if(this.getGameState() === 'ongoing') {
       this.loadGame();
     } else {
-      this.setGameState('ongoing');
+      this.reset();
       for(var i=0; i< startCells; i++) {
         this.addRandomCell();
       }
+      this.setGameState('ongoing');
     }
   };
 
@@ -211,6 +227,7 @@ exports = Class(GridView, function(supr) {
     cell2.setValue(newVal);
     PlayGame.achievement(newVal);
     this.removeCell(cell2);
+    this.score.update(newVal);
     this.emit('updateScore', newVal);
   };
 
@@ -222,7 +239,7 @@ exports = Class(GridView, function(supr) {
       moveMade = false,
       finish = Utils.finish(traversals.row.length * traversals.col.length, bind(this, function() {
         if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
-          this.emit('Over');
+          this.gameOver();
         }
         cb.fire(moveMade);
       }));
@@ -415,15 +432,16 @@ exports = Class(GridView, function(supr) {
     return flag;
   };
 
-  this.restart = function() {
+  this.reset = function() {
     var cell = this.cells;
     for (var x = 0; x < this.getRows(); x++) {
       for (var y = 0; y < this.getCols(); y++) {
         cell[x][y] = null;
       }
     }
+    this.overlay.hide();
     this.cellPool.releaseAllViews();
-    this.initCells();
+    this.score.reset();
   };
 
   this.initOverlay = function(size) {
@@ -469,15 +487,15 @@ exports = Class(GridView, function(supr) {
       this.emit('Restart');
     }));
 
-    var toggle = function() {
-      bg.style.visible = !bg.style.visible;
-    };
-    this.on('Over', toggle);
-    this.on('Restart', toggle);
-
     return {
       setTitle: function(msg) {
         title.setText(msg);
+      },
+      show: function() {
+        bg.style.visible = true;
+      },
+      hide: function() {
+        bg.style.visible = false;
       }
     };
   };

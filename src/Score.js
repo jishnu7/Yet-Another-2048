@@ -18,9 +18,9 @@ exports = Class(View, function(supr) {
 
     this.scoreView = this.createView('Score', 0);
     this.score = 0;
+    this.highestTile = 0;
 
     var hs = this.highScore = parseInt(localStorage.getItem('highscore'), 10) || 0;
-    this.highestTile = parseInt(localStorage.getItem('highestTile'), 10) || 0;
     this.highScoreView = this.createView('Best', hs);
   };
 
@@ -59,6 +59,7 @@ exports = Class(View, function(supr) {
   this.reset = function() {
     this.score = 0;
     this.scoreView.setText(0);
+    this.highestTile = 0;
   };
 
   this.update = function(val) {
@@ -75,6 +76,24 @@ exports = Class(View, function(supr) {
       this.highScore = score;
       this.highScoreView.setText(score);
       localStorage.setItem('highscore', score);
+    }
+  };
+
+  this.save = function() {
+    localStorage.setItem('score', JSON.stringify({
+      score: this.score,
+      highestTile: this.highestTile
+    }));
+  };
+
+  this.load = function() {
+    var data = JSON.parse(localStorage.getItem('score'));
+    if(data) {
+      this.highestTile = parseInt(data.highestTile, 10);
+      this.score = parseInt(data.score, 10);
+      this.scoreView.setText(data.score);
+    } else {
+      this.reset();
     }
   };
 });
