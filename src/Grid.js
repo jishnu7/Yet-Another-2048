@@ -231,7 +231,6 @@ exports = Class(GridView, function(supr) {
     this.emit('updateScore', newVal);
   };
 
-  // might be possible to re-wrte in a better way
   this.moveCells = function(direction, cb) {
     var mergedCells = [],
       vector = Utils.getVector(direction),
@@ -268,8 +267,6 @@ exports = Class(GridView, function(supr) {
         }
       }));
     }));
-
-
   };
 
   this.moveCell = function(cell, farthest, cb) {
@@ -302,8 +299,7 @@ exports = Class(GridView, function(supr) {
   };
 
   this.getCell = function (row, col) {
-    var cellSize = this.cellSize,
-      rows = this.getRows(),
+    var rows = this.getRows(),
       cols = this.getCols();
     if(row >= rows || row < 0 || col < 0 || col >= cols) {
       return false;
