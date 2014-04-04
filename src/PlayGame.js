@@ -62,6 +62,11 @@ exports = function() {
     }
   };
 
+  obj.logout = function() {
+    setLoggedIn(false);
+    PlayGame.logout();
+  };
+
   obj.showLeaderBoard = PlayGame.showLeaderBoard;
   obj.showAchievements = PlayGame.showAchievements;
 

@@ -85,7 +85,7 @@ exports = Class(GC.Application, function () {
       }
     }));
 
-    var menu = new Menu({});
+    var menu = this.menu = new Menu({});
 
     menu.on('Play', function() {
       grid.initCells();
@@ -100,7 +100,11 @@ exports = Class(GC.Application, function () {
       rootView.push(game);
     });
 
-    menu.on('Sign-In', bind(this, this.playGameLogin));
+    menu.on('Sign-In', bind(this, this.playGameLogin, true));
+    menu.on('Sign-Out', function() {
+      PlayGame.logout();
+      menu.update();
+    });
 
     menu.on('Leaderboard', function() {
       PlayGame.showLeaderBoard();
@@ -133,7 +137,10 @@ exports = Class(GC.Application, function () {
     return { width: baseWidth, height: baseHeight };
   };
 
-  this.onResume = this.playGameLogin = function() {
-    PlayGame.login(function(evt){});
+  this.onResume = this.playGameLogin = function(force) {
+    var menu = this.menu;
+    PlayGame.login(function(evt){
+      menu.update();
+    }, force);
   };
 });
