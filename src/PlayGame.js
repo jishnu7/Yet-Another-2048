@@ -50,9 +50,9 @@ exports = function() {
   };
 
   obj.login = function(cb) {
-    if(obj.isLoggedIn() && !busy) {
+    if(!obj.isLoggedIn() && !busy) {
       busy = true;
-      PlayGame.login(function() {
+      PlayGame.login(function(evnt) {
         setLoggedIn(evnt);
         cb(evnt);
         busy = false;
