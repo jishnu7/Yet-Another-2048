@@ -1,6 +1,8 @@
 /* jshint ignore:start */
 import ui.View as View;
 import ui.TextView as TextView;
+import ui.ImageView as ImageView;
+import ui.resource.Image as Image;
 
 import src.Utils as Utils;
 import src.PlayGame as PlayGame;
@@ -18,16 +20,13 @@ exports = Class(View, function(supr) {
     });
     supr(this, 'init', [opts]);
 
-    // App logo
-    new TextView({
+    var logo = new Image({url: 'resources/images/logo.png'});
+    new ImageView({
       superview: this,
       centerX: true,
-      width: 500,
-      height: 300,
-      size: 300,
-      color: Utils.colors.text,
-      fontFamily: Utils.fonts.text,
-      text: '2048'
+      width: logo.getWidth(),
+      height: logo.getHeight(),
+      image: logo
     });
 
     this.menuContainer = new View({
