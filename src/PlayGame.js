@@ -46,16 +46,18 @@ exports = function() {
 
   obj.isLoggedIn = function() {
     var ls = localStorage.getItem('playgame');
-    return ls === 'true' ? true : false;
+    if(ls) {
+      return ls === 'true' ? true : false;
+    } else {
+      return null;
+    }
   };
 
-  obj.login = function(cb) {
-    if(!obj.isLoggedIn() && !busy) {
-      busy = true;
+  obj.login = function(cb, force) {
+    if(obj.isLoggedIn() !== false || force) {
       PlayGame.login(function(evnt) {
         setLoggedIn(evnt);
-        cb(evnt);
-        busy = false;
+        cb && cb(evnt);
       });
     }
   };
