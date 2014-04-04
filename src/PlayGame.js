@@ -40,23 +40,23 @@ exports = function() {
     setRecord = function(type, value) {
       localStorage.setItem("record_" + type, value);
     },
-    isLoggedIn = function() {
-      return localStorage.getItem('playgame');
-    },
     setLoggedIn = function(value) {
       localStorage.setItem('playgame', value);
     };
 
+  obj.isLoggedIn = function() {
+    var ls = localStorage.getItem('playgame');
+    return ls === 'true' ? true : false;
+  };
+
   obj.login = function(cb) {
-    var ls = isLoggedIn(),
-      callback = function(evnt) {
+    if(obj.isLoggedIn() && !busy) {
+      busy = true;
+      PlayGame.login(function() {
         setLoggedIn(evnt);
         cb(evnt);
         busy = false;
-      };
-    if((ls === null || ls === 'true') && !busy) {
-      busy = true;
-      PlayGame.login(callback);
+      });
     }
   };
 
@@ -82,7 +82,7 @@ exports = function() {
   };
 
   obj.achievement = function(val) {
-    if(isLoggedIn() !== 'true') {
+    if(!obj.isLoggedIn()) {
       return;
     }
     if(achievements.hasOwnProperty(val) && !isAchieved(val)) {
@@ -98,7 +98,7 @@ exports = function() {
   };
 
   obj.leaderboard = function(type, val) {
-    if(isLoggedIn() !== 'true') {
+    if(!obj.isLoggedIn()) {
       return;
     }
     var data = getQueue();
