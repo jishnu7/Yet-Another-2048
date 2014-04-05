@@ -10,7 +10,7 @@
 - [x] Play games integration
 - [ ] Better animations ?
 - [ ] How to play
-- [ ] Border radius for cells ?
+- [x] Border radius for cells ?
 - [ ] 3 mode
 - [ ] Color mode
 - [ ] Time mode

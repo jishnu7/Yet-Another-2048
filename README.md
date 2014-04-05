@@ -15,3 +15,5 @@ Sounds:
 
 Images:
 - [Reload](http://thenounproject.com/term/reload/30351/) by Grant Fisher from The Noun Project, CC
+- [Medal](http://thenounproject.com/term/medal/13720/) by Vivian Ziereisen from The Noun Project, CC
+- [Trophy](http://thenounproject.com/term/trophy/17975/) by thiyagu from The Noun Project, CC
