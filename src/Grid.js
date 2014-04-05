@@ -5,6 +5,7 @@ import ui.View as View;
 import ui.TextView as TextView;
 import ui.ImageView as ImageView;
 import ui.widget.GridView as GridView;
+import ui.resource.Image as Image;
 import event.Callback as Callback;
 
 import src.Cell as Cell;
@@ -45,13 +46,13 @@ exports = Class(GridView, function(supr) {
       var row = [];
       for (var y = 0; y < this.getCols(); y++) {
         row.push(null);
-        new View({
+        new ImageView({
           superview: this,
           row: x,
           col: y,
           width: cellSize,
           height: cellSize,
-          backgroundColor: Utils.colors.tile_blank
+          image: 'resources/images/cell_blank.png'
         });
       }
       cells.push(row);

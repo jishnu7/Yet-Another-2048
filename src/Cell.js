@@ -1,11 +1,13 @@
 /* jshint ignore:start */
-import ui.View as View;
+import ui.ImageView as ImageView;
 import ui.TextView as TextView;
+import ui.resource.Image as Image;
 
 import src.Utils as Utils;
+
 /* jshint ignore:end */
 
-exports = Class(View, function(supr) {
+exports = Class(ImageView, function(supr) {
   this.init = function(opts) {
     merge(opts, {
       anchorX: opts.width/2,
@@ -17,7 +19,7 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'box',
       text: opts.value,
-      size: 60,
+      size: 56,
       color: Utils.colors.text,
       fontFamily: Utils.fonts.number
     });
@@ -47,16 +49,14 @@ exports = Class(View, function(supr) {
 
   this.setColor = function() {
     var val = this.getValue(),
-      color_bg, color_text,
-      i, j;
+      img = -1, i;
+      color = val >= 8 ? 1:0;
 
-    for(i = val; typeof color_bg === 'undefined' && i!==1; i/=2) {
-      color_bg = Utils.colors.tile[i];
+    for(i = val; img==-1 && i!==1; i/=2) {
+      img = Utils.colors.tile.indexOf(i);
     }
-    for(i = val; typeof color_text === 'undefined' && i!==1; i/=2) {
-      color_text = Utils.colors.tile_text[i];
-    }
-    this.updateOpts({backgroundColor: color_bg});
-    this.text.updateOpts({color: color_text});
+    this.setImage('resources/images/cell_' + i*2 + '.png');
+
+    this.text.updateOpts({color: Utils.colors.tile_text[color]});
   };
 });
