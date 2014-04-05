@@ -28,10 +28,11 @@
 	],
 	"android": {
 		"icons": {
-			"36": "resources/icons/android36.png",
 			"48": "resources/icons/android48.png",
 			"72": "resources/icons/android72.png",
-			"96": "resources/icons/android96.png"
+			"96": "resources/icons/android96.png",
+			"144": "resources/icons/android144.png",
+			"192": "resources/icons/android192.png"
 		},
 		"gameplayID": "1234567890"
 	},
