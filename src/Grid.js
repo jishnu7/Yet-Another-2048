@@ -1,12 +1,12 @@
 /* jshint ignore:start */
 import animate;
 import ui.ViewPool as ViewPool;
-import ui.View as View;
 import ui.TextView as TextView;
 import ui.ImageView as ImageView;
-import ui.widget.GridView as GridView;
+import ui.ImageScaleView as ImageScaleView;
 import ui.resource.Image as Image;
 import event.Callback as Callback;
+import src.gc.GridView as GridView;
 
 import src.Cell as Cell;
 import src.Utils as Utils;
@@ -27,7 +27,6 @@ exports = Class(GridView, function(supr) {
     merge(opts, {
       layout: 'box',
       centerX: true,
-      backgroundColor: Utils.colors.grid,
       width: baseSize,
       height: baseSize,
       rows: size,
@@ -35,7 +34,21 @@ exports = Class(GridView, function(supr) {
       cellSize: cellSize,
       horizontalMargin: margin,
       verticalMargin: margin,
-      autoCellSize: false
+      autoCellSize: false,
+      image: 'resources/images/grid.png',
+      scaleMethod: '9slice',
+      sourceSlices: {
+        horizontal: {
+          left: 20,
+          center: 10,
+          right: 20
+        },
+        vertical: {
+          top: 20,
+          middle: 10,
+          bottom: 20
+        }
+      }
     });
     supr(this, 'init', [opts]);
     this.overlay = this.initOverlay(baseSize);
@@ -75,35 +88,6 @@ exports = Class(GridView, function(supr) {
     });
 
     this.score = opts.score;
-  };
-
-  // Hack to get equal border for cells
-  this._getInfo = function (list, count, totalSize, gutterSize) {
-    var globalScale = this.getPosition().scale,
-      opts = this._opts,
-      margin = opts.horizontalMargin,
-      cellSize = opts.cellSize,
-      size = opts.width,
-      item, i;
-
-    for (i = 0; i < count; i++) {
-      item = list[i];
-      if (!item) {
-        item = {};
-        list[i] = item;
-      }
-      item.size = cellSize + margin*2;
-    }
-
-    var pos = margin;
-    var start = 0;
-    for (i = 0; i < count; i++) {
-      item = list[i];
-      item.pos = pos;
-      pos += item.size;
-      start = gutterSize;
-      item.size -= start;
-    }
   };
 
   this.getGameState = function() {
@@ -442,18 +426,31 @@ exports = Class(GridView, function(supr) {
   };
 
   this.initOverlay = function(size) {
-    var bg = new View({
+    var bg = new ImageScaleView({
       superview: this,
       inLayout: false,
       layout: 'linear',
       direction: 'vertical',
       justifyContent: 'center',
       visible: false,
-      backgroundColor: Utils.colors.grid,
       zIndex: 2,
       opacity: 0.8,
       width: size,
-      height: size
+      height: size,
+      image: 'resources/images/grid.png',
+      scaleMethod: '9slice',
+      sourceSlices: {
+        horizontal: {
+          left: 20,
+          center: 10,
+          right: 20
+        },
+        vertical: {
+          top: 20,
+          middle: 10,
+          bottom: 20
+        }
+      }
     });
 
     var img = new ImageView({
