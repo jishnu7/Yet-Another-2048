@@ -85,13 +85,16 @@ exports = Class(GC.Application, function () {
       }
     }));
 
-    var menu = this.menu = new Menu({});
+    var menu = this.menu = new Menu({
+      game: grid
+    });
 
-    menu.on('Play', function() {
+    menu.on('Continue', function() {
       grid.initCells();
       game.setHandleEvents(true);
 
       History.add(function() {
+        menu.refresh();
         rootView.pop();
         grid.overlay.hide();
         grid.saveGame();
@@ -100,10 +103,15 @@ exports = Class(GC.Application, function () {
       rootView.push(game);
     });
 
+    menu.on('New-Game', bind(this, function() {
+      grid.setGameState('over');
+      menu.emit('Continue');
+    }));
+
     menu.on('Sign-In', bind(this, this.playGameLogin, true));
     menu.on('Sign-Out', function() {
       PlayGame.logout();
-      menu.update();
+      menu.updateLogin();
     });
 
     menu.on('Leaderboard', function() {
@@ -140,7 +148,7 @@ exports = Class(GC.Application, function () {
   this.onResume = this.playGameLogin = function(force) {
     var menu = this.menu;
     PlayGame.login(function(evt){
-      menu.update();
+      menu.updateLogin();
     }, force);
   };
 });

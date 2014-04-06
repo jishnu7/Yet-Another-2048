@@ -19,6 +19,7 @@ exports = Class(View, function(supr) {
       layoutHeight: '100%'
     });
     supr(this, 'init', [opts]);
+    this.game = opts.game;
 
     var logo = new Image({url: 'resources/images/logo.png'});
     new ImageView({
@@ -36,15 +37,26 @@ exports = Class(View, function(supr) {
       justifyContent: 'center',
       height: 400
     });
-    this.addMenuEntry('Play', 1);
-    this.signin = this.addMenuEntry('Sign In', 2);
-    this.leaderboard = this.addMenuEntry('Leaderboard', 3);
-    this.achievements = this.addMenuEntry('Achievements', 4);
-    this.update();
+    this.continue = this.addMenuEntry('Continue', 1);
+    this.play = this.addMenuEntry('New Game', 2);
+    this.signin = this.addMenuEntry('Sign In', 3);
+    this.leaderboard = this.addMenuEntry('Leaderboard', 4);
+    this.achievements = this.addMenuEntry('Achievements', 5);
+    this.updateLogin();
+    this.refresh();
     //this.addMenuEntry(container, 'How to Play');
   };
 
-  this.update = function() {
+  this.refresh = function() {
+    if(this.game.getGameState() === 'ongoing') {
+      this.continue.show();
+    } else {
+      this.continue.hide();
+    }
+    this.menuContainer.needsReflow();
+  };
+
+  this.updateLogin = function() {
     if(PlayGame.isLoggedIn()) {
       this.leaderboard.show();
       this.achievements.show();
