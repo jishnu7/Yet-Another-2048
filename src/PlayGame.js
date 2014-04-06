@@ -18,6 +18,7 @@ exports = function() {
       localStorage.setItem("pending", JSON.stringify(val));
     },
     // achievements
+    /*
     isAchieved = function(val) {
       var ls = localStorage.getItem("record_achieved");
       ls  = ls ? JSON.parse(ls) : [];
@@ -32,6 +33,7 @@ exports = function() {
       ls.push(val);
       localStorage.setItem("record_achieved", JSON.stringify(ls));
     },
+    */
     // leaderboards
     getCurrentRecord = function(type) {
       var ls = localStorage.getItem("record_" + type);
@@ -92,13 +94,13 @@ exports = function() {
     if(!obj.isLoggedIn()) {
       return;
     }
-    if(achievements.hasOwnProperty(val) && !isAchieved(val)) {
+    if(achievements.hasOwnProperty(val)) {
       var data = getQueue();
       data.push({
           type: 'sendAchievement',
           data: [achievements[val], val]
         });
-      setAchieved(val);
+      //setAchieved(val);
       setQueue(data);
       this.run(data);
     }
