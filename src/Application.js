@@ -72,7 +72,6 @@ exports = Class(GC.Application, function () {
 
     var busy = false;
     game.on('Swipe', bind(this, function(angle, direction) {
-      console.log('angle', angle, 'direction', direction, busy);
       if(!busy) {
         busy = true;
         audio.play('swype');
@@ -104,6 +103,13 @@ exports = Class(GC.Application, function () {
     });
 
     menu.on('New-Game', bind(this, function() {
+      grid.setMode('classic');
+      grid.setGameState('over');
+      menu.emit('Continue');
+    }));
+
+    menu.on('Time-Mode', bind(this, function() {
+      grid.setMode('time');
       grid.setGameState('over');
       menu.emit('Continue');
     }));

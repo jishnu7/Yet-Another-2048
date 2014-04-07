@@ -39,9 +39,10 @@ exports = Class(View, function(supr) {
     });
     this.continue = this.addMenuEntry('Continue', 1);
     this.play = this.addMenuEntry('New Game', 2);
-    this.signin = this.addMenuEntry('Sign In', 3);
-    this.leaderboard = this.addMenuEntry('Leaderboard', 4);
-    this.achievements = this.addMenuEntry('Achievements', 5);
+    this.play = this.addMenuEntry('Time Mode', 3);
+    this.signin = this.addMenuEntry('Sign In', 4);
+    this.leaderboard = this.addMenuEntry('Leaderboard', 5);
+    this.achievements = this.addMenuEntry('Achievements', 6);
     this.updateLogin();
     this.refresh();
     //this.addMenuEntry(container, 'How to Play');
@@ -62,14 +63,14 @@ exports = Class(View, function(supr) {
       this.achievements.show();
       this.signin.updateOpts({
         text: 'Sign Out',
-        order: 5
+        order: 7
       });
     } else {
       this.leaderboard.hide();
       this.achievements.hide();
       this.signin.updateOpts({
         text: 'Sign In',
-        order: 2
+        order: 4
       });
     }
     this.menuContainer.needsReflow();

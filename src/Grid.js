@@ -88,6 +88,7 @@ exports = Class(GridView, function(supr) {
     });
 
     this.score = opts.score;
+    this.mode = 'classic';
   };
 
   this.getGameState = function() {
@@ -131,6 +132,10 @@ exports = Class(GridView, function(supr) {
     }
   };
 
+  this.setMode = function(mode) {
+    this.mode = mode;
+  };
+
   this.gameOver = function() {
     var score = this.score;
     this.emit('Over');
@@ -146,18 +151,29 @@ exports = Class(GridView, function(supr) {
       this.loadGame();
     } else {
       this.reset();
-      for(var i=0; i< startCells; i++) {
-        this.addRandomCell();
+      for(var i=0; i<startCells; i++) {
+        this.addRandomCell(i);
       }
       this.setGameState('ongoing');
     }
   };
 
-  this.addRandomCell = function() {
+  this.addRandomCell = function(i) {
     var value = Math.random() < 0.9 ? 2 : 4;
       pos = this.randomAvailableCell();
+
     if(this.isCellsAvailable()) {
       this.addCell(pos.row, pos.col, value);
+    }
+
+    if(this.mode == 'time' && i!=1) {
+      setTimeout(bind(this, this.addRandomCell), 2000);
+    }
+
+    if(!this.isCellsAvailable()) {
+      if(this.mode === 'time' || !this.isMovesAvailable()) {
+        this.gameOver();
+      }
     }
   };
 
@@ -181,7 +197,6 @@ exports = Class(GridView, function(supr) {
     then({
       scale: 1
     }, 100);
-    console.log('addcell', [row, col], val);
   };
 
   this.removeCell = function(cell) {
@@ -190,7 +205,6 @@ exports = Class(GridView, function(supr) {
     if(this.cells[row][col] === cell) {
       this.cells[row][col] = null;
     }
-    console.log('removing', row, col);
     var anim = animate(cell);
     anim.now({
       scale: 1
@@ -222,8 +236,9 @@ exports = Class(GridView, function(supr) {
       traversals = this.buildTraversals(vector),
       moveMade = false,
       finish = Utils.finish(traversals.row.length * traversals.col.length, bind(this, function() {
-        if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
-          this.gameOver();
+
+        if(this.mode === 'time') {
+          moveMade = false;
         }
         cb.fire(moveMade);
       }));
@@ -239,7 +254,6 @@ exports = Class(GridView, function(supr) {
             next = pos.next ? this.getCell(pos.next.row, pos.next.col) : null;
 
           if (next && next.getValue() === cell.getValue() && mergedCells.indexOf(next) === -1) {
-            console.log('merge cells', [y,x], cell.getValue(), pos.next, next.getValue());
             moveMade = true;
             this.moveCell(cell, pos.next, callback);
             mergedCells.push(cell);
@@ -265,7 +279,6 @@ exports = Class(GridView, function(supr) {
 
     this.cells[prevRow][prevCol] = null;
     this.cells[row][col] = cell;
-    console.log('moving', prevRow, prevCol, '=>', row, col);
     if(col !== opts.col || row !== opts.row) {
       anim.then({
           x: target.x,
@@ -434,7 +447,7 @@ exports = Class(GridView, function(supr) {
       justifyContent: 'center',
       visible: false,
       zIndex: 2,
-      opacity: 0.8,
+      opacity: 0.0,
       width: size,
       height: size,
       image: 'resources/images/grid.png',
@@ -487,8 +500,12 @@ exports = Class(GridView, function(supr) {
       },
       show: function() {
         bg.style.visible = true;
+        animate(bg).then({
+          opacity: 0.8
+        }, 2000);
       },
       hide: function() {
+        bg.style.opacity = 0;
         bg.style.visible = false;
       }
     };
