@@ -20,3 +20,4 @@
 - [x] New font
 - [x] New color theme
 - [x] Save game on close
+- [ ] Game stats
