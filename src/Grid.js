@@ -96,6 +96,9 @@ exports = Class(GridView, function(supr) {
   };
 
   this.setGameState = function(value) {
+    if(value === 'over' && this.timeID) {
+      clearInterval(this.timeID);
+    }
     localStorage.setItem('game_state', value);
   };
 
@@ -157,7 +160,6 @@ exports = Class(GridView, function(supr) {
     this.emit('Over');
     this.setGameState('over');
     this.overlay.show();
-    this.timeID && clearInterval(this.timeID);
     PlayGame.leaderboard('score', score.score);
     PlayGame.leaderboard('tile', score.highestTile);
   };
