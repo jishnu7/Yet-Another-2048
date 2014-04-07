@@ -502,7 +502,7 @@ exports = Class(GridView, function(supr) {
         bg.style.visible = true;
         animate(bg).then({
           opacity: 0.8
-        }, 2000);
+        }, 2500);
       },
       hide: function() {
         bg.style.opacity = 0;
