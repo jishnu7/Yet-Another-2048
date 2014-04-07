@@ -188,7 +188,7 @@ exports = Class(GridView, function(supr) {
     }
 
     if(this.mode == 'time' && i === 0) {
-      this.timeID = setInterval(bind(this, this.addRandomCell), 2000);
+      this.timeID = setInterval(bind(this, this.addRandomCell), 1000);
     }
   };
 
