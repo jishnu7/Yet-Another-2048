@@ -79,21 +79,9 @@ exports = Class(View, function(supr) {
     }
   };
 
-  this.save = function() {
-    localStorage.setItem('score', JSON.stringify({
-      score: this.score,
-      highestTile: this.highestTile
-    }));
-  };
-
-  this.load = function() {
-    var data = JSON.parse(localStorage.getItem('score'));
-    if(data) {
-      this.highestTile = parseInt(data.highestTile, 10);
-      this.score = parseInt(data.score, 10);
-      this.scoreView.setText(data.score);
-    } else {
-      this.reset();
-    }
+  this.load = function(score, highestTile) {
+    this.highestTile = parseInt(highestTile, 10);
+    this.score = parseInt(score, 10);
+    this.scoreView.setText(score);
   };
 });

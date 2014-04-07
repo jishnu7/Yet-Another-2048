@@ -104,30 +104,46 @@ exports = Class(GridView, function(supr) {
       return;
     }
 
-    var cells = [];
+    var cells = [],
+      score = this.score;
+
     this.eachCell(function(row, col, cell) {
       if(cell) {
         cells.push({row: row, col: col, value: cell.getValue()});
       }
     });
-    localStorage.setItem('cells', JSON.stringify(cells));
-    this.score.save();
+    localStorage.setItem('prev_game', JSON.stringify({
+      cells: cells,
+      mode: this.mode,
+      score: this.score.score,
+      highestTile: this.score.highestTile
+    }));
   };
 
   this.loadGame = function() {
-    var cells = localStorage.getItem('cells');
-    cells  = cells ? JSON.parse(cells) : [];
-    var length = cells.length;
-    if(length > 0) {
+    var game = localStorage.getItem('prev_game'),
+      cells, length;
+    if(game) {
+      game = JSON.parse(game);
+      cells = game.cells;
+      length = cells.length;
+
       for(var i=0; i<length; i++) {
         var cell = cells[i];
-        this.addCell(cell.row, cell.col, cell.value);
+        this.addCell(parseInt(cell.row, 10), parseInt(cell.col, 10),
+          parseInt(cell.value, 10));
       }
+
       this.setGameState('ongoing');
-      this.score.load();
+      this.score.load(game.score, game.highestTile);
+      this.mode = game.mode;
+      if(game.mode === 'time') {
+        this.addRandomCell(0);
+      }
     } else {
       // incorrect data from local storage
       this.setGameState('over');
+      this.mode = 'classic';
       this.initCells();
     }
   };
@@ -141,6 +157,7 @@ exports = Class(GridView, function(supr) {
     this.emit('Over');
     this.setGameState('over');
     this.overlay.show();
+    this.timeID && clearInterval(this.timeID);
     PlayGame.leaderboard('score', score.score);
     PlayGame.leaderboard('tile', score.highestTile);
   };
@@ -164,16 +181,14 @@ exports = Class(GridView, function(supr) {
 
     if(this.isCellsAvailable()) {
       this.addCell(pos.row, pos.col, value);
-    }
-
-    if(this.mode == 'time' && i!=1) {
-      setTimeout(bind(this, this.addRandomCell), 2000);
-    }
-
-    if(!this.isCellsAvailable()) {
+    } else {
       if(this.mode === 'time' || !this.isMovesAvailable()) {
         this.gameOver();
       }
+    }
+
+    if(this.mode == 'time' && i === 0) {
+      this.timeID = setInterval(bind(this, this.addRandomCell), 2000);
     }
   };
 
@@ -502,7 +517,7 @@ exports = Class(GridView, function(supr) {
         bg.style.visible = true;
         animate(bg).then({
           opacity: 0.8
-        }, 2500);
+        }, 2000);
       },
       hide: function() {
         bg.style.opacity = 0;
