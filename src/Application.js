@@ -95,8 +95,7 @@ exports = Class(GC.Application, function () {
       History.add(function() {
         menu.refresh();
         rootView.pop();
-        grid.overlay.hide();
-        grid.saveGame();
+        grid.backButton();
       });
 
       rootView.push(game);

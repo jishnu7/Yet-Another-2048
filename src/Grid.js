@@ -96,7 +96,7 @@ exports = Class(GridView, function(supr) {
   };
 
   this.setGameState = function(value) {
-    if(value === 'over' && this.timeID) {
+    if(value === 'over') {
       clearInterval(this.timeID);
     }
     localStorage.setItem('game_state', value);
@@ -140,7 +140,6 @@ exports = Class(GridView, function(supr) {
       this.setGameState('ongoing');
       this.score.load(game.score, game.highestTile);
       this.mode = game.mode;
-      this.startTimeMode();
     } else {
       // incorrect data from local storage
       this.setGameState('over');
@@ -182,10 +181,8 @@ exports = Class(GridView, function(supr) {
 
     if(this.isCellsAvailable()) {
       this.addCell(pos.row, pos.col, value);
-    } else {
-      if(this.mode === 'time' || !this.isMovesAvailable()) {
-        this.gameOver();
-      }
+    } else if(this.mode === 'time') {
+      this.gameOver();
     }
   };
 
@@ -193,6 +190,12 @@ exports = Class(GridView, function(supr) {
     if(this.mode == 'time') {
       this.timeID = setInterval(bind(this, this.addRandomCell), 1000);
     }
+  };
+
+  this.backButton = function() {
+    this.overlay.hide();
+    this.saveGame();
+    clearInterval(this.timeID);
   };
 
   this.addCell = function(row, col, val) {
@@ -254,9 +257,10 @@ exports = Class(GridView, function(supr) {
       traversals = this.buildTraversals(vector),
       moveMade = false,
       finish = Utils.finish(traversals.row.length * traversals.col.length, bind(this, function() {
-
         if(this.mode === 'time') {
           moveMade = false;
+        } else if(!(this.isCellsAvailable() || this.isMovesAvailable())) {
+          this.gameOver();
         }
         cb.fire(moveMade);
       }));
@@ -508,7 +512,7 @@ exports = Class(GridView, function(supr) {
       fontFamily: Utils.fonts.text
     });
 
-    bg.on('InputOut', bind(this, function() {
+    img.on('InputOut', bind(this, function() {
       this.emit('Restart');
     }));
 
@@ -518,9 +522,16 @@ exports = Class(GridView, function(supr) {
       },
       show: function() {
         bg.style.visible = true;
-        animate(bg).then({
-          opacity: 0.8
-        }, 2000);
+        animate(bg).
+          now(function() {
+            img.setHandleEvents(false);
+          }, 0).
+          then({
+            opacity: 0.8
+          }, 1000).
+          then(function() {
+            img.setHandleEvents(true);
+          });
       },
       hide: function() {
         bg.style.opacity = 0;
