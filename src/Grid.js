@@ -140,9 +140,7 @@ exports = Class(GridView, function(supr) {
       this.setGameState('ongoing');
       this.score.load(game.score, game.highestTile);
       this.mode = game.mode;
-      if(game.mode === 'time') {
-        this.addRandomCell(0);
-      }
+      this.startTimeMode();
     } else {
       // incorrect data from local storage
       this.setGameState('over');
@@ -175,6 +173,7 @@ exports = Class(GridView, function(supr) {
       }
       this.setGameState('ongoing');
     }
+    this.startTimeMode();
   };
 
   this.addRandomCell = function(i) {
@@ -188,8 +187,10 @@ exports = Class(GridView, function(supr) {
         this.gameOver();
       }
     }
+  };
 
-    if(this.mode == 'time' && i === 0) {
+  this.startTimeMode = function() {
+    if(this.mode == 'time') {
       this.timeID = setInterval(bind(this, this.addRandomCell), 1000);
     }
   };
