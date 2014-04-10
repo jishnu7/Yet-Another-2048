@@ -88,7 +88,7 @@ exports = Class(GridView, function(supr) {
     });
 
     this.score = opts.score;
-    this.mode = 'classic';
+    this.setMode('classic');
   };
 
   this.getGameState = function() {
@@ -103,6 +103,7 @@ exports = Class(GridView, function(supr) {
   };
 
   this.saveGame = function() {
+    clearInterval(this.timeID);
     if(this.getGameState() !== 'ongoing') {
       return;
     }
@@ -121,9 +122,11 @@ exports = Class(GridView, function(supr) {
       score: this.score.score,
       highestTile: this.score.highestTile
     }));
+    this.score.saveHighScore();
   };
 
   this.loadGame = function() {
+    console.log('load game');
     var game = localStorage.getItem('prev_game'),
       cells, length;
     if(game) {
@@ -138,18 +141,19 @@ exports = Class(GridView, function(supr) {
       }
 
       this.setGameState('ongoing');
+      this.setMode(game.mode);
       this.score.load(game.score, game.highestTile);
-      this.mode = game.mode;
     } else {
       // incorrect data from local storage
       this.setGameState('over');
-      this.mode = 'classic';
+      this.setMode('classic');
       this.initCells();
     }
   };
 
   this.setMode = function(mode) {
     this.mode = mode;
+    this.score.setMode(mode);
   };
 
   this.gameOver = function() {
@@ -157,6 +161,7 @@ exports = Class(GridView, function(supr) {
     this.emit('Over');
     this.setGameState('over');
     this.overlay.show();
+    this.score.saveHighScore();
     PlayGame.leaderboard('score', score.score);
     PlayGame.leaderboard('tile', score.highestTile);
   };
@@ -184,6 +189,10 @@ exports = Class(GridView, function(supr) {
     } else if(this.mode === 'time') {
       this.gameOver();
     }
+
+    if(this.mode === 'time') {
+      this.score.update();
+    }
   };
 
   this.startTimeMode = function() {
@@ -195,7 +204,6 @@ exports = Class(GridView, function(supr) {
   this.backButton = function() {
     this.overlay.hide();
     this.saveGame();
-    clearInterval(this.timeID);
   };
 
   this.addCell = function(row, col, val) {
@@ -247,7 +255,9 @@ exports = Class(GridView, function(supr) {
     cell2.setValue(newVal);
     PlayGame.achievement(newVal);
     this.removeCell(cell2);
-    this.score.update(newVal);
+    if(this.mode !== 'time') {
+      this.score.update(newVal);
+    }
     this.emit('updateScore', newVal);
   };
 

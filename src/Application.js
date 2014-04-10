@@ -88,6 +88,12 @@ exports = Class(GC.Application, function () {
       game: grid
     });
 
+    GC.app.onResume = function() {
+      if(rootView.hasView(game)) {
+        grid.startTimeMode();
+      }
+    };
+
     menu.on('Continue', function() {
       grid.initCells();
       game.setHandleEvents(true);

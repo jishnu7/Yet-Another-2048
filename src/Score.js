@@ -7,6 +7,15 @@ import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(View, function(supr) {
+  var storageID = 'highscore',
+    timer = 0,
+    getID = function(mode) {
+      return storageID + (mode === 'time' ? '_'+mode : '');
+    },
+    getHighScore = function(mode) {
+      return parseInt(localStorage.getItem(getID(mode)), 10) || 0;
+    };
+
   this.init = function(opts) {
     merge(opts, {
       layout: 'linear',
@@ -16,12 +25,12 @@ exports = Class(View, function(supr) {
     });
     supr(this, 'init', [opts]);
 
-    this.scoreView = this.createView('Score', 0);
     this.score = 0;
     this.highestTile = 0;
+    this.highScore = 0;
 
-    var hs = this.highScore = parseInt(localStorage.getItem('highscore'), 10) || 0;
-    this.highScoreView = this.createView('Best', hs);
+    this.scoreView = this.createView('Score', 0);
+    this.highScoreView = this.createView('Best', 0);
   };
 
   this.createView = function(name, value) {
@@ -31,8 +40,8 @@ exports = Class(View, function(supr) {
       direction: 'vertical',
       layoutWidth: '50%',
       justifyContent: 'center',
-    });
-    new TextView({
+    }),
+    label = new TextView({
       superview: container,
       layout: 'box',
       height: 30,
@@ -40,48 +49,83 @@ exports = Class(View, function(supr) {
       size: 30,
       color: Utils.colors.text,
       fontFamily: Utils.fonts.text
+    }),
+    number = new TextView({
+      superview: container,
+      layout: 'box',
+      height: 50,
+      text: value,
+      size: 60,
+      color: Utils.colors.text,
+      fontFamily: Utils.fonts.number
     });
-    if(typeof value !== 'undefined') {
-      return new TextView({
-        superview: container,
-        layout: 'box',
-        height: 50,
-        text: value,
-        size: 60,
-        color: Utils.colors.text,
-        fontFamily: Utils.fonts.number
-      });
+    return {
+      setText: function(mode, value) {
+        var out = '';
+        if(mode === 'time') {
+          out += Math.floor(value/3600); value %= 3600;
+          out += ':' + Math.floor(value/60); value %= 60;
+          out += ':' + value;
+        } else {
+          out = value;
+        }
+        number.setText(out);
+      },
+      setLabel: function(name) {
+        label.setText(name);
+      }
+    };
+  };
+
+  this.setMode = function(mode) {
+    this.mode = mode;
+
+    if(mode === 'time') {
+      this.scoreView.setLabel('Time');
     } else {
-      return container;
+      this.scoreView.setLabel('Score');
     }
+
+    timer = 0;
+    this.setHighScore();
   };
 
   this.reset = function() {
+    timer = 0;
     this.score = 0;
-    this.scoreView.setText(0);
+    this.scoreView.setText(this.mode, 0);
     this.highestTile = 0;
   };
 
   this.update = function(val) {
-    this.score += val;
+    var score = this.score;
+    score += (val || 1);
+    this.setScore(score);
+
+    if(score > this.highScore) {
+      this.setHighScore(score);
+    }
+
     this.highestTile = val > this.highestTile ? val : this.highestTile;
-    this.scoreView.setText(this.score);
-    this.setHighScore();
   };
 
-  this.setHighScore = function() {
-    var hs = this.highScore,
-      score = this.score;
-    if(score > hs) {
-      this.highScore = score;
-      this.highScoreView.setText(score);
-      localStorage.setItem('highscore', score);
-    }
+  this.setScore = function(score) {
+    this.score = score;
+    this.scoreView.setText(this.mode, score);
+  };
+
+  this.setHighScore = function(score) {
+    score = score || getHighScore(this.mode);
+    this.highScore = score;
+    this.highScoreView.setText(this.mode, score);
+  };
+
+  this.saveHighScore = function() {
+    localStorage.setItem(getID(this.mode), this.highScore);
   };
 
   this.load = function(score, highestTile) {
     this.highestTile = parseInt(highestTile, 10);
-    this.score = parseInt(score, 10);
-    this.scoreView.setText(score);
+    this.setScore(parseInt(score, 10));
   };
 });
