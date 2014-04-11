@@ -8,7 +8,7 @@ import src.Utils as Utils;
 
 exports = Class(View, function(supr) {
   var storageID = 'highscore',
-    timer = 0,
+    timerID,
     getID = function(mode) {
       return storageID + (mode === 'time' ? '_'+mode : '');
     },
@@ -28,6 +28,7 @@ exports = Class(View, function(supr) {
     this.score = 0;
     this.highestTile = 0;
     this.highScore = 0;
+    this.timer = 0;
 
     this.scoreView = this.createView('Score', 0);
     this.highScoreView = this.createView('Best', 0);
@@ -86,12 +87,12 @@ exports = Class(View, function(supr) {
       this.scoreView.setLabel('Score');
     }
 
-    timer = 0;
+    this.timer = 0;
     this.setHighScore();
   };
 
   this.reset = function() {
-    timer = 0;
+    this.timer = 0;
     this.score = 0;
     this.scoreView.setText(this.mode, 0);
     this.highestTile = 0;
@@ -124,8 +125,23 @@ exports = Class(View, function(supr) {
     localStorage.setItem(getID(this.mode), this.highScore);
   };
 
-  this.load = function(score, highestTile) {
+  this.load = function(score, highestTile, timer) {
     this.highestTile = parseInt(highestTile, 10);
+    this.timer = timer;
     this.setScore(parseInt(score, 10));
   };
-});
+
+  this.stop = function() {
+    clearInterval(timerID);
+  };
+
+  this.start = function() {
+    var update = (this.mode === 'time');
+    timerID = setInterval(bind(this, function() {
+      this.timer++;
+      if(update) {
+        this.update();
+      }
+    }), 1000);
+  };
+);

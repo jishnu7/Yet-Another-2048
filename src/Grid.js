@@ -88,7 +88,6 @@ exports = Class(GridView, function(supr) {
     });
 
     this.score = opts.score;
-    this.setMode('classic');
   };
 
   this.getGameState = function() {
@@ -98,12 +97,16 @@ exports = Class(GridView, function(supr) {
   this.setGameState = function(value) {
     if(value === 'over') {
       clearInterval(this.timeID);
+      this.score.stop();
+    } else {
+      this.score.start();
     }
     localStorage.setItem('game_state', value);
   };
 
   this.saveGame = function() {
     clearInterval(this.timeID);
+    this.score.stop();
     if(this.getGameState() !== 'ongoing') {
       return;
     }
@@ -120,7 +123,8 @@ exports = Class(GridView, function(supr) {
       cells: cells,
       mode: this.mode,
       score: this.score.score,
-      highestTile: this.score.highestTile
+      highestTile: this.score.highestTile,
+      timer: this.score.timer
     }));
     this.score.saveHighScore();
   };
@@ -140,9 +144,9 @@ exports = Class(GridView, function(supr) {
           parseInt(cell.value, 10));
       }
 
-      this.setGameState('ongoing');
       this.setMode(game.mode);
-      this.score.load(game.score, game.highestTile);
+      this.setGameState('ongoing');
+      this.score.load(game.score, game.highestTile, game.timer);
     } else {
       // incorrect data from local storage
       this.setGameState('over');
@@ -189,15 +193,11 @@ exports = Class(GridView, function(supr) {
     } else if(this.mode === 'time') {
       this.gameOver();
     }
-
-    if(this.mode === 'time') {
-      this.score.update();
-    }
   };
 
   this.startTimeMode = function() {
     if(this.mode == 'time') {
-      this.timeID = setInterval(bind(this, this.addRandomCell), 1000);
+      this.timeID = setInterval(bind(this, this.addRandomCell), 500);
     }
   };
 
