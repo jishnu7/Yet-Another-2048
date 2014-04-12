@@ -144,4 +144,4 @@ exports = Class(View, function(supr) {
       }
     }), 1000);
   };
-);
+});
