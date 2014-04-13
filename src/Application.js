@@ -18,6 +18,7 @@ exports = Class(GC.Application, function () {
   this.initUI = function () {
     var size = this.scaleUI();
 
+    // root view in which all views are pushed and poped
     var rootView = new StackView({
       superview: this,
       layout: "box",
@@ -38,6 +39,7 @@ exports = Class(GC.Application, function () {
       }
     });
 
+    // Entire puzzle screen accepts swipe actions.
     var game = new GestureView({
       layout: 'linear',
       direction: 'vertical',
@@ -78,6 +80,7 @@ exports = Class(GC.Application, function () {
         var callback = new Callback();
         callback.run(function(newCell) {
           busy = false;
+          // add a new cell only if a move is made.
           newCell && grid.addRandomCell();
         });
         grid.moveCells(direction, callback);
@@ -139,6 +142,7 @@ exports = Class(GC.Application, function () {
     device.setBackButtonHandler(History.release);
   };
 
+  // Function to scale the UI.
   this.scaleUI = function() {
     var boundsWidth = 768,
       boundsHeight = 1024,

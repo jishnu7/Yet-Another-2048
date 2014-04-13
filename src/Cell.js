@@ -50,8 +50,11 @@ exports = Class(ImageView, function(supr) {
   this.setColor = function() {
     var val = this.getValue(),
       img = -1, i;
+      // this is straightforward, tiles having value <8 have lighter background,
+      // so those needs darker color for text, others need lighter color for text.
       color = val >= 8 ? 1:0;
 
+    // Find color for the tile, if not found use color for previous tile.
     for(i = val; img==-1 && i!==1; i/=2) {
       img = Utils.colors.tile.indexOf(i);
     }

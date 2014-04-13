@@ -90,6 +90,7 @@ exports = Class(GridView, function(supr) {
     this.score = opts.score;
   };
 
+  // currently used states are `over` and `ongoing`
   this.getGameState = function() {
     return localStorage.getItem('game_state');
   };
@@ -104,6 +105,7 @@ exports = Class(GridView, function(supr) {
     localStorage.setItem('game_state', value);
   };
 
+  // Function to save the game to local storage
   this.saveGame = function() {
     clearInterval(this.timeID);
     this.score.stop();
@@ -129,6 +131,7 @@ exports = Class(GridView, function(supr) {
     this.score.saveHighScore();
   };
 
+  // Function to load saved game from local storage.
   this.loadGame = function() {
     console.log('load game');
     var game = localStorage.getItem('prev_game'),
@@ -155,6 +158,8 @@ exports = Class(GridView, function(supr) {
     }
   };
 
+  // Function to set mode of the game.
+  // currently used modes are `classic` and `time`
   this.setMode = function(mode) {
     this.mode = mode;
     this.score.setMode(mode);
@@ -170,6 +175,9 @@ exports = Class(GridView, function(supr) {
     PlayGame.leaderboard('tile', score.highestTile);
   };
 
+  // First function to call from menu screen
+  // if state of the game is ongoing, it loads from storage
+  // otherwise creates a new game.
   this.initCells = function() {
     console.log('----game state is:', this.getGameState());
     if(this.getGameState() === 'ongoing') {
@@ -195,6 +203,7 @@ exports = Class(GridView, function(supr) {
     }
   };
 
+  // Function to start timer if it is a timer based game.
   this.startTimeMode = function() {
     if(this.mode == 'time') {
       this.timeID = setInterval(bind(this, this.addRandomCell), 500);
@@ -286,11 +295,13 @@ exports = Class(GridView, function(supr) {
             next = pos.next ? this.getCell(pos.next.row, pos.next.col) : null;
 
           if (next && next.getValue() === cell.getValue() && mergedCells.indexOf(next) === -1) {
+            // Merge
             moveMade = true;
             this.moveCell(cell, pos.next, callback);
             mergedCells.push(cell);
             this.mergeCells(cell, next);
           } else if(this.moveCell(cell, pos.farthest, callback)) {
+            // Move without merge
             moveMade = true;
           }
         } else {
