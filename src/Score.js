@@ -54,7 +54,7 @@ exports = Class(View, function(supr) {
       layout: 'linear',
       direction: 'vertical',
       layoutWidth: '50%',
-      justifyContent: 'center',
+      justifyContent: 'space-outside',
     }),
     label = new TextView({
       superview: container,
@@ -68,9 +68,8 @@ exports = Class(View, function(supr) {
     number = new ScoreView({
       superview: container,
       layout: 'box',
-      height: 50,
+      height: 40,
       text: value,
-      size: 60,
       centerX: true,
       characterData: characterData
     });
