@@ -2,6 +2,7 @@
 import device;
 import ui.View as View;
 import ui.TextView as TextView;
+import ui.ScoreView as ScoreView;
 
 import src.Utils as Utils;
 /* jshint ignore:end */
@@ -14,6 +15,19 @@ exports = Class(View, function(supr) {
     },
     getHighScore = function(mode) {
       return parseInt(localStorage.getItem(getID(mode)), 10) || 0;
+    },
+    characterData = {
+      "0": { "image": "resources/images/score/0.png" },
+      "1": { "image": "resources/images/score/1.png" },
+      "2": { "image": "resources/images/score/2.png" },
+      "3": { "image": "resources/images/score/3.png" },
+      "4": { "image": "resources/images/score/4.png" },
+      "5": { "image": "resources/images/score/5.png" },
+      "6": { "image": "resources/images/score/6.png" },
+      "7": { "image": "resources/images/score/7.png" },
+      "8": { "image": "resources/images/score/8.png" },
+      "9": { "image": "resources/images/score/9.png" },
+      ":": { "image": "resources/images/score/colon.png" }
     };
 
   this.init = function(opts) {
@@ -51,14 +65,14 @@ exports = Class(View, function(supr) {
       color: Utils.colors.text,
       fontFamily: Utils.fonts.text
     }),
-    number = new TextView({
+    number = new ScoreView({
       superview: container,
       layout: 'box',
       height: 50,
       text: value,
       size: 60,
-      color: Utils.colors.text,
-      fontFamily: Utils.fonts.number
+      centerX: true,
+      characterData: characterData
     });
     return {
       setText: function(mode, value) {
