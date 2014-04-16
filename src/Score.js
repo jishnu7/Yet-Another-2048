@@ -75,13 +75,24 @@ exports = Class(View, function(supr) {
     });
     return {
       setText: function(mode, value) {
-        var out = '';
+        var out = '',
+          h, m;
         if(mode === 'time') {
-          out += Math.floor(value/3600);
+          h = Math.floor(value/3600);
+          if(h > 0) {
+            out += h + ':';
+          }
           value %= 3600;
-          out += ':' + Math.floor(value/60);
+          m = Math.floor(value/60);
+          if(m/10 < 1) {
+            m = '0' + m;
+          }
+          out += m + ':';
           value %= 60;
-          out += ':' + value;
+          if(value/10 < 1) {
+            value = '0' + value;
+          }
+          out += value;
         } else {
           out = value;
         }
