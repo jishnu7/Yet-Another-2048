@@ -171,8 +171,10 @@ exports = Class(GridView, function(supr) {
     this.setGameState('over');
     this.overlay.show();
     this.score.saveHighScore();
-    PlayGame.leaderboard('score', score.score);
-    PlayGame.leaderboard('tile', score.highestTile);
+    if(this.mode !== 'time') {
+      PlayGame.leaderboard('score', score.score);
+      PlayGame.leaderboard('tile', score.highestTile);
+    }
   };
 
   // First function to call from menu screen

@@ -38,6 +38,7 @@ exports = Class(GC.Application, function () {
         }
       }
     });
+    audio.setMuted(true);
 
     // Entire puzzle screen accepts swipe actions.
     var game = new GestureView({

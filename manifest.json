@@ -2,7 +2,7 @@
 	"appID": "2a2a13abfe6a469189951d0031514f4b",
 	"shortName": "twozerofoureight",
 	"title": "Yet Another 2048",
-	"version": "0.4",
+	"version": "0.5",
 	"studio": {
 		"name": "androidtweak.in",
 		"domain": "androidtweak.in"
@@ -34,7 +34,7 @@
 			"144": "resources/icons/android144.png",
 			"192": "resources/icons/android192.png"
 		},
-		"gameplayID": "1234567890"
+		"gameplayID": "697558218377"
 	},
 	"ios": {
 		"bundleID": "",
