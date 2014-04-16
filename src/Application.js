@@ -91,9 +91,11 @@ exports = Class(GC.Application, function () {
       game: grid
     });
 
-    GC.app.onResume = function() {
+    var pause = this.onPause = function() {
       if(rootView.hasView(game)) {
-        grid.startTimeMode();
+        menu.refresh();
+        rootView.pop();
+        grid.backButton();
       }
     };
 
@@ -101,11 +103,7 @@ exports = Class(GC.Application, function () {
       grid.initCells();
       game.setHandleEvents(true);
 
-      History.add(function() {
-        menu.refresh();
-        rootView.pop();
-        grid.backButton();
-      });
+      History.add(pause);
 
       rootView.push(game);
     });

@@ -81,8 +81,6 @@ exports = Class(GridView, function(supr) {
       }
     });
 
-    GC.app.onPause = bind(this, this.saveGame);
-
     this.on('ViewDidDisappear', function() {
       this.cellPool.releaseAllViews();
     });
