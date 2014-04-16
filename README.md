@@ -6,7 +6,7 @@ This is a clone of popular game [2048](http://gabrielecirulli.github.io/2048/), 
 Screenshot
 ----
 
-![Screenshot](http://androidtweak.in/downloads/twozerofoureight.png)
+t![Screenshot](http://androidtweak.in/downloads/yatwozerofoureight.png)
 
 Resources
 ----

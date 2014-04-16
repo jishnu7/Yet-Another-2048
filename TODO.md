@@ -8,12 +8,12 @@
 - [x] Bug: multi touch
 - [x] Back button
 - [x] Play games integration
-- [ ] Better animations ?
+- [x] Better animations ?
 - [ ] How to play
 - [x] Border radius for cells ?
 - [ ] 3 mode
 - [ ] Color mode
-- [ ] Time mode
+- [x] Time mode
 - [ ] Undo as a powerup
 - [x] New name
 - [-] Condition for 2048 ?
