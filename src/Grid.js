@@ -124,9 +124,9 @@ exports = Class(GridView, function(supr) {
     localStorage.setItem('prev_game', JSON.stringify({
       cells: cells,
       mode: this.mode,
-      score: this.score.score,
+      score: score.score,
       highestTile: this.score.highestTile,
-      timer: this.score.timer
+      timer: score.timer
     }));
     this.score.saveHighScore();
   };
@@ -192,8 +192,8 @@ exports = Class(GridView, function(supr) {
     this.startTimeMode();
   };
 
-  this.addRandomCell = function(i) {
-    var value = Math.random() < 0.9 ? 2 : 4;
+  this.addRandomCell = function() {
+    var value = Math.random() < 0.9 ? 2 : 4,
       pos = this.randomAvailableCell();
 
     if(this.isCellsAvailable()) {
@@ -205,7 +205,7 @@ exports = Class(GridView, function(supr) {
 
   // Function to start timer if it is a timer based game.
   this.startTimeMode = function() {
-    if(this.mode == 'time') {
+    if(this.mode === 'time') {
       this.timeID = setInterval(bind(this, this.addRandomCell), 500);
     }
   };
@@ -217,13 +217,14 @@ exports = Class(GridView, function(supr) {
 
   this.addCell = function(row, col, val) {
     var cell = this.cellPool.obtainView();
-      cell.updateOpts({
-        superview: this,
-        row: row,
-        col: col,
-        scale: 0.1,
-        visible: true
-      });
+
+    cell.updateOpts({
+      superview: this,
+      row: row,
+      col: col,
+      scale: 0.1,
+      visible: true
+    });
     cell.setValue(val);
 
     this.cells[row][col] = cell;
@@ -317,7 +318,7 @@ exports = Class(GridView, function(supr) {
       col = farthest.col,
       row = farthest.row,
       prevCol = opts.col,
-      prevRow = opts.row;
+      prevRow = opts.row,
       target = this.getCellPos(row, col);
 
     this.cells[prevRow][prevCol] = null;
@@ -332,7 +333,7 @@ exports = Class(GridView, function(supr) {
           cell.setProperty('row', row);
           cb && cb.fire();
         }, 0);
-        return true;
+      return true;
     } else {
       cb && cb.fire();
       return false;

@@ -1,5 +1,5 @@
 
-exports = function() {
+exports = (function() {
   var obj = {};
 
   // Function to get vector of swipe operation
@@ -44,4 +44,4 @@ exports = function() {
   };
 
   return obj;
-}();
+})();

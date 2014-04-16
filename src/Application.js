@@ -21,14 +21,14 @@ exports = Class(GC.Application, function () {
     // root view in which all views are pushed and poped
     var rootView = new StackView({
       superview: this,
-      layout: "box",
+      layout: 'box',
       width: size.width,
       height: size.height,
       backgroundColor: Utils.colors.background
     });
 
     var audio = new AudioManager({
-      path: "resources/audio/",
+      path: 'resources/audio/',
       files: {
         merge: {
           volume: 1
@@ -145,11 +145,11 @@ exports = Class(GC.Application, function () {
   // Function to scale the UI.
   this.scaleUI = function() {
     var boundsWidth = 768,
-      boundsHeight = 1024,
+      //boundsHeight = 1024,
       deviceWidth = device.screen.width,
       deviceHeight = device.screen.height,
       baseHeight, baseWidth,
-      scale, scaleHeight;
+      scale;
 
     // Portrait mode
     baseWidth = boundsWidth;
@@ -162,7 +162,7 @@ exports = Class(GC.Application, function () {
 
   this.onResume = this.playGameLogin = function(force) {
     var menu = this.menu;
-    PlayGame.login(function(evt){
+    PlayGame.login(function(){
       menu.updateLogin();
     }, force);
   };
