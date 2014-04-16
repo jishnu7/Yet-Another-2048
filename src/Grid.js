@@ -14,7 +14,7 @@ import src.PlayGame as PlayGame;
 /* jshint ignore:end */
 
 exports = Class(GridView, function(supr) {
-  var startCells = 2;
+  var StartCells = 2;
 
   this.init = function(opts) {
     var size = 4,
@@ -95,7 +95,7 @@ exports = Class(GridView, function(supr) {
 
   this.setGameState = function(value) {
     if(value === 'over') {
-      clearInterval(this.timeID);
+      this.timer && this.timer.stop();
       this.score.stop();
     } else {
       this.score.start();
@@ -105,7 +105,7 @@ exports = Class(GridView, function(supr) {
 
   // Function to save the game to local storage
   this.saveGame = function() {
-    clearInterval(this.timeID);
+    this.timer && this.timer.stop();
     this.score.stop();
     if(this.getGameState() !== 'ongoing') {
       return;
@@ -124,7 +124,8 @@ exports = Class(GridView, function(supr) {
       mode: this.mode,
       score: score.score,
       highestTile: this.score.highestTile,
-      timer: score.timer
+      timer: score.timer,
+      speed: this.timer && this.timer.get()
     }));
     this.score.saveHighScore();
   };
@@ -148,6 +149,7 @@ exports = Class(GridView, function(supr) {
       this.setMode(game.mode);
       this.setGameState('ongoing');
       this.score.load(game.score, game.highestTile, game.timer);
+      this.timer = this.timeMode(game.speed);
     } else {
       // incorrect data from local storage
       this.setGameState('over');
@@ -182,12 +184,12 @@ exports = Class(GridView, function(supr) {
       this.loadGame();
     } else {
       this.reset();
-      for(var i=0; i<startCells; i++) {
-        this.addRandomCell(i);
+      for(var i = 0; i < StartCells; i++) {
+        this.addRandomCell();
       }
       this.setGameState('ongoing');
+      this.timer = this.timeMode();
     }
-    this.startTimeMode();
   };
 
   this.addRandomCell = function() {
@@ -201,11 +203,28 @@ exports = Class(GridView, function(supr) {
     }
   };
 
-  // Function to start timer if it is a timer based game.
-  this.startTimeMode = function() {
+  this.timeMode = function(t) {
     if(this.mode === 'time') {
-      this.timeID = setInterval(bind(this, this.addRandomCell), 500);
+      var stop = false,
+        timer = bind(this, function() {
+          if(t > 400) {
+            t -= 1;
+          }
+          this.addRandomCell();
+          !stop && setTimeout(timer, t);
+        });
+
+      t = t || 1000;
+      setTimeout(timer, t);
     }
+    return {
+      stop: function() {
+        stop = true;
+      },
+      get: function() {
+        return t;
+      }
+    };
   };
 
   this.backButton = function() {
