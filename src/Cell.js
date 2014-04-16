@@ -2,6 +2,7 @@
 import ui.ImageView as ImageView;
 import ui.TextView as TextView;
 import ui.resource.Image as Image;
+import src.gc.ScoreView as ScoreView;
 
 import src.Utils as Utils;
 
@@ -15,20 +16,52 @@ exports = Class(ImageView, function(supr) {
     });
     supr(this, 'init', [opts]);
 
-    this.text = new TextView({
+    this.text = new ScoreView({
       superview: this,
       layout: 'box',
       text: opts.value,
-      size: 56,
-      color: Utils.colors.text,
-      fontFamily: Utils.fonts.number
+      width: opts.width,
+      height: opts.height/3,
+      centerY: true
     });
   };
 
   this.setValue = function(val) {
-    this._opts.value = val;
-    this.text.setText(val);
-    this.setColor();
+    var img = -1, i,
+      opts= this._opts,
+      text = this.text;
+
+    // this is straightforward, tiles having value <8 have lighter background,
+    // so those needs darker color for text, others need lighter color for text.
+    if(val >= 8 && opts.color !== 1) {
+      text.setCharacterData({
+        '0': { 'image': 'resources/images/numbers/0.png' },
+        '1': { 'image': 'resources/images/numbers/1.png' },
+        '2': { 'image': 'resources/images/numbers/2.png' },
+        '3': { 'image': 'resources/images/numbers/3.png' },
+        '4': { 'image': 'resources/images/numbers/4.png' },
+        '5': { 'image': 'resources/images/numbers/5.png' },
+        '6': { 'image': 'resources/images/numbers/6.png' },
+        '7': { 'image': 'resources/images/numbers/7.png' },
+        '8': { 'image': 'resources/images/numbers/8.png' },
+        '9': { 'image': 'resources/images/numbers/9.png' },
+      });
+      opts.color = 1;
+    } else if(val < 8 && opts.color !== 0) {
+      text.setCharacterData({
+        '2': { image: 'resources/images/score/2.png' },
+        '4': { image: 'resources/images/score/4.png' }
+      });
+      opts.color = 0;
+    }
+    text.setText(val);
+    opts.value = val;
+
+    // Find color for the tile, if not found use color for previous tile.
+    for(i = val; img === -1 && i !== 1; i /= 2) {
+      img = Utils.colors.tile.indexOf(i);
+    }
+    this.setImage('resources/images/cell_' + i*2 + '.png');
   };
 
   this.getValue = function() {
@@ -45,21 +78,5 @@ exports = Class(ImageView, function(supr) {
 
   this.getCol = function() {
     return this._opts.col;
-  };
-
-  this.setColor = function() {
-    var val = this.getValue(),
-      img = -1, i,
-      // this is straightforward, tiles having value <8 have lighter background,
-      // so those needs darker color for text, others need lighter color for text.
-      color = val >= 8 ? 1:0;
-
-    // Find color for the tile, if not found use color for previous tile.
-    for(i = val; img === -1 && i !== 1; i /= 2) {
-      img = Utils.colors.tile.indexOf(i);
-    }
-    this.setImage('resources/images/cell_' + i*2 + '.png');
-
-    this.text.updateOpts({color: Utils.colors.tile_text[color]});
   };
 });
