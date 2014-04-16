@@ -46,7 +46,8 @@ exports = Class(GC.Application, function () {
       justifyContent: 'center',
       layoutWidth: '100%',
       layoutHeight: '100%',
-      swipeMagnitude: 50
+      swipeMagnitude: 50,
+      swipeTime: 1000
     });
 
     var score = new Score({
