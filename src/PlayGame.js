@@ -10,13 +10,6 @@ exports = function() {
     json = JSON.parse(CACHE['resources/conf/play_game.json']),
     achievements = json.achievements,
     leaderboards = json.leaderboards,
-    getQueue = function() {
-      var ls = localStorage.getItem("pending");
-      return ls ? JSON.parse(ls): [];
-    },
-    setQueue = function(val) {
-      localStorage.setItem("pending", JSON.stringify(val));
-    },
     // achievements
     /*
     isAchieved = function(val) {
@@ -73,20 +66,9 @@ exports = function() {
   obj.showAchievements = PlayGame.showAchievements;
 
   obj.run = function(data) {
-    data = data || getQueue();
-
-    if(navigator.onLine && !busy) {
-      busy = true;
-      finish = Utils.finish(data.length, function() {
-        busy = false;
-        setQueue(data);
-      });
-
-      while(data.length > 0) {
-        var req = data.shift();
-        PlayGame[req.type].apply(this, req.data);
-        finish();
-      }
+    while(data.length > 0) {
+      var req = data.shift();
+      PlayGame[req.type].apply(this, req.data);
     }
   };
 
@@ -101,7 +83,6 @@ exports = function() {
           data: [achievements[val], val]
         });
       //setAchieved(val);
-      setQueue(data);
       this.run(data);
     }
   };
@@ -119,7 +100,6 @@ exports = function() {
         });
       setRecord(type, val);
     }
-    setQueue(data);
     this.run(data);
   };
 
