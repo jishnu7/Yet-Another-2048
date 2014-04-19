@@ -18,9 +18,7 @@ exports = Class(GC.Application, function () {
   this.initUI = function () {
     var size = this.scaleUI();
 
-    // root view in which all views are pushed and poped
-    var rootView = new StackView({
-      superview: this,
+    this.view.updateOpts({
       layout: 'box',
       width: size.width,
       height: size.height,
@@ -93,22 +91,22 @@ exports = Class(GC.Application, function () {
       game: grid
     });
 
-    var pause = this.onPause = function() {
-      if(rootView.hasView(game)) {
+    var pause = this.onPause = bind(this.view, function() {
+      if(this.hasView(game)) {
         menu.refresh();
-        rootView.pop();
+        this.pop();
         grid.backButton();
       }
-    };
+    });
 
-    menu.on('Continue', function() {
+    menu.on('Continue', bind(this.view, function() {
       grid.initCells();
       game.setHandleEvents(true);
 
       History.add(pause);
 
-      rootView.push(game);
-    });
+      this.push(game);
+    }));
 
     menu.on('New-Game', bind(this, function() {
       grid.setMode('classic');
@@ -135,7 +133,7 @@ exports = Class(GC.Application, function () {
       PlayGame.showAchievements();
     });
 
-    rootView.push(menu);
+    this.view.push(menu);
   };
 
   this.launchUI = function () {
