@@ -17,17 +17,17 @@ exports = Class(View, function(supr) {
       return parseInt(localStorage.getItem(getID(mode)), 10) || 0;
     },
     characterData = {
-      '0': { 'image': 'resources/images/score/0.png' },
-      '1': { 'image': 'resources/images/score/1.png' },
-      '2': { 'image': 'resources/images/score/2.png' },
-      '3': { 'image': 'resources/images/score/3.png' },
-      '4': { 'image': 'resources/images/score/4.png' },
-      '5': { 'image': 'resources/images/score/5.png' },
-      '6': { 'image': 'resources/images/score/6.png' },
-      '7': { 'image': 'resources/images/score/7.png' },
-      '8': { 'image': 'resources/images/score/8.png' },
-      '9': { 'image': 'resources/images/score/9.png' },
-      ':': { 'image': 'resources/images/score/colon.png' }
+      '0': { 'image': 'resources/images/score_0.png' },
+      '1': { 'image': 'resources/images/score_1.png' },
+      '2': { 'image': 'resources/images/score_2.png' },
+      '3': { 'image': 'resources/images/score_3.png' },
+      '4': { 'image': 'resources/images/score_4.png' },
+      '5': { 'image': 'resources/images/score_5.png' },
+      '6': { 'image': 'resources/images/score_6.png' },
+      '7': { 'image': 'resources/images/score_7.png' },
+      '8': { 'image': 'resources/images/score_8.png' },
+      '9': { 'image': 'resources/images/score_9.png' },
+      ':': { 'image': 'resources/images/score_colon.png' }
     };
 
   this.init = function(opts) {

@@ -35,22 +35,22 @@ exports = Class(ImageView, function(supr) {
     // so those needs darker color for text, others need lighter color for text.
     if(val >= 8 && opts.color !== 1) {
       text.setCharacterData({
-        '0': { 'image': 'resources/images/numbers/0.png' },
-        '1': { 'image': 'resources/images/numbers/1.png' },
-        '2': { 'image': 'resources/images/numbers/2.png' },
-        '3': { 'image': 'resources/images/numbers/3.png' },
-        '4': { 'image': 'resources/images/numbers/4.png' },
-        '5': { 'image': 'resources/images/numbers/5.png' },
-        '6': { 'image': 'resources/images/numbers/6.png' },
-        '7': { 'image': 'resources/images/numbers/7.png' },
-        '8': { 'image': 'resources/images/numbers/8.png' },
-        '9': { 'image': 'resources/images/numbers/9.png' },
+        '0': { 'image': 'resources/images/number_0.png' },
+        '1': { 'image': 'resources/images/number_1.png' },
+        '2': { 'image': 'resources/images/number_2.png' },
+        '3': { 'image': 'resources/images/number_3.png' },
+        '4': { 'image': 'resources/images/number_4.png' },
+        '5': { 'image': 'resources/images/number_5.png' },
+        '6': { 'image': 'resources/images/number_6.png' },
+        '7': { 'image': 'resources/images/number_7.png' },
+        '8': { 'image': 'resources/images/number_8.png' },
+        '9': { 'image': 'resources/images/number_9.png' },
       });
       opts.color = 1;
     } else if(val < 8 && opts.color !== 0) {
       text.setCharacterData({
-        '2': { image: 'resources/images/score/2.png' },
-        '4': { image: 'resources/images/score/4.png' }
+        '2': { image: 'resources/images/score_2.png' },
+        '4': { image: 'resources/images/score_4.png' }
       });
       opts.color = 0;
     }
