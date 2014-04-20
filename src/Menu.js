@@ -34,7 +34,7 @@ exports = Class(View, function(supr) {
       layout: 'linear',
       direction: 'vertical',
       justifyContent: 'center',
-      height: 500
+      height: 450
     });
     this.continue = this.addMenuEntry('continue', 1);
     this.addMenuEntry('new', 2);
@@ -44,8 +44,8 @@ exports = Class(View, function(supr) {
     this.signin = this.addMenuEntry('signin', 4);
     this.signout = this.addMenuEntry('signout', 7);
 
-    this.leaderboard = this.addMenuEntry('leaderboard', 5);
-    this.achievements = this.addMenuEntry('achievements', 6);
+    //this.leaderboard = this.addMenuEntry('leaderboard', 5);
+    //this.achievements = this.addMenuEntry('achievements', 6);
     this.updateLogin();
     this.refresh();
     //this.addMenuEntry(container, 'How to Play');
@@ -62,13 +62,13 @@ exports = Class(View, function(supr) {
 
   this.updateLogin = function() {
     if(PlayGame.isLoggedIn()) {
-      this.leaderboard.show();
-      this.achievements.show();
+      //this.leaderboard.show();
+      //this.achievements.show();
       this.signin.hide();
       this.signout.show();
     } else {
-      this.leaderboard.hide();
-      this.achievements.hide();
+      //this.leaderboard.hide();
+      //this.achievements.hide();
       this.signin.show();
       this.signout.hide();
     }
@@ -79,8 +79,8 @@ exports = Class(View, function(supr) {
     return new ButtonView({
       superview: this.menuContainer,
       centerX: true,
-      width: 290,
-      height: 60,
+      width: 362,
+      height: 75,
       bottom: 15,
       order: order,
       images: {
