@@ -33,8 +33,8 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'linear',
       direction: 'vertical',
-      justifyContent: 'space',
-      height: 400
+      justifyContent: 'center',
+      height: 500
     });
     this.continue = this.addMenuEntry('continue', 1);
     this.addMenuEntry('new', 2);
@@ -76,22 +76,23 @@ exports = Class(View, function(supr) {
   };
 
   this.addMenuEntry = function(text, order) {
-    var view = new ButtonView({
+    return new ButtonView({
       superview: this.menuContainer,
       centerX: true,
       width: 290,
       height: 60,
-      size: 50,
+      bottom: 15,
       order: order,
       images: {
         up: 'resources/images/btn_' + text + '.png',
         down: 'resources/images/btn_' + text + '_down.png'
+      },
+      on: {
+        up: bind(this, function() {
+          this.emit(text);
+        })
       }
     });
-    view.on('InputOut', bind(this, function() {
-      this.emit(text);
-    }));
-    return view;
   };
 
 });
