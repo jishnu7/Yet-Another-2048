@@ -49,10 +49,12 @@ exports = function() {
   };
 
   obj.login = function(cb, force) {
-    if(obj.isLoggedIn() !== false || force) {
+    if(!busy && (obj.isLoggedIn() !== false || force)) {
+      busy = true;
       PlayGame.login(function(evnt) {
         setLoggedIn(evnt);
         cb && cb(evnt);
+        busy = false;
       });
     }
   };
