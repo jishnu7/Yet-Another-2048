@@ -99,7 +99,7 @@ exports = Class(GC.Application, function () {
       }
     });
 
-    menu.on('Continue', bind(this.view, function() {
+    menu.on('continue', bind(this.view, function() {
       grid.initCells();
       game.setHandleEvents(true);
 
@@ -108,29 +108,32 @@ exports = Class(GC.Application, function () {
       this.push(game);
     }));
 
-    menu.on('New-Game', bind(this, function() {
+    menu.on('new', bind(this, function() {
       grid.setMode('classic');
       grid.setGameState('over');
-      menu.emit('Continue');
+      menu.emit('continue');
     }));
 
-    menu.on('Time-Mode', bind(this, function() {
+    menu.on('time', bind(this, function() {
       grid.setMode('time');
       grid.setGameState('over');
-      menu.emit('Continue');
+      menu.emit('continue');
     }));
 
-    menu.on('Sign-In', bind(this, this.playGameLogin, true));
-    menu.on('Sign-Out', function() {
+    menu.on('signin', bind(this, this.playGameLogin, true));
+    menu.on('signout', function() {
       PlayGame.logout();
       menu.updateLogin();
     });
 
-    menu.on('Leaderboard', function() {
+    menu.on('leaderboard', function() {
       PlayGame.showLeaderBoard();
     });
-    menu.on('Achievements', function() {
+    menu.on('achievements', function() {
       PlayGame.showAchievements();
+    });
+
+    menu.on('stats', function() {
     });
 
     this.view.push(menu);

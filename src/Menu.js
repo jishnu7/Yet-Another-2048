@@ -1,10 +1,9 @@
 /* jshint ignore:start */
 import ui.View as View;
-import ui.TextView as TextView;
 import ui.ImageView as ImageView;
 import ui.resource.Image as Image;
+import src.gc.ButtonView as ButtonView;
 
-import src.Utils as Utils;
 import src.PlayGame as PlayGame;
 /* jshint ignore:end */
 
@@ -34,15 +33,19 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'linear',
       direction: 'vertical',
-      justifyContent: 'center',
+      justifyContent: 'space',
       height: 400
     });
-    this.continue = this.addMenuEntry('Continue', 1);
-    this.play = this.addMenuEntry('New Game', 2);
-    this.play = this.addMenuEntry('Time Mode', 3);
-    this.signin = this.addMenuEntry('Sign In', 4);
-    this.leaderboard = this.addMenuEntry('Leaderboard', 5);
-    this.achievements = this.addMenuEntry('Achievements', 6);
+    this.continue = this.addMenuEntry('continue', 1);
+    this.addMenuEntry('new', 2);
+    this.addMenuEntry('time', 3);
+    this.addMenuEntry('stats', 7);
+
+    this.signin = this.addMenuEntry('signin', 4);
+    this.signout = this.addMenuEntry('signout', 7);
+
+    this.leaderboard = this.addMenuEntry('leaderboard', 5);
+    this.achievements = this.addMenuEntry('achievements', 6);
     this.updateLogin();
     this.refresh();
     //this.addMenuEntry(container, 'How to Play');
@@ -61,35 +64,32 @@ exports = Class(View, function(supr) {
     if(PlayGame.isLoggedIn()) {
       this.leaderboard.show();
       this.achievements.show();
-      this.signin.updateOpts({
-        text: 'Sign Out',
-        order: 7
-      });
+      this.signin.hide();
+      this.signout.show();
     } else {
       this.leaderboard.hide();
       this.achievements.hide();
-      this.signin.updateOpts({
-        text: 'Sign In',
-        order: 4
-      });
+      this.signin.show();
+      this.signout.hide();
     }
     this.menuContainer.needsReflow();
   };
 
   this.addMenuEntry = function(text, order) {
-    var view = new TextView({
+    var view = new ButtonView({
       superview: this.menuContainer,
       centerX: true,
-      width: 300,
-      height: 100,
+      width: 290,
+      height: 60,
       size: 50,
-      color: Utils.colors.text,
-      fontFamily: Utils.fonts.text,
-      text: text,
-      order: order
+      order: order,
+      images: {
+        up: 'resources/images/btn_' + text + '.png',
+        down: 'resources/images/btn_' + text + '_down.png'
+      }
     });
     view.on('InputOut', bind(this, function() {
-      this.emit(view.getText().replace(/ /g, '-'));
+      this.emit(text);
     }));
     return view;
   };
