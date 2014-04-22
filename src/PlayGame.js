@@ -4,7 +4,7 @@ import plugins.gameplay.gameplay as PlayGame;
 import src.Utils as Utils;
 /* jshint ignore:end */
 
-exports = function() {
+exports = (function() {
   var obj = {},
     busy = false,
     json = JSON.parse(CACHE['resources/conf/play_game.json']),
@@ -29,11 +29,11 @@ exports = function() {
     */
     // leaderboards
     getCurrentRecord = function(type) {
-      var ls = localStorage.getItem("record_" + type);
+      var ls = localStorage.getItem('record_' + type);
       return ls ? parseInt(ls, 10): 0;
     },
     setRecord = function(type, value) {
-      localStorage.setItem("record_" + type, value);
+      localStorage.setItem('record_' + type, value);
     },
     setLoggedIn = function(value) {
       localStorage.setItem('playgame', value);
@@ -106,4 +106,4 @@ exports = function() {
   };
 
   return obj;
-}();
+})();
