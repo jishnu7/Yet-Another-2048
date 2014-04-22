@@ -79,13 +79,10 @@ exports = (function() {
       return;
     }
     if(achievements.hasOwnProperty(val)) {
-      var data = getQueue();
-      data.push({
-          type: 'sendAchievement',
-          data: [achievements[val], val]
-        });
-      //setAchieved(val);
-      this.run(data);
+      obj.run({
+        type: 'sendAchievement',
+        data: [achievements[val], val]
+      });
     }
   };
 
@@ -93,16 +90,10 @@ exports = (function() {
     if(!obj.isLoggedIn()) {
       return;
     }
-    var data = getQueue();
-
-    if(val > getCurrentRecord(type)) {
-      data.push({
-          type: 'sendScore',
-          data: [leaderboards[type], val]
-        });
-      setRecord(type, val);
-    }
-    this.run(data);
+    obj.run({
+      type: 'sendScore',
+      data: [leaderboards[type], val]
+    });
   };
 
   return obj;
