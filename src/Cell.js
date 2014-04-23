@@ -1,6 +1,5 @@
 /* jshint ignore:start */
 import ui.ImageView as ImageView;
-import ui.TextView as TextView;
 import ui.resource.Image as Image;
 import src.gc.ScoreView as ScoreView;
 
