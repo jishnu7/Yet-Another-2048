@@ -12,6 +12,7 @@ import src.Menu as Menu;
 import src.Utils as Utils;
 import src.History as History;
 import src.PlayGame as PlayGame;
+import src.Stats as Stats;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -126,14 +127,16 @@ exports = Class(GC.Application, function () {
       menu.updateLogin();
     });
 
-    menu.on('leaderboard', function() {
-      PlayGame.showLeaderBoard();
-    });
-    menu.on('achievements', function() {
-      PlayGame.showAchievements();
-    });
+    var stats;
+    menu.on('stats', bind(this, function() {
+      if(!stats) {
+        stats = new Stats({});
+      }
+      this.push(stats);
+      History.add(bind(this, this.pop));
+    }));
 
-    menu.on('stats', function() {
+    menu.on('settings', function() {
     });
 
     this.view.push(menu);
