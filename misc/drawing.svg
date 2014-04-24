@@ -454,13 +454,13 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="243.17184"
-     inkscape:cy="245.84375"
+     inkscape:zoom="0.25000001"
+     inkscape:cx="924.92442"
+     inkscape:cy="-335.5553"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     showguides="false"
+     showguides="true"
      inkscape:guide-bbox="true"
      inkscape:window-width="1918"
      inkscape:window-height="1060"
@@ -518,6 +518,10 @@
        orientation="1,0"
        position="-845.25,-548.8125"
        id="guide4424" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="977.22155,776.40322"
+       id="guide4369" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -527,7 +531,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -542,8 +546,8 @@
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        ry="0"
-       y="1234.7622"
-       x="854.27197"
+       y="1294.7622"
+       x="186.27199"
        height="512"
        width="512"
        id="rect4146"
@@ -555,8 +559,8 @@
        id="rect4148"
        width="484"
        height="484"
-       x="868.27197"
-       y="1248.0374"
+       x="200.27199"
+       y="1308.0374"
        ry="33.085938"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
@@ -1787,62 +1791,62 @@
     <text
        xml:space="preserve"
        style="font-size:32.48669815px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="1605.5332"
-       y="1529.1632"
+       x="-610.46674"
+       y="709.16321"
        id="text3153"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3155"
-         x="1605.5332"
-         y="1529.1632"
+         x="-610.46674"
+         y="709.16321"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Raleway;-inkscape-font-specification:Raleway">Play Games</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:63.67356491px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="1548.7252"
-       y="1590.3485"
+       x="-667.27472"
+       y="770.34851"
        id="text3157"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3159"
-         x="1548.7252"
-         y="1590.3485"
+         x="-667.27472"
+         y="770.34851"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Raleway;-inkscape-font-specification:Raleway">SIGN OUT</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:32.48669815px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="1717.4862"
-       y="1220.8647"
+       x="-498.51373"
+       y="400.86478"
        id="text3153-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3155-1"
-         x="1717.4862"
-         y="1220.8647"
+         x="-498.51373"
+         y="400.86478"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Raleway;-inkscape-font-specification:Raleway">Sound</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:63.67356491px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="1704.964"
-       y="1280.6215"
+       x="-511.03595"
+       y="460.62149"
        id="text3157-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3159-2"
-         x="1704.964"
-         y="1280.6215"
+         x="-511.03595"
+         y="460.62149"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Raleway;-inkscape-font-specification:Raleway">OFF</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:32.48669815px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="1595.725"
-       y="1669.6239"
+       x="-620.27496"
+       y="849.6239"
        id="text3153-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3155-13"
-         x="1595.725"
-         y="1669.6239"
+         x="-620.27496"
+         y="849.6239"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Raleway;-inkscape-font-specification:Raleway">Play Games</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-opacity:1"
@@ -3408,7 +3412,7 @@
        width="263.93887" />
     <g
        id="g5162"
-       transform="matrix(3.7682799,0,0,3.7682799,923.31937,1248.3575)"
+       transform="matrix(3.7682799,0,0,3.7682799,255.31939,1308.3575)"
        inkscape:export-filename="/home/jishnu/git/2048/misc/lb_tile.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
@@ -3431,16 +3435,16 @@
     <text
        sodipodi:linespacing="125%"
        id="text5170"
-       y="1689.9905"
-       x="1055.551"
+       y="1749.9905"
+       x="387.55106"
        style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#657277;fill-opacity:1;stroke:none;font-family:Signika;-inkscape-font-specification:Signika"
        xml:space="preserve"
        inkscape:export-filename="/home/jishnu/git/2048/misc/lb_tile.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          style="font-size:56px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-         y="1689.9905"
-         x="1055.551"
+         y="1749.9905"
+         x="387.55106"
          id="tspan5172"
          sodipodi:role="line">TILE</tspan></text>
     <rect
@@ -3449,8 +3453,8 @@
        id="rect4180"
        width="512"
        height="512"
-       x="311.09424"
-       y="1234.7626"
+       x="-356.90573"
+       y="1294.7626"
        ry="0"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
@@ -3462,8 +3466,8 @@
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        ry="33.085938"
-       y="1248.4091"
-       x="325.09424"
+       y="1308.4091"
+       x="-342.90573"
        height="484"
        width="484"
        id="rect4182"
@@ -3473,7 +3477,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        inkscape:export-filename="/home/jishnu/git/2048/misc/lb_tile.png"
-       transform="matrix(3.7682799,0,0,3.7682799,380.1417,1248.7292)"
+       transform="matrix(3.7682799,0,0,3.7682799,-287.85828,1308.7292)"
        id="g4184">
       <path
          inkscape:connector-curvature="0"
@@ -3497,26 +3501,26 @@
        inkscape:export-filename="/home/jishnu/git/2048/misc/lb_score.png"
        sodipodi:linespacing="125%"
        id="text4196"
-       y="1690.3622"
-       x="473.99988"
+       y="1750.3622"
+       x="-194.00011"
        style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#657277;fill-opacity:1;stroke:none;font-family:Signika;-inkscape-font-specification:Signika"
        xml:space="preserve"><tspan
          style="font-size:56px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-         y="1690.3622"
-         x="473.99988"
+         y="1750.3622"
+         x="-194.00011"
          id="tspan4198"
          sodipodi:role="line">SCORE</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#657277;fill-opacity:1;stroke:none;font-family:Signika;-inkscape-font-specification:Signika"
-       x="489.88135"
-       y="1182.6613"
+       x="-178.11864"
+       y="1242.6613"
        id="text3376"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3378"
-         x="489.88135"
-         y="1182.6613"
+         x="-178.11864"
+         y="1242.6613"
          style="font-size:60px;letter-spacing:32.3300705px;fill:#657277;fill-opacity:1">1234567890:</tspan></text>
     <rect
        inkscape:label="#rect4867"
@@ -3540,7 +3544,7 @@
        ry="12.396606" />
     <g
        id="btn_signin"
-       transform="translate(-469.7673,652.76609)"
+       transform="translate(-1137.7673,712.76609)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <rect
@@ -3653,7 +3657,7 @@
     </g>
     <g
        id="btn_signout"
-       transform="translate(-1228.8479,640.28135)"
+       transform="translate(-1896.8479,700.28135)"
        inkscape:label="#btn_signout"
        inkscape:export-xdpi="89.999931"
        inkscape:export-ydpi="89.999931">
@@ -3691,7 +3695,7 @@
     </g>
     <g
        id="btn_leaderboard"
-       transform="translate(-1230.8479,856.56586)"
+       transform="translate(-173.23271,-609.05648)"
        inkscape:label="#btn_leaderboard"
        inkscape:export-xdpi="89.999908"
        inkscape:export-ydpi="89.999908">
@@ -3740,7 +3744,7 @@
     </g>
     <g
        id="btn_achievements"
-       transform="translate(-1229.8479,850.36053)"
+       transform="translate(168.25257,-685.84758)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <rect
@@ -3786,7 +3790,7 @@
        style="fill:#657277;fill-opacity:1"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       transform="translate(-3382.0922,1514.4267)"
+       transform="translate(-4152.0922,1164.4267)"
        id="g4738">
       <text
          inkscape:export-ydpi="90"
@@ -3968,7 +3972,7 @@
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_time_down.png"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       transform="translate(-1610.8479,628.71258)"
+       transform="translate(-2278.8479,688.71258)"
        id="btn_time_down">
       <rect
          ry="10.624136"
@@ -4052,7 +4056,7 @@
            style="fill:#e9e9e9;fill-opacity:1">
           <polygon
              id="polygon5629"
-             points="55.075,10.156 53.275,8.356 44.675,8.356 42.826,10.156 42.775,10.156 42.775,16.156 55.075,16.156 "
+             points="53.275,8.356 44.675,8.356 42.826,10.156 42.775,10.156 42.775,16.156 55.075,16.156 55.075,10.156 "
              style="fill:#e9e9e9;fill-opacity:1" />
         </g>
         <g
@@ -4070,7 +4074,7 @@
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_new_down.png"
        inkscape:export-ydpi="112.50002"
        inkscape:export-xdpi="112.50002"
-       transform="translate(-1610.8479,632.33013)"
+       transform="translate(-2278.8479,692.33013)"
        id="btn_new_down">
       <rect
          ry="10.624136"
@@ -4112,7 +4116,7 @@
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_continue_down.png"
        inkscape:export-ydpi="89.999954"
        inkscape:export-xdpi="89.999954"
-       transform="translate(-1610.8479,632.00536)"
+       transform="translate(-2278.8479,692.00536)"
        id="btn_continue_down">
       <rect
          style="fill:#657277;fill-opacity:1;stroke:none"
@@ -4147,7 +4151,7 @@
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_stats_down.png"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       transform="translate(-1629.8479,599.8728)"
+       transform="translate(-2297.8479,659.8728)"
        id="btn_stats_down">
       <rect
          style="fill:#657277;fill-opacity:1;stroke:none"
@@ -4241,7 +4245,7 @@
        inkscape:export-ydpi="89.999977"
        inkscape:export-xdpi="89.999977"
        id="btn_settings_down"
-       transform="translate(-857.67862,613.91919)">
+       transform="translate(-1525.6786,673.91919)">
       <rect
          ry="10.624136"
          y="775.86938"
@@ -4283,7 +4287,7 @@
     <g
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       transform="translate(-848.7673,655.76609)"
+       transform="translate(-1516.7673,715.76609)"
        id="btn_signin_down"
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_signin_down.png">
       <rect
@@ -4322,7 +4326,7 @@
        inkscape:export-ydpi="89.999931"
        inkscape:export-xdpi="89.999931"
        inkscape:label="#btn_signout_down"
-       transform="translate(-1607.8479,643.28135)"
+       transform="translate(-2275.8479,703.28135)"
        id="btn_signout_down"
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_signout_down.png">
       <rect
@@ -4335,7 +4339,7 @@
          style="fill:#657277;fill-opacity:1;stroke:none" />
       <text
          xml:space="preserve"
-         style="font-size:25.41469383000000093px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-size:25.41469383px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
          x="1241.334"
          y="932.50092"
          id="text5730"
@@ -4345,7 +4349,7 @@
            id="tspan5732"
            x="1241.334"
            y="932.50092"
-           style="font-size:25.41469383000000093px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">SIGN OUT</tspan></text>
+           style="font-size:25.41469383px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">SIGN OUT</tspan></text>
       <image
          style="opacity:0.2;fill:none"
          width="103.65643"
@@ -4361,7 +4365,7 @@
        inkscape:export-ydpi="89.999908"
        inkscape:export-xdpi="89.999908"
        inkscape:label="#btn_leaderboard"
-       transform="translate(-1609.8479,859.56586)"
+       transform="translate(-2277.8479,919.56586)"
        id="btn_leaderboard_down"
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_leaderboard_down.png">
       <rect
@@ -4377,10 +4381,10 @@
          id="text5740"
          y="788.39081"
          x="1208.1862"
-         style="font-size:25.41469383000000093px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-size:25.41469383px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
          xml:space="preserve"
          transform="scale(0.99611456,1.0039006)"><tspan
-           style="font-size:25.41469383000000093px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
+           style="font-size:25.41469383px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
            y="788.39081"
            x="1208.1862"
            id="tspan5742"
@@ -4388,7 +4392,7 @@
       <g
          id="g5744"
          transform="matrix(0.84187284,0,0,0.84845313,1127.5902,734.48216)"
-         style="opacity:0.20000000000000001;fill:#e9e9e9;fill-opacity:1"
+         style="opacity:0.2;fill:#e9e9e9;fill-opacity:1"
          clip-path="url(#clipPath5589)">
         <path
            style="fill:#e9e9e9;fill-opacity:1"
@@ -4410,7 +4414,7 @@
     <g
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       transform="translate(-1608.8479,853.36053)"
+       transform="translate(-2276.8479,913.36053)"
        id="btn_achievements_down"
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_achievements_down.png">
       <rect
@@ -4423,7 +4427,7 @@
          style="fill:#657277;fill-opacity:1;stroke:none" />
       <text
          xml:space="preserve"
-         style="font-size:25.41469383000000093px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-size:25.41469383px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
          x="1203.6453"
          y="863.2912"
          id="text5756"
@@ -4433,11 +4437,11 @@
            id="tspan5758"
            x="1203.6453"
            y="863.2912"
-           style="font-size:25.41469383000000093px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">ACHIEVEMENTS</tspan></text>
+           style="font-size:25.41469383px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">ACHIEVEMENTS</tspan></text>
       <g
          id="g5760"
          transform="matrix(0.59076329,0,0,0.59538089,1250.5972,818.46909)"
-         style="opacity:0.20000000000000001;fill:#e9e9e9;fill-opacity:1"
+         style="opacity:0.2;fill:#e9e9e9;fill-opacity:1"
          clip-path="url(#clipPath5595)">
         <g
            transform="translate(-191.89396,16.281658)"
@@ -4452,5 +4456,164 @@
         </g>
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:56px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#424242;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+       x="977.22156"
+       y="111.9102"
+       id="text3547"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3549"
+         x="977.22156"
+         y="111.9102"
+         style="font-size:64px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light">Stats</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:56px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#424242;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+       x="977.22156"
+       y="275.95895"
+       id="text4319"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4321"
+         x="977.22156"
+         y="275.95895"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light">Time</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:56px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#424242;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+       x="977.22156"
+       y="349.49805"
+       id="text4323"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="349.49805"
+         id="tspan4327"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light">total time                     8 days 10 hours 60 minutes</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="384.49805"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4331">average                       10 minutes</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="419.49805"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4405">highest                         20 min</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="454.49805"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4333" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:56px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#424242;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+       x="977.22156"
+       y="604.05652"
+       id="text4335"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="604.05652"
+         id="tspan4339"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light">number</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:56px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#424242;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+       x="977.22156"
+       y="649.31128"
+       id="text4343"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4345"
+         x="977.22156"
+         y="649.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light">puzzles                        150</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="684.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4347">8s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="719.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4349">16s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="754.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4351">32s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="789.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4353">64s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="824.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4355">128s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="859.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4357">256s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="894.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4359">512s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="929.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4361">1024s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="964.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4363">2048s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="999.31128"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4365">4096s</tspan><tspan
+         sodipodi:role="line"
+         x="977.22156"
+         y="1034.3113"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         id="tspan4367">8192s</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4387"
+       y="489.50519"
+       x="977.22156"
+       style="font-size:56px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#424242;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         y="489.50519"
+         x="977.22156"
+         id="tspan4389"
+         sodipodi:role="line">Score</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4391"
+       y="522.03204"
+       x="977.22156"
+       style="font-size:56px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#424242;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+       xml:space="preserve"><tspan
+         id="tspan4397"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         y="522.03204"
+         x="977.22156"
+         sodipodi:role="line">average                       405050</tspan><tspan
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;fill:#424242;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+         y="557.03204"
+         x="977.22156"
+         sodipodi:role="line"
+         id="tspan4403">high</tspan></text>
   </g>
 </svg>
