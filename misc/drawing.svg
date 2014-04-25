@@ -23,6 +23,14 @@
   <defs
      id="defs4">
     <linearGradient
+       id="linearGradient4436"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#297be6;stop-opacity:1;"
+         offset="0"
+         id="stop4438" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient4619"
        osb:paint="solid">
       <stop
@@ -446,6 +454,17 @@
          y="547.45837"
          ry="10.624136" />
     </clipPath>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask5994">
+      <image
+         y="883.66571"
+         x="1121.8763"
+         id="image5996"
+         xlink:href="data:image/png;base64,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 SUVORK5CYII= "
+         height="88"
+         width="88" />
+    </mask>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -454,9 +473,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.25000001"
-     inkscape:cx="924.92442"
-     inkscape:cy="-335.5553"
+     inkscape:zoom="2.0000001"
+     inkscape:cx="-500.025"
+     inkscape:cy="-632.86145"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -531,7 +550,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -3659,8 +3678,8 @@
        id="btn_signout"
        transform="translate(-1896.8479,700.28135)"
        inkscape:label="#btn_signout"
-       inkscape:export-xdpi="89.999931"
-       inkscape:export-ydpi="89.999931">
+       inkscape:export-xdpi="112.49989"
+       inkscape:export-ydpi="112.49989">
       <rect
          style="fill:#e9e9e9;fill-opacity:1;stroke:none"
          id="rect4793"
@@ -3682,16 +3701,15 @@
            x="1241.334"
            id="tspan4797"
            sodipodi:role="line">SIGN OUT</tspan></text>
-      <image
-         transform="matrix(0.82113043,0,0,0.82113043,991.62283,141.74296)"
-         clip-path="url(#clipPath5583)"
-         y="904.2771"
-         x="161.40222"
-         id="image4799"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAABHNCSVQICAgIfAhkiAAABYNJREFU eJztnG2IFVUYx//H1/VlfclWTdYypDcMt+hF14gKtowILTKKYokyog8FBgWBkR+iL/Wp96CgT0Ul GyIREfUhrYQMxKIiKouwqJZ1Ey1Z9frrw4xxnWbO3Dtzzr1zd88PluXOmfM85/zvc5+ZOfPMSIFA IBAIBAKBQCAQCAQCgUAgEJgImHY5BiZJ6pV0tqSLJPVLOk/SmZJOK2j2VUkPGWMOOxlkJwL0As8D x3DHHuCcds8tjZZFMDBP0muSboo3/SPpRUlfSKpJWiXpXknzLGa+lPR+YtsOSe8ZY3A64E4CWA/U 4mirARviFJHczwBrgb8zIvUY0N+OOVQW4Nk6gcaA5Q30WQAMW1LC6laMvfIAjyeEubWJvkvqoj5J DSh6IBwfAAMJUUbT0kKOjbstUfypr7FXHmBWnA7q2VTAziRgxCLy5T7GX3mAF1LEWFHQ1qBF4F2u x155gDkZYhTKmcB0i8AAc1zPwSVN5cQGWZ+x/VgRY8aYMUnbLLtU8gLjJD4Evj9j+9QSNp+ztJ1V wq53nAoMGElrMppnlzC9x9J2egm73nEdwdMtbctK2P3L0lbml+Ed1wJPtrQNFDUarzPszmj+o6jd VuBaYNuB7ME4hRTl+ya3VwKnAhtjjko6mtE8T9Hab1Gy0sSPJWwqec5XxlYaPs4i3rK0PVLCbtoy 5u4Jt7gOrM65MJhb0O7OFFtXOBiv1wh2DtH6wW8WgZ8paPdIws6HjsbbWQJLErAqJ4qbWpcAlib6 DwMzHY218wSWJOBpi8CHgJ4mbL1e13cMWOxwnB0rsAGGckTubcDOXXV9RlyKG9vvTIElCZgMvG0R uQZsBKal9F0CbKvb9xcKHiBzxuhV4JbcVQZulvSGpC7Lbp9I2qtobeFqSYvq2o5KOsMYc6CAb6ei GWPaVktiBZgCXAu8a4noLNaV8OuUZv235dsgumSeJmmWpJmSjkjqk/RRyu7HJU03xpwo6KutETzF pfNGiRdvxuK/A5IEXJax+76i4gbqAL7N+FUeodwiUZ7fUikgDx9rEUXJumfXJemOVg5kXAJszzm+ eKnm8R3BlQG4poGD+A0e/E4YgQ3ZebieLTjMyRNGYEkCljcgMMCbNFmGZfHpVeC2nKZJ/50Lz5A0 X1JP/H+BpD8lLczpfpukhcBaY0yheotW0coC7BmSLpV0naRBualn2C2p3xhTKzGuU6LW9aWwV4Hj KL1Y0pOSrk/Z5bCk7ZJ2Stqv6KLjhKJf1oCkLQ24eccYc4uTAXcK8QHrSuDnjPx5FQ3UlAErgYMN 5OR7WjGvSgDMBT5OEeEJoOnqHmAm8EGOwDVglo/5VApgBf+vCz4EnFvSrgEeyxF5o6t5VBLggozI WurQxwaLwF+78lM5gK44UpMMevC1ziJy2047vUL6Dc4RHF0MpPh7OUPg8ZeHgRkZk93s0efcDJ+V K2V1EWFZVZOfObCdijHmoNKrLY/78lkUFwLfnrHdd83YUBt8No3PCPadD39NfP7JGDMuIzjr4qF0 YV4O3YnPT3n21x6AXRkHnGH83kvbmvBX5hmQ6gJsyhAY4EZPPqdy6nPMjSwKdSbAYovAY0De2m4R n4/W+djPeL3AOAnwkkXkQ8Ayh776El+g02LAShL/ZH+3iFwD7qRkTiaqnq9/scf5ruZQeYheojFq ERngO2ANYHvcK812D/BKnZ1RoNJPeHoB6Ab25ogM0aththK9D+JCYBEwm2jtt5sor68GHga+SvQd Irr9NDEhekbjgQZEbpbPgb52z68yxNF4H9FRvijDwGYaqISvKq0qwJ4vaYWkSyStVPRCul5Fzy+f kDQsaZ+kbxQVYe+V9IMxxvaMciAQCAQCgUAgEAgEAoFAIBAYV/wLY8XCxZeIZwoAAAAASUVORK5C YII= "
-         height="104.46664"
-         width="103.65643"
-         style="opacity:0.2;fill:none" />
+      <rect
+         ry="10.624136"
+         y="897.08075"
+         x="1151.8479"
+         height="60"
+         width="290"
+         id="rect3662"
+         style="fill:#657277;fill-opacity:1;stroke:none"
+         mask="url(#mask5994)" />
     </g>
     <g
        id="btn_leaderboard"
@@ -4339,7 +4357,7 @@
          style="fill:#657277;fill-opacity:1;stroke:none" />
       <text
          xml:space="preserve"
-         style="font-size:25.41469383px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-size:25.41469383000000093px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
          x="1241.334"
          y="932.50092"
          id="text5730"
@@ -4349,7 +4367,7 @@
            id="tspan5732"
            x="1241.334"
            y="932.50092"
-           style="font-size:25.41469383px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">SIGN OUT</tspan></text>
+           style="font-size:25.41469383000000093px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">SIGN OUT</tspan></text>
       <image
          style="opacity:0.2;fill:none"
          width="103.65643"
