@@ -13,6 +13,7 @@ import src.Utils as Utils;
 import src.History as History;
 import src.PlayGame as PlayGame;
 import src.Stats as Stats;
+import src.Settings as Settings;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -127,7 +128,7 @@ exports = Class(GC.Application, function () {
       menu.updateLogin();
     });
 
-    var stats;
+    var stats, settings;
     menu.on('stats', bind(this, function() {
       if(!stats) {
         stats = new Stats({});
@@ -136,8 +137,13 @@ exports = Class(GC.Application, function () {
       History.add(bind(this, this.pop));
     }));
 
-    menu.on('settings', function() {
-    });
+    menu.on('settings', bind(this, function() {
+      if(!settings) {
+        settings = new Settings({});
+      }
+      this.push(settings);
+      History.add(bind(this, this.pop));
+    }));
 
     this.view.push(menu);
   };
