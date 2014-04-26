@@ -6,7 +6,7 @@ This is a clone of popular game [2048](http://gabrielecirulli.github.io/2048/), 
 Screenshot
 ----
 
-t![Screenshot](http://androidtweak.in/downloads/yatwozerofoureight.png)
+![Screenshot](http://androidtweak.in/downloads/yatwozerofoureight.png)
 
 Resources
 ----
@@ -17,3 +17,7 @@ Images:
 - [Reload](http://thenounproject.com/term/reload/30351/) by Grant Fisher from The Noun Project, CC
 - [Medal](http://thenounproject.com/term/medal/13720/) by Vivian Ziereisen from The Noun Project, CC
 - [Trophy](http://thenounproject.com/term/trophy/17975/) by thiyagu from The Noun Project, CC
+- [Diagram](http://thenounproject.com/term/diagram/23497/) by Juan Pablo Bravo from The Noun Project, CC
+- [Play](http://thenounproject.com/term/play/6506/) by Mateo Zlatar from The Noun Project, CC
+- [Gear](http://thenounproject.com/term/gear/25723/) by Casey Speer from The Noun Project, CC
+- [Stopwatch](http://thenounproject.com/term/stopwatch/27551/) by Ryan Dell, CC
