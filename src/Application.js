@@ -33,7 +33,7 @@ exports = Class(GC.Application, function () {
         merge: {
           volume: 1
         },
-        swype: {
+        swipe: {
           volume: 1
         }
       }
@@ -78,7 +78,7 @@ exports = Class(GC.Application, function () {
     game.on('Swipe', bind(this, function(angle, direction) {
       if(!busy) {
         busy = true;
-        audio.play('swype');
+        audio.play('swipe');
         var callback = new Callback();
         callback.run(function(newCell) {
           busy = false;
