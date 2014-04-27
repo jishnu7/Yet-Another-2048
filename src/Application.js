@@ -126,10 +126,6 @@ exports = Class(GC.Application, function () {
     }));
 
     menu.on('signin', bind(this, this.playGameLogin, true));
-    menu.on('signout', function() {
-      PlayGame.logout();
-      menu.updateLogin();
-    });
 
     var stats, settings;
     menu.on('stats', bind(this, function() {
@@ -145,7 +141,14 @@ exports = Class(GC.Application, function () {
         settings = new Settings({
           audio: audio
         });
+
+        settings.on('signout', function() {
+          PlayGame.logout();
+          menu.updateLogin();
+          settings.update();
+        });
       }
+      settings.update();
       this.push(settings);
       History.add(bind(this, this.pop));
     }));
