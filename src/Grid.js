@@ -434,7 +434,7 @@ exports = Class(GridView, function(supr) {
   };
 
   this.findFarthestPosition = function (cell, vector) {
-    var previous, ret = {};
+    var previous;
 
     do {
       previous = cell;
@@ -531,26 +531,12 @@ exports = Class(GridView, function(supr) {
 
     var img = new ImageView({
       superview: bg,
-      width: 400,
-      height: 400,
+      width: 500,
+      height: 500,
       image: 'resources/images/replay.png',
       x: 0,
       y: 0,
       centerX: true
-    });
-
-    var title = new TextView({
-      superview: img,
-      layout: 'box',
-      centerX: true,
-      centerY: true,
-      width: 200,
-      height: 50,
-      offsetY: -10,
-      inLayout: false,
-      text: 'Game Over!',
-      color: Utils.colors.text_bright,
-      fontFamily: Utils.fonts.text
     });
 
     img.on('InputOut', bind(this, function() {
@@ -558,9 +544,6 @@ exports = Class(GridView, function(supr) {
     }));
 
     return {
-      setTitle: function(msg) {
-        title.setText(msg);
-      },
       show: function() {
         bg.style.visible = true;
         animate(bg).

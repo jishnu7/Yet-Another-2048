@@ -477,6 +477,18 @@
          y="0.94346303"
          ry="17.372776" />
     </clipPath>
+    <filter
+       inkscape:collect="always"
+       id="filter4694"
+       x="-0.35751869"
+       width="1.7150374"
+       y="-1.1835458"
+       height="3.3670916">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="27.63399"
+         id="feGaussianBlur4696" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -486,8 +498,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.9819393"
-     inkscape:cx="-752.27028"
-     inkscape:cy="-591.0023"
+     inkscape:cx="1282.7742"
+     inkscape:cy="-309.15482"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -495,8 +507,8 @@
      inkscape:guide-bbox="true"
      inkscape:window-width="1473"
      inkscape:window-height="894"
-     inkscape:window-x="139"
-     inkscape:window-y="145"
+     inkscape:window-x="23"
+     inkscape:window-y="184"
      inkscape:window-maximized="0">
     <sodipodi:guide
        orientation="1,0"
@@ -563,6 +575,16 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-28.362183)">
+    <rect
+       style="opacity:0.39655175;fill:#e9e9e9;fill-opacity:1;stroke:none"
+       id="replay_back"
+       width="500"
+       height="500"
+       x="1020"
+       y="1212.3622"
+       ry="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <rect
        rx="0"
        inkscape:label="#rect5146"
@@ -1654,30 +1676,6 @@
          x="1920.0422"
          y="-1206.9518"
          style="font-size:210.00061035px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light">2048</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:137.90652466px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#33b5e5;fill-opacity:1;stroke:none;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-       x="120.00008"
-       y="-1095.4667"
-       id="text2989-7"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan2991-4"
-         x="120.00008"
-         y="-1095.4667"
-         style="font-size:137.90652466px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#33b5e5;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">Yet Another</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:687.87469482px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#33b5e5;fill-opacity:1;stroke:none;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-       x="90.441879"
-       y="-655.69379"
-       id="text2985-1"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan2987-6"
-         x="90.441879"
-         y="-655.69379"
-         style="font-size:687.87469482px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#33b5e5;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">2048</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:687.87469482px;font-style:normal;font-variant:normal;font-weight:100;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#33b5e5;fill-opacity:1;stroke:none;font-family:Raleway;-inkscape-font-specification:Raleway Thin"
@@ -3809,44 +3807,6 @@
       </g>
     </g>
     <g
-       style="fill:#657277;fill-opacity:1"
-       inkscape:export-ydpi="90"
-       inkscape:export-xdpi="90"
-       transform="translate(-4152.0922,1164.4267)"
-       id="g4738">
-      <text
-         inkscape:export-ydpi="90"
-         inkscape:export-xdpi="90"
-         sodipodi:linespacing="125%"
-         id="text4740"
-         y="-1380.6599"
-         x="4643.2622"
-         style="font-size:35.17078018px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;stroke:none;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-         xml:space="preserve"><tspan
-           style="font-size:35.17078018px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-           y="-1380.6599"
-           x="4643.2622"
-           id="tspan4742"
-           sodipodi:role="line">yet another</tspan></text>
-      <text
-         transform="scale(0.98881433,1.0113122)"
-         inkscape:export-ydpi="90"
-         inkscape:export-xdpi="90"
-         inkscape:export-filename="/home/jishnu/androidtweak.in/2048/text2989.png"
-         sodipodi:linespacing="125%"
-         id="text4744"
-         y="-1225.6588"
-         x="4463.4673"
-         style="font-size:236.27581787px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;stroke:none;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-         xml:space="preserve"
-         inkscape:label="#text4841"><tspan
-           style="font-size:236.27581787px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-           y="-1225.6588"
-           x="4463.4673"
-           id="tspan4746"
-           sodipodi:role="line">2048</tspan></text>
-    </g>
-    <g
        id="btn_stats"
        transform="translate(-931.8479,16.872796)"
        inkscape:export-xdpi="90"
@@ -4753,6 +4713,36 @@
              id="path4438" />
         </g>
       </g>
+    </g>
+    <g
+       id="replay"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(1.5265987,0,0,1.5265987,-592.45038,-846.40788)">
+      <rect
+         style="fill:#bcbcbc;fill-opacity:1;fill-rule:nonzero;stroke:none;opacity:1;filter:url(#filter4694)"
+         id="rect4472"
+         width="185.5052"
+         height="56.036343"
+         x="1127.2054"
+         y="1473.2734" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4452"
+         y="1515.0997"
+         x="1124.936"
+         style="font-size:36.13482666px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+         xml:space="preserve"><tspan
+           style="font-size:36.13482666px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Light"
+           y="1515.0997"
+           x="1124.936"
+           id="tspan4454"
+           sodipodi:role="line">Game Over</tspan></text>
+      <path
+         style="fill:#e9e9e9;fill-opacity:1"
+         inkscape:connector-curvature="0"
+         d="m 1167.5558,1663.1334 c 0.6958,-0.2421 1.064,-0.9974 0.8233,-1.6886 l -13.5552,-39.2472 c 31.8913,17.033 68.482,20.9628 103.3235,10.9784 35.5554,-10.1891 65.0166,-33.6169 82.9546,-65.9657 17.9381,-32.3487 22.2046,-69.7436 12.0171,-105.302 -10.1922,-35.5571 -33.6171,-65.0166 -65.9657,-82.9546 -32.3487,-17.9381 -69.7437,-22.2045 -105.3037,-12.0141 -35.5554,10.1892 -65.0149,33.614 -82.9529,65.9627 -17.9365,32.3457 -22.2045,69.7436 -12.0141,105.3037 0.2019,0.7049 0.9386,1.1133 1.6435,0.9114 0.7048,-0.202 1.1133,-0.9388 0.9114,-1.6436 -9.9952,-34.8784 -5.8096,-71.5577 11.7828,-103.283 17.5923,-31.7253 46.4875,-54.7025 81.3631,-64.6992 34.8751,-9.9891 71.5561,-5.8067 103.2814,11.7856 31.7253,17.5925 54.7025,46.4877 64.6992,81.3633 9.9939,34.8738 5.8082,71.553 -11.7857,103.2813 -17.5925,31.7253 -46.4877,54.7026 -81.3615,64.6963 -34.1691,9.7918 -70.058,5.9392 -101.3387,-10.7669 l 40.5267,-9.3006 c 0.7155,-0.165 1.1641,-0.8755 0.9963,-1.5926 -0.1649,-0.7154 -0.8771,-1.1611 -1.5925,-0.9962 l -45.3189,10.4028 15.1775,43.9455 c 0.2391,0.6942 0.9974,1.064 1.6885,0.8233 z"
+         id="path4441" />
     </g>
   </g>
 </svg>
