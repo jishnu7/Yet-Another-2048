@@ -67,11 +67,8 @@ exports = (function() {
   obj.showLeaderBoard = PlayGame.showLeaderBoard;
   obj.showAchievements = PlayGame.showAchievements;
 
-  obj.run = function(data) {
-    while(data.length > 0) {
-      var req = data.shift();
-      PlayGame[req.type].apply(this, req.data);
-    }
+  obj.run = function(req) {
+    PlayGame[req.type].apply(this, req.data);
   };
 
   obj.achievement = function(val) {
