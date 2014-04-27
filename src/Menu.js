@@ -34,7 +34,7 @@ exports = Class(View, function(supr) {
       layout: 'linear',
       direction: 'vertical',
       justifyContent: 'center',
-      height: 450
+      height: 550
     });
 
     this.continue = this.addMenuEntry('continue', 1);
