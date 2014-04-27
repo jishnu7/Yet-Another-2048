@@ -465,6 +465,18 @@
          height="88"
          width="88" />
     </mask>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3648">
+      <rect
+         style="fill:#e9e9e9;fill-opacity:1;stroke:none"
+         id="rect3650"
+         width="466.918"
+         height="98.113068"
+         x="37.72963"
+         y="0.94346303"
+         ry="17.372776" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -473,18 +485,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.0000001"
-     inkscape:cx="-500.025"
-     inkscape:cy="-632.86145"
+     inkscape:zoom="0.50000003"
+     inkscape:cx="-1193.3632"
+     inkscape:cy="-687.6243"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1918"
-     inkscape:window-height="1060"
-     inkscape:window-x="0"
-     inkscape:window-y="18"
+     inkscape:window-width="1473"
+     inkscape:window-height="894"
+     inkscape:window-x="139"
+     inkscape:window-y="145"
      inkscape:window-maximized="0">
     <sodipodi:guide
        orientation="1,0"
@@ -529,14 +541,6 @@
        orientation="1,0"
        position="-803.2733,-609.8796"
        id="guide4420" />
-    <sodipodi:guide
-       orientation="1,0"
-       position="-820.59742,-597.15168"
-       id="guide4422" />
-    <sodipodi:guide
-       orientation="1,0"
-       position="-845.25,-548.8125"
-       id="guide4424" />
     <sodipodi:guide
        orientation="1,0"
        position="977.22155,776.40322"
@@ -4633,5 +4637,122 @@
          x="977.22156"
          sodipodi:role="line"
          id="tspan4403">high</tspan></text>
+    <g
+       inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_soundon.png"
+       inkscape:export-ydpi="112.5"
+       inkscape:export-xdpi="112.5"
+       id="btn_soundon"
+       transform="translate(-840.54964,471.41577)">
+      <rect
+         ry="10.624136"
+         y="961.86938"
+         x="92.678619"
+         height="60"
+         width="290"
+         id="rect3604"
+         style="fill:#e9e9e9;fill-opacity:1;stroke:none" />
+      <text
+         xml:space="preserve"
+         style="font-size:25.41469383px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#657277;fill-opacity:1;stroke:none;font-family:Sans"
+         x="168.0166"
+         y="997.03772"
+         id="text3606"
+         sodipodi:linespacing="125%"
+         transform="scale(0.99611456,1.0039006)"><tspan
+           sodipodi:role="line"
+           id="tspan3608"
+           x="168.0166"
+           y="997.03772"
+           style="font-size:25.41469383px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">SOUND: ON</tspan></text>
+      <g
+         id="g3610"
+         transform="matrix(0.740001,0,0,0.740001,17.369892,914.62631)"
+         style="opacity:0.2;fill:#657277;fill-opacity:1"
+         clip-path="url(#clipPath5571)" />
+      <g
+         id="Capa_34"
+         transform="matrix(0.62109405,0,0,0.61153935,69.244972,961.29242)"
+         clip-path="url(#clipPath3648)"
+         style="fill:#657277;fill-opacity:1;opacity:0.2">
+        <g
+           id="g3583"
+           style="fill:#657277;fill-opacity:1">
+          <path
+             id="path3585"
+             d="m 49.999,38.227 c -6.646,0 -12.036,5.271 -12.036,11.772 0,6.505 5.391,11.781 12.036,11.781 6.651,0 12.04,-5.276 12.04,-11.781 0,-6.501 -5.389,-11.772 -12.04,-11.772 z"
+             inkscape:connector-curvature="0"
+             style="fill:#657277;fill-opacity:1" />
+          <path
+             id="path3587"
+             d="m 49.999,12.505 c -21.146,0 -38.349,16.821 -38.349,37.494 0,20.678 17.203,37.501 38.349,37.501 21.147,0 38.353,-16.823 38.353,-37.501 0,-20.673 -17.206,-37.494 -38.353,-37.494 z m 0,67.661 c -17.03,0 -30.835,-13.507 -30.835,-30.167 0,-16.656 13.806,-30.166 30.835,-30.166 17.03,0 30.84,13.51 30.84,30.166 0,16.66 -13.81,30.167 -30.84,30.167 z"
+             inkscape:connector-curvature="0"
+             style="fill:#657277;fill-opacity:1" />
+          <path
+             id="path3589"
+             d="M 49.999,1.089 C 22.386,1.089 0,22.989 0,49.999 0,77.014 22.386,98.911 49.999,98.911 77.613,98.911 100,77.014 100,49.999 100,22.989 77.613,1.089 49.999,1.089 z m 30.325,16.349 c 0.798,-0.779 2.096,-0.779 2.894,0 0.802,0.785 0.802,2.053 0,2.834 -0.798,0.784 -2.096,0.784 -2.894,0 -0.803,-0.781 -0.803,-2.048 0,-2.834 z M 49.999,3.981 c 1.135,0 2.051,0.896 2.051,2.004 0,1.107 -0.916,2.004 -2.051,2.004 -1.13,0 -2.045,-0.897 -2.045,-2.004 0,-1.108 0.915,-2.004 2.045,-2.004 z m -33.21,13.457 c 0.795,-0.779 2.094,-0.779 2.894,0 0.799,0.785 0.799,2.054 0.001,2.834 -0.801,0.785 -2.099,0.785 -2.899,0 -0.8,-0.78 -0.8,-2.048 0.004,-2.834 z M 5.075,51.936 c -1.13,0 -2.047,-0.897 -2.047,-2.001 0,-1.107 0.917,-2.005 2.047,-2.005 1.133,0 2.047,0.898 2.047,2.005 0,1.102 -0.914,2.001 -2.047,2.001 z m 14.608,30.488 c -0.799,0.783 -2.097,0.783 -2.895,0 -0.802,-0.779 -0.802,-2.051 0,-2.833 0.798,-0.78 2.096,-0.78 2.895,0 0.801,0.782 0.801,2.054 0,2.833 z m 30.316,13.457 c -1.13,0 -2.045,-0.895 -2.045,-2.003 0,-1.104 0.915,-2.001 2.045,-2.001 1.135,0 2.051,0.896 2.051,2.001 0,1.108 -0.916,2.003 -2.051,2.003 z M 83.218,82.424 c -0.8,0.783 -2.096,0.783 -2.896,0 -0.801,-0.777 -0.801,-2.048 0.003,-2.833 0.798,-0.78 2.094,-0.78 2.894,0 0.799,0.785 0.799,2.055 -10e-4,2.833 z m -33.219,6.79 c -22.092,0 -40.066,-17.591 -40.066,-39.215 0,-21.62 17.975,-39.209 40.066,-39.209 22.095,0 40.071,17.59 40.071,39.209 0,21.624 -17.976,39.215 -40.071,39.215 z M 94.928,51.936 c -1.132,0 -2.048,-0.897 -2.048,-2.001 0,-1.107 0.916,-2.005 2.048,-2.005 1.131,0 2.049,0.898 2.049,2.005 0,1.102 -0.918,2.001 -2.049,2.001 z"
+             inkscape:connector-curvature="0"
+             style="fill:#657277;fill-opacity:1" />
+        </g>
+      </g>
+    </g>
+    <g
+       transform="translate(-1215.5496,853.41575)"
+       id="btn_soundoff"
+       inkscape:export-xdpi="112.5"
+       inkscape:export-ydpi="112.5"
+       inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_soundoff.png"
+       inkscape:label="#btn_soundon">
+      <rect
+         style="fill:#657277;fill-opacity:1;stroke:none"
+         id="rect4422"
+         width="290"
+         height="60"
+         x="92.678619"
+         y="961.86938"
+         ry="10.624136" />
+      <text
+         transform="scale(0.99611456,1.0039006)"
+         sodipodi:linespacing="125%"
+         id="text4424"
+         y="997.03772"
+         x="162.03461"
+         style="font-size:25.41469383px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:25.41469383px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
+           y="997.03772"
+           x="162.03461"
+           id="tspan4426"
+           sodipodi:role="line">SOUND: OFF</tspan></text>
+      <g
+         clip-path="url(#clipPath5571)"
+         style="opacity:0.2;fill:#657277;fill-opacity:1"
+         transform="matrix(0.740001,0,0,0.740001,17.369892,914.62631)"
+         id="g4428" />
+      <g
+         style="opacity:0.20000000000000001;fill:#e9e9e9;fill-opacity:1"
+         clip-path="url(#clipPath3648)"
+         transform="matrix(0.62109405,0,0,0.61153935,69.244972,961.29242)"
+         id="g4430">
+        <g
+           style="fill:#e9e9e9;fill-opacity:1"
+           id="g4432">
+          <path
+             style="fill:#e9e9e9;fill-opacity:1"
+             inkscape:connector-curvature="0"
+             d="m 49.999,38.227 c -6.646,0 -12.036,5.271 -12.036,11.772 0,6.505 5.391,11.781 12.036,11.781 6.651,0 12.04,-5.276 12.04,-11.781 0,-6.501 -5.389,-11.772 -12.04,-11.772 z"
+             id="path4434" />
+          <path
+             style="fill:#e9e9e9;fill-opacity:1"
+             inkscape:connector-curvature="0"
+             d="m 49.999,12.505 c -21.146,0 -38.349,16.821 -38.349,37.494 0,20.678 17.203,37.501 38.349,37.501 21.147,0 38.353,-16.823 38.353,-37.501 0,-20.673 -17.206,-37.494 -38.353,-37.494 z m 0,67.661 c -17.03,0 -30.835,-13.507 -30.835,-30.167 0,-16.656 13.806,-30.166 30.835,-30.166 17.03,0 30.84,13.51 30.84,30.166 0,16.66 -13.81,30.167 -30.84,30.167 z"
+             id="path4436" />
+          <path
+             style="fill:#e9e9e9;fill-opacity:1"
+             inkscape:connector-curvature="0"
+             d="M 49.999,1.089 C 22.386,1.089 0,22.989 0,49.999 0,77.014 22.386,98.911 49.999,98.911 77.613,98.911 100,77.014 100,49.999 100,22.989 77.613,1.089 49.999,1.089 z m 30.325,16.349 c 0.798,-0.779 2.096,-0.779 2.894,0 0.802,0.785 0.802,2.053 0,2.834 -0.798,0.784 -2.096,0.784 -2.894,0 -0.803,-0.781 -0.803,-2.048 0,-2.834 z M 49.999,3.981 c 1.135,0 2.051,0.896 2.051,2.004 0,1.107 -0.916,2.004 -2.051,2.004 -1.13,0 -2.045,-0.897 -2.045,-2.004 0,-1.108 0.915,-2.004 2.045,-2.004 z m -33.21,13.457 c 0.795,-0.779 2.094,-0.779 2.894,0 0.799,0.785 0.799,2.054 0.001,2.834 -0.801,0.785 -2.099,0.785 -2.899,0 -0.8,-0.78 -0.8,-2.048 0.004,-2.834 z M 5.075,51.936 c -1.13,0 -2.047,-0.897 -2.047,-2.001 0,-1.107 0.917,-2.005 2.047,-2.005 1.133,0 2.047,0.898 2.047,2.005 0,1.102 -0.914,2.001 -2.047,2.001 z m 14.608,30.488 c -0.799,0.783 -2.097,0.783 -2.895,0 -0.802,-0.779 -0.802,-2.051 0,-2.833 0.798,-0.78 2.096,-0.78 2.895,0 0.801,0.782 0.801,2.054 0,2.833 z m 30.316,13.457 c -1.13,0 -2.045,-0.895 -2.045,-2.003 0,-1.104 0.915,-2.001 2.045,-2.001 1.135,0 2.051,0.896 2.051,2.001 0,1.108 -0.916,2.003 -2.051,2.003 z M 83.218,82.424 c -0.8,0.783 -2.096,0.783 -2.896,0 -0.801,-0.777 -0.801,-2.048 0.003,-2.833 0.798,-0.78 2.094,-0.78 2.894,0 0.799,0.785 0.799,2.055 -10e-4,2.833 z m -33.219,6.79 c -22.092,0 -40.066,-17.591 -40.066,-39.215 0,-21.62 17.975,-39.209 40.066,-39.209 22.095,0 40.071,17.59 40.071,39.209 0,21.624 -17.976,39.215 -40.071,39.215 z M 94.928,51.936 c -1.132,0 -2.048,-0.897 -2.048,-2.001 0,-1.107 0.916,-2.005 2.048,-2.005 1.131,0 2.049,0.898 2.049,2.005 0,1.102 -0.918,2.001 -2.049,2.001 z"
+             id="path4438" />
+        </g>
+      </g>
+    </g>
   </g>
 </svg>

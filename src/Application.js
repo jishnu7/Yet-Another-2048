@@ -38,7 +38,10 @@ exports = Class(GC.Application, function () {
         }
       }
     });
-    audio.setMuted(true);
+
+    if(localStorage.getItem('mute') === 'true') {
+      audio.setMuted(true);
+    }
 
     // Entire puzzle screen accepts swipe actions.
     var game = new GestureView({
@@ -139,7 +142,9 @@ exports = Class(GC.Application, function () {
 
     menu.on('settings', bind(this, function() {
       if(!settings) {
-        settings = new Settings({});
+        settings = new Settings({
+          audio: audio
+        });
       }
       this.push(settings);
       History.add(bind(this, this.pop));
