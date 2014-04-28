@@ -529,11 +529,12 @@ exports = Class(GridView, function(supr) {
       }
     });
 
+    var replay = new Image({url: 'resources/images/replay.png'});
     var img = new ImageView({
       superview: bg,
-      width: 500,
-      height: 500,
-      image: 'resources/images/replay.png',
+      width: replay.getWidth(),
+      height: replay.getHeight(),
+      image: replay,
       x: 0,
       y: 0,
       centerX: true
