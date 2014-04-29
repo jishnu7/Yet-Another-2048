@@ -1,15 +1,17 @@
 
 exports = (function() {
+  var prevGameID = 'prev_game';
+
   return {
     // Function to save the game to local storage
     saveGame: function(data) {
-      localStorage.setItem('prev_game', JSON.stringify(data));
+      localStorage.setItem(prevGameID, JSON.stringify(data));
     },
     getGame: function() {
-      return JSON.parse(localStorage.getItem('prev_game'));
+      return JSON.parse(localStorage.getItem(prevGameID));
     },
     deleteGame: function() {
-      localStorage.removeItem('prev_game');
+      localStorage.removeItem(prevGameID);
     }
   };
 })();
