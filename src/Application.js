@@ -108,7 +108,7 @@ exports = Class(GC.Application, function () {
       grid.initCells();
       game.setHandleEvents(true);
 
-      History.add(pause);
+      History.add(pause, game);
 
       this.push(game);
     }));
@@ -133,7 +133,7 @@ exports = Class(GC.Application, function () {
         stats = new Stats({});
       }
       this.push(stats);
-      History.add(bind(this, this.pop));
+      History.add(bind(this, this.pop), stats);
     }));
 
     menu.on('settings', bind(this, function() {
@@ -150,7 +150,7 @@ exports = Class(GC.Application, function () {
       }
       settings.update();
       this.push(settings);
-      History.add(bind(this, this.pop));
+      History.add(bind(this, this.pop), settings);
     }));
 
     this.view.push(menu);
