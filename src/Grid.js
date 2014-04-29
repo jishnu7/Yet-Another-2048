@@ -435,13 +435,11 @@ exports = Class(GridView, function(supr) {
   };
 
   this.getCellPos = function(row, col) {
-    var opts = this._opts,
-      marginH = (row===0 ? opts.horizontalMargin : opts.horizontalMargin/2),
-      marginV = (col===0 ? opts.verticalMargin: opts.verticalMargin/2);
+    var opts = this._opts;
 
     return {
-      x: this._colInfo[col].pos + marginH,
-      y: this._rowInfo[row].pos + marginV
+      x: this._colInfo[col].pos + opts.horizontalMargin,
+      y: this._rowInfo[row].pos + opts.verticalMargin
     };
   };
 
