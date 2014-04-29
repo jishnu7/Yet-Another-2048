@@ -14,6 +14,7 @@ import src.History as History;
 import src.PlayGame as PlayGame;
 import src.Stats as Stats;
 import src.Settings as Settings;
+import src.Storage as Storage;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -92,15 +93,13 @@ exports = Class(GC.Application, function () {
       }
     }));
 
-    var menu = this.menu = new Menu({
-      game: grid
-    });
+    var menu = this.menu = new Menu({});
 
     var pause = this.onPause = bind(this.view, function() {
       if(this.hasView(game)) {
-        menu.refresh();
-        this.pop();
         grid.backButton();
+        this.pop();
+        menu.refresh();
       }
     });
 
@@ -115,13 +114,13 @@ exports = Class(GC.Application, function () {
 
     menu.on('new', bind(this, function() {
       grid.setMode('classic');
-      grid.setGameState('over');
+      Storage.deleteGame();
       menu.emit('continue');
     }));
 
     menu.on('time', bind(this, function() {
       grid.setMode('time');
-      grid.setGameState('over');
+      Storage.deleteGame();
       menu.emit('continue');
     }));
 

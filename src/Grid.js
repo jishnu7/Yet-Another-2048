@@ -11,6 +11,7 @@ import src.gc.GridView as GridView;
 import src.Cell as Cell;
 import src.Utils as Utils;
 import src.PlayGame as PlayGame;
+import src.Storage as Storage;
 /* jshint ignore:end */
 
 exports = Class(GridView, function(supr) {
@@ -88,55 +89,32 @@ exports = Class(GridView, function(supr) {
     this.score = opts.score;
   };
 
-  // currently used states are `over` and `ongoing`
-  this.getGameState = function() {
-    return localStorage.getItem('game_state');
-  };
-
-  this.setGameState = function(value) {
-    if(value === 'over') {
-      this.timer && this.timer.stop();
-      this.score.stop();
-    } else {
-      this.score.start();
-    }
-    localStorage.setItem('game_state', value);
-  };
-
-  // Function to save the game to local storage
   this.saveGame = function() {
-    this.timer && this.timer.stop();
+    this.timer.stop();
     this.score.stop();
-    if(this.getGameState() !== 'ongoing') {
-      return;
-    }
 
-    var cells = [],
-      score = this.score;
-
+    var cells = [];
     this.eachCell(function(row, col, cell) {
       if(cell) {
         cells.push({row: row, col: col, value: cell.getValue()});
       }
     });
-    localStorage.setItem('prev_game', JSON.stringify({
+    Storage.saveGame({
       cells: cells,
       mode: this.mode,
-      score: score.score,
+      score: this.score.score,
       highestTile: this.score.highestTile,
-      timer: score.timer,
-      speed: this.timer && this.timer.get()
-    }));
+      timer: this.score.timer,
+      speed: this.timer.get()
+    });
     this.score.saveHighScore();
   };
 
   // Function to load saved game from local storage.
   this.loadGame = function() {
-    console.log('load game');
-    var game = localStorage.getItem('prev_game'),
+    var game = Storage.getGame(),
       cells, length;
     if(game) {
-      game = JSON.parse(game);
       cells = game.cells;
       length = cells.length;
 
@@ -147,15 +125,12 @@ exports = Class(GridView, function(supr) {
       }
 
       this.setMode(game.mode);
-      this.setGameState('ongoing');
       this.score.load(game.score, game.highestTile, game.timer);
       this.timer = this.timeMode(game.speed);
-    } else {
-      // incorrect data from local storage
-      this.setGameState('over');
-      this.setMode('classic');
-      this.initCells();
+      console.log('return true');
+      return true;
     }
+    return false;
   };
 
   // Function to set mode of the game.
@@ -168,7 +143,7 @@ exports = Class(GridView, function(supr) {
   this.gameOver = function() {
     var score = this.score;
     this.emit('Over');
-    this.setGameState('over');
+    Storage.deleteGame();
     this.overlay.show();
     this.score.saveHighScore();
     if(this.mode !== 'time') {
@@ -181,15 +156,11 @@ exports = Class(GridView, function(supr) {
   // if state of the game is ongoing, it loads from storage
   // otherwise creates a new game.
   this.initCells = function() {
-    console.log('----game state is:', this.getGameState());
-    if(this.getGameState() === 'ongoing') {
-      this.loadGame();
-    } else {
+    if(!this.loadGame()) {
       this.reset();
       for(var i = 0; i < StartCells; i++) {
         this.addRandomCell();
       }
-      this.setGameState('ongoing');
       this.timer = this.timeMode();
     }
   };
@@ -206,19 +177,24 @@ exports = Class(GridView, function(supr) {
   };
 
   this.timeMode = function(t) {
-    if(this.mode === 'time') {
-      var stop = false,
-        timer = bind(this, function() {
-          if(t > 400) {
-            t -= 1;
-          }
-          this.addRandomCell();
-          !stop && setTimeout(timer, t);
-        });
+    var stop = false;
+    t = t || 1000;
 
-      t = t || 1000;
+    if(this.mode === 'time') {
+      var timer = bind(this, function() {
+        // max speed 500 milli seconds
+        if(t > 500) {
+          t -= 1;
+        }
+        this.addRandomCell();
+        if(!stop) {
+          setTimeout(timer, t);
+        }
+      });
       setTimeout(timer, t);
     }
+    this.score.start();
+
     return {
       stop: function() {
         stop = true;

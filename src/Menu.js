@@ -5,6 +5,7 @@ import ui.resource.Image as Image;
 import src.gc.ButtonView as ButtonView;
 
 import src.PlayGame as PlayGame;
+import src.Storage as Storage;
 /* jshint ignore:end */
 
 exports = Class(View, function(supr) {
@@ -18,7 +19,6 @@ exports = Class(View, function(supr) {
       layoutHeight: '100%'
     });
     supr(this, 'init', [opts]);
-    this.game = opts.game;
 
     var logo = new Image({url: 'resources/images/logo.png'});
     new ImageView({
@@ -49,11 +49,8 @@ exports = Class(View, function(supr) {
   };
 
   this.refresh = function() {
-    if(this.game.getGameState() === 'ongoing') {
-      this.continue.show();
-    } else {
-      this.continue.hide();
-    }
+    var fn = Storage.getGame() ? 'show' : 'hide';
+    this.continue[fn]();
     this.menuContainer.needsReflow();
   };
 
