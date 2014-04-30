@@ -90,10 +90,9 @@ exports = Class(GridView, function(supr) {
   };
 
   this.saveGame = function() {
-    this.timer.stop();
-    this.score.stop();
-
     var cells = [];
+    this.stopTimer();
+
     this.eachCell(function(row, col, cell) {
       if(cell) {
         cells.push({row: row, col: col, value: cell.getValue()});
@@ -140,8 +139,14 @@ exports = Class(GridView, function(supr) {
     this.score.setMode(mode);
   };
 
+  this.stopTimer = function() {
+    this.timer.stop();
+    this.score.stop();
+  };
+
   this.gameOver = function() {
     var score = this.score;
+    this.stopTimer();
     this.emit('Over');
     Storage.deleteGame();
     this.overlay.show();
