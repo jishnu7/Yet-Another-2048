@@ -126,7 +126,6 @@ exports = Class(GridView, function(supr) {
       this.setMode(game.mode);
       this.score.load(game.score, game.highestTile, game.timer);
       this.timer = this.timeMode(game.speed);
-      console.log('return true');
       return true;
     }
     return false;
@@ -161,6 +160,7 @@ exports = Class(GridView, function(supr) {
   // if state of the game is ongoing, it loads from storage
   // otherwise creates a new game.
   this.initCells = function() {
+    this.overlay.hide();
     if(!this.loadGame()) {
       this.reset();
       for(var i = 0; i < StartCells; i++) {
@@ -174,7 +174,7 @@ exports = Class(GridView, function(supr) {
     var value = Math.random() < 0.9 ? 2 : 4,
       pos = this.randomAvailableCell();
 
-    if(this.isCellsAvailable()) {
+    if(pos) {
       this.addCell(pos.row, pos.col, value);
     } else if(this.mode === 'time') {
       this.gameOver();
@@ -211,8 +211,9 @@ exports = Class(GridView, function(supr) {
   };
 
   this.backButton = function() {
-    this.overlay.hide();
-    this.saveGame();
+    if(!this.overlay.isVisible()) {
+      this.saveGame();
+    }
   };
 
   this.addCell = function(row, col, val) {
@@ -375,6 +376,7 @@ exports = Class(GridView, function(supr) {
     if (cells.length) {
       return cells[Math.floor(Math.random() * cells.length)];
     }
+    return false;
   };
 
   this.isCellsAvailable = function () {
@@ -540,6 +542,9 @@ exports = Class(GridView, function(supr) {
       hide: function() {
         bg.style.opacity = 0;
         bg.style.visible = false;
+      },
+      isVisible: function() {
+        return bg.style.visible;
       }
     };
   };
