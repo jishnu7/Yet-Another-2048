@@ -16,7 +16,6 @@
 - [x] Time mode
 - [ ] Undo as a powerup
 - [x] New name
-- [-] Condition for 2048 ?
 - [x] New font
 - [x] New color theme
 - [x] Save game on close
