@@ -265,6 +265,7 @@ exports = Class(GridView, function(supr) {
     cell1.setValue(newVal);
     cell2.setValue(newVal);
     PlayGame.achievement(newVal);
+    Storage.saveTileStats(newVal);
     this.removeCell(cell2);
     if(this.mode !== 'time') {
       this.score.update(newVal);
