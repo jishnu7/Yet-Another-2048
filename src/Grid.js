@@ -89,26 +89,6 @@ exports = Class(GridView, function(supr) {
     this.score = opts.score;
   };
 
-  this.saveGame = function() {
-    var cells = [];
-    this.stopTimer();
-
-    this.eachCell(function(row, col, cell) {
-      if(cell) {
-        cells.push({row: row, col: col, value: cell.getValue()});
-      }
-    });
-    Storage.saveGame({
-      cells: cells,
-      mode: this.mode,
-      score: this.score.score,
-      highestTile: this.score.highestTile,
-      timer: this.score.timer,
-      speed: this.timer.get()
-    });
-    this.score.saveHighScore();
-  };
-
   // Function to load saved game from local storage.
   this.loadGame = function() {
     var game = Storage.getGame(),
@@ -214,7 +194,8 @@ exports = Class(GridView, function(supr) {
 
   this.backButton = function() {
     if(!this.overlay.isVisible()) {
-      this.saveGame();
+      this.stopTimer();
+      Storage.saveGame(this);
     }
   };
 

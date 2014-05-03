@@ -11,12 +11,29 @@ exports = (function() {
 
   return {
     // Function to save the game to local storage
-    saveGame: function(data) {
-      saveData(prevGameID, data);
+    saveGame: function(game) {
+      var cells = [],
+        score = game.score;
+      score.saveHighScore();
+      game.eachCell(function(row, col, cell) {
+        if(cell) {
+          cells.push({row: row, col: col, value: cell.getValue()});
+        }
+      });
+      saveData(prevGameID, {
+        cells: cells,
+        mode: game.mode,
+        score: score.score,
+        highestTile: score.highestTile,
+        timer: score.timer,
+        speed: game.timer.get()
+      });
     },
+
     getGame: function() {
       return getData(prevGameID);
     },
+
     deleteGame: function() {
       localStorage.removeItem(prevGameID);
     },
@@ -24,6 +41,7 @@ exports = (function() {
     getTileStats: function() {
       return getData(statsID) || {};
     },
+
     saveTileStats: function(tile) {
       if(tile < 8) {
         return;
