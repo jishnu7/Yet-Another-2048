@@ -25,6 +25,9 @@ exports = (function() {
       return getData(statsID) || {};
     },
     saveTileStats: function(tile) {
+      if(tile < 8) {
+        return;
+      }
       var data = this.getTileStats(tile);
       if(!data[tile]) {
         data[tile] = 1;
