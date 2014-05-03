@@ -150,7 +150,9 @@ exports = Class(GridView, function(supr) {
     Storage.deleteGame();
     this.overlay.show();
     this.score.saveHighScore();
-    if(this.mode !== 'time') {
+    if(this.mode === 'time') {
+      PlayGame.leaderboard('time', score.score*1000);
+    } else {
       PlayGame.leaderboard('score', score.score);
       PlayGame.leaderboard('tile', score.highestTile);
     }
