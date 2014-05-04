@@ -33,7 +33,8 @@ exports = Class(ScrollView, function(supr) {
       color: Utils.colors.text,
       fontFamily: Utils.fonts.text,
       horizontalAlign: 'left',
-      top: 50
+      top: 50,
+      order: 1
     });
 
     var containerPlay = new View({
@@ -43,7 +44,8 @@ exports = Class(ScrollView, function(supr) {
       layoutWidth: '90%',
       height: 80,
       centerX: true,
-      top: 50
+      top: 50,
+      order: 2
     });
 
     new ButtonView({
@@ -76,6 +78,23 @@ exports = Class(ScrollView, function(supr) {
       }
     });
 
+    this.textPool = new ViewPool({
+      ctor: TextView,
+      initCount: 4,
+      initOpts: {
+        superview: this,
+        layout: 'box',
+        centerX: true,
+        width: opts.width - 100,
+        height: 60,
+        size: 45,
+        color: Utils.colors.text,
+        fontFamily: Utils.fonts.text,
+        horizontalAlign: 'left',
+        top: 50
+      }
+    });
+
     var statView = Class(View, function(supr) {
       this.init = function(opts) {
         merge(opts, {
@@ -87,20 +106,22 @@ exports = Class(ScrollView, function(supr) {
 
         this.key = new TextView({
           superview: this,
-          layoutWidth: '50%',
+          layout: 'box',
+          layoutWidth: '30%',
           color: Utils.colors.text,
           size: 35,
-          fontFamily: Utils.fonts.text,
-          horizontalAlign: 'left',
+          fontFamily: Utils.fonts.number,
+          horizontalAlign: 'left'
         });
 
         this.value = new TextView({
           superview: this,
-          layoutWidth: '50%',
+          layout: 'box',
+          layoutWidth: '30%',
           size: 35,
           color: Utils.colors.text,
-          fontFamily: Utils.fonts.text,
-          horizontalAlign: 'right',
+          fontFamily: Utils.fonts.number,
+          horizontalAlign: 'right'
         });
       };
     });
@@ -109,22 +130,24 @@ exports = Class(ScrollView, function(supr) {
       ctor: statView,
       initCount: 15,
       initOpts: {
-        width: opts.width - 100,
+        width: opts.width - 150,
         height: 60
       }
     });
 
-    this.on('ViewDidDisappear', bind(this.statView, function() {
-      this.releaseAllViews();
+    this.on('ViewDidDisappear', bind(this, function() {
+      this.statView.releaseAllViews();
+      this.textPool.releaseAllViews();
     }));
 
-    this.addStat = bind(this, this.addStat);
+    this.addTitle = bind(this, this.addTitle);
   };
 
   this.update = function() {
     var tiles = Storage.getTileStats(),
       tileKeys = Object.keys(tiles).reverse(),
       games = Storage.getGameStats(),
+      i = 3,
       stats = {
         time: {
           score: 0,
@@ -148,19 +171,33 @@ exports = Class(ScrollView, function(supr) {
       }
     });
 
-    _.forEach(stats.time, this.addStat);
-    _.forEach(stats.classic, this.addStat);
+    this.addTitle(i++, 'Classic Mode');
+    _.forEach(stats.time, bind(this, this.addStat, i++));
+    this.addTitle(i++, 'Time Mode');
+    _.forEach(stats.classic, bind(this, this.addStat, i++));
 
+    this.addTitle(i++, 'Tiles');
     _.forEach(tileKeys, bind(this, function(key) {
-      this.addStat(tiles[key], key);
+      this.addStat(i++, tiles[key], key);
     }));
   };
 
-  this.addStat = function(val, prop) {
+  this.addTitle = function(order, text) {
+    var title = this.textPool.obtainView();
+    title.updateOpts({
+      visible: true,
+      order: order
+    });
+    title.show();
+    title.setText(text);
+  };
+
+  this.addStat = function(order, val, prop) {
     var stat = this.statView.obtainView();
     stat.updateOpts({
       superview: this,
-      visible: true
+      visible: true,
+      order: order
     });
     stat.key.updateOpts({
       text: prop
