@@ -93,7 +93,7 @@ exports = Class(GC.Application, function () {
       }
     }));
 
-    var menu = this.menu = new Menu({});
+    var menu = new Menu({});
 
     var pause = this.onPause = bind(this.view, function() {
       if(this.hasView(game)) {
@@ -124,8 +124,6 @@ exports = Class(GC.Application, function () {
       menu.emit('continue');
     }));
 
-    menu.on('signin', bind(this, this.playGameLogin, true));
-
     var stats, settings;
     menu.on('stats', bind(this, function() {
       if(!stats) {
@@ -139,12 +137,6 @@ exports = Class(GC.Application, function () {
       if(!settings) {
         settings = new Settings({
           audio: audio
-        });
-
-        settings.on('signout', function() {
-          PlayGame.logout();
-          menu.updateLogin();
-          settings.update();
         });
       }
       settings.update();
@@ -177,10 +169,5 @@ exports = Class(GC.Application, function () {
     return { width: baseWidth, height: baseHeight };
   };
 
-  this.onResume = this.playGameLogin = function(force) {
-    var menu = this.menu;
-    PlayGame.login(function(){
-      menu.updateLogin();
-    }, force);
-  };
+  this.onResume = PlayGame.login;
 });

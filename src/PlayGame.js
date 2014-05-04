@@ -48,8 +48,8 @@ exports = (function() {
     }
   };
 
-  obj.login = function(cb, force) {
-    if(!busy && (obj.isLoggedIn() !== false || force)) {
+  obj.login = function(cb) {
+    if(!busy && (obj.isLoggedIn() !== false || cb)) {
       busy = true;
       PlayGame.login(function(evnt) {
         setLoggedIn(evnt);
@@ -59,9 +59,12 @@ exports = (function() {
     }
   };
 
-  obj.logout = function() {
+  obj.logout = function(cb) {
     setLoggedIn(false);
     PlayGame.logout();
+    if(cb) {
+      cb();
+    }
   };
 
   obj.showLeaderBoard = PlayGame.showLeaderBoard;

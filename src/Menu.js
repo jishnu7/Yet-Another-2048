@@ -34,32 +34,21 @@ exports = Class(View, function(supr) {
       layout: 'linear',
       direction: 'vertical',
       justifyContent: 'center',
-      height: 550
+      height: 450
     });
 
     this.continue = this.addMenuEntry('continue', 1);
     this.addMenuEntry('new', 2);
     this.addMenuEntry('time', 3);
-    this.signin = this.addMenuEntry('signin', 4);
-    this.addMenuEntry('stats', 5);
-    this.addMenuEntry('settings', 6);
+    this.addMenuEntry('stats', 4);
+    this.addMenuEntry('settings', 5);
 
-    this.updateLogin();
     this.refresh();
   };
 
   this.refresh = function() {
     var fn = Storage.getGame() ? 'show' : 'hide';
     this.continue[fn]();
-    this.menuContainer.needsReflow();
-  };
-
-  this.updateLogin = function() {
-    if(PlayGame.isLoggedIn()) {
-      this.signin.hide();
-    } else {
-      this.signin.show();
-    }
     this.menuContainer.needsReflow();
   };
 

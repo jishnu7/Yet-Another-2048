@@ -41,20 +41,15 @@ exports = Class(View, function(supr) {
       audio.getMuted() ? states.UNSELECTED : states.SELECTED
     );
 
-    this.signout = new ButtonView({
+    this.playButton = new ButtonView({
       superview: this,
       centerX: true,
       width: 362,
       height: 75,
-      order: 2,
-      images: {
-        up: 'resources/images/btn_signout.png',
-        down: 'resources/images/btn_signout_downn.png'
-      },
-      on: {
-        up: bind(this, this.emit, 'signout')
-      }
+      order: 2
     });
+
+    this.update = bind(this, this.update);
   };
 
   this.toggleSound = function(bool) {
@@ -63,8 +58,30 @@ exports = Class(View, function(supr) {
   };
 
   this.update = function() {
-    var fn = PlayGame.isLoggedIn() ? 'show' : 'hide';
-    this.signout[fn]();
+    var opts;
+    if(PlayGame.isLoggedIn()) {
+      opts = {
+        images: {
+          up: 'resources/images/btn_signout.png',
+          down: 'resources/images/btn_signout_down.png'
+        },
+        on: {
+          up: bind(this, PlayGame.logout, this.update)
+        }
+      };
+    } else {
+      opts = {
+        images: {
+          up: 'resources/images/btn_signin.png',
+          down: 'resources/images/btn_signin_down.png'
+        },
+        on: {
+          up: bind(this, PlayGame.login, this.update)
+        }
+      };
+    }
+    this.playButton.updateOpts(opts);
+    this.playButton.setState(ButtonView.states.UP);
     this.needsReflow();
   };
 });
