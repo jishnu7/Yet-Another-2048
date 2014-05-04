@@ -12,6 +12,11 @@ import util.underscore as _;
 /* jshint ignore:end */
 
 exports = Class(ScrollView, function(supr) {
+  var strings = {
+    count: 'Games Played',
+    score: 'Score',
+    time: 'Time'
+  };
 
   this.init = function(opts) {
     merge(opts, {
@@ -152,30 +157,30 @@ exports = Class(ScrollView, function(supr) {
       stats = {
         time: {
           score: 0,
-          number: 0
+          count: 0
         },
         classic: {
           score: 0,
-          number: 0,
+          count: 0,
           time: 0
         }
       };
 
     _.forEach(games, function(game) {
       if(game.mode === 'time') {
+        stats.time.count += 1;
         stats.time.score += game.time;
-        stats.time.number += 1;
       } else {
+        stats.classic.count += 1;
         stats.classic.score += game.score;
-        stats.classic.number += 1;
         stats.classic.time += game.time;
       }
     });
 
     this.addTitle(i++, 'Classic Mode');
-    _.forEach(stats.time, bind(this, this.addStat, i++));
-    this.addTitle(i++, 'Time Mode');
     _.forEach(stats.classic, bind(this, this.addStat, i++));
+    this.addTitle(i++, 'Time Mode');
+    _.forEach(stats.time, bind(this, this.addStat, i++));
 
     this.addTitle(i++, 'Tiles');
     _.forEach(tileKeys, bind(this, function(key) {
@@ -201,7 +206,7 @@ exports = Class(ScrollView, function(supr) {
       order: order
     });
     stat.key.updateOpts({
-      text: prop
+      text: strings[prop] || prop
     });
     stat.value.updateOpts({
       text: val
