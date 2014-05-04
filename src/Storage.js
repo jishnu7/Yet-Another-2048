@@ -2,6 +2,7 @@
 exports = (function() {
   var prevGameID = 'prev_game',
     statsID = 'stats_tile',
+    statsGame = 'stats_game',
     saveData = function(id, data) {
       localStorage.setItem(id, JSON.stringify(data));
     },
@@ -55,5 +56,19 @@ exports = (function() {
       saveData(statsID, data);
     },
 
+    getGameStats: function() {
+      return getData(statsGame) || [];
+    },
+
+    saveGameStats: function(game) {
+      var data = this.getGameStats(),
+        score = game.score;
+      data.push({
+        mode: game.mode,
+        score: score.score,
+        time: score.timer
+      });
+      saveData(statsGame, data);
+    }
   };
 })();

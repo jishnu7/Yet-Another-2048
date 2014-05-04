@@ -129,6 +129,9 @@ exports = Class(GridView, function(supr) {
     this.emit('Over');
     Storage.deleteGame();
     this.overlay.show();
+
+    // Stats and leaderboard
+    Storage.saveGameStats(this);
     score.saveHighScore();
     if(this.mode === 'time') {
       PlayGame.leaderboard('time', score.score*1000);
