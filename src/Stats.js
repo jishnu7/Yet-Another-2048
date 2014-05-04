@@ -18,6 +18,7 @@ exports = Class(ScrollView, function(supr) {
       layout: 'linear',
       direction: 'vertical',
       scrollX: false,
+      bounce: false,
       useLayoutBounds: true
     });
     supr(this, 'init', [opts]);

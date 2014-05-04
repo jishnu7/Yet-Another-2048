@@ -194,10 +194,10 @@ exports = Class(View, function (supr) {
 			y: opts.offsetY,
 			infinite: true,
 			tag: 'ContentView',
-      layout: 'linear',
-      direction: "vertical",
+			layout: 'linear',
+			direction: "vertical",
 			layoutWidth: '100%',
-			layoutHeight: '100%',
+			layoutHeight: '100%'
 		});
 
 		this._bounceRadius = opts.bounceRadius;
@@ -237,15 +237,19 @@ exports = Class(View, function (supr) {
 		if (!this.style.layout || !this._opts.useLayoutBounds) { return; }
 
 		var bounds = this._scrollBounds;
-    bounds.minX = bounds.minY = bounds.maxX = bounds.maxY = 0;
-    var height = 0;
+		bounds.minX = bounds.minY = bounds.maxX = bounds.maxY = 0;
+		var height = 0;
 		this._contentView.getSubviews().forEach(function(sv) {
 			bounds.minX = Math.min(bounds.minX, sv.style.x);
 			bounds.minY = Math.min(bounds.minY, sv.style.y);
 			bounds.maxX = Math.max(bounds.maxX, sv.style.x + sv.style.width);
-      height += sv.style.height;
-      bounds.maxY = height;
+			height += sv.style.height;
+			if(sv._opts.top) {
+			    height += sv._opts.top;
+			}
+			bounds.maxY = height;
 		});
+
 	};
 
 	this.buildView = function () {
