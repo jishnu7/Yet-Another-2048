@@ -127,8 +127,12 @@ exports = Class(GC.Application, function () {
     var stats, settings;
     menu.on('stats', bind(this, function() {
       if(!stats) {
-        stats = new Stats({});
+        stats = new Stats({
+          width: size.width,
+          height: size.height
+        });
       }
+      stats.update();
       this.push(stats);
       History.add(bind(this, this.pop), stats);
     }));
