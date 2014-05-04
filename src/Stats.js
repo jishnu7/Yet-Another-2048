@@ -3,6 +3,7 @@ import ui.View as View;
 import ui.TextView as TextView;
 import ui.ViewPool as ViewPool;
 import src.gc.ButtonView as ButtonView;
+import src.gc.ScrollView as ScrollView;
 
 import src.Utils as Utils;
 import src.PlayGame as PlayGame;
@@ -10,12 +11,14 @@ import src.Storage as Storage;
 import util.underscore as _;
 /* jshint ignore:end */
 
-exports = Class(View, function(supr) {
+exports = Class(ScrollView, function(supr) {
 
   this.init = function(opts) {
     merge(opts, {
       layout: 'linear',
-      direction: 'vertical'
+      direction: 'vertical',
+      scrollX: false,
+      useLayoutBounds: true
     });
     supr(this, 'init', [opts]);
 
@@ -78,8 +81,7 @@ exports = Class(View, function(supr) {
         merge(opts, {
           layout: 'linear',
           justifyContent: 'space',
-          centerX: true,
-          top: 10
+          centerX: true
         });
         supr(this, 'init', [opts]);
 
@@ -87,7 +89,7 @@ exports = Class(View, function(supr) {
           superview: this,
           layoutWidth: '50%',
           color: Utils.colors.text,
-          size: 60,
+          size: 35,
           fontFamily: Utils.fonts.text,
           horizontalAlign: 'left',
         });
@@ -95,7 +97,7 @@ exports = Class(View, function(supr) {
         this.value = new TextView({
           superview: this,
           layoutWidth: '50%',
-          size: 60,
+          size: 35,
           color: Utils.colors.text,
           fontFamily: Utils.fonts.text,
           horizontalAlign: 'right',
@@ -105,7 +107,7 @@ exports = Class(View, function(supr) {
 
     this.statView = new ViewPool({
       ctor: statView,
-      initCount: 10,
+      initCount: 15,
       initOpts: {
         width: opts.width - 100,
         height: 60
