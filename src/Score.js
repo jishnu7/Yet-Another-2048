@@ -125,14 +125,15 @@ exports = Class(View, function(supr) {
   };
 
   this.update = function(val) {
-    var score = this.score;
-    score += (val || 1);
-    this.setScore(score);
+    if(this.mode === 'time') {
+      var score = this.score;
+      score += (val || 1);
+      this.setScore(score);
 
-    if(score > this.highScore) {
-      this.setHighScore(score);
+      if(score > this.highScore) {
+        this.setHighScore(score);
+      }
     }
-
     this.highestTile = val > this.highestTile ? val : this.highestTile;
   };
 
