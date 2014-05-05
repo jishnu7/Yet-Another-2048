@@ -13,10 +13,30 @@ import util.underscore as _;
 
 exports = Class(ScrollView, function(supr) {
   var strings = {
-    count: 'Games Played',
-    score: 'Score',
-    time: 'Time'
-  };
+      count: 'Games played',
+      score: 'Total score',
+      time: 'Total time',
+      tile: 'Highest tile',
+      averageTile: 'Average tile'
+    },
+    getMode = function(array) {
+      var len = array.length;
+      if(len === 0) {
+        return 0;
+      }
+
+      var modeMap = {},
+        maxEl = array[0],
+        maxCount = 1;
+      array.forEach(function(el) {
+        modeMap[el] = modeMap[el] ? 1 : modeMap[el] + 1;
+        if(modeMap[el] > maxCount) {
+          maxEl = el;
+          maxCount = modeMap[el];
+        }
+      });
+      return maxEl;
+    };
 
   this.init = function(opts) {
     merge(opts, {
@@ -154,33 +174,42 @@ exports = Class(ScrollView, function(supr) {
       tileKeys = Object.keys(tiles).reverse(),
       games = Storage.getGameStats(),
       i = 3,
-      stats = {
-        time: {
-          time: 0,
-          count: 0
-        },
-        classic: {
-          score: 0,
-          count: 0,
-          time: 0
-        }
+      statsTime = {
+        count: 0,
+        time: 0,
+        tile: 0
+      },
+      statsClassic = {
+        count: 0,
+        score: 0,
+        time: 0,
+        tile: 0
+      },
+      tile = {
+        time: [],
+        classic: []
       };
 
     _.forEach(games, function(game) {
+      var mode;
       if(game.mode === 'time') {
-        stats.time.count += 1;
-        stats.time.time += game.time;
+        mode = statsTime;
       } else {
-        stats.classic.count += 1;
-        stats.classic.score += game.score;
-        stats.classic.time += game.time;
+        mode = statsClassic;
+        statsClassic.score += game.score;
       }
+      mode.count += 1;
+      mode.time += game.time;
+      mode.tile = game.highestTile > mode.tile ?  game.highestTile : mode.tile;
+      tile[game.mode].push(game.highestTile);
     });
+    statsTime.averageTile = getMode(tile.time);
+    statsClassic.averageTile = getMode(tile.classic);
 
     this.addTitle(i++, 'Classic Mode');
-    _.forEach(stats.classic, bind(this, this.addStat, i++));
+    _.forEach(statsClassic, bind(this, this.addStat, i++));
     this.addTitle(i++, 'Time Mode');
-    _.forEach(stats.time, bind(this, this.addStat, i++));
+    _.forEach(statsTime, bind(this, this.addStat, i++));
 
     this.addTitle(i++, 'Tiles');
     _.forEach(tileKeys, bind(this, function(key) {

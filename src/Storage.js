@@ -66,7 +66,8 @@ exports = (function() {
       data.push({
         mode: game.mode,
         score: score.score,
-        time: score.timer
+        time: score.timer,
+        highestTile: score.highestTile,
       });
       saveData(statsGame, data);
     }
