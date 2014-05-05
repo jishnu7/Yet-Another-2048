@@ -177,13 +177,15 @@ exports = Class(ScrollView, function(supr) {
       statsTime = {
         count: 0,
         time: 0,
-        tile: 0
+        tile: 0,
+        averageTile: 0
       },
       statsClassic = {
         count: 0,
         score: 0,
         time: 0,
-        tile: 0
+        tile: 0,
+        averageTile: 0
       },
       tile = {
         time: [],
@@ -199,22 +201,31 @@ exports = Class(ScrollView, function(supr) {
         statsClassic.score += game.score;
       }
       mode.count += 1;
-      mode.time += game.time;
+      mode.time += game.time || 0;
+      if(!game.highestTile) {
+        game.highestTile = 2;
+      }
       mode.tile = game.highestTile > mode.tile ?  game.highestTile : mode.tile;
       tile[game.mode].push(game.highestTile);
+      finish();
     });
-    statsTime.averageTile = getMode(tile.time);
-    statsClassic.averageTile = getMode(tile.classic);
 
-    this.addTitle(i++, 'Classic Mode');
-    _.forEach(statsClassic, bind(this, this.addStat, i++));
-    this.addTitle(i++, 'Time Mode');
-    _.forEach(statsTime, bind(this, this.addStat, i++));
 
-    this.addTitle(i++, 'Tiles');
-    _.forEach(tileKeys, bind(this, function(key) {
-      this.addStat(i++, tiles[key], key);
+    var finish = Utils.finish(_.keys(games).length, bind(this, function() {
+      statsTime.averageTile = getMode(tile.time);
+      statsClassic.averageTile = getMode(tile.classic);
+
+      this.addTitle(i++, 'Classic Mode');
+      _.forEach(statsClassic, bind(this, this.addStat, i++));
+      this.addTitle(i++, 'Time Mode');
+      _.forEach(statsTime, bind(this, this.addStat, i++));
+
+      this.addTitle(i++, 'Tiles');
+      _.forEach(tileKeys, bind(this, function(key) {
+        this.addStat(i++, tiles[key], key);
+      }));
     }));
+
   };
 
   this.addTitle = function(order, text) {
