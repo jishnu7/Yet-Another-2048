@@ -156,7 +156,7 @@ exports = Class(ScrollView, function(supr) {
       i = 3,
       stats = {
         time: {
-          score: 0,
+          time: 0,
           count: 0
         },
         classic: {
@@ -169,7 +169,7 @@ exports = Class(ScrollView, function(supr) {
     _.forEach(games, function(game) {
       if(game.mode === 'time') {
         stats.time.count += 1;
-        stats.time.score += game.time;
+        stats.time.time += game.time;
       } else {
         stats.classic.count += 1;
         stats.classic.score += game.score;
