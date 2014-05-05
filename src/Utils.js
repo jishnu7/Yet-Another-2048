@@ -43,5 +43,18 @@ exports = (function() {
     text: 'Raleway-ExtraLight'
   };
 
+  obj.humanTime = function(seconds) {
+    var out = '', h, m;
+    h = Math.floor(seconds/3600);
+    if(h>0) {
+      out += h + 'h ';
+    }
+    seconds %= 3600;
+    m = Math.floor(seconds/60);
+    out += m + 'm ';
+    seconds %= 60;
+    out += seconds + 's ' ;
+    return out;
+  };
   return obj;
 })();
