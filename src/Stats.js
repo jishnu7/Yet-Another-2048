@@ -17,7 +17,9 @@ exports = Class(ScrollView, function(supr) {
       score: 'Total score',
       time: 'Total time',
       tile: 'Highest tile',
-      averageTile: 'Average tile'
+      averageTile: 'Avg. highest tile',
+      averageScore: 'Avg. score',
+      averageTime: 'Avg. time'
     },
     getMode = function(array) {
       var len = array.length;
@@ -29,7 +31,7 @@ exports = Class(ScrollView, function(supr) {
         maxEl = array[0],
         maxCount = 1;
       array.forEach(function(el) {
-        modeMap[el] = modeMap[el] ? 1 : modeMap[el] + 1;
+        modeMap[el] = modeMap[el] ? modeMap[el] + 1 : 1;
         if(modeMap[el] > maxCount) {
           maxEl = el;
           maxCount = modeMap[el];
@@ -133,7 +135,7 @@ exports = Class(ScrollView, function(supr) {
         this.key = new TextView({
           superview: this,
           layout: 'box',
-          layoutWidth: '30%',
+          layoutWidth: '50%',
           color: Utils.colors.text,
           size: 35,
           fontFamily: Utils.fonts.number,
@@ -143,7 +145,7 @@ exports = Class(ScrollView, function(supr) {
         this.value = new TextView({
           superview: this,
           layout: 'box',
-          layoutWidth: '30%',
+          layoutWidth: '50%',
           size: 35,
           color: Utils.colors.text,
           fontFamily: Utils.fonts.number,
@@ -154,7 +156,7 @@ exports = Class(ScrollView, function(supr) {
 
     this.statView = new ViewPool({
       ctor: statView,
-      initCount: 15,
+      initCount: 20,
       initOpts: {
         width: opts.width - 150,
         height: 60
@@ -174,16 +176,23 @@ exports = Class(ScrollView, function(supr) {
       tileKeys = Object.keys(tiles).reverse(),
       games = Storage.getGameStats(),
       i = 3,
+      order = [
+        'count', 'time', 'averageTime',
+        'score', 'averageScore', 'tile', 'averageTile'
+      ],
       statsTime = {
         count: 0,
         time: 0,
+        averageTime: 0,
         tile: 0,
         averageTile: 0
       },
       statsClassic = {
         count: 0,
         score: 0,
+        averageScore: 0,
         time: 0,
+        averageTime: 0,
         tile: 0,
         averageTile: 0
       },
@@ -193,19 +202,29 @@ exports = Class(ScrollView, function(supr) {
       };
 
     var finish = Utils.finish(_.keys(games).length, bind(this, function() {
-      statsTime.averageTile = getMode(tile.time);
-      statsClassic.averageTile = getMode(tile.classic);
-      statsTime.time = Utils.humanTime(statsTime.time);
-      statsClassic.time = Utils.humanTime(statsClassic.time);
+      if(statsTime.count > 0) {
+        statsTime.averageTile = getMode(tile.time);
+        statsTime.averageTime = Utils.humanTime(statsTime.time/statsTime.count);
+        statsTime.time = Utils.humanTime(statsTime.time);
+      }
+
+      if(statsClassic.count > 0) {
+        statsClassic.averageTile = getMode(tile.classic);
+        statsClassic.averageScore = Math.floor(statsClassic.score/statsClassic.count);
+        statsClassic.averageTime = Utils.humanTime(statsClassic.time/statsClassic.count);
+        statsClassic.time = Utils.humanTime(statsClassic.time);
+      }
 
       this.addTitle(i++, 'Classic Mode');
-      _.forEach(statsClassic, bind(this, this.addStat, i++));
+      _.forEach(statsClassic, bind(this, this.addStat, i, order));
+      i += order.length;
       this.addTitle(i++, 'Time Mode');
-      _.forEach(statsTime, bind(this, this.addStat, i++));
+      _.forEach(statsTime, bind(this, this.addStat, i, order));
+      i += order.length;
 
       this.addTitle(i++, 'Tiles');
       _.forEach(tileKeys, bind(this, function(key) {
-        this.addStat(i++, tiles[key], key);
+        this.addStat(i++, null, tiles[key], key);
       }));
     }));
 
@@ -238,12 +257,12 @@ exports = Class(ScrollView, function(supr) {
     title.setText(text);
   };
 
-  this.addStat = function(order, val, prop) {
+  this.addStat = function(i, order, val, prop) {
     var stat = this.statView.obtainView();
     stat.updateOpts({
       superview: this,
       visible: true,
-      order: order
+      order: order ? i + order.indexOf(prop): i
     });
     stat.key.updateOpts({
       text: strings[prop] || prop

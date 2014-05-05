@@ -125,7 +125,7 @@ exports = Class(View, function(supr) {
   };
 
   this.update = function(val) {
-    if(this.mode === 'time') {
+    if(this.mode !== 'time') {
       var score = this.score;
       score += (val || 1);
       this.setScore(score);
