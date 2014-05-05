@@ -126,13 +126,7 @@ exports = Class(View, function(supr) {
 
   this.update = function(val) {
     if(this.mode !== 'time') {
-      var score = this.score;
-      score += (val || 1);
-      this.setScore(score);
-
-      if(score > this.highScore) {
-        this.setHighScore(score);
-      }
+      this.setScore(this.score + val);
     }
     this.highestTile = val > this.highestTile ? val : this.highestTile;
   };
@@ -140,6 +134,9 @@ exports = Class(View, function(supr) {
   this.setScore = function(score) {
     this.score = score;
     this.scoreView.setText(this.mode, score);
+    if(score > this.highScore) {
+      this.setHighScore(score);
+    }
   };
 
   this.setHighScore = function(score) {
@@ -167,7 +164,7 @@ exports = Class(View, function(supr) {
     timerID = setInterval(bind(this, function() {
       this.timer++;
       if(update) {
-        this.update();
+        this.setScore(this.score + 1);
       }
     }), 1000);
   };
