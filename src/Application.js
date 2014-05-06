@@ -65,6 +65,10 @@ exports = Class(GC.Application, function () {
       score: score
     });
 
+    var gameInit = function() {
+      grid.initCells(bind(game, game.setHandleEvents, true));
+    };
+
     grid.on('updateScore', function() {
       audio.play('merge');
     });
@@ -73,10 +77,7 @@ exports = Class(GC.Application, function () {
       game.setHandleEvents(false);
     });
 
-    grid.on('Restart', bind(this, function() {
-      grid.initCells();
-      game.setHandleEvents(true);
-    }));
+    grid.on('Restart', gameInit);
 
     var busy = false;
     game.on('Swipe', bind(this, function(angle, direction) {
@@ -104,8 +105,7 @@ exports = Class(GC.Application, function () {
     });
 
     menu.on('continue', bind(this.view, function() {
-      grid.initCells();
-      game.setHandleEvents(true);
+      gameInit();
 
       History.add(pause, game);
 

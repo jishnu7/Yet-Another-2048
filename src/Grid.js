@@ -23,7 +23,6 @@ exports = Class(GridView, function(supr) {
       baseSize = opts.baseWidth - 100,
       cellSize = Math.round((baseSize-margin*2)/size) - margin*2;
     baseSize = (cellSize + margin*2) * size + margin*2;
-    console.log(cellSize, baseSize);
 
     merge(opts, {
       layout: 'box',
@@ -90,22 +89,26 @@ exports = Class(GridView, function(supr) {
   };
 
   // Function to load saved game from local storage.
-  this.loadGame = function() {
+  this.loadGame = function(cb) {
     var game = Storage.getGame(),
-      cells, length;
+      cells, length, finish;
     if(game) {
       cells = game.cells;
       length = cells.length;
+
+      finish = Utils.finish(length, bind(this, function() {
+        this.timer = this.timeMode(game.speed);
+        cb();
+      }));
 
       for(var i=0; i<length; i++) {
         var cell = cells[i];
         this.addCell(parseInt(cell.row, 10), parseInt(cell.col, 10),
           parseInt(cell.value, 10));
+        finish();
       }
-
       this.setMode(game.mode);
       this.score.load(game.score, game.highestTile, game.timer);
-      this.timer = this.timeMode(game.speed);
       return true;
     }
     return false;
@@ -144,14 +147,15 @@ exports = Class(GridView, function(supr) {
   // First function to call from menu screen
   // if state of the game is ongoing, it loads from storage
   // otherwise creates a new game.
-  this.initCells = function() {
+  this.initCells = function(cb) {
     this.overlay.hide();
-    if(!this.loadGame()) {
+    if(!this.loadGame(cb)) {
       this.reset();
       for(var i = 0; i < StartCells; i++) {
         this.addRandomCell();
       }
       this.timer = this.timeMode();
+      cb();
     }
   };
 
@@ -176,8 +180,8 @@ exports = Class(GridView, function(supr) {
         if(t > 500) {
           t -= 1;
         }
-        this.addRandomCell();
         if(!stop) {
+          this.addRandomCell();
           setTimeout(timer, t);
         }
       });
