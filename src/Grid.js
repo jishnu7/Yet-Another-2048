@@ -101,14 +101,14 @@ exports = Class(GridView, function(supr) {
         cb();
       }));
 
+      this.setMode(game.mode);
+      this.score.load(game.score, game.highestTile, game.timer);
       for(var i=0; i<length; i++) {
         var cell = cells[i];
         this.addCell(parseInt(cell.row, 10), parseInt(cell.col, 10),
           parseInt(cell.value, 10));
         finish();
       }
-      this.setMode(game.mode);
-      this.score.load(game.score, game.highestTile, game.timer);
       return true;
     }
     return false;
@@ -455,7 +455,6 @@ exports = Class(GridView, function(supr) {
         }));
       }
     }));
-    console.log('isMovesAvailable', flag);
     return flag;
   };
 
