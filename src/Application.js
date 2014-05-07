@@ -1,20 +1,20 @@
 /* jshint ignore:start */
 import device;
-import ui.StackView as StackView;
 import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 import AudioManager;
 import event.Callback as Callback;
 
+import src.Utils as Utils;
+import src.History as History;
+import src.Storage as Storage;
+import src.PlayGame as PlayGame;
+
 import src.Grid as Grid;
 import src.Score as Score;
 import src.Menu as Menu;
-import src.Utils as Utils;
-import src.History as History;
-import src.PlayGame as PlayGame;
 import src.Stats as Stats;
 import src.Settings as Settings;
-import src.Storage as Storage;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
