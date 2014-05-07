@@ -172,7 +172,7 @@ exports = Class(GridView, function(supr) {
 
   this.timeMode = function(t) {
     var stop = false;
-    t = t || 1000;
+    t = t || 1250;
 
     if(this.mode === 'time') {
       var timer = bind(this, function() {
