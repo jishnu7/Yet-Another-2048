@@ -3,6 +3,7 @@ exports = (function() {
   var prevGameID = 'prev_game',
     statsID = 'stats_tile',
     statsGame = 'stats_game',
+    tutorialID = 'tutorials',
     saveData = function(id, data) {
       localStorage.setItem(id, JSON.stringify(data));
     },
@@ -70,6 +71,17 @@ exports = (function() {
         highestTile: score.highestTile,
       });
       saveData(statsGame, data);
+    },
+
+    isTutorialCompleted: function(id) {
+      var data = getData(tutorialID) || [];
+      return data.indexOf(id) !== -1;
+    },
+
+    setTutorialCompleted: function(id) {
+      var currentData = getData(tutorialID) || [];
+      currentData.push(id);
+      setLocalData(currentData);
     }
   };
 })();
