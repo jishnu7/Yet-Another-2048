@@ -7,8 +7,12 @@ exports = (function() {
     saveData = function(id, data) {
       localStorage.setItem(id, JSON.stringify(data));
     },
-    getData = function(id) {
-      return JSON.parse(localStorage.getItem(id));
+    getData = function(id, notJSON) {
+      var data = localStorage.getItem(id);
+      if(!notJSON) {
+        data = JSON.parse(data);
+      }
+      return data;
     };
 
   return {
@@ -74,14 +78,16 @@ exports = (function() {
     },
 
     isTutorialCompleted: function(id) {
-      var data = getData(tutorialID) || [];
-      return data.indexOf(id) !== -1;
+      var data = getData(tutorialID, true);
+      return data.indexOf(id) === 'true';
     },
 
-    setTutorialCompleted: function(id) {
-      var currentData = getData(tutorialID) || [];
-      currentData.push(id);
-      setLocalData(currentData);
+    setTutorialCompleted: function() {
+      saveData(tutorialID, true);
+    },
+
+    unsetTutorial: function() {
+      localStorage.removeItem(tutorialID);
     }
   };
 })();
