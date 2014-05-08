@@ -15,6 +15,7 @@ import src.Score as Score;
 import src.Menu as Menu;
 import src.Stats as Stats;
 import src.Settings as Settings;
+import src.Tutorial as Tutorial;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -55,6 +56,12 @@ exports = Class(GC.Application, function () {
       swipeTime: 1000
     });
 
+    var tutorial = new Tutorial({
+      superview: game,
+      width: size.width,
+      height: size.height
+    });
+
     var score = new Score({
       superview: game
     });
@@ -67,6 +74,7 @@ exports = Class(GC.Application, function () {
 
     var gameInit = function() {
       grid.initCells(bind(game, game.setHandleEvents, true));
+      tutorial.start();
     };
 
     grid.on('updateScore', function() {
@@ -84,6 +92,7 @@ exports = Class(GC.Application, function () {
       if(!busy) {
         busy = true;
         audio.play('swipe');
+        tutorial.swipe();
         var callback = new Callback();
         callback.run(function(newCell) {
           busy = false;

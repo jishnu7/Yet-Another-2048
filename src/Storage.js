@@ -3,7 +3,7 @@ exports = (function() {
   var prevGameID = 'prev_game',
     statsID = 'stats_tile',
     statsGame = 'stats_game',
-    tutorialID = 'tutorials',
+    tutorialID = 'tutorial',
     saveData = function(id, data) {
       localStorage.setItem(id, JSON.stringify(data));
     },
@@ -77,9 +77,8 @@ exports = (function() {
       saveData(statsGame, data);
     },
 
-    isTutorialCompleted: function(id) {
-      var data = getData(tutorialID, true);
-      return data.indexOf(id) === 'true';
+    isTutorialCompleted: function() {
+      return getData(tutorialID, true) === 'true';
     },
 
     setTutorialCompleted: function() {
