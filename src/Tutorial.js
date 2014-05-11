@@ -12,7 +12,8 @@ exports = Class(View, function(supr) {
       'Swipe to merge cells',
       'There is a catch, only cells with same number will merge',
       'Sign-in with your Google account to compare your score with your friends',
-    ];
+    ],
+    busy = false;
 
   this.init = function(opts) {
     merge(opts, {
@@ -38,10 +39,13 @@ exports = Class(View, function(supr) {
   };
 
   this.swipe = function() {
-    if(!Storage.isTutorialCompleted()) {
+    if(!Storage.isTutorialCompleted() && !busy) {
       head++;
       var anim = animate(this);
-      anim.then({
+      anim.now(function() {
+        busy = true;
+      }, 0).
+      then({
         x: -this._opts.width,
         opacity: 0
       }, 1000).then(this.show, 0);
@@ -71,11 +75,15 @@ exports = Class(View, function(supr) {
     anim.now({
       x: this._opts.width*2,
       opacity: 0
+    }, 0).then(function() {
+      busy = true;
     }, 0).
     then({
       x: 0,
       opacity: 1
-    }, 1000);
+    }, 1000).then(function() {
+      busy = false;
+    }, 0);
     this.text.setText(strings[head]);
   };
 });
