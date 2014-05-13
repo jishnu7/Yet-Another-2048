@@ -4,6 +4,7 @@ import ui.TextView as TextView;
 
 import src.Storage as Storage;
 import src.Utils as Utils;
+import src.PlayGame as PlayGame;
 /* jshint ignore:end */
 
 exports = Class(TextView, function(supr) {
@@ -12,7 +13,7 @@ exports = Class(TextView, function(supr) {
       'Swipe to merge cells',
       'There is a catch, only cells with same number will merge',
       'Score your highest by attaining a tile with 2048 or more',
-      'Sign-in with your Google account to compare score with your friends',
+      'Sign-in with your Google account to compare score with your friends'
     ],
     busy = false;
 
@@ -27,13 +28,18 @@ exports = Class(TextView, function(supr) {
       padding: '100 100',
       offsetY: 75,
       color: Utils.colors.text,
-      fontFamily: Utils.fonts.number
+      fontFamily: Utils.fonts.number,
+      visible: false
     });
     supr(this, 'init', [opts]);
   };
 
+  this.reset = function() {
+    head = 0;
+  };
+
   this.swipe = function() {
-    if(!Storage.isTutorialCompleted() && !busy) {
+    if(!busy && !Storage.isTutorialCompleted()) {
       head++;
       var anim = animate(this);
       anim.now(function() {
@@ -49,16 +55,13 @@ exports = Class(TextView, function(supr) {
   this.start = function() {
     if(!Storage.isTutorialCompleted()) {
       this.show();
-    } else {
-      this.updateOpts({
-        visible: false
-      });
     }
   };
 
   this.show = function() {
-    if(head >= strings.length) {
-      Storage.setTutorialCompleted();
+    if(head >= strings.length ||
+        // if user is connected to google, don't show G+ message
+        (head === strings.length - 1 && PlayGame.isLoggedIn())) {
       this.updateOpts({
         visible: false
       });
@@ -66,9 +69,12 @@ exports = Class(TextView, function(supr) {
     }
 
     var anim = animate(this);
-    anim.now({
-      x: this._opts.width*2,
-      opacity: 0
+    anim.now(function() {
+      this.updateOpts({
+        visible: true,
+        x: this._opts.width*2,
+        opacity: 0
+      });
     }, 0).then(function() {
       busy = true;
     }, 0).

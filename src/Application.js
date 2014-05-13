@@ -92,12 +92,14 @@ exports = Class(GC.Application, function () {
       if(!busy) {
         busy = true;
         audio.play('swipe');
-        tutorial.swipe();
         var callback = new Callback();
         callback.run(function(newCell) {
           busy = false;
           // add a new cell only if a move is made.
           newCell && grid.addRandomCell();
+          if(newCell || grid.mode === 'time') {
+            tutorial.swipe();
+          }
         });
         grid.moveCells(direction, callback);
       }
@@ -115,23 +117,18 @@ exports = Class(GC.Application, function () {
 
     menu.on('continue', bind(this.view, function() {
       gameInit();
-
       History.add(pause, game);
-
       this.push(game);
     }));
 
-    menu.on('new', bind(this, function() {
-      grid.setMode('classic');
+    var newGame = function(mode) {
+      grid.setMode(mode);
       Storage.deleteGame();
+      tutorial.reset();
       menu.emit('continue');
-    }));
-
-    menu.on('time', bind(this, function() {
-      grid.setMode('time');
-      Storage.deleteGame();
-      menu.emit('continue');
-    }));
+    };
+    menu.on('new', bind(this, newGame, 'classic'));
+    menu.on('time', bind(this, newGame, 'time'));
 
     var stats, settings;
     menu.on('stats', bind(this, function() {
