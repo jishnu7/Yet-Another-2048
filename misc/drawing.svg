@@ -489,6 +489,18 @@
          id="rect5555-0"
          style="fill:#657277;fill-opacity:1;stroke:none" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4434">
+      <rect
+         ry="14.469337"
+         y="-7.4434352"
+         x="41.866802"
+         height="81.715843"
+         width="394.9599"
+         id="rect4436"
+         style="fill:#e9e9e9;fill-opacity:1;stroke:none" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -497,9 +509,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49096965"
-     inkscape:cx="1067.9756"
-     inkscape:cy="-577.48955"
+     inkscape:zoom="1.9638786"
+     inkscape:cx="-615.04741"
+     inkscape:cy="-302.93178"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -557,6 +569,14 @@
        orientation="1,0"
        position="977.22155,776.40322"
        id="guide4369" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="88.57384,1363.8931"
+       id="guide3659" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="228.27567,1180.9845"
+       id="guide3661" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -3057,16 +3077,16 @@
         <text
            xml:space="preserve"
            style="font-size:35.17078018px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;stroke:none;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
-           x="4643.2622"
-           y="-1380.6599"
+           x="4634.2607"
+           y="-1394.103"
            id="text4845"
            sodipodi:linespacing="125%"
            inkscape:export-xdpi="90"
            inkscape:export-ydpi="90"><tspan
              sodipodi:role="line"
              id="tspan4847"
-             x="4643.2622"
-             y="-1380.6599"
+             x="4634.2607"
+             y="-1394.103"
              style="font-size:35.17078018px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">yet another</tspan></text>
         <text
            inkscape:label="#text4841"
@@ -3568,7 +3588,7 @@
        ry="12.396606" />
     <g
        id="btn_signin"
-       transform="translate(-1137.7673,712.76609)"
+       transform="translate(-1137.7673,704.54538)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <rect
@@ -4836,6 +4856,121 @@
          transform="matrix(0.96737531,0,0,0.97493661,1092.2831,1788.7186)"
          style="opacity:0.2;fill:#ffffff;fill-opacity:1"
          id="g4825-8" />
+    </g>
+    <g
+       transform="translate(-840.54964,387.311)"
+       id="tutorial_on"
+       inkscape:export-xdpi="112.5"
+       inkscape:export-ydpi="112.5"
+       inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_tutorialon.png"
+       inkscape:label="#tutorial_on">
+      <rect
+         style="fill:#e9e9e9;fill-opacity:1;stroke:none"
+         id="rect3620"
+         width="290"
+         height="60"
+         x="92.678619"
+         y="961.86938"
+         ry="10.624136"
+         inkscape:label="#rect3620" />
+      <text
+         transform="scale(0.99611456,1.0039006)"
+         sodipodi:linespacing="125%"
+         id="text3622"
+         y="997.03772"
+         x="152.59723"
+         style="font-size:25.41469383px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#657277;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:25.41469383px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#657277;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light"
+           y="997.03772"
+           x="152.59723"
+           sodipodi:role="line"
+           id="tspan3638">TUTORIAL: ON</tspan></text>
+      <g
+         clip-path="url(#clipPath5571)"
+         style="opacity:0.2;fill:#657277;fill-opacity:1"
+         transform="matrix(0.740001,0,0,0.740001,17.369892,914.62631)"
+         id="g3626" />
+      <g
+         id="g4413"
+         transform="matrix(0.73425174,0,0,0.73425174,61.937846,967.33474)"
+         clip-path="url(#clipPath4434)"
+         style="fill:#657277;fill-opacity:1;opacity:0.2">
+        <g
+           id="g4415"
+           style="fill:#657277;fill-opacity:1">
+          <path
+             id="path4417"
+             d="m 79.861,56.645 c 0,0 -4.941,-0.617 -14.014,2.113 -10.295,3.096 -15.852,8.305 -15.852,8.305 0,0 -7.28,-5.229 -15.737,-8.271 -12.731,-4.577 -14.122,-2.147 -14.122,-2.147 0,-4.928 0.679,-11.562 2.233,-18.439 l 27.626,12.191 27.956,-12.53 c 1.399,6.998 1.91,13.77 1.91,18.778 z"
+             inkscape:connector-curvature="0"
+             style="fill:#657277;fill-opacity:1" />
+          <g
+             id="g4419"
+             style="fill:#657277;fill-opacity:1">
+            <polygon
+               id="polygon4421"
+               points="49.997,44.449 0,22.225 49.997,0 100,22.225 "
+               style="fill:#657277;fill-opacity:1" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_tutorialoff.png"
+       inkscape:export-ydpi="112.5"
+       inkscape:export-xdpi="112.5"
+       id="tutorial_off"
+       transform="translate(-838.51285,305.83957)">
+      <rect
+         inkscape:label="#rect3620"
+         ry="10.624136"
+         y="961.86938"
+         x="92.678619"
+         height="60"
+         width="290"
+         id="rect4440"
+         style="fill:#657277;fill-opacity:1;stroke:none" />
+      <text
+         xml:space="preserve"
+         style="font-size:25.41469383px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e9e9e9;fill-opacity:1;stroke:none;font-family:Sans"
+         x="146.61523"
+         y="997.03772"
+         id="text4442"
+         sodipodi:linespacing="125%"
+         transform="scale(0.99611456,1.0039006)"><tspan
+           id="tspan4444"
+           sodipodi:role="line"
+           x="146.61523"
+           y="997.03772"
+           style="font-size:25.41469383px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e9e9e9;fill-opacity:1;font-family:Raleway;-inkscape-font-specification:Raleway Ultra-Light">TUTORIAL: OFF</tspan></text>
+      <g
+         id="g4446"
+         transform="matrix(0.740001,0,0,0.740001,17.369892,914.62631)"
+         style="opacity:0.2;fill:#657277;fill-opacity:1"
+         clip-path="url(#clipPath5571)" />
+      <g
+         style="opacity:0.20000000000000001;fill:#e9e9e9;fill-opacity:1"
+         clip-path="url(#clipPath4434)"
+         transform="matrix(0.73425174,0,0,0.73425174,61.937846,967.33474)"
+         id="g4448">
+        <g
+           style="fill:#e9e9e9;fill-opacity:1"
+           id="g4450">
+          <path
+             style="fill:#e9e9e9;fill-opacity:1"
+             inkscape:connector-curvature="0"
+             d="m 79.861,56.645 c 0,0 -4.941,-0.617 -14.014,2.113 -10.295,3.096 -15.852,8.305 -15.852,8.305 0,0 -7.28,-5.229 -15.737,-8.271 -12.731,-4.577 -14.122,-2.147 -14.122,-2.147 0,-4.928 0.679,-11.562 2.233,-18.439 l 27.626,12.191 27.956,-12.53 c 1.399,6.998 1.91,13.77 1.91,18.778 z"
+             id="path4452" />
+          <g
+             style="fill:#e9e9e9;fill-opacity:1"
+             id="g4454">
+            <polygon
+               style="fill:#e9e9e9;fill-opacity:1"
+               points="0,22.225 49.997,0 100,22.225 49.997,44.449 "
+               id="polygon4456" />
+          </g>
+        </g>
+      </g>
     </g>
   </g>
 </svg>

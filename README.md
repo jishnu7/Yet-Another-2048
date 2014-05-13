@@ -20,4 +20,5 @@ Images:
 - [Diagram](http://thenounproject.com/term/diagram/23497/) by Juan Pablo Bravo from The Noun Project, CC
 - [Play](http://thenounproject.com/term/play/6506/) by Mateo Zlatar from The Noun Project, CC
 - [Gear](http://thenounproject.com/term/gear/25723/) by Casey Speer from The Noun Project, CC
-- [Stopwatch](http://thenounproject.com/term/stopwatch/27551/) by Ryan Dell, CC
+- [Stopwatch](http://thenounproject.com/term/stopwatch/27551/) by Ryan Dell from The Noun Project, CC
+- [Mortar Board](http://thenounproject.com/term/mortar-board/11937/) by Stephen JB Thomas from The Noun Project, CC

@@ -85,7 +85,7 @@ exports = (function() {
       saveData(tutorialID, true);
     },
 
-    unsetTutorial: function() {
+    resetTutorial: function() {
       localStorage.removeItem(tutorialID);
     }
   };

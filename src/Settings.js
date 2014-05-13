@@ -2,8 +2,7 @@
 import ui.View as View;
 import src.gc.ButtonView as ButtonView;
 import src.PlayGame as PlayGame;
-
-import src.PlayGame as PlayGame;
+import src.Storage as Storage;
 /* jshint ignore:end */
 
 exports = Class(View, function(supr) {
@@ -41,12 +40,33 @@ exports = Class(View, function(supr) {
       audio.getMuted() ? states.UNSELECTED : states.SELECTED
     );
 
+    new ButtonView({
+      superview: this,
+      layout: 'box',
+      centerX: true,
+      width: 362,
+      height: 75,
+      bottom: 30,
+      toggleSelected: true,
+      order: 2,
+      images: {
+        selected: 'resources/images/btn_tutorialon.png',
+        unselected: 'resources/images/btn_tutorialoff.png'
+      },
+      on: {
+        selected: Storage.resetTutorial,
+        unselected: Storage.setTutorialCompleted
+      }
+    }).setState(
+      Storage.isTutorialCompleted() ? states.UNSELECTED : states.SELECTED
+    );
+
     this.playButton = new ButtonView({
       superview: this,
       centerX: true,
       width: 362,
       height: 75,
-      order: 2
+      order: 3
     });
 
     this.update = bind(this, this.update);
