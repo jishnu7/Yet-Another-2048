@@ -1,12 +1,12 @@
 /* jshint ignore:start */
 import animate;
-import ui.View as View;
 import ui.TextView as TextView;
 
 import src.Storage as Storage;
+import src.Utils as Utils;
 /* jshint ignore:end */
 
-exports = Class(View, function(supr) {
+exports = Class(TextView, function(supr) {
   var head = 0,
     strings = [
       'Swipe to merge cells',
@@ -18,25 +18,18 @@ exports = Class(View, function(supr) {
 
   this.init = function(opts) {
     merge(opts, {
-      inLayout: false,
       layout: 'box',
-      zIndex: 2,
-      x: opts.width*2
+      size: 32,
+      centerX: true,
+      height: 10,
+      autoFontSize: false,
+      wrap: true,
+      padding: '100 100',
+      offsetY: 75,
+      color: Utils.colors.text,
+      fontFamily: Utils.fonts.number
     });
     supr(this, 'init', [opts]);
-
-    this.text = new TextView({
-      superview: this,
-      layout: 'box',
-      layoutWidth: '60%',
-      size: 40,
-      height: 200,
-      centerX: true,
-      centerY: true,
-      wrap: true,
-      autoFontSize: false,
-      autoSize: true
-    });
   };
 
   this.swipe = function() {
@@ -85,6 +78,6 @@ exports = Class(View, function(supr) {
     }, 1000).then(function() {
       busy = false;
     }, 0);
-    this.text.setText(strings[head]);
+    this.setText(strings[head]);
   };
 });

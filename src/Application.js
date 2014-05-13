@@ -50,8 +50,8 @@ exports = Class(GC.Application, function () {
       layout: 'linear',
       direction: 'vertical',
       justifyContent: 'center',
-      layoutWidth: '100%',
-      layoutHeight: '100%',
+      width: size.width,
+      height: size.height,
       swipeMagnitude: 50,
       swipeTime: 1000
     });
@@ -59,7 +59,7 @@ exports = Class(GC.Application, function () {
     var tutorial = new Tutorial({
       superview: game,
       width: size.width,
-      height: size.height
+      order: 3
     });
 
     var score = new Score({
