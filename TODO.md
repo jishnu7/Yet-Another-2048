@@ -9,7 +9,7 @@
 - [x] Back button
 - [x] Play games integration
 - [x] Better animations ?
-- [ ] How to play
+- [x] How to play
 - [x] Border radius for cells ?
 - [ ] 3 mode
 - [ ] Color mode
@@ -19,4 +19,4 @@
 - [x] New font
 - [x] New color theme
 - [x] Save game on close
-- [ ] Game stats
+- [x] Game stats
