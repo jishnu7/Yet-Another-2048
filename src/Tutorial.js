@@ -11,7 +11,8 @@ exports = Class(View, function(supr) {
     strings = [
       'Swipe to merge cells',
       'There is a catch, only cells with same number will merge',
-      'Sign-in with your Google account to compare your score with your friends',
+      'Score your highest by attaining a tile with 2048 or more',
+      'Sign-in with your Google account to compare score with your friends',
     ],
     busy = false;
 
