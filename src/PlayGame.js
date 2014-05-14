@@ -8,8 +8,6 @@ exports = (function() {
   var obj = {},
     busy = false,
     json = JSON.parse(CACHE['resources/conf/play_game.json']),
-    achievements = json.achievements,
-    leaderboards = json.leaderboards,
     // achievements
     /*
     isAchieved = function(val) {
@@ -26,7 +24,6 @@ exports = (function() {
       ls.push(val);
       localStorage.setItem("record_achieved", JSON.stringify(ls));
     },
-    */
     // leaderboards
     getCurrentRecord = function(type) {
       var ls = localStorage.getItem('record_' + type);
@@ -35,6 +32,7 @@ exports = (function() {
     setRecord = function(type, value) {
       localStorage.setItem('record_' + type, value);
     },
+    */
     setLoggedIn = function(value) {
       localStorage.setItem('playgame', value);
     };
@@ -74,10 +72,11 @@ exports = (function() {
     PlayGame[req.type].apply(this, req.data);
   };
 
-  obj.achievement = function(val) {
+  obj.achievement = function(val, mode) {
     if(!obj.isLoggedIn()) {
       return;
     }
+    var achievements = mode === 'time' ? json.achievements : json.achievements_time;
     if(achievements.hasOwnProperty(val)) {
       obj.run({
         type: 'sendAchievement',
@@ -90,6 +89,7 @@ exports = (function() {
     if(!obj.isLoggedIn()) {
       return;
     }
+    var leaderboards = json.leaderboards;
     obj.run({
       type: 'sendScore',
       data: [leaderboards[type], val]

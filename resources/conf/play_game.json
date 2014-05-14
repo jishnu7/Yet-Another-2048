@@ -11,8 +11,22 @@
     "4096": "abc",
     "8192": "abc"
   },
+  "achievements_time": {
+    "120":   "abc",
+    "180":   "abc",
+    "240":   "abc",
+    "300":   "abc",
+    "420":   "abc",
+    "600":   "abc",
+    "900":   "abc",
+    "1200":   "abc",
+    "1800":   "abc",
+    "2700":   "abc",
+    "3600":   "abc"
+  },
   "leaderboards": {
     "score":  "abcabc",
-    "tile":   "abcabc"
+    "tile":   "abcabc",
+    "time":   "abcabc"
   }
 }
