@@ -76,7 +76,7 @@ exports = (function() {
     if(!obj.isLoggedIn()) {
       return;
     }
-    var achievements = mode === 'time' ? json.achievements : json.achievements_time;
+    var achievements = mode === 'time' ? json.achievements_time : json.achievements;
     if(achievements.hasOwnProperty(val)) {
       obj.run({
         type: 'sendAchievement',
