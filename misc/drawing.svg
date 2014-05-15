@@ -590,7 +590,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -4981,7 +4981,10 @@
     </g>
     <g
        id="time_7"
-       inkscape:label="#g4856">
+       inkscape:label="#g4856"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_7.png"
+       inkscape:export-xdpi="488.47324"
+       inkscape:export-ydpi="488.47324">
       <rect
          ry="9.1070004"
          y="-604.44189"
@@ -5078,7 +5081,10 @@
     <g
        id="time_10"
        transform="translate(104.63987,0)"
-       inkscape:label="#g4875">
+       inkscape:label="#g4875"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_10.png"
+       inkscape:export-xdpi="488.47324"
+       inkscape:export-ydpi="488.47324">
       <rect
          style="fill:#e9e9e9;fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="rect4877"
@@ -5175,7 +5181,10 @@
     <g
        transform="translate(208.51594,0)"
        id="time_15"
-       inkscape:label="#g4913">
+       inkscape:label="#g4913"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_15.png"
+       inkscape:export-xdpi="488.47324"
+       inkscape:export-ydpi="488.47324">
       <rect
          ry="9.1070004"
          y="-604.44189"
@@ -5271,7 +5280,10 @@
     </g>
     <g
        id="time_2"
-       transform="translate(0,-107.94964)">
+       transform="translate(0,-107.94964)"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_2.png"
+       inkscape:export-xdpi="488.47"
+       inkscape:export-ydpi="488.47">
       <rect
          style="fill:#e9e9e9;fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="rect4951"
@@ -5368,7 +5380,10 @@
     <g
        transform="translate(105.40366,-107.94964)"
        id="time_3"
-       inkscape:label="#time_2">
+       inkscape:label="#time_2"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_3.png"
+       inkscape:export-xdpi="488.47308"
+       inkscape:export-ydpi="488.47308">
       <rect
          ry="9.1070004"
          y="-604.44189"
@@ -5465,7 +5480,10 @@
     <g
        id="time_4"
        transform="translate(209.27973,-107.94964)"
-       inkscape:label="#g5021">
+       inkscape:label="#g5021"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_4.png"
+       inkscape:export-xdpi="488.47339"
+       inkscape:export-ydpi="488.47339">
       <rect
          style="fill:#e9e9e9;fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="rect5023"
@@ -5562,7 +5580,10 @@
     <g
        transform="translate(311.665,-107.94964)"
        id="time_5"
-       inkscape:label="#g5059">
+       inkscape:label="#g5059"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_5.png"
+       inkscape:export-xdpi="488.47"
+       inkscape:export-ydpi="488.47">
       <rect
          ry="9.1070004"
          y="-604.44189"
@@ -5659,7 +5680,10 @@
     <g
        id="time_20"
        transform="translate(312.77192,0)"
-       inkscape:label="#g5095">
+       inkscape:label="#g5095"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_20.png"
+       inkscape:export-xdpi="488.47324"
+       inkscape:export-ydpi="488.47324">
       <rect
          style="fill:#e9e9e9;fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="rect5097"
@@ -5756,7 +5780,10 @@
     <g
        transform="translate(-0.31668216,100.09564)"
        id="time_30"
-       inkscape:label="#g5131">
+       inkscape:label="#g5131"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_30.png"
+       inkscape:export-xdpi="488.47324"
+       inkscape:export-ydpi="488.47324">
       <rect
          ry="9.1070004"
          y="-604.44189"
@@ -5853,7 +5880,10 @@
     <g
        id="time_45"
        transform="translate(104.81974,100.09564)"
-       inkscape:label="#g5167">
+       inkscape:label="#g5167"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_45.png"
+       inkscape:export-xdpi="488.47324"
+       inkscape:export-ydpi="488.47324">
       <rect
          style="fill:#e9e9e9;fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="rect5169"
@@ -5950,7 +5980,10 @@
     <g
        transform="translate(207.79583,100.09564)"
        id="time_60"
-       inkscape:label="#g5203">
+       inkscape:label="#g5203"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/achievements/time_60.png"
+       inkscape:export-xdpi="488.47324"
+       inkscape:export-ydpi="488.47324">
       <rect
          ry="9.1070004"
          y="-604.44189"
