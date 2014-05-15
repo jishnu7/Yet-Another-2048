@@ -66,7 +66,24 @@ exports = Class(View, function(supr) {
       centerX: true,
       width: 362,
       height: 75,
-      order: 3
+      order: 3,
+      bottom: 30
+    });
+
+    new ButtonView({
+      superview: this,
+      layout: 'box',
+      centerX: true,
+      width: 362,
+      height: 75,
+      order: 4,
+      images: {
+        up: 'resources/images/btn_about.png',
+        down: 'resources/images/btn_about_down.png'
+      },
+      on: {
+        up: bind(this, this.emit, 'about')
+      }
     });
 
     this.update = bind(this, this.update);

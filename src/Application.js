@@ -16,6 +16,7 @@ import src.Menu as Menu;
 import src.Stats as Stats;
 import src.Settings as Settings;
 import src.Tutorial as Tutorial;
+import src.About as About;
 /* jshint ignore:end */
 
 exports = Class(GC.Application, function () {
@@ -130,7 +131,7 @@ exports = Class(GC.Application, function () {
     menu.on('new', bind(this, newGame, 'classic'));
     menu.on('time', bind(this, newGame, 'time'));
 
-    var stats, settings;
+    var stats, settings, about;
     menu.on('stats', bind(this, function() {
       if(!stats) {
         stats = new Stats({
@@ -143,11 +144,23 @@ exports = Class(GC.Application, function () {
       History.add(bind(this, this.pop), stats);
     }));
 
+    var aboutScreen = bind(this, function() {
+      if(!about) {
+        about = new About({
+          width: size.width,
+          height: size.height
+        });
+      }
+      this.push(about);
+      History.add(bind(this, this.pop), about);
+    });
+
     menu.on('settings', bind(this, function() {
       if(!settings) {
         settings = new Settings({
           audio: audio
         });
+        settings.on('about', aboutScreen);
       }
       settings.update();
       this.push(settings);
