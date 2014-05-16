@@ -23,8 +23,8 @@ exports = Class(View, function(supr) {
     );
     this.addTitle('Thanks');
     this.addTextArea(
-      'Aiswarya, Akhil, Aswathy, Jithesh, Maheswaran, ' +
-      'Sabarish, Sundar, Tijin, ' +
+      'Aiswarya, Akhil, Aswathy, Jibin, Jithesh, ' +
+      'Maheswaran, Sabarish, Sundar, Tijin, ' +
       'Members of G+ beta test group, people from #gamedev-india, ' +
       'and everyone who beta tested.'
     );
