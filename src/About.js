@@ -17,7 +17,8 @@ exports = Class(View, function(supr) {
     this.addTextArea(
       'This game is based on 2048 by Gabriele Cirulli, ' +
       'which is based on 1024 by Veewo Studio and Threes by Asher Vollmer. ' +
-      'We are using images from The Noun Project. ' +
+      'We are using images from The Noun Project and ' +
+      'Open Source code from Game Closure Devkit. ' +
       'The source and detailed credits are available in ' +
       'http://github.com/jishnu7/yet-another-2048'
     );
