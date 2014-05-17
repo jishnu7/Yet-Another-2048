@@ -1,5 +1,6 @@
 /* jshint ignore:start */
 import plugins.gameplay.gameplay as PlayGame;
+import plugins.googleanalytics.googleAnalytics as Analytics;
 
 import src.Utils as Utils;
 /* jshint ignore:end */
@@ -55,6 +56,9 @@ exports = (function() {
         busy = false;
       });
     }
+    if(cb) {
+      Analytics.track('playgame', {signin: 'initiated'});
+    }
   };
 
   obj.logout = function(cb) {
@@ -63,10 +67,18 @@ exports = (function() {
     if(cb) {
       cb();
     }
+    Analytics.track('playgame', {signout: true});
   };
 
-  obj.showLeaderBoard = PlayGame.showLeaderBoard;
-  obj.showAchievements = PlayGame.showAchievements;
+  obj.showLeaderBoard = function() {
+    Analytics.track('playgame', {leanderboard: true});
+    PlayGame.showLeaderBoard();
+  };
+
+  obj.showAchievements = function() {
+    Analytics.track('playgame', {achievements: true});
+    PlayGame.showAchievements();
+  };
 
   obj.run = function(req) {
     PlayGame[req.type].apply(this, req.data);

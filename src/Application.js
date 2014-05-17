@@ -4,6 +4,7 @@ import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 import AudioManager;
 import event.Callback as Callback;
+import plugins.googleanalytics.googleAnalytics as Analytics;
 
 import src.Utils as Utils;
 import src.History as History;
@@ -86,7 +87,12 @@ exports = Class(GC.Application, function () {
       game.setHandleEvents(false);
     });
 
-    grid.on('Restart', gameInit);
+    grid.on('Restart', function() {
+      gameInit();
+      var evnt = {};
+      evnt[grid.mode] = true;
+      Analytics.track('newgame', evnt);
+    });
 
     var busy = false;
     game.on('Swipe', bind(this, function(angle, direction) {
@@ -127,6 +133,9 @@ exports = Class(GC.Application, function () {
       Storage.deleteGame();
       tutorial.reset();
       menu.emit('continue');
+      var evnt = {};
+      evnt[mode] = true;
+      Analytics.track('newgame', evnt);
     };
     menu.on('new', bind(this, newGame, 'classic'));
     menu.on('time', bind(this, newGame, 'time'));
@@ -142,6 +151,7 @@ exports = Class(GC.Application, function () {
       stats.update();
       this.push(stats);
       History.add(bind(this, this.pop), stats);
+      Analytics.trackScreen('Stats');
     }));
 
     var aboutScreen = bind(this, function() {
@@ -153,6 +163,7 @@ exports = Class(GC.Application, function () {
       }
       this.push(about);
       History.add(bind(this, this.pop), about);
+      Analytics.trackScreen('About');
     });
 
     menu.on('settings', bind(this, function() {
@@ -165,6 +176,7 @@ exports = Class(GC.Application, function () {
       settings.update();
       this.push(settings);
       History.add(bind(this, this.pop), settings);
+      Analytics.trackScreen('Settings');
     }));
 
     this.push(menu);

@@ -3,6 +3,7 @@ import ui.View as View;
 import src.gc.ButtonView as ButtonView;
 import src.PlayGame as PlayGame;
 import src.Storage as Storage;
+import plugins.googleanalytics.googleAnalytics as Analytics;
 /* jshint ignore:end */
 
 exports = Class(View, function(supr) {
@@ -55,8 +56,14 @@ exports = Class(View, function(supr) {
         unselected: 'resources/images/btn_tutorialoff.png'
       },
       on: {
-        selected: Storage.resetTutorial,
-        unselected: Storage.setTutorialCompleted
+        selected: function() {
+          Storage.resetTutorial();
+          Analytics.track('tutorial', {show: true});
+        },
+        unselected: function() {
+          Storage.setTutorialCompleted();
+          Analytics.track('tutorial', {hide: true});
+        }
       }
     }).setState(
       Storage.isTutorialCompleted() ? states.UNSELECTED : states.SELECTED
@@ -93,6 +100,9 @@ exports = Class(View, function(supr) {
   this.toggleSound = function(bool) {
     this.setMuted(bool);
     localStorage.setItem('mute', bool);
+    var evnt = {};
+    evnt[bool] = true;
+    Analytics.track('audio', evnt);
   };
 
   this.update = function() {

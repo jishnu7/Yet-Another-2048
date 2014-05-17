@@ -34,7 +34,8 @@
 			"144": "resources/icons/android144.png",
 			"192": "resources/icons/android192.png"
 		},
-		"gameplayID": "697558218377"
+		"gameplayID": "697558218377",
+		"googleTrackingID": "12121212"
 	},
 	"ios": {
 		"bundleID": "",
@@ -49,7 +50,8 @@
 		}
 	},
 	"addons": [
-		"gameplay"
+		"gameplay",
+		"googleanalytics"
 	],
 	"sdkVersion": "release-0.1.45"
 }
