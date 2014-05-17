@@ -53,7 +53,7 @@ exports = (function() {
     m = Math.floor(seconds/60);
     out += m + 'm ';
     seconds %= 60;
-    out += Math.floor(seconds) + 's ' ;
+    out += Math.floor(seconds) + 's' ;
     return out;
   };
   return obj;
