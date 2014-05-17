@@ -197,7 +197,9 @@ exports = Class(View, function (supr) {
 			layout: 'linear',
 			direction: "vertical",
 			layoutWidth: '100%',
-			layoutHeight: '100%'
+			layoutHeight: '100%',
+			centerX: true,
+			centerY: true
 		});
 
 		this._bounceRadius = opts.bounceRadius;
@@ -238,7 +240,9 @@ exports = Class(View, function (supr) {
 
 		var bounds = this._scrollBounds;
 		bounds.minX = bounds.minY = bounds.maxX = bounds.maxY = 0;
-		var height = 0;
+		var height = 0,
+			scale = this._contentView._opts.scale || 1;
+
 		this._contentView.getSubviews().forEach(function(sv) {
 			bounds.minX = Math.min(bounds.minX, sv.style.x);
 			bounds.minY = Math.min(bounds.minY, sv.style.y);
@@ -247,9 +251,8 @@ exports = Class(View, function (supr) {
 			if(sv._opts.top) {
 			    height += sv._opts.top;
 			}
-			bounds.maxY = height;
+			bounds.maxY = height * scale;
 		});
-
 	};
 
 	this.buildView = function () {
@@ -301,7 +304,7 @@ exports = Class(View, function (supr) {
 
 		var bounds = this.getStyleBounds();
 
-		if (typeof x == 'number') {
+		if (typeof x == 'number' && this._opts.scrollX !== false) {
 			if (this._isBouncing) {
 				// do nothing
 			} else if (this._canBounce) {
