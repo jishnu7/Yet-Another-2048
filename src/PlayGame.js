@@ -71,11 +71,19 @@ exports = (function() {
   };
 
   obj.showLeaderBoard = function() {
+    if(!obj.isLoggedIn()) {
+      obj.login();
+      return;
+    }
     Analytics.track('playgame', {leanderboard: true});
     PlayGame.showLeaderBoard();
   };
 
   obj.showAchievements = function() {
+    if(!obj.isLoggedIn()) {
+      obj.login();
+      return;
+    }
     Analytics.track('playgame', {achievements: true});
     PlayGame.showAchievements();
   };
