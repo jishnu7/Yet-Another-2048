@@ -167,7 +167,7 @@ exports = Class(GC.Application, function () {
       History.add(bind(this, this.pop), settings);
     }));
 
-    this.view.push(menu);
+    this.push(menu);
   };
 
   this.launchUI = function () {
@@ -189,6 +189,7 @@ exports = Class(GC.Application, function () {
                       (boundsWidth / deviceWidth);
     scale = deviceWidth / baseWidth;
     this.view.style.scale = scale;
+    this.scale = device.isTablet ? 0.7 : 1;
     return { width: baseWidth, height: baseHeight };
   };
 

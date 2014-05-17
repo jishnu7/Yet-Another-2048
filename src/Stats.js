@@ -50,11 +50,15 @@ exports = Class(ScrollView, function(supr) {
     });
     supr(this, 'init', [opts]);
 
+    this._contentView.updateOpts({
+      layoutWidth: '90%',
+      scale: GC.app.scale
+    });
+
     new TextView({
       superview: this,
       layout: 'box',
       centerX: true,
-      layoutWidth: '90%',
       height: 60,
       text: 'Stats',
       size: 60,
@@ -69,7 +73,6 @@ exports = Class(ScrollView, function(supr) {
       superview: this,
       layout: 'linear',
       justifyContent: 'space',
-      layoutWidth: '90%',
       height: 80,
       centerX: true,
       top: 50,
@@ -113,7 +116,6 @@ exports = Class(ScrollView, function(supr) {
         superview: this,
         layout: 'box',
         centerX: true,
-        width: opts.width - 100,
         height: 60,
         size: 45,
         color: Utils.colors.text,
@@ -158,7 +160,6 @@ exports = Class(ScrollView, function(supr) {
       ctor: statView,
       initCount: 20,
       initOpts: {
-        width: opts.width - 150,
         height: 60
       }
     });

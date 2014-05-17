@@ -35,6 +35,7 @@ exports = Class(GridView, function(supr) {
       horizontalMargin: margin,
       verticalMargin: margin,
       autoCellSize: false,
+      scale: GC.app.scale,
       image: 'resources/images/grid.png',
       scaleMethod: '9slice',
       sourceSlices: {

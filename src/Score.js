@@ -50,30 +50,31 @@ exports = Class(View, function(supr) {
   };
 
   this.createView = function(name, value) {
-    var container = new View({
-      superview: this,
-      layout: 'linear',
-      direction: 'vertical',
-      layoutWidth: '50%',
-      justifyContent: 'space-outside',
-    }),
-    label = new TextView({
-      superview: container,
-      layout: 'box',
-      height: 30,
-      text: name,
-      size: 30,
-      color: Utils.colors.text,
-      fontFamily: Utils.fonts.text
-    }),
-    number = new ScoreView({
-      superview: container,
-      layout: 'box',
-      height: 40,
-      text: value,
-      centerX: true,
-      characterData: characterData
-    });
+    var scale = GC.app.scale,
+      container = new View({
+        superview: this,
+        layout: 'linear',
+        direction: 'vertical',
+        layoutWidth: '50%',
+        justifyContent: 'space-outside'
+      }),
+      label = new TextView({
+        superview: container,
+        layout: 'box',
+        height: 30,
+        text: name,
+        size: 30 * scale,
+        color: Utils.colors.text,
+        fontFamily: Utils.fonts.text
+      }),
+      number = new ScoreView({
+        superview: container,
+        layout: 'box',
+        height: 40 * scale,
+        text: value,
+        centerX: true,
+        characterData: characterData
+      });
     return {
       setText: function(mode, value) {
         var out = '',

@@ -20,13 +20,16 @@ exports = Class(View, function(supr) {
     });
     supr(this, 'init', [opts]);
 
-    var logo = new Image({url: 'resources/images/logo.png'});
+    var logo = new Image({url: 'resources/images/logo.png'}),
+      scale = GC.app.scale;
+
     new ImageView({
       superview: this,
       centerX: true,
       width: logo.getWidth(),
       height: logo.getHeight(),
-      image: logo
+      image: logo,
+      scale: scale
     });
 
     this.menuContainer = new View({
@@ -34,7 +37,8 @@ exports = Class(View, function(supr) {
       layout: 'linear',
       direction: 'vertical',
       justifyContent: 'center',
-      height: 450
+      height: 450,
+      scale: scale
     });
 
     this.continue = this.addMenuEntry('continue', 1);

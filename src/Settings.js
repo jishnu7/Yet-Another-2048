@@ -16,7 +16,8 @@ exports = Class(View, function(supr) {
       direction: 'vertical',
       justifyContent: 'center',
       layoutWidth: '100%',
-      layoutHeight: '100%'
+      layoutHeight: '100%',
+      scale: GC.app.scale
     });
     supr(this, 'init', [opts]);
 
