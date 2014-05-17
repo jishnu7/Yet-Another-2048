@@ -19,7 +19,9 @@ exports = Class(ScrollView, function(supr) {
       tile: 'Highest tile',
       averageTile: 'Avg. highest tile',
       averageScore: 'Avg. score',
-      averageTime: 'Avg. time'
+      averageTime: 'Avg. time',
+      longest: 'Longest',
+      highScore: 'High score'
     },
     getMode = function(array) {
       var len = array.length;
@@ -158,7 +160,7 @@ exports = Class(ScrollView, function(supr) {
 
     this.statView = new ViewPool({
       ctor: statView,
-      initCount: 20,
+      initCount: 25,
       initOpts: {
         height: 60
       }
@@ -178,12 +180,13 @@ exports = Class(ScrollView, function(supr) {
       games = Storage.getGameStats(),
       i = 3,
       order = [
-        'count', 'time', 'averageTime',
-        'score', 'averageScore', 'tile', 'averageTile'
+        'count', 'time', 'longest', 'averageTime',
+        'score', 'highScore', 'averageScore', 'tile', 'averageTile'
       ],
       statsTime = {
         count: 0,
         time: 0,
+        longest: 0,
         averageTime: 0,
         tile: 0,
         averageTile: 0
@@ -191,8 +194,10 @@ exports = Class(ScrollView, function(supr) {
       statsClassic = {
         count: 0,
         score: 0,
+        highScore: 0,
         averageScore: 0,
         time: 0,
+        longest: 0,
         averageTime: 0,
         tile: 0,
         averageTile: 0
@@ -207,6 +212,7 @@ exports = Class(ScrollView, function(supr) {
         statsTime.averageTile = getMode(tile.time);
         statsTime.averageTime = Utils.humanTime(statsTime.time/statsTime.count);
         statsTime.time = Utils.humanTime(statsTime.time);
+        statsTime.longest = Utils.humanTime(statsTime.longest);
       }
 
       if(statsClassic.count > 0) {
@@ -214,6 +220,7 @@ exports = Class(ScrollView, function(supr) {
         statsClassic.averageScore = Math.floor(statsClassic.score/statsClassic.count);
         statsClassic.averageTime = Utils.humanTime(statsClassic.time/statsClassic.count);
         statsClassic.time = Utils.humanTime(statsClassic.time);
+        statsClassic.longest = Utils.humanTime(statsClassic.longest);
       }
 
       this.addTitle(i++, 'Classic Mode');
@@ -235,10 +242,12 @@ exports = Class(ScrollView, function(supr) {
         mode = statsTime;
       } else {
         mode = statsClassic;
-        statsClassic.score += game.score;
+        mode.score += game.score;
+        mode.highScore = Math.max(mode.highScore, game.score);
       }
       mode.count += 1;
       mode.time += game.time || 0;
+      mode.longest = Math.max(mode.longest, game.time);
       if(!game.highestTile) {
         game.highestTile = 2;
       }
