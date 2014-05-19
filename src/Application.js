@@ -201,7 +201,7 @@ exports = Class(GC.Application, function () {
                       (boundsWidth / deviceWidth);
     scale = deviceWidth / baseWidth;
     this.view.style.scale = scale;
-    this.scale = device.isTablet ? 0.7 : 1;
+    this.scale = device.isTablet ? 0.8 : 1;
     return { width: baseWidth, height: baseHeight };
   };
 
