@@ -1,3 +1,6 @@
+/* jshint ignore:start */
+import ui.resource.Image as Image;
+/* jshint ignore:end */
 
 exports = (function() {
   var obj = {};
@@ -56,5 +59,16 @@ exports = (function() {
     out += Math.floor(seconds) + 's' ;
     return out;
   };
+
+  obj.getImage = function(name, button) {
+    if(button) {
+      return {
+        up: new Image({url: 'resources/images/btn_' + name + '.png'}),
+        down: new Image({url: 'resources/images/btn_' + name + '_down.png'}),
+      };
+    }
+    return new Image({url: 'resources/images/' + name + '.png'});
+  };
+
   return obj;
 })();

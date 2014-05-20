@@ -71,41 +71,36 @@ exports = Class(ScrollView, function(supr) {
       order: 1
     });
 
-    var containerPlay = new View({
-      superview: this,
-      layout: 'linear',
-      justifyContent: 'space',
-      height: 80,
-      centerX: true,
-      top: 50,
-      order: 2
-    });
+    var img_achievement = Utils.getImage('achievements', true),
+      img_leaderboard = Utils.getImage('leaderboard', true),
+      containerPlay = new View({
+        superview: this,
+        layout: 'linear',
+        justifyContent: 'space-outside',
+        height: img_achievement.up.getHeight(),
+        centerX: true,
+        top: 50,
+        order: 2
+      });
 
     new ButtonView({
       superview: containerPlay,
       centerX: true,
-      width: 362,
-      height: 75,
-      scale: 0.9,
-      images: {
-        up: 'resources/images/btn_achievements.png',
-        down: 'resources/images/btn_achievements_down.png'
-      },
+      width: img_achievement.up.getWidth(),
+      height: img_achievement.up.getHeight(),
+      images: img_achievement,
       on: {
         up: PlayGame.showAchievements
       }
     });
 
+
     new ButtonView({
       superview: containerPlay,
       centerX: true,
-      width: 362,
-      height: 75,
-      scale: 0.9,
-      images: {
-        up: 'resources/images/btn_leaderboard.png',
-        down: 'resources/images/btn_leaderboard_down.png'
-      },
+      width: img_leaderboard.up.getWidth(),
+      height: img_leaderboard.up.getHeight(),
+      images: img_leaderboard,
       on: {
         up: PlayGame.showLeaderBoard
       }
