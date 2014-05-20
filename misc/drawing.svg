@@ -535,7 +535,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.69433594"
      inkscape:cx="-424.67844"
-     inkscape:cy="-294.52602"
+     inkscape:cy="-409.74402"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -3853,8 +3853,8 @@
     <g
        id="btn_stats"
        transform="translate(-931.8479,16.872796)"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="112.34483"
+       inkscape:export-ydpi="112.34483"
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_stats.png">
       <rect
          ry="10.624136"
@@ -4175,8 +4175,8 @@
     </g>
     <g
        inkscape:export-filename="/home/jishnu/git/2048/resources/images/btn_stats_down.png"
-       inkscape:export-ydpi="90"
-       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="112.34483"
+       inkscape:export-xdpi="112.34483"
        transform="translate(-2297.8479,659.8728)"
        id="btn_stats_down">
       <rect

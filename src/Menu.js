@@ -6,6 +6,7 @@ import src.gc.ButtonView as ButtonView;
 
 import src.PlayGame as PlayGame;
 import src.Storage as Storage;
+import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(View, function(supr) {
@@ -57,17 +58,15 @@ exports = Class(View, function(supr) {
   };
 
   this.addMenuEntry = function(text, order) {
+    var img = Utils.getImage(text, true);
     return new ButtonView({
       superview: this.menuContainer,
       centerX: true,
-      width: 362,
-      height: 75,
+      images: img,
+      width: img.up.getWidth(),
+      height: img.up.getHeight(),
       bottom: 15,
       order: order,
-      images: {
-        up: 'resources/images/btn_' + text + '.png',
-        down: 'resources/images/btn_' + text + '_down.png'
-      },
       on: {
         up: bind(this, function() {
           this.emit(text);
