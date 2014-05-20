@@ -1,9 +1,11 @@
 /* jshint ignore:start */
 import ui.View as View;
 import src.gc.ButtonView as ButtonView;
+import plugins.googleanalytics.googleAnalytics as Analytics;
+
 import src.PlayGame as PlayGame;
 import src.Storage as Storage;
-import plugins.googleanalytics.googleAnalytics as Analytics;
+import src.Utils as Utils;
 /* jshint ignore:end */
 
 exports = Class(View, function(supr) {
@@ -109,20 +111,14 @@ exports = Class(View, function(supr) {
     var opts;
     if(PlayGame.isLoggedIn()) {
       opts = {
-        images: {
-          up: 'resources/images/btn_signout.png',
-          down: 'resources/images/btn_signout_down.png'
-        },
+        images: Utils.getImage('signout', true),
         on: {
           up: bind(this, PlayGame.logout, this.update)
         }
       };
     } else {
       opts = {
-        images: {
-          up: 'resources/images/btn_signin.png',
-          down: 'resources/images/btn_signin_down.png'
-        },
+        images: Utils.getImage('signin', true),
         on: {
           up: bind(this, PlayGame.login, this.update)
         }

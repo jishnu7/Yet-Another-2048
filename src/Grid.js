@@ -472,43 +472,43 @@ exports = Class(GridView, function(supr) {
   };
 
   this.initOverlay = function(size) {
-    var bg = new ImageScaleView({
-      superview: this,
-      inLayout: false,
-      layout: 'linear',
-      direction: 'vertical',
-      justifyContent: 'center',
-      visible: false,
-      zIndex: 2,
-      opacity: 0.0,
-      width: size,
-      height: size,
-      image: 'resources/images/grid.png',
-      scaleMethod: '9slice',
-      sourceSlices: {
-        horizontal: {
-          left: 20,
-          center: 10,
-          right: 20
-        },
-        vertical: {
-          top: 20,
-          middle: 10,
-          bottom: 20
+    var grid = Utils.getImage('grid'),
+      replay = Utils.getImage('replay'),
+      bg = new ImageScaleView({
+        superview: this,
+        inLayout: false,
+        layout: 'linear',
+        direction: 'vertical',
+        justifyContent: 'center',
+        visible: false,
+        zIndex: 2,
+        opacity: 0.0,
+        width: size,
+        height: size,
+        image: grid,
+        scaleMethod: '9slice',
+        sourceSlices: {
+          horizontal: {
+            left: 20,
+            center: 10,
+            right: 20
+          },
+          vertical: {
+            top: 20,
+            middle: 10,
+            bottom: 20
+          }
         }
-      }
-    });
-
-    var replay = new Image({url: 'resources/images/replay.png'});
-    var img = new ImageView({
-      superview: bg,
-      width: replay.getWidth(),
-      height: replay.getHeight(),
-      image: replay,
-      x: 0,
-      y: 0,
-      centerX: true
-    });
+      }),
+      img = new ImageView({
+        superview: bg,
+        width: replay.getWidth(),
+        height: replay.getHeight(),
+        image: replay,
+        x: 0,
+        y: 0,
+        centerX: true
+      });
 
     img.on('InputOut', bind(this, function() {
       this.emit('Restart');
