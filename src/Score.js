@@ -50,7 +50,7 @@ exports = Class(View, function(supr) {
   };
 
   this.createView = function(name, value) {
-    var scale = GC.app.scale,
+    var scale = GC.app.tabletScale,
       container = new View({
         superview: this,
         layout: 'linear',

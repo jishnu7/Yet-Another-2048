@@ -54,7 +54,7 @@ exports = Class(ScrollView, function(supr) {
 
     this._contentView.updateOpts({
       layoutWidth: '90%',
-      scale: GC.app.scale
+      scale: GC.app.tabletScale
     });
 
     new TextView({

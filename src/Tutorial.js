@@ -20,7 +20,7 @@ exports = Class(TextView, function(supr) {
   this.init = function(opts) {
     merge(opts, {
       layout: 'box',
-      size: 32 * GC.app.scale,
+      size: 32 * GC.app.tabletScale,
       centerX: true,
       height: 10,
       autoFontSize: false,

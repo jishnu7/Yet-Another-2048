@@ -22,7 +22,7 @@ exports = Class(View, function(supr) {
     supr(this, 'init', [opts]);
 
     var logo = new Image({url: 'resources/images/logo.png'}),
-      scale = GC.app.scale;
+      scale = GC.app.tabletScale;
 
     new ImageView({
       superview: this,

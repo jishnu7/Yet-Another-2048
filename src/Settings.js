@@ -18,7 +18,7 @@ exports = Class(View, function(supr) {
       justifyContent: 'center',
       layoutWidth: '100%',
       layoutHeight: '100%',
-      scale: GC.app.scale
+      scale: GC.app.tabletScale
     });
     supr(this, 'init', [opts]);
 

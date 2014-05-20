@@ -38,7 +38,7 @@ exports = Class(View, function(supr) {
       horizontalAlign: 'center',
       layoutWidth: '100%',
       height: 90,
-      size: 45 * GC.app.scale,
+      size: 45 * GC.app.tabletScale,
       color: Utils.colors.text,
       fontFamily: Utils.fonts.text,
       text: text
@@ -50,7 +50,7 @@ exports = Class(View, function(supr) {
       superview: this,
       color: Utils.colors.text,
       horizontalAlign: 'center',
-      size: 25 * GC.app.scale,
+      size: 25 * GC.app.tabletScale,
       fontFamily: Utils.fonts.number,
       width: this._opts.width,
       layoutWidth: '100%',
