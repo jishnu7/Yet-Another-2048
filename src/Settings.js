@@ -12,7 +12,12 @@ exports = Class(View, function(supr) {
 
   this.init = function(opts) {
     var audio = opts.audio,
-      states = ButtonView.states;
+      states = ButtonView.states,
+      img_sound = Utils.getButtonImage('sound', true, true),
+      img_tut = Utils.getButtonImage('tutorial', true, true),
+      img_about = Utils.getButtonImage('about', true),
+      btn_width = img_sound.selected.getWidth(),
+      btn_height = img_sound.selected.getHeight();
 
     merge(opts, {
       layout: 'linear',
@@ -27,15 +32,12 @@ exports = Class(View, function(supr) {
     new ButtonView({
       superview: this,
       centerX: true,
-      width: 362,
-      height: 75,
+      width: btn_width,
+      height: btn_height,
       bottom: 30,
       toggleSelected: true,
       order: 1,
-      images: {
-        selected: 'resources/images/btn_soundon.png',
-        unselected: 'resources/images/btn_soundoff.png'
-      },
+      images: img_sound,
       on: {
         selected: bind(audio, this.toggleSound, false),
         unselected: bind(audio, this.toggleSound, true)
@@ -48,15 +50,12 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'box',
       centerX: true,
-      width: 362,
-      height: 75,
+      width: btn_width,
+      height: btn_height,
       bottom: 30,
       toggleSelected: true,
       order: 2,
-      images: {
-        selected: 'resources/images/btn_tutorialon.png',
-        unselected: 'resources/images/btn_tutorialoff.png'
-      },
+      images: img_tut,
       on: {
         selected: function() {
           Storage.resetTutorial();
@@ -74,8 +73,8 @@ exports = Class(View, function(supr) {
     this.playButton = new ButtonView({
       superview: this,
       centerX: true,
-      width: 362,
-      height: 75,
+      width: btn_width,
+      height: btn_height,
       order: 3,
       bottom: 30
     });
@@ -84,13 +83,10 @@ exports = Class(View, function(supr) {
       superview: this,
       layout: 'box',
       centerX: true,
-      width: 362,
-      height: 75,
+      width: btn_width,
+      height: btn_height,
       order: 4,
-      images: {
-        up: 'resources/images/btn_about.png',
-        down: 'resources/images/btn_about_down.png'
-      },
+      images: img_about,
       on: {
         up: bind(this, this.emit, 'about')
       }
@@ -111,7 +107,7 @@ exports = Class(View, function(supr) {
     var opts;
     if(PlayGame.isLoggedIn()) {
       opts = {
-        images: Utils.getButtonImage('signout'),
+        images: Utils.getButtonImage('signout', true),
         on: {
           up: bind(this, PlayGame.logout, this.update)
         }

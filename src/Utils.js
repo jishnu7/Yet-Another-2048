@@ -53,11 +53,26 @@ exports = (function() {
     return out;
   };
 
-  obj.getButtonImage = function(name) {
-    return {
-      up: new Image({url: 'resources/images/btn_' + name + '.png'}),
-      down: new Image({url: 'resources/images/btn_' + name + '_down.png'}),
-    };
+  obj.getButtonImage = function(name, theme, select) {
+    var path = '',
+      images;
+
+    if(theme) {
+      path = Storage.getTheme() + '/';
+    }
+
+    if(select) {
+      images = {
+        selected: new Image({url: 'resources/images/' + path + 'btn_' + name + 'on.png'}),
+        unselected: new Image({url: 'resources/images/btn_' + name + 'off.png'})
+      };
+    } else {
+      images = {
+        up: new Image({url: 'resources/images/' + path + 'btn_' + name + '.png'}),
+        down: new Image({url: 'resources/images/btn_' + name + '_down.png'})
+      };
+    }
+    return images;
   };
 
   obj.getImage = function(name, theme) {
