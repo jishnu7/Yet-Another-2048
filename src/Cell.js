@@ -60,7 +60,7 @@ exports = Class(ImageView, function(supr) {
     for(i = val; img === -1 && i !== 1; i /= 2) {
       img = Utils.colors.tile.indexOf(i);
     }
-    this.setImage('resources/images/cell_' + i*2 + '.png');
+    this.setImage(Utils.getImage('cell_' + i*2, true));
   };
 
   this.getValue = function() {

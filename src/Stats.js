@@ -71,8 +71,8 @@ exports = Class(ScrollView, function(supr) {
       order: 1
     });
 
-    var img_achievement = Utils.getImage('achievements', true),
-      img_leaderboard = Utils.getImage('leaderboard', true),
+    var img_achievement = Utils.getButtonImage('achievements'),
+      img_leaderboard = Utils.getButtonImage('leaderboard'),
       containerPlay = new View({
         superview: this,
         layout: 'linear',

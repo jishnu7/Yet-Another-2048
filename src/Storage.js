@@ -4,8 +4,12 @@ exports = (function() {
     statsID = 'stats_tile',
     statsGame = 'stats_game',
     tutorialID = 'tutorial',
-    saveData = function(id, data) {
-      localStorage.setItem(id, JSON.stringify(data));
+    themeID = 'theme',
+    saveData = function(id, data, notJSON) {
+      if(!notJSON) {
+        data = JSON.stringify(data);
+      }
+      localStorage.setItem(id, data);
     },
     getData = function(id, notJSON) {
       var data = localStorage.getItem(id);
@@ -87,6 +91,14 @@ exports = (function() {
 
     resetTutorial: function() {
       localStorage.removeItem(tutorialID);
+    },
+
+    getTheme: function() {
+      return getData(themeID, true) || 'dark';
+    },
+
+    setTheme: function(theme) {
+      saveData(themeID, theme, true);
     }
   };
 })();

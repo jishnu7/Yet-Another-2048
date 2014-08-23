@@ -111,14 +111,14 @@ exports = Class(View, function(supr) {
     var opts;
     if(PlayGame.isLoggedIn()) {
       opts = {
-        images: Utils.getImage('signout', true),
+        images: Utils.getButtonImage('signout'),
         on: {
           up: bind(this, PlayGame.logout, this.update)
         }
       };
     } else {
       opts = {
-        images: Utils.getImage('signin', true),
+        images: Utils.getButtonImage('signin'),
         on: {
           up: bind(this, PlayGame.login, this.update)
         }

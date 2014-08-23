@@ -36,7 +36,7 @@ exports = Class(GridView, function(supr) {
       verticalMargin: margin,
       autoCellSize: false,
       scale: GC.app.tabletScale,
-      image: 'resources/images/grid.png',
+      image: Utils.getImage('grid', true),
       scaleMethod: '9slice',
       sourceSlices: {
         horizontal: {
@@ -66,7 +66,7 @@ exports = Class(GridView, function(supr) {
           col: y,
           width: cellSize,
           height: cellSize,
-          image: 'resources/images/cell_blank.png'
+          image: Utils.getImage('cell_blank', true)
         });
       }
       cells.push(row);
@@ -472,7 +472,7 @@ exports = Class(GridView, function(supr) {
   };
 
   this.initOverlay = function(size) {
-    var grid = Utils.getImage('grid'),
+    var grid = Utils.getImage('grid', true),
       replay = Utils.getImage('replay'),
       bg = new ImageScaleView({
         superview: this,

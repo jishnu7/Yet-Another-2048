@@ -1,5 +1,6 @@
 /* jshint ignore:start */
 import ui.resource.Image as Image;
+import src.Storage as Storage;
 /* jshint ignore:end */
 
 exports = (function() {
@@ -15,17 +16,9 @@ exports = (function() {
     }[direction];
   };
 
-  obj.colors = {
-    background: '#F6F6F6',
-    text: '#657277',
-    text_bright: '#FFFFFF',
-    grid: '#BCBCBC',
-    // These are the tiles we support.
-    // An image with cell_<value>.png need to be there in
-    // resources/images/ folder
-    tile: [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048,
-      4096, 8192, 16384, 32768, 65536],
-    tile_text: ['#657277', '#F9F6F2']
+  obj.setColors = function(theme) {
+    theme = theme || Storage.getTheme();
+    obj.colors = JSON.parse(CACHE['resources/themes/' + theme + '.json']);
   };
 
   // Helper function to make sure that all required operations are
@@ -60,15 +53,20 @@ exports = (function() {
     return out;
   };
 
-  obj.getImage = function(name, button) {
-    if(button) {
-      return {
-        up: new Image({url: 'resources/images/btn_' + name + '.png'}),
-        down: new Image({url: 'resources/images/btn_' + name + '_down.png'}),
-      };
+  obj.getButtonImage = function(name) {
+    return {
+      up: new Image({url: 'resources/images/btn_' + name + '.png'}),
+      down: new Image({url: 'resources/images/btn_' + name + '_down.png'}),
+    };
+  };
+
+  obj.getImage = function(name, theme) {
+    if(theme) {
+      name = Storage.getTheme() + '/' + name;
     }
     return new Image({url: 'resources/images/' + name + '.png'});
   };
 
+  obj.setColors();
   return obj;
 })();

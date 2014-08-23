@@ -58,7 +58,7 @@ exports = Class(View, function(supr) {
   };
 
   this.addMenuEntry = function(text, order) {
-    var img = Utils.getImage(text, true);
+    var img = Utils.getButtonImage(text);
     return new ButtonView({
       superview: this.menuContainer,
       centerX: true,
