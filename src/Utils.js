@@ -16,7 +16,7 @@ exports = (function() {
     }[direction];
   };
 
-  obj.setColors = function(theme) {
+  obj.setTheme = function(theme) {
     theme = theme || Storage.getTheme();
     obj.theme = JSON.parse(CACHE['resources/themes/' + theme + '.json']);
     obj.theme.number = {
@@ -107,6 +107,6 @@ exports = (function() {
     return new Image({url: 'resources/images/' + name + '.png'});
   };
 
-  obj.setColors();
+  obj.setTheme();
   return obj;
 })();

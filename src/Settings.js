@@ -15,6 +15,7 @@ exports = Class(View, function(supr) {
       states = ButtonView.states,
       img_sound = Utils.getButtonImage('sound', true, true),
       img_tut = Utils.getButtonImage('tutorial', true, true),
+      img_theme = Utils.getButtonImage('theme', false, true),
       img_about = Utils.getButtonImage('about', true),
       btn_width = img_sound.selected.getWidth(),
       btn_height = img_sound.selected.getHeight();
@@ -85,7 +86,25 @@ exports = Class(View, function(supr) {
       centerX: true,
       width: btn_width,
       height: btn_height,
+      bottom: 30,
+      toggleSelected: true,
       order: 4,
+      images: img_theme,
+      on: {
+        selected: bind(this, this.setTheme, 'default'),
+        unselected: bind(this, this.setTheme, 'dark')
+      }
+    }).setState(
+      Storage.getTheme() === 'default' ? states.SELECTED : states.UNSELECTED
+    );
+
+    new ButtonView({
+      superview: this,
+      layout: 'box',
+      centerX: true,
+      width: btn_width,
+      height: btn_height,
+      order: 5,
       images: img_about,
       on: {
         up: bind(this, this.emit, 'about')
@@ -101,6 +120,11 @@ exports = Class(View, function(supr) {
     var evnt = {};
     evnt[bool] = true;
     Analytics.track('audio', evnt);
+  };
+
+  this.setTheme = function(theme) {
+    Utils.setTheme(theme);
+    Storage.setTheme(theme);
   };
 
   this.update = function() {
