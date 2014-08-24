@@ -51,7 +51,7 @@ exports = Class(View, function(supr) {
         height: 30,
         text: name,
         size: 30 * scale,
-        color: Utils.colors.text,
+        color: Utils.theme.text,
         fontFamily: Utils.fonts.text
       }),
       number = new ScoreView({
@@ -60,7 +60,7 @@ exports = Class(View, function(supr) {
         height: 40 * scale,
         text: value,
         centerX: true,
-        characterData: Utils.colors.score
+        characterData: Utils.theme.score
       });
     return {
       setText: function(mode, value) {

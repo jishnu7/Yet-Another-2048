@@ -28,7 +28,7 @@ exports = Class(GC.Application, function () {
       layout: 'box',
       width: size.width,
       height: size.height,
-      backgroundColor: Utils.colors.background
+      backgroundColor: Utils.theme.background
     });
 
     var audio = new AudioManager({

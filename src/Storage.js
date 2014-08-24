@@ -94,7 +94,7 @@ exports = (function() {
     },
 
     getTheme: function() {
-      return getData(themeID, true) || 'dark';
+      return getData(themeID, true) || 'default';
     },
 
     setTheme: function(theme) {

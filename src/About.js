@@ -39,7 +39,7 @@ exports = Class(View, function(supr) {
       layoutWidth: '100%',
       height: 90,
       size: 45 * GC.app.tabletScale,
-      color: Utils.colors.text,
+      color: Utils.theme.text,
       fontFamily: Utils.fonts.text,
       text: text
     });
@@ -48,7 +48,7 @@ exports = Class(View, function(supr) {
   this.addTextArea = function(text) {
     new TextView({
       superview: this,
-      color: Utils.colors.text,
+      color: Utils.theme.text,
       horizontalAlign: 'center',
       size: 25 * GC.app.tabletScale,
       fontFamily: Utils.fonts.number,

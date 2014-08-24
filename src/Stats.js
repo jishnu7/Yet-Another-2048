@@ -64,7 +64,7 @@ exports = Class(ScrollView, function(supr) {
       height: 60,
       text: 'Stats',
       size: 60,
-      color: Utils.colors.text,
+      color: Utils.theme.text,
       fontFamily: Utils.fonts.text,
       horizontalAlign: 'left',
       top: 50,
@@ -115,7 +115,7 @@ exports = Class(ScrollView, function(supr) {
         centerX: true,
         height: 60,
         size: 45,
-        color: Utils.colors.text,
+        color: Utils.theme.text,
         fontFamily: Utils.fonts.text,
         horizontalAlign: 'left',
         top: 50
@@ -135,7 +135,7 @@ exports = Class(ScrollView, function(supr) {
           superview: this,
           layout: 'box',
           layoutWidth: '50%',
-          color: Utils.colors.text,
+          color: Utils.theme.text,
           size: 35,
           fontFamily: Utils.fonts.number,
           horizontalAlign: 'left'
@@ -146,7 +146,7 @@ exports = Class(ScrollView, function(supr) {
           layout: 'box',
           layoutWidth: '50%',
           size: 35,
-          color: Utils.colors.text,
+          color: Utils.theme.text,
           fontFamily: Utils.fonts.number,
           horizontalAlign: 'right'
         });

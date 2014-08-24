@@ -18,8 +18,8 @@ exports = (function() {
 
   obj.setColors = function(theme) {
     theme = theme || Storage.getTheme();
-    obj.colors = JSON.parse(CACHE['resources/themes/' + theme + '.json']);
-    obj.colors.number = {
+    obj.theme = JSON.parse(CACHE['resources/themes/' + theme + '.json']);
+    obj.theme.number = {
       '0': { 'image': 'resources/images/' + theme + '/number_0.png' },
       '1': { 'image': 'resources/images/' + theme + '/number_1.png' },
       '2': { 'image': 'resources/images/' + theme + '/number_2.png' },
@@ -31,7 +31,7 @@ exports = (function() {
       '8': { 'image': 'resources/images/' + theme + '/number_8.png' },
       '9': { 'image': 'resources/images/' + theme + '/number_9.png' },
     };
-    obj.colors.score = {
+    obj.theme.score = {
       '0': { 'image': 'resources/images/' + theme + '/score_0.png' },
       '1': { 'image': 'resources/images/' + theme + '/score_1.png' },
       '2': { 'image': 'resources/images/' + theme + '/score_2.png' },
