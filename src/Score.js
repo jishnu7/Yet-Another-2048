@@ -16,19 +16,6 @@ exports = Class(View, function(supr) {
     },
     getHighScore = function(mode) {
       return parseInt(localStorage.getItem(getID(mode)), 10) || 0;
-    },
-    characterData = {
-      '0': { 'image': 'resources/images/score_0.png' },
-      '1': { 'image': 'resources/images/score_1.png' },
-      '2': { 'image': 'resources/images/score_2.png' },
-      '3': { 'image': 'resources/images/score_3.png' },
-      '4': { 'image': 'resources/images/score_4.png' },
-      '5': { 'image': 'resources/images/score_5.png' },
-      '6': { 'image': 'resources/images/score_6.png' },
-      '7': { 'image': 'resources/images/score_7.png' },
-      '8': { 'image': 'resources/images/score_8.png' },
-      '9': { 'image': 'resources/images/score_9.png' },
-      ':': { 'image': 'resources/images/score_colon.png' }
     };
 
   this.init = function(opts) {
@@ -73,7 +60,7 @@ exports = Class(View, function(supr) {
         height: 40 * scale,
         text: value,
         centerX: true,
-        characterData: characterData
+        characterData: Utils.colors.score
       });
     return {
       setText: function(mode, value) {

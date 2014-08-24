@@ -33,24 +33,10 @@ exports = Class(ImageView, function(supr) {
     // this is straightforward, tiles having value <8 have lighter background,
     // so those needs darker color for text, others need lighter color for text.
     if(val >= 8 && opts.color !== 1) {
-      text.setCharacterData({
-        '0': { 'image': 'resources/images/number_0.png' },
-        '1': { 'image': 'resources/images/number_1.png' },
-        '2': { 'image': 'resources/images/number_2.png' },
-        '3': { 'image': 'resources/images/number_3.png' },
-        '4': { 'image': 'resources/images/number_4.png' },
-        '5': { 'image': 'resources/images/number_5.png' },
-        '6': { 'image': 'resources/images/number_6.png' },
-        '7': { 'image': 'resources/images/number_7.png' },
-        '8': { 'image': 'resources/images/number_8.png' },
-        '9': { 'image': 'resources/images/number_9.png' },
-      });
+      text.setCharacterData(Utils.colors.number);
       opts.color = 1;
     } else if(val < 8 && opts.color !== 0) {
-      text.setCharacterData({
-        '2': { image: 'resources/images/score_2.png' },
-        '4': { image: 'resources/images/score_4.png' }
-      });
+      text.setCharacterData(Utils.colors.score);
       opts.color = 0;
     }
     text.setText(val);

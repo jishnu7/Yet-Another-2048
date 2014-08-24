@@ -19,6 +19,31 @@ exports = (function() {
   obj.setColors = function(theme) {
     theme = theme || Storage.getTheme();
     obj.colors = JSON.parse(CACHE['resources/themes/' + theme + '.json']);
+    obj.colors.number = {
+      '0': { 'image': 'resources/images/' + theme + '/number_0.png' },
+      '1': { 'image': 'resources/images/' + theme + '/number_1.png' },
+      '2': { 'image': 'resources/images/' + theme + '/number_2.png' },
+      '3': { 'image': 'resources/images/' + theme + '/number_3.png' },
+      '4': { 'image': 'resources/images/' + theme + '/number_4.png' },
+      '5': { 'image': 'resources/images/' + theme + '/number_5.png' },
+      '6': { 'image': 'resources/images/' + theme + '/number_6.png' },
+      '7': { 'image': 'resources/images/' + theme + '/number_7.png' },
+      '8': { 'image': 'resources/images/' + theme + '/number_8.png' },
+      '9': { 'image': 'resources/images/' + theme + '/number_9.png' },
+    };
+    obj.colors.score = {
+      '0': { 'image': 'resources/images/' + theme + '/score_0.png' },
+      '1': { 'image': 'resources/images/' + theme + '/score_1.png' },
+      '2': { 'image': 'resources/images/' + theme + '/score_2.png' },
+      '3': { 'image': 'resources/images/' + theme + '/score_3.png' },
+      '4': { 'image': 'resources/images/' + theme + '/score_4.png' },
+      '5': { 'image': 'resources/images/' + theme + '/score_5.png' },
+      '6': { 'image': 'resources/images/' + theme + '/score_6.png' },
+      '7': { 'image': 'resources/images/' + theme + '/score_7.png' },
+      '8': { 'image': 'resources/images/' + theme + '/score_8.png' },
+      '9': { 'image': 'resources/images/' + theme + '/score_9.png' },
+      ':': { 'image': 'resources/images/' + theme + '/score_colon.png' }
+    };
   };
 
   // Helper function to make sure that all required operations are
