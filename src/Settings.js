@@ -1,5 +1,6 @@
 /* jshint ignore:start */
 import ui.View as View;
+import src.gc.Toast as Toast;
 import src.gc.ButtonView as ButtonView;
 import plugins.googleanalytics.googleAnalytics as Analytics;
 
@@ -123,8 +124,29 @@ exports = Class(View, function(supr) {
   };
 
   this.setTheme = function(theme) {
+    var toast = this.toast;
+
     Utils.setTheme(theme);
     Storage.setTheme(theme);
+
+    if(!toast) {
+      toast = this.toast = new Toast({
+        superview: this,
+        inLayout: false,
+        width: 500,
+        centerX: true,
+        position: 'bottom',
+        images: {
+          bottom: Utils.getImage('toast'),
+        },
+        text: {
+          color: '#fff',
+          size: 32,
+          fontFamily: Utils.fonts.text
+        },
+      });
+    }
+    toast.pop('Restart the app to get the new theme.');
   };
 
   this.update = function() {
