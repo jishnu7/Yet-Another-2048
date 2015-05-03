@@ -26,6 +26,7 @@ exports = Class(View, function(supr) {
 
     new ImageView({
       superview: this,
+      layout: 'box',
       centerX: true,
       width: logo.getWidth(),
       height: logo.getHeight(),
@@ -61,6 +62,7 @@ exports = Class(View, function(supr) {
     var img = Utils.getButtonImage(text, true);
     return new ButtonView({
       superview: this.menuContainer,
+      layout: 'box',
       centerX: true,
       images: img,
       width: img.up.getWidth(),

@@ -1,57 +1,59 @@
 {
-	"appID": "2a2a13abfe6a469189951d0031514f4b",
-	"shortName": "twozerofoureight",
-	"title": "Yet Another 2048",
-	"version": "1.2",
-	"studio": {
-		"name": "androidtweak.in",
-		"domain": "androidtweak.in"
-	},
-	"supportedOrientations": [
-		"portrait"
-	],
-	"description": "",
-	"icon": "resources/icons/icon512.png",
-	"splash": {
-		"autoHide": true,
-		"portrait480": "resources/splash/portrait480.png",
-		"portrait960": "resources/splash/portrait960.png",
-		"portrait1024": "resources/splash/portrait1024.png",
-		"portrait1136": "resources/splash/portrait1136.png",
-		"portrait2048": "resources/splash/portrait2048.png",
-		"landscape768": "resources/splash/landscape768.png",
-		"landscape1536": "resources/splash/landscape1536.png"
-	},
-	"ttf": [
-		"resources/fonts/Raleway-ExtraLight.ttf",
-		"resources/fonts/Signika-Regular.ttf"
-	],
-	"android": {
-		"icons": {
-			"48": "resources/icons/android48.png",
-			"72": "resources/icons/android72.png",
-			"96": "resources/icons/android96.png",
-			"144": "resources/icons/android144.png",
-			"192": "resources/icons/android192.png"
-		},
-		"gameplayID": "697558218377",
-		"googleTrackingID": "UA-51085867-1"
-	},
-	"ios": {
-		"bundleID": "",
-		"appleID": "12345678",
-		"version": "1.0.0",
-		"icons": {
-			"57": "resources/icons/ios57.png",
-			"72": "resources/icons/ios72.png",
-			"114": "resources/icons/ios114.png",
-			"144": "resources/icons/ios144.png",
-			"renderGloss": true
-		}
-	},
-	"addons": [
-		"gameplay",
-		"googleanalytics"
-	],
-	"sdkVersion": "release-0.1.45"
+  "android": {
+    "gameplayID": "697558218377",
+    "googleTrackingID": "UA-51085867-1",
+    "icons": {
+      "144": "resources/icons/android144.png",
+      "192": "resources/icons/android192.png",
+      "48": "resources/icons/android48.png",
+      "72": "resources/icons/android72.png",
+      "96": "resources/icons/android96.png"
+    }
+  },
+  "appID": "2a2a13abfe6a469189951d0031514f4b",
+  "dependencies": {
+    "devkit-core": "https://github.com/gameclosure/devkit-core#v2.3.3",
+    "devkit-google-analytics": "https://github.com/gameclosure/googleanalytics.git#devkit2",
+    "gameplay": "https://github.com/hashcube/gameplay#master",
+    "googleanalytics": "https://github.com/gameclosure/googleanalytics.git#devkit2"
+  },
+  "description": "",
+  "icon": "resources/icons/icon512.png",
+  "ios": {
+    "appleID": "12345678",
+    "bundleID": "",
+    "icons": {
+      "114": "resources/icons/ios114.png",
+      "144": "resources/icons/ios144.png",
+      "57": "resources/icons/ios57.png",
+      "72": "resources/icons/ios72.png",
+      "renderGloss": true
+    },
+    "version": "1.0.0"
+  },
+  "sdkVersion": "release-0.1.45",
+  "shortName": "twozerofoureight",
+  "splash": {
+    "autoHide": true,
+    "landscape1536": "resources/splash/landscape1536.png",
+    "landscape768": "resources/splash/landscape768.png",
+    "portrait1024": "resources/splash/portrait1024.png",
+    "portrait1136": "resources/splash/portrait1136.png",
+    "portrait2048": "resources/splash/portrait2048.png",
+    "portrait480": "resources/splash/portrait480.png",
+    "portrait960": "resources/splash/portrait960.png"
+  },
+  "studio": {
+    "domain": "androidtweak.in",
+    "name": "androidtweak.in"
+  },
+  "supportedOrientations": [
+    "portrait"
+  ],
+  "title": "Yet Another 2048",
+  "ttf": [
+    "resources/fonts/Raleway-ExtraLight.ttf",
+    "resources/fonts/Signika-Regular.ttf"
+  ],
+  "version": "1.2"
 }

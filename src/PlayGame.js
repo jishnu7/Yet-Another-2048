@@ -1,6 +1,6 @@
 /* jshint ignore:start */
-import plugins.gameplay.gameplay as PlayGame;
-import plugins.googleanalytics.googleAnalytics as Analytics;
+import gameplay as PlayGame;
+import googleAnalytics as Analytics;
 
 import src.Utils as Utils;
 /* jshint ignore:end */

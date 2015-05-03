@@ -2,7 +2,7 @@
 import ui.View as View;
 import src.gc.Toast as Toast;
 import src.gc.ButtonView as ButtonView;
-import plugins.googleanalytics.googleAnalytics as Analytics;
+import googleAnalytics as Analytics;
 
 import src.PlayGame as PlayGame;
 import src.Storage as Storage;

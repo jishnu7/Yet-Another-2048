@@ -4,7 +4,7 @@ import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 import AudioManager;
 import event.Callback as Callback;
-import plugins.googleanalytics.googleAnalytics as Analytics;
+import googleAnalytics as Analytics;
 
 import src.Utils as Utils;
 import src.History as History;
@@ -25,7 +25,6 @@ exports = Class(GC.Application, function () {
     var size = this.scaleUI();
 
     this.view.updateOpts({
-      layout: 'box',
       width: size.width,
       height: size.height,
       backgroundColor: Utils.theme.background
@@ -135,7 +134,7 @@ exports = Class(GC.Application, function () {
       menu.emit('continue');
       var evnt = {};
       evnt[mode] = true;
-      Analytics.track('newgame', evnt);
+      Anlytics.track('newgame', evnt);
     };
     menu.on('new', bind(this, newGame, 'classic'));
     menu.on('time', bind(this, newGame, 'time'));
