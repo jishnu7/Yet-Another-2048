@@ -76,15 +76,18 @@ exports = Class(ScrollView, function(supr) {
       containerPlay = new View({
         superview: this,
         layout: 'linear',
+        direction: 'horizontal',
         justifyContent: 'space-outside',
         height: img_achievement.up.getHeight(),
         centerX: true,
+        layoutWidth: '100%',
         top: 50,
         order: 2
       });
 
     new ButtonView({
       superview: containerPlay,
+      layout: 'box',
       centerX: true,
       width: img_achievement.up.getWidth(),
       height: img_achievement.up.getHeight(),
@@ -97,6 +100,7 @@ exports = Class(ScrollView, function(supr) {
 
     new ButtonView({
       superview: containerPlay,
+      layout: 'box',
       centerX: true,
       width: img_leaderboard.up.getWidth(),
       height: img_leaderboard.up.getHeight(),

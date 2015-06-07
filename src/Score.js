@@ -21,6 +21,7 @@ exports = Class(View, function(supr) {
   this.init = function(opts) {
     merge(opts, {
       layout: 'linear',
+      direction: 'horizontal',
       justifyContent: 'space-outside',
       height: 100,
       offsetY: -50

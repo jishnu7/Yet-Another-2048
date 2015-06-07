@@ -33,6 +33,7 @@ exports = Class(View, function(supr) {
 
     new ButtonView({
       superview: this,
+      layout: 'box',
       centerX: true,
       width: btn_width,
       height: btn_height,
@@ -74,6 +75,7 @@ exports = Class(View, function(supr) {
 
     this.playButton = new ButtonView({
       superview: this,
+      layout: 'box',
       centerX: true,
       width: btn_width,
       height: btn_height,
