@@ -18,18 +18,6 @@
   },
   "description": "",
   "icon": "resources/icons/icon512.png",
-  "ios": {
-    "appleID": "12345678",
-    "bundleID": "",
-    "icons": {
-      "114": "resources/icons/ios114.png",
-      "144": "resources/icons/ios144.png",
-      "57": "resources/icons/ios57.png",
-      "72": "resources/icons/ios72.png",
-      "renderGloss": true
-    },
-    "version": "1.0.0"
-  },
   "sdkVersion": "release-0.1.45",
   "shortName": "twozerofoureight",
   "splash": {
@@ -54,5 +42,5 @@
     "resources/fonts/Raleway-ExtraLight.ttf",
     "resources/fonts/Signika-Regular.ttf"
   ],
-  "version": "1.2"
+  "version": "1.3"
 }
