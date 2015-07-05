@@ -12,9 +12,9 @@
   },
   "appID": "2a2a13abfe6a469189951d0031514f4b",
   "dependencies": {
-    "devkit-core": "https://github.com/gameclosure/devkit-core#v2.3.3",
+    "devkit-core": "https://github.com/gameclosure/devkit-core#v2.4.0",
     "gameplay": "https://github.com/hashcube/gameplay#master",
-    "googleanalytics": "https://github.com/gameclosure/googleanalytics.git#devkit2"
+    "googleanalytics": "https://github.com/hashcube/googleanalytics.git#master"
   },
   "description": "",
   "icon": "resources/icons/icon512.png",
