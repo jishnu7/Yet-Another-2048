@@ -134,7 +134,7 @@ exports = Class(GC.Application, function () {
       menu.emit('continue');
       var evnt = {};
       evnt[mode] = true;
-      Anlytics.track('newgame', evnt);
+      Analytics.track('newgame', evnt);
     };
     menu.on('new', bind(this, newGame, 'classic'));
     menu.on('time', bind(this, newGame, 'time'));
