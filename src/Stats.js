@@ -128,17 +128,13 @@ exports = Class(ScrollView, function(supr) {
 
     var statView = Class(View, function(supr) {
       this.init = function(opts) {
-        merge(opts, {
-          layout: 'linear',
-          justifyContent: 'space',
-          centerX: true
-        });
         supr(this, 'init', [opts]);
 
         this.key = new TextView({
           superview: this,
           layout: 'box',
           layoutWidth: '50%',
+          left: 0,
           color: Utils.theme.text,
           size: 35,
           fontFamily: Utils.fonts.number,
@@ -149,6 +145,7 @@ exports = Class(ScrollView, function(supr) {
           superview: this,
           layout: 'box',
           layoutWidth: '50%',
+          right: 0,
           size: 35,
           color: Utils.theme.text,
           fontFamily: Utils.fonts.number,
@@ -161,7 +158,8 @@ exports = Class(ScrollView, function(supr) {
       ctor: statView,
       initCount: 25,
       initOpts: {
-        height: 60
+        height: 60,
+        width: opts.width * 90/100
       }
     });
 

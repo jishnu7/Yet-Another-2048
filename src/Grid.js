@@ -504,6 +504,7 @@ exports = Class(GridView, function(supr) {
         superview: bg,
         width: replay.getWidth(),
         height: replay.getHeight(),
+        layout: 'box',
         image: replay,
         x: 0,
         y: 0,
