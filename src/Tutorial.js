@@ -28,8 +28,7 @@ exports = Class(TextView, function(supr) {
       padding: '100 100',
       offsetY: 75,
       color: Utils.theme.text,
-      fontFamily: Utils.fonts.number,
-      visible: false
+      fontFamily: Utils.fonts.number
     });
     supr(this, 'init', [opts]);
   };

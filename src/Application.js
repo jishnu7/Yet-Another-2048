@@ -57,20 +57,20 @@ exports = Class(GC.Application, function () {
       swipeTime: 1000
     });
 
-    var tutorial = new Tutorial({
-      superview: game,
-      width: size.width,
-      order: 3
-    });
-
     var score = new Score({
-      superview: game
+      superview: game,
+      width: size.width
     });
 
     var grid = new Grid({
       superview: game,
       baseWidth: size.width,
       score: score
+    });
+
+    var tutorial = new Tutorial({
+      superview: game,
+      width: size.width
     });
 
     var gameInit = function() {
@@ -111,7 +111,10 @@ exports = Class(GC.Application, function () {
       }
     }));
 
-    var menu = new Menu({});
+    var menu = new Menu({
+      width: size.width,
+      height: size.height
+    });
 
     var pause = this.onPause = bind(this.view, function() {
       if(this.hasView(game)) {

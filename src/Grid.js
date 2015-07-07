@@ -22,8 +22,8 @@ exports = Class(GridView, function(supr) {
       margin = 10,
       baseSize = opts.baseWidth - 100,
       cellSize = Math.round((baseSize-margin*2)/size) - margin*2;
-    baseSize = (cellSize + margin*2) * size + margin*2;
 
+    baseSize = (cellSize + margin*2) * size + margin*2;
     merge(opts, {
       layout: 'box',
       centerX: true,
@@ -208,9 +208,7 @@ exports = Class(GridView, function(supr) {
   };
 
   this.addCell = function(row, col, val) {
-    var cell = this.cellPool.obtainView();
-
-    cell.updateOpts({
+    var cell = this.cellPool.obtainView({
       superview: this,
       row: row,
       col: col,

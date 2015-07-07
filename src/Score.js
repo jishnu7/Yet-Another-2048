@@ -33,22 +33,23 @@ exports = Class(View, function(supr) {
     this.highScore = 0;
     this.timer = 0;
 
-    this.scoreView = this.createView('Score', 0);
-    this.highScoreView = this.createView('Best', 0);
+    this.scoreView = this.createView('Score', 0, opts.width / 2);
+    this.highScoreView = this.createView('Best', 0, opts.width / 2);
   };
 
-  this.createView = function(name, value) {
+  this.createView = function(name, value, width) {
     var scale = GC.app.tabletScale,
       container = new View({
         superview: this,
         layout: 'linear',
         direction: 'vertical',
-        layoutWidth: '50%',
+        width: width,
         justifyContent: 'space-outside'
       }),
       label = new TextView({
         superview: container,
         layout: 'box',
+        width: width,
         height: 30,
         text: name,
         size: 30 * scale,
@@ -58,6 +59,7 @@ exports = Class(View, function(supr) {
       number = new ScoreView({
         superview: container,
         layout: 'box',
+        width: width,
         height: 40 * scale,
         text: value,
         centerX: true,
