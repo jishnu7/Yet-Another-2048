@@ -43,6 +43,9 @@ exports = Class(ScrollView, function(supr) {
     };
 
   this.init = function(opts) {
+    var width = opts.width * 90 / 100,
+      scale = GC.app.tabletScale;
+
     merge(opts, {
       layout: 'linear',
       direction: 'vertical',
@@ -54,13 +57,15 @@ exports = Class(ScrollView, function(supr) {
 
     this._contentView.updateOpts({
       layoutWidth: '90%',
-      scale: GC.app.tabletScale
+      anchorX: width / 2,
+      anchorY: 0,
+      scale: scale
     });
 
     new TextView({
       superview: this,
       layout: 'box',
-      centerX: true,
+      width: width,
       height: 60,
       text: 'Stats',
       size: 60,
@@ -79,9 +84,8 @@ exports = Class(ScrollView, function(supr) {
         direction: 'horizontal',
         justifyContent: 'space-outside',
         height: img_achievement.up.getHeight(),
-        centerX: true,
-        layoutWidth: '100%',
-        top: 50,
+        width: width,
+        top: 50 * scale,
         order: 2
       });
 
@@ -96,7 +100,6 @@ exports = Class(ScrollView, function(supr) {
         up: PlayGame.showAchievements
       }
     });
-
 
     new ButtonView({
       superview: containerPlay,
@@ -115,8 +118,7 @@ exports = Class(ScrollView, function(supr) {
       initCount: 4,
       initOpts: {
         superview: this,
-        layout: 'box',
-        centerX: true,
+        width: width,
         height: 60,
         size: 45,
         color: Utils.theme.text,
@@ -133,7 +135,8 @@ exports = Class(ScrollView, function(supr) {
         this.key = new TextView({
           superview: this,
           layout: 'box',
-          layoutWidth: '50%',
+          width: opts.width / 2,
+          layoutHeight: '100%',
           left: 0,
           color: Utils.theme.text,
           size: 35,
@@ -144,7 +147,8 @@ exports = Class(ScrollView, function(supr) {
         this.value = new TextView({
           superview: this,
           layout: 'box',
-          layoutWidth: '50%',
+          layoutHeight: '100%',
+          width: opts.width / 2,
           right: 0,
           size: 35,
           color: Utils.theme.text,
@@ -159,7 +163,7 @@ exports = Class(ScrollView, function(supr) {
       initCount: 25,
       initOpts: {
         height: 60,
-        width: opts.width * 90/100
+        width: width
       }
     });
 
@@ -255,9 +259,7 @@ exports = Class(ScrollView, function(supr) {
   };
 
   this.addTitle = function(order, text) {
-    var title = this.textPool.obtainView();
-    title.updateOpts({
-      visible: true,
+    var title = this.textPool.obtainView({
       order: order
     });
     title.show();
@@ -265,10 +267,8 @@ exports = Class(ScrollView, function(supr) {
   };
 
   this.addStat = function(i, order, val, prop) {
-    var stat = this.statView.obtainView();
-    stat.updateOpts({
+    var stat = this.statView.obtainView({
       superview: this,
-      visible: true,
       order: order ? i + order.indexOf(prop): i
     });
     stat.key.updateOpts({
