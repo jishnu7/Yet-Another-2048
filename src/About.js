@@ -13,7 +13,7 @@ exports = Class(View, function(supr) {
     });
     supr(this, 'init', [opts]);
 
-    this.addTitle('Yet Another 2048 v1.1');
+    this.addTitle('Yet Another 2048 v1.3');
     this.addTextArea(
       'This game is based on 2048 by Gabriele Cirulli, ' +
       'which is based on 1024 by Veewo Studio and Threes by Asher Vollmer. ' +
