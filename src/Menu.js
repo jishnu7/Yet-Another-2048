@@ -15,9 +15,7 @@ exports = Class(View, function(supr) {
     merge(opts, {
       layout: 'linear',
       direction: 'vertical',
-      justifyContent: 'space-outside',
-      layoutWidth: '100%',
-      layoutHeight: '100%'
+      justifyContent: 'space-outside'
     });
     supr(this, 'init', [opts]);
 
@@ -39,8 +37,10 @@ exports = Class(View, function(supr) {
       layout: 'linear',
       direction: 'vertical',
       justifyContent: 'center',
+      width: opts.width,
       height: 450,
-      scale: scale
+      scale: scale,
+      centerAnchor: true
     });
 
     this.continue = this.addMenuEntry('continue', 1);
