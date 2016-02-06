@@ -3,6 +3,7 @@ import ui.View as View;
 import ui.ImageView as ImageView;
 import ui.resource.Image as Image;
 import src.gc.ButtonView as ButtonView;
+import util.underscore as _;
 
 import src.PlayGame as PlayGame;
 import src.Storage as Storage;
@@ -49,10 +50,10 @@ exports = Class(View, function(supr) {
     this.addMenuEntry('stats', 4);
     this.addMenuEntry('settings', 5);
 
-    this.refresh();
+    this.update();
   };
 
-  this.refresh = function() {
+  this.update = function() {
     var fn = Storage.getGame() ? 'show' : 'hide';
     this.continue[fn]();
     this.menuContainer.needsReflow();
@@ -62,6 +63,7 @@ exports = Class(View, function(supr) {
     var img = Utils.getButtonImage(text, true);
     return new ButtonView({
       superview: this.menuContainer,
+      tag: text,
       layout: 'box',
       centerX: true,
       images: img,
@@ -77,4 +79,12 @@ exports = Class(View, function(supr) {
     });
   };
 
+  this.refresh = function () {
+    _.each(this.menuContainer.getSubviews(), function (view) {
+      view.updateOpts({
+        images: Utils.getButtonImage(view.tag, true)
+      });
+      view.setState(view._state);
+    });
+  };
 });

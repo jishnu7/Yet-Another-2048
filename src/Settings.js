@@ -2,6 +2,7 @@
 import ui.View as View;
 import src.gc.Toast as Toast;
 import src.gc.ButtonView as ButtonView;
+import util.underscore as _;
 
 import src.PlayGame as PlayGame;
 import src.Storage as Storage;
@@ -30,8 +31,11 @@ exports = Class(View, function(supr) {
     });
     supr(this, 'init', [opts]);
 
-    new ButtonView({
+    this.audio = audio;
+
+    this.sound = new ButtonView({
       superview: this,
+      tag: 'sound',
       layout: 'box',
       centerX: true,
       width: btn_width,
@@ -44,12 +48,11 @@ exports = Class(View, function(supr) {
         selected: bind(audio, this.toggleSound, false),
         unselected: bind(audio, this.toggleSound, true)
       }
-    }).setState(
-      audio.getMuted() ? states.UNSELECTED : states.SELECTED
-    );
+    });
 
-    new ButtonView({
+    this.tutorial = new ButtonView({
       superview: this,
+      tag: 'tutorial',
       layout: 'box',
       centerX: true,
       width: btn_width,
@@ -66,9 +69,7 @@ exports = Class(View, function(supr) {
           Storage.setTutorialCompleted();
         }
       }
-    }).setState(
-      Storage.isTutorialCompleted() ? states.UNSELECTED : states.SELECTED
-    );
+    });
 
     this.playButton = new ButtonView({
       superview: this,
@@ -100,6 +101,7 @@ exports = Class(View, function(supr) {
 
     new ButtonView({
       superview: this,
+      tag: 'about',
       layout: 'box',
       centerX: true,
       width: btn_width,
@@ -126,6 +128,7 @@ exports = Class(View, function(supr) {
 
     Utils.setTheme(theme);
     Storage.setTheme(theme);
+    GC.app.refresh();
 
     if(!toast) {
       toast = this.toast = new Toast({
@@ -148,7 +151,9 @@ exports = Class(View, function(supr) {
   };
 
   this.update = function() {
-    var opts;
+    var opts,
+      states = ButtonView.states;
+
     if(PlayGame.isLoggedIn()) {
       opts = {
         images: Utils.getButtonImage('signout', true),
@@ -166,6 +171,27 @@ exports = Class(View, function(supr) {
     }
     this.playButton.updateOpts(opts);
     this.playButton.setState(ButtonView.states.UP);
+
+    this.tutorial.setState(
+      Storage.isTutorialCompleted() ? states.UNSELECTED : states.SELECTED
+    );
+
+    this.sound.setState(
+      this.audio.getMuted() ? states.UNSELECTED : states.SELECTED
+    );
+
     this.needsReflow();
+  };
+
+  this.refresh = function () {
+    _.each(this.getSubviews(), function (view) {
+      if (!view.tag) {
+        return;
+      }
+      view.updateOpts({
+        images: Utils.getButtonImage(view.tag, true, view._opts.toggleSelected ? true : undefined)
+      });
+      view.setState(view._state);
+    });
   };
 });

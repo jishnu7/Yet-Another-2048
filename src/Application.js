@@ -4,6 +4,7 @@ import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 import AudioManager;
 import event.Callback as Callback;
+import util.underscore as _;
 
 import src.Utils as Utils;
 import src.History as History;
@@ -25,9 +26,9 @@ exports = Class(GC.Application, function () {
 
     this.view.updateOpts({
       width: size.width,
-      height: size.height,
-      backgroundColor: Utils.theme.background
+      height: size.height
     });
+    this.refresh();
 
     var audio = new AudioManager({
       path: 'resources/audio/',
@@ -118,7 +119,7 @@ exports = Class(GC.Application, function () {
       if(this.hasView(game)) {
         grid.backButton();
         this.pop();
-        menu.refresh();
+        menu.update();
       }
     });
 
@@ -199,6 +200,16 @@ exports = Class(GC.Application, function () {
     this.view.style.scale = scale;
     this.tabletScale = device.isTablet ? 0.8 : 1;
     return { width: baseWidth, height: baseHeight };
+  };
+
+  this.refresh = function () {
+    this.view.updateOpts({
+      backgroundColor: Utils.theme.background
+    });
+
+    _.each(this.getStack(), function (view) {
+      view.refresh && view.refresh();
+    });
   };
 
   this.onResume = PlayGame.login;
