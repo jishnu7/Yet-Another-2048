@@ -7,6 +7,7 @@ import ui.ImageScaleView as ImageScaleView;
 import ui.resource.Image as Image;
 import event.Callback as Callback;
 import src.gc.GridView as GridView;
+import util.underscore as _;
 
 import src.Cell as Cell;
 import src.Utils as Utils;
@@ -23,9 +24,12 @@ exports = Class(GridView, function(supr) {
       baseSize = opts.baseWidth - 100,
       cellSize = Math.round((baseSize-margin*2)/size) - margin*2;
 
+    this._refresh = [];
+
     baseSize = (cellSize + margin*2) * size + margin*2;
     merge(opts, {
       layout: 'box',
+      tag: 'grid',
       centerX: true,
       width: baseSize,
       height: baseSize,
@@ -51,6 +55,8 @@ exports = Class(GridView, function(supr) {
         }
       }
     });
+    this._refresh.push(this);
+
     supr(this, 'init', [opts]);
     this.overlay = this.initOverlay(baseSize);
 
@@ -60,14 +66,15 @@ exports = Class(GridView, function(supr) {
       var row = [];
       for (var y = 0; y < this.getCols(); y++) {
         row.push(null);
-        new ImageView({
+        this._refresh.push(new ImageView({
           superview: this,
+          tag: 'cell_blank',
           row: x,
           col: y,
           width: cellSize,
           height: cellSize,
           image: Utils.getImage('cell_blank', true)
-        });
+        }));
       }
       cells.push(row);
     }
@@ -474,6 +481,7 @@ exports = Class(GridView, function(supr) {
       replay = Utils.getImage('replay'),
       bg = new ImageScaleView({
         superview: this,
+        tag: 'grid',
         inLayout: false,
         layout: 'linear',
         direction: 'vertical',
@@ -535,5 +543,11 @@ exports = Class(GridView, function(supr) {
         return bg.style.visible;
       }
     };
+  };
+
+  this.refresh = function () {
+    _.each(this._refresh, function (view) {
+      view.setImage(Utils.getImage(view.tag, true));
+    });
   };
 });

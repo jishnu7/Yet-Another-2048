@@ -29,6 +29,7 @@ exports = Class(GC.Application, function () {
       height: size.height
     });
     this.refresh();
+    this._refresh = [];
 
     var audio = new AudioManager({
       path: 'resources/audio/',
@@ -61,17 +62,20 @@ exports = Class(GC.Application, function () {
       superview: game,
       width: size.width
     });
+    this._refresh.push(score);
 
     var grid = new Grid({
       superview: game,
       baseWidth: size.width,
       score: score
     });
+    this._refresh.push(grid);
 
     var tutorial = new Tutorial({
       superview: game,
       width: size.width
     });
+    this._refresh.push(tutorial);
 
     var gameInit = function() {
       grid.initCells(bind(game, game.setHandleEvents, true));
@@ -114,6 +118,7 @@ exports = Class(GC.Application, function () {
       width: size.width,
       height: size.height
     });
+    this._refresh.push(menu);
 
     var pause = this.onPause = bind(this.view, function() {
       if(this.hasView(game)) {
@@ -147,6 +152,7 @@ exports = Class(GC.Application, function () {
           width: size.width,
           height: size.height
         });
+        this._refresh.push(stats);
       }
       stats.update();
       this.push(stats);
@@ -159,6 +165,7 @@ exports = Class(GC.Application, function () {
           width: size.width,
           height: size.height
         });
+        this._refresh.push(about);
       }
       this.push(about);
       History.add(bind(this, this.pop), about);
@@ -170,6 +177,7 @@ exports = Class(GC.Application, function () {
           audio: audio
         });
         settings.on('about', aboutScreen);
+        this._refresh.push(settings);
       }
       settings.update();
       this.push(settings);
@@ -207,7 +215,7 @@ exports = Class(GC.Application, function () {
       backgroundColor: Utils.theme.background
     });
 
-    _.each(this.getStack(), function (view) {
+    _.each(this._refresh, function (view) {
       view.refresh && view.refresh();
     });
   };

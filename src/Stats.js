@@ -62,14 +62,13 @@ exports = Class(ScrollView, function(supr) {
       scale: scale
     });
 
-    new TextView({
+    this.title = new TextView({
       superview: this,
       layout: 'box',
       width: width,
       height: 60,
       text: 'Stats',
       size: 60,
-      color: Utils.theme.text,
       fontFamily: Utils.fonts.text,
       horizontalAlign: 'left',
       top: 50,
@@ -89,8 +88,11 @@ exports = Class(ScrollView, function(supr) {
         order: 2
       });
 
+    this.containerPlay = containerPlay;
+
     new ButtonView({
       superview: containerPlay,
+      tag: 'achievements',
       layout: 'box',
       centerX: true,
       width: img_achievement.up.getWidth(),
@@ -103,6 +105,7 @@ exports = Class(ScrollView, function(supr) {
 
     new ButtonView({
       superview: containerPlay,
+      tag: 'leaderboard',
       layout: 'box',
       centerX: true,
       width: img_leaderboard.up.getWidth(),
@@ -121,7 +124,6 @@ exports = Class(ScrollView, function(supr) {
         width: width,
         height: 60,
         size: 45,
-        color: Utils.theme.text,
         fontFamily: Utils.fonts.text,
         horizontalAlign: 'left',
         top: 50
@@ -208,6 +210,10 @@ exports = Class(ScrollView, function(supr) {
         classic: []
       };
 
+    this.title.updateOpts({
+      color: Utils.theme.text
+    });
+
     var finish = Utils.finish(_.keys(games).length, bind(this, function() {
       if(statsTime.count > 0) {
         statsTime.averageTile = getMode(tile.time);
@@ -260,6 +266,7 @@ exports = Class(ScrollView, function(supr) {
 
   this.addTitle = function(order, text) {
     var title = this.textPool.obtainView({
+      color: Utils.theme.text,
       order: order
     });
     title.show();
@@ -276,6 +283,15 @@ exports = Class(ScrollView, function(supr) {
     });
     stat.value.updateOpts({
       text: val
+    });
+  };
+
+  this.refresh = function () {
+    _.each(this.containerPlay.getSubviews(), function (view) {
+      view.updateOpts({
+        images: Utils.getButtonImage(view.tag, true)
+      });
+      view.setState(view._state);
     });
   };
 });

@@ -3,6 +3,7 @@ import device;
 import ui.View as View;
 import ui.TextView as TextView;
 import ui.ScoreView as ScoreView;
+import util.underscore as _;
 
 import src.Utils as Utils;
 import src.PlayGame as PlayGame;
@@ -32,6 +33,7 @@ exports = Class(View, function(supr) {
     this.highestTile = 0;
     this.highScore = 0;
     this.timer = 0;
+    this._refresh = [];
 
     this.scoreView = this.createView('Score', 0, opts.width / 2);
     this.highScoreView = this.createView('Best', 0, opts.width / 2);
@@ -65,6 +67,10 @@ exports = Class(View, function(supr) {
         centerX: true,
         characterData: Utils.theme.score
       });
+
+    this._refresh.push(label);
+    this._refresh.push(number);
+
     return {
       setText: function(mode, value) {
         var out = '',
@@ -160,5 +166,18 @@ exports = Class(View, function(supr) {
         this.setScore(this.score + 1);
       }
     }), 1000);
+  };
+
+  this.refresh = function () {
+    _.each(this._refresh, function (view) {
+      console.log('score', view.tag);
+      if (view instanceof ScoreView) {
+        view.setCharacterData(Utils.theme.score);
+      } else {
+        view.updateOpts({
+          color: Utils.theme.text
+        });
+      }
+    });
   };
 });
