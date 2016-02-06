@@ -1,5 +1,6 @@
 {
   "android": {
+    "fullscreen": false,
     "gameplayID": "697558218377",
     "icons": {
       "144": "resources/icons/android144.png",
