@@ -170,7 +170,6 @@ exports = Class(View, function(supr) {
 
   this.refresh = function () {
     _.each(this._refresh, function (view) {
-      console.log('score', view.tag);
       if (view instanceof ScoreView) {
         view.setCharacterData(Utils.theme.score);
       } else {
