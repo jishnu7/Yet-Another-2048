@@ -74,10 +74,6 @@ exports = (function() {
   };
 
   obj.showAchievements = function() {
-    if(!obj.isLoggedIn()) {
-      obj.login();
-      return;
-    }
     PlayGame.showAchievements();
   };
 
@@ -86,9 +82,6 @@ exports = (function() {
   };
 
   obj.achievement = function(val, mode) {
-    if(!obj.isLoggedIn()) {
-      return;
-    }
     var achievements = mode === 'time' ? json.achievements_time : json.achievements;
     if(achievements.hasOwnProperty(val)) {
       obj.run({
