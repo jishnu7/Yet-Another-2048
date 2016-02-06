@@ -2,7 +2,6 @@
 import ui.View as View;
 import src.gc.Toast as Toast;
 import src.gc.ButtonView as ButtonView;
-import googleAnalytics as Analytics;
 
 import src.PlayGame as PlayGame;
 import src.Storage as Storage;
@@ -62,11 +61,9 @@ exports = Class(View, function(supr) {
       on: {
         selected: function() {
           Storage.resetTutorial();
-          Analytics.track('tutorial', {show: true});
         },
         unselected: function() {
           Storage.setTutorialCompleted();
-          Analytics.track('tutorial', {hide: true});
         }
       }
     }).setState(
@@ -122,7 +119,6 @@ exports = Class(View, function(supr) {
     localStorage.setItem('mute', bool);
     var evnt = {};
     evnt[bool] = true;
-    Analytics.track('audio', evnt);
   };
 
   this.setTheme = function(theme) {

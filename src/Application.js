@@ -4,7 +4,6 @@ import ui.TextView as TextView;
 import ui.GestureView as GestureView;
 import AudioManager;
 import event.Callback as Callback;
-import googleAnalytics as Analytics;
 
 import src.Utils as Utils;
 import src.History as History;
@@ -90,7 +89,6 @@ exports = Class(GC.Application, function () {
       gameInit();
       var evnt = {};
       evnt[grid.mode] = true;
-      Analytics.track('newgame', evnt);
     });
 
     var busy = false;
@@ -137,7 +135,6 @@ exports = Class(GC.Application, function () {
       menu.emit('continue');
       var evnt = {};
       evnt[mode] = true;
-      Analytics.track('newgame', evnt);
     };
     menu.on('new', bind(this, newGame, 'classic'));
     menu.on('time', bind(this, newGame, 'time'));
@@ -153,7 +150,6 @@ exports = Class(GC.Application, function () {
       stats.update();
       this.push(stats);
       History.add(bind(this, this.pop), stats);
-      Analytics.trackScreen('Stats');
     }));
 
     var aboutScreen = bind(this, function() {
@@ -165,7 +161,6 @@ exports = Class(GC.Application, function () {
       }
       this.push(about);
       History.add(bind(this, this.pop), about);
-      Analytics.trackScreen('About');
     });
 
     menu.on('settings', bind(this, function() {
@@ -178,7 +173,6 @@ exports = Class(GC.Application, function () {
       settings.update();
       this.push(settings);
       History.add(bind(this, this.pop), settings);
-      Analytics.trackScreen('Settings');
     }));
 
     this.push(menu);

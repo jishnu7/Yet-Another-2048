@@ -1,6 +1,5 @@
 /* jshint ignore:start */
 import gameplay as PlayGame;
-import googleAnalytics as Analytics;
 
 import src.Utils as Utils;
 /* jshint ignore:end */
@@ -56,9 +55,6 @@ exports = (function() {
         busy = false;
       });
     }
-    if(cb) {
-      Analytics.track('playgame', {signin: 'initiated'});
-    }
   };
 
   obj.logout = function(cb) {
@@ -67,7 +63,6 @@ exports = (function() {
     if(cb) {
       cb();
     }
-    Analytics.track('playgame', {signout: true});
   };
 
   obj.showLeaderBoard = function() {
@@ -75,7 +70,6 @@ exports = (function() {
       obj.login();
       return;
     }
-    Analytics.track('playgame', {leanderboard: true});
     PlayGame.showLeaderBoard();
   };
 
@@ -84,7 +78,6 @@ exports = (function() {
       obj.login();
       return;
     }
-    Analytics.track('playgame', {achievements: true});
     PlayGame.showAchievements();
   };
 
