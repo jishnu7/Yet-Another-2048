@@ -12,8 +12,8 @@
   },
   "appID": "2a2a13abfe6a469189951d0031514f4b",
   "dependencies": {
-    "devkit-core": "https://github.com/gameclosure/devkit-core#v2.4.0",
-    "gameplay": "https://github.com/hashcube/gameplay#master",
+    "devkit-core": "https://github.com/hashcube/devkit-core.git#v4.2.1-5",
+    "gameplay": "git@bitbucket.org:hashcube/gameplay.git#v3.1.0",
     "googleanalytics": "https://github.com/hashcube/googleanalytics.git#master"
   },
   "description": "",
