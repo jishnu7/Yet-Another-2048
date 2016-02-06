@@ -41,10 +41,6 @@ exports = (function() {
   };
 
   obj.showLeaderBoard = function() {
-    if(!obj.isLoggedIn()) {
-      obj.login();
-      return;
-    }
     PlayGame.showLeaderBoard();
   };
 
