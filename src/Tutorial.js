@@ -10,10 +10,10 @@ import src.PlayGame as PlayGame;
 exports = Class(TextView, function(supr) {
   var head = 0,
     strings = [
-      'Swipe to merge cells',
-      'There is a catch, only cells with same number will merge',
-      'Score your highest by attaining a tile with 2048 or more',
-      'Sign-in with your Google account to compare score with your friends'
+      'Swipe to merge cells.',
+      'There is a catch, only cells with the same number will merge.',
+      'Score your highest by attaining a tile with 2048 or more.',
+      'Sign-in with your Google account to compare scores with your friends.'
     ],
     busy = false;
 
