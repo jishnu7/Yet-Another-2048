@@ -2,6 +2,7 @@
 import ui.ImageView as ImageView;
 import ui.resource.Image as Image;
 import src.gc.ScoreView as ScoreView;
+import src.Storage as Storage;
 
 import src.Utils as Utils;
 
@@ -28,17 +29,19 @@ exports = Class(ImageView, function(supr) {
   this.setValue = function(val) {
     var img = -1, i,
       opts= this._opts,
-      text = this.text;
+      text = this.text,
+      current_theme = Storage.getTheme();
 
     // this is straightforward, tiles having value <8 have lighter background,
     // so those needs darker color for text, others need lighter color for text.
-    if(val >= 8 && opts.color !== 1) {
+    if(val >= 8 && (opts.color !== 1 || current_theme !==  opts.theme)) {
       text.setCharacterData(Utils.theme.number);
       opts.color = 1;
-    } else if(val < 8 && opts.color !== 0) {
+    } else if(val < 8 && (opts.color !== 0 || current_theme !==  opts.theme)) {
       text.setCharacterData(Utils.theme.score);
       opts.color = 0;
     }
+    opts.theme = current_theme;
     text.setText(val);
     opts.value = val;
 
