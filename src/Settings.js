@@ -32,7 +32,7 @@ exports = Class(View, function(supr) {
 
     this.audio = audio;
 
-    this.sound = new ButtonView({
+    new ButtonView({
       superview: this,
       tag: 'sound',
       layout: 'box',
@@ -47,9 +47,9 @@ exports = Class(View, function(supr) {
         selected: bind(audio, this.toggleSound, false),
         unselected: bind(audio, this.toggleSound, true)
       }
-    });
+    }).setState(this.audio.getMuted() ? states.UNSELECTED : states.SELECTED);
 
-    this.tutorial = new ButtonView({
+    new ButtonView({
       superview: this,
       tag: 'tutorial',
       layout: 'box',
@@ -68,7 +68,7 @@ exports = Class(View, function(supr) {
           Storage.setTutorialCompleted();
         }
       }
-    });
+    }).setState(Storage.isTutorialCompleted() ? states.UNSELECTED : states.SELECTED);
 
     this.playButton = new ButtonView({
       superview: this,
@@ -131,8 +131,7 @@ exports = Class(View, function(supr) {
   };
 
   this.update = function() {
-    var opts,
-      states = ButtonView.states;
+    var opts;
 
     if(PlayGame.isLoggedIn()) {
       opts = {
@@ -152,14 +151,6 @@ exports = Class(View, function(supr) {
     this.playButton.updateOpts(opts);
     this.playButton.setState(ButtonView.states.UP);
 
-    this.tutorial.setState(
-      Storage.isTutorialCompleted() ? states.UNSELECTED : states.SELECTED
-    );
-
-    this.sound.setState(
-      this.audio.getMuted() ? states.UNSELECTED : states.SELECTED
-    );
-
     this.needsReflow();
   };
 
@@ -168,10 +159,19 @@ exports = Class(View, function(supr) {
       if (!view.tag) {
         return;
       }
+
+      var toggle = view._opts.toggleSelected ? true : undefined,
+        states = ButtonView.states;
+
       view.updateOpts({
-        images: Utils.getButtonImage(view.tag, true, view._opts.toggleSelected ? true : undefined)
+        images: Utils.getButtonImage(view.tag, true, toggle)
       });
-      view.setState(view._state);
+
+      if (toggle) {
+        view.setState(view.selected ? states.SELECTED : states.UNSELECTED);
+      } else {
+        view.setState(view._state);
+      }
     });
   };
 });
