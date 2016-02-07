@@ -172,6 +172,7 @@ exports = Class(View, function(supr) {
     _.each(this._refresh, function (view) {
       if (view instanceof ScoreView) {
         view.setCharacterData(Utils.theme.score);
+        view.setText('');
       } else {
         view.updateOpts({
           color: Utils.theme.text
