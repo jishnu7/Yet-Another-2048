@@ -15,7 +15,7 @@
    height="1024"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.5 r10040"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="drawing.svg"
    inkscape:export-filename="/home/jishnu/git/2048/misc/drawing.png"
    inkscape:export-xdpi="90"
@@ -533,9 +533,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5449219"
-     inkscape:cx="3537.3133"
-     inkscape:cy="-1699.9465"
+     inkscape:zoom="0.77246095"
+     inkscape:cx="5259.4585"
+     inkscape:cy="1998.2023"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -606,7 +606,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1779,7 +1779,6 @@
              d="m 50.842,58.605 c 0,-0.793 -0.496,-1.467 -1.193,-1.737 L 49.07,30.606 c -10e-4,-0.052 -0.043,-0.093 -0.095,-0.093 -0.052,0 -0.094,0.041 -0.095,0.093 l -0.578,26.262 c -0.697,0.271 -1.194,0.944 -1.194,1.737 0,0.765 0.46,1.42 1.119,1.709 l -0.062,2.796 c 0,0.02 0.027,0.484 0.777,0.484 0.735,0 0.837,-0.45 0.841,-0.469 10e-4,-0.008 0.002,-0.015 0.002,-0.021 l -0.061,-2.791 c 0.658,-0.288 1.118,-0.943 1.118,-1.708 z m -1.892,1.568 c -0.851,0 -1.542,-0.692 -1.542,-1.542 0,-0.852 0.692,-1.543 1.542,-1.543 0.85,0 1.542,0.691 1.542,1.543 0,0.849 -0.691,1.542 -1.542,1.542 z"
              id="path4805" />
           <circle
-             d="m 50.322001,58.630001 c 0,0.757735 -0.614266,1.372 -1.372,1.372 -0.757735,0 -1.372,-0.614265 -1.372,-1.372 0,-0.757735 0.614265,-1.372 1.372,-1.372 0.757734,0 1.372,0.614265 1.372,1.372 z"
              style="fill:#657277;fill-opacity:1"
              sodipodi:ry="1.372"
              sodipodi:rx="1.372"
@@ -4045,8 +4044,7 @@
              sodipodi:cy="58.630001"
              sodipodi:rx="1.372"
              sodipodi:ry="1.372"
-             style="fill:#e9e9e9;fill-opacity:1"
-             d="m 50.322001,58.630001 c 0,0.757735 -0.614266,1.372 -1.372,1.372 -0.757735,0 -1.372,-0.614265 -1.372,-1.372 0,-0.757735 0.614265,-1.372 1.372,-1.372 0.757734,0 1.372,0.614265 1.372,1.372 z" />
+             style="fill:#e9e9e9;fill-opacity:1" />
         </g>
         <g
            id="g5615"
@@ -6915,8 +6913,7 @@
              sodipodi:cy="58.630001"
              sodipodi:rx="1.372"
              sodipodi:ry="1.372"
-             style="fill:#a7a7a7;fill-opacity:1"
-             d="m 50.322001,58.630001 c 0,0.757735 -0.614266,1.372 -1.372,1.372 -0.757735,0 -1.372,-0.614265 -1.372,-1.372 0,-0.757735 0.614265,-1.372 1.372,-1.372 0.757734,0 1.372,0.614265 1.372,1.372 z" />
+             style="fill:#a7a7a7;fill-opacity:1" />
         </g>
         <g
            id="g4904"
@@ -7552,7 +7549,7 @@
              height="205.51201"
              x="2672.3035"
              y="2684.6018" /></flowRegion><flowPara
-           id="flowPara4932"></flowPara></flowRoot>    </g>
+           id="flowPara4932" /></flowRoot>    </g>
     <g
        id="g4850"
        transform="matrix(1.5625,0,0,1.5625,-1117.1078,-1816.4861)"
@@ -7848,7 +7845,7 @@
              height="205.51201"
              width="87.706703"
              id="rect4959" /></flowRegion><flowPara
-           id="flowPara4961"></flowPara></flowRoot>    </g>
+           id="flowPara4961" /></flowRoot>    </g>
     <g
        transform="matrix(1.5625,0,0,1.5625,-1117.1078,-1922.6403)"
        id="g4964"
@@ -8056,6 +8053,92 @@
            x="2523.168"
            y="2965.6987"
            style="font-size:60px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#e2e2e2;fill-opacity:1;font-family:Signika;-inkscape-font-specification:Signika Semi-Light">9</tspan></text>
+    </g>
+    <rect
+       inkscape:export-ydpi="180"
+       inkscape:export-xdpi="180"
+       ry="0"
+       y="-1222.5968"
+       x="5541.0054"
+       height="300"
+       width="300"
+       id="rect5290"
+       style="fill:#f83535;fill-opacity:1;stroke:none"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/new_assets/g4839.png" />
+    <g
+       inkscape:export-ydpi="168.69447"
+       inkscape:export-xdpi="168.69447"
+       transform="translate(1100.7054,151.24637)"
+       id="g5292"
+       inkscape:export-filename="/home/jishnu/git/2048/misc/new_assets/numbers.png">
+      <text
+         transform="scale(0.98881433,1.0113122)"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/jishnu/androidtweak.in/2048/text2989.png"
+         sodipodi:linespacing="125%"
+         id="text5294"
+         y="-1223.6812"
+         x="4467.5122"
+         style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:236.27581787px;line-height:125%;font-family:Raleway;-inkscape-font-specification:'Raleway Ultra-Light';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"
+         xml:space="preserve"
+         inkscape:label="#text4841"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:236.27581787px;line-height:125%;font-family:Raleway;-inkscape-font-specification:'Raleway Ultra-Light';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1"
+           y="-1223.6812"
+           x="4467.5122"
+           id="tspan5296"
+           sodipodi:role="line">2</tspan></text>
+      <text
+         inkscape:label="#text4841"
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:236.27581787px;line-height:125%;font-family:Raleway;-inkscape-font-specification:'Raleway Ultra-Light';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"
+         x="4529.0112"
+         y="-1178.1134"
+         id="text5298"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/jishnu/androidtweak.in/2048/text2989.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"
+         transform="scale(0.98881433,1.0113122)"><tspan
+           sodipodi:role="line"
+           id="tspan5300"
+           x="4529.0112"
+           y="-1178.1134"
+           style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:236.27581787px;line-height:125%;font-family:Raleway;-inkscape-font-specification:'Raleway Ultra-Light';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1">0</tspan></text>
+      <text
+         transform="scale(0.98881433,1.0113122)"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/jishnu/androidtweak.in/2048/text2989.png"
+         sodipodi:linespacing="125%"
+         id="text5302"
+         y="-1139.8973"
+         x="4610.7788"
+         style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:236.27581787px;line-height:125%;font-family:Raleway;-inkscape-font-specification:'Raleway Ultra-Light';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"
+         xml:space="preserve"
+         inkscape:label="#text4841"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:236.27581787px;line-height:125%;font-family:Raleway;-inkscape-font-specification:'Raleway Ultra-Light';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1"
+           y="-1139.8973"
+           x="4610.7788"
+           id="tspan5304"
+           sodipodi:role="line">4</tspan></text>
+      <text
+         inkscape:label="#text4841"
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:236.27581787px;line-height:125%;font-family:Raleway;-inkscape-font-specification:'Raleway Ultra-Light';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"
+         x="4688.0107"
+         y="-1046.085"
+         id="text5306"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/jishnu/androidtweak.in/2048/text2989.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"
+         transform="scale(0.98881433,1.0113122)"><tspan
+           sodipodi:role="line"
+           id="tspan5308"
+           x="4688.0107"
+           y="-1046.085"
+           style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-size:236.27581787px;line-height:125%;font-family:Raleway;-inkscape-font-specification:'Raleway Ultra-Light';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1">8</tspan></text>
     </g>
   </g>
 </svg>
