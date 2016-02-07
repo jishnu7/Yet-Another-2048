@@ -85,4 +85,10 @@ exports = Class(TextView, function(supr) {
     }, 0);
     this.setText(strings[head]);
   };
+
+  this.refresh = function () {
+    this.updateOpts({
+      color: Utils.theme.text
+    });
+  };
 });
