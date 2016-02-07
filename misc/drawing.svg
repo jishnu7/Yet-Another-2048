@@ -533,9 +533,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.77246095"
-     inkscape:cx="5259.4585"
-     inkscape:cy="1998.2023"
+     inkscape:zoom="0.54621238"
+     inkscape:cx="4925.5817"
+     inkscape:cy="261.80734"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -3424,7 +3424,7 @@
        height="500"
        width="1024"
        id="rect5094"
-       style="fill:#657277;fill-opacity:1;stroke:none"
+       style="fill:#607d8b;fill-opacity:1;stroke:none"
        inkscape:export-filename="/home/jishnu/git/2048/misc/feature_graphic.png" />
     <g
        id="g5114"
@@ -8063,7 +8063,7 @@
        height="300"
        width="300"
        id="rect5290"
-       style="fill:#f83535;fill-opacity:1;stroke:none"
+       style="fill:#607d8b;fill-opacity:1;stroke:none"
        inkscape:export-filename="/home/jishnu/git/2048/misc/new_assets/g4839.png" />
     <g
        inkscape:export-ydpi="168.69447"
