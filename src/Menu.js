@@ -5,7 +5,6 @@ import ui.resource.Image as Image;
 import src.gc.ButtonView as ButtonView;
 import util.underscore as _;
 
-import src.PlayGame as PlayGame;
 import src.Storage as Storage;
 import src.Utils as Utils;
 /* jshint ignore:end */

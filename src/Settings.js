@@ -3,7 +3,6 @@ import ui.View as View;
 import src.gc.ButtonView as ButtonView;
 import util.underscore as _;
 
-import src.PlayGame as PlayGame;
 import src.Storage as Storage;
 import src.Utils as Utils;
 /* jshint ignore:end */
@@ -70,16 +69,6 @@ exports = Class(View, function(supr) {
       }
     }).setState(Storage.isTutorialCompleted() ? states.UNSELECTED : states.SELECTED);
 
-    this.playButton = new ButtonView({
-      superview: this,
-      layout: 'box',
-      centerX: true,
-      width: btn_width,
-      height: btn_height,
-      order: 3,
-      bottom: 30
-    });
-
     new ButtonView({
       superview: this,
       layout: 'box',
@@ -111,8 +100,6 @@ exports = Class(View, function(supr) {
         up: bind(this, this.emit, 'about')
       }
     });
-
-    this.update = bind(this, this.update);
   };
 
   this.toggleSound = function(bool) {
@@ -123,35 +110,9 @@ exports = Class(View, function(supr) {
   };
 
   this.setTheme = function(theme) {
-    var toast = this.toast;
-
     Utils.setTheme(theme);
     Storage.setTheme(theme);
     GC.app.refresh();
-  };
-
-  this.update = function() {
-    var opts;
-
-    if(PlayGame.isLoggedIn()) {
-      opts = {
-        images: Utils.getButtonImage('signout', true),
-        on: {
-          up: bind(this, PlayGame.logout, this.update)
-        }
-      };
-    } else {
-      opts = {
-        images: Utils.getButtonImage('signin'),
-        on: {
-          up: bind(this, PlayGame.login, this.update)
-        }
-      };
-    }
-    this.playButton.updateOpts(opts);
-    this.playButton.setState(ButtonView.states.UP);
-
-    this.needsReflow();
   };
 
   this.refresh = function () {

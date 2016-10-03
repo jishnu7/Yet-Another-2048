@@ -11,7 +11,6 @@ import util.underscore as _;
 
 import src.Cell as Cell;
 import src.Utils as Utils;
-import src.PlayGame as PlayGame;
 import src.Storage as Storage;
 /* jshint ignore:end */
 
@@ -144,12 +143,6 @@ exports = Class(GridView, function(supr) {
     // Stats and leaderboard
     Storage.saveGameStats(this);
     score.saveHighScore();
-    if(this.mode === 'time') {
-      PlayGame.leaderboard('time', score.score*1000);
-    } else {
-      PlayGame.leaderboard('score', score.score);
-      PlayGame.leaderboard('tile', score.highestTile);
-    }
   };
 
   // First function to call from menu screen
@@ -260,7 +253,6 @@ exports = Class(GridView, function(supr) {
     var newVal = cell1.getValue() + cell2.getValue();
     cell1.setValue(newVal);
     cell2.setValue(newVal);
-    PlayGame.achievement(newVal);
     Storage.saveTileStats(newVal);
     this.removeCell(cell2);
     this.score.update(newVal);
