@@ -14,7 +14,6 @@ import src.PlayGame as PlayGame;
 import src.Grid as Grid;
 import src.Score as Score;
 import src.Menu as Menu;
-import src.Stats as Stats;
 import src.Settings as Settings;
 import src.Tutorial as Tutorial;
 import src.About as About;
@@ -145,19 +144,7 @@ exports = Class(GC.Application, function () {
     menu.on('new', bind(this, newGame, 'classic'));
     menu.on('time', bind(this, newGame, 'time'));
 
-    var stats, settings, about;
-    menu.on('stats', bind(this, function() {
-      if(!stats) {
-        stats = new Stats({
-          width: size.width,
-          height: size.height
-        });
-        this._refresh.push(stats);
-      }
-      stats.update();
-      this.push(stats);
-      History.add(bind(this, this.pop), stats);
-    }));
+    var settings, about;
 
     var aboutScreen = bind(this, function() {
       if(!about) {
