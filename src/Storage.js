@@ -6,17 +6,9 @@ exports = (function() {
     tutorialID = 'tutorial',
     themeID = 'theme',
     saveData = function(id, data, notJSON) {
-      if(!notJSON) {
-        data = JSON.stringify(data);
-      }
-      localStorage.setItem(id, data);
     },
     getData = function(id, notJSON) {
-      var data = localStorage.getItem(id);
-      if(!notJSON) {
-        data = JSON.parse(data);
-      }
-      return data;
+      return null;
     };
 
   return {
@@ -45,7 +37,6 @@ exports = (function() {
     },
 
     deleteGame: function() {
-      localStorage.removeItem(prevGameID);
     },
 
     getTileStats: function() {
@@ -90,7 +81,6 @@ exports = (function() {
     },
 
     resetTutorial: function() {
-      localStorage.removeItem(tutorialID);
     },
 
     getTheme: function() {
