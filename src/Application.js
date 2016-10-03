@@ -8,7 +8,6 @@ import util.underscore as _;
 
 import src.Utils as Utils;
 import src.History as History;
-import src.Storage as Storage;
 
 import src.Grid as Grid;
 import src.Score as Score;
@@ -40,10 +39,6 @@ exports = Class(GC.Application, function () {
         }
       }
     });
-
-    if(localStorage.getItem('mute') === 'true') {
-      audio.setMuted(true);
-    }
 
     // Entire puzzle screen accepts swipe actions.
     var game = new GestureView({
@@ -134,7 +129,6 @@ exports = Class(GC.Application, function () {
 
     var newGame = function(mode) {
       grid.setMode(mode);
-      Storage.deleteGame();
       tutorial.reset();
       menu.emit('continue');
       var evnt = {};
