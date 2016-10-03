@@ -184,7 +184,7 @@ exports = Class(GC.Application, function () {
       History.add(bind(this, this.pop), settings);
     }));
 
-    this.push(menu);
+    menu.emit('new');
   };
 
   this.launchUI = function () {
