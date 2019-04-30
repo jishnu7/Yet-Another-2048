@@ -1,7 +1,6 @@
 {
   "android": {
     "fullscreen": false,
-    "gameplayID": "697558218377",
     "icons": {
       "144": "resources/icons/android144.png",
       "192": "resources/icons/android192.png",
@@ -12,8 +11,7 @@
   },
   "appID": "2a2a13abfe6a469189951d0031514f4b",
   "dependencies": {
-    "devkit-core": "https://github.com/hashcube/devkit-core#v4.5.3-1",
-    "gameplay": "https://github.com/hashcube/gameplay.git#v3.2.3"
+    "devkit-core": "https://github.com/hashcube/devkit-core#v4.5.3-1"
   },
   "description": "",
   "icon": "resources/icons/icon512.png",

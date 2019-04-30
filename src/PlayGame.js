@@ -1,6 +1,4 @@
 /* jshint ignore:start */
-import gameplay as PlayGame;
-
 import src.Utils as Utils;
 /* jshint ignore:end */
 
