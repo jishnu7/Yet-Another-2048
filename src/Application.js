@@ -9,7 +9,6 @@ import util.underscore as _;
 import src.Utils as Utils;
 import src.History as History;
 import src.Storage as Storage;
-import src.PlayGame as PlayGame;
 
 import src.Grid as Grid;
 import src.Score as Score;
@@ -179,7 +178,6 @@ exports = Class(GC.Application, function () {
         settings.on('about', aboutScreen);
         this._refresh.push(settings);
       }
-      settings.update();
       this.push(settings);
       History.add(bind(this, this.pop), settings);
     }));
@@ -219,6 +217,4 @@ exports = Class(GC.Application, function () {
       view.refresh && view.refresh();
     });
   };
-
-  this.onResume = PlayGame.login;
 });
