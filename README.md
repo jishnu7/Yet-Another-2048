@@ -10,7 +10,7 @@ Screenshot
 
 How To Build
 ----
-1. Install Devit Tool
+1. Install Devkit Tool
 ```
 npm install -g https://github.com/hashcube/devkit
 ```
