@@ -8,6 +8,23 @@ Screenshot
 
 ![Screenshot](http://androidtweak.in/downloads/yatwozerofoureight.png)
 
+How To Build
+----
+1. Install Devit Tool
+```
+npm install -g https://github.com/hashcube/devkit
+```
+2. Install dependencies
+```
+devkit install
+```
+3. Build
+```
+devit debug native-android
+// or
+devit release native-android
+```
+
 Resources
 ----
 Sounds:
