@@ -6,7 +6,6 @@ import ui.ScoreView as ScoreView;
 import util.underscore as _;
 
 import src.Utils as Utils;
-import src.PlayGame as PlayGame;
 /* jshint ignore:end */
 
 exports = Class(View, function(supr) {
@@ -76,7 +75,6 @@ exports = Class(View, function(supr) {
         var out = '',
           h, m;
         if(mode === 'time') {
-          PlayGame.achievement(value, mode);
           h = Math.floor(value/3600);
           if(h > 0) {
             out += h + ':';

@@ -6,7 +6,6 @@ import src.gc.ButtonView as ButtonView;
 import src.gc.ScrollView as ScrollView;
 
 import src.Utils as Utils;
-import src.PlayGame as PlayGame;
 import src.Storage as Storage;
 import util.underscore as _;
 /* jshint ignore:end */
@@ -73,47 +72,6 @@ exports = Class(ScrollView, function(supr) {
       horizontalAlign: 'left',
       top: 50,
       order: 1
-    });
-
-    var img_achievement = Utils.getButtonImage('achievements', true),
-      img_leaderboard = Utils.getButtonImage('leaderboard', true),
-      containerPlay = new View({
-        superview: this,
-        layout: 'linear',
-        direction: 'horizontal',
-        justifyContent: 'space-outside',
-        height: img_achievement.up.getHeight(),
-        width: width,
-        top: 50 * scale,
-        order: 2
-      });
-
-    this.containerPlay = containerPlay;
-
-    new ButtonView({
-      superview: containerPlay,
-      tag: 'achievements',
-      layout: 'box',
-      centerX: true,
-      width: img_achievement.up.getWidth(),
-      height: img_achievement.up.getHeight(),
-      images: img_achievement,
-      on: {
-        up: PlayGame.showAchievements
-      }
-    });
-
-    new ButtonView({
-      superview: containerPlay,
-      tag: 'leaderboard',
-      layout: 'box',
-      centerX: true,
-      width: img_leaderboard.up.getWidth(),
-      height: img_leaderboard.up.getHeight(),
-      images: img_leaderboard,
-      on: {
-        up: PlayGame.showLeaderBoard
-      }
     });
 
     this.textPool = new ViewPool({
@@ -286,12 +244,5 @@ exports = Class(ScrollView, function(supr) {
     });
   };
 
-  this.refresh = function () {
-    _.each(this.containerPlay.getSubviews(), function (view) {
-      view.updateOpts({
-        images: Utils.getButtonImage(view.tag, true)
-      });
-      view.setState(view._state);
-    });
-  };
+  this.refresh = function () {};
 });
